@@ -20,8 +20,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-rtl.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>"></head>
-    <body class="smart-style-1 fixed-header fixed-footer mainBody"  onload="nobackbutton();
-            document.getElementById('link').click()">
+    <body class="smart-style-1 fixed-header fixed-footer mainBody">
         <header id="header">
             <div id="logo-group" >
                 <span id="logo"> <img src="<c:url value='resources/img/logoRRHH.png'/>" style=" position: absolute;top: 8px; width:100px; height:36px " alt="Talento Humano"> </span>
@@ -54,7 +53,6 @@
                 <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
                     <li class="">
                         <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
-                            <img src="img/avatar_default.jpg" alt="" class="online" />  
                         </a>
                         <ul class="dropdown-menu pull-right">
                             <li>
@@ -112,7 +110,7 @@
                         <input id="id_trabajador" type="hidden" value="" />
                         <input id="iuser" type="hidden" value="" />
                         <a href="javascript:void(0);" id="show-shortcut" >
-                            <img id="foto_usuario" src="img/avatar_default.jpg" class="bounceIn animated" />
+                            <!--<img id="foto_usuario" src="img/avatar_default.jpg" class="bounceIn animated" />-->
                         </a>  
                     </div>
                     <div class="col-md-9">
@@ -133,26 +131,7 @@
                 <ul>
                     <li class="li-privilegio bounceInDown animated">
                         <a href="#" data-value="fa fa-lg fa-fw fa-file"><i class="fa fa-lg fa-fw fa-file-text"></i> <span class="menu-item-parent">Generar Requerimiento</span></a>
-                        <ul>
-                            <li>
-                                <a href="#" target="myframe"><i class="fa fa-lg fa-fw fa-file"></i> En Planilla</a>
-                            </li>
-                            <li>
-                                <a href="#" target="myframe"><i class="fa fa-lg fa-fw fa-file"></i> Fuera de Planilla</a>
-                            </li>
-                            <li>
-                                <a href="#" class="repCargaAcademica"><i class="fa fa-lg fa-fw fa-file"></i>Carga Academica <span class="badge pull-right inbox-badge bg-color-blue">¡Nuevo!</span></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="li-privilegio bounceInDown animated">
-                        <a href="" target="myframe" title="" data-value="" class="link"  id="link"><i class=""></i> <span class="menu-item-parent"></span></a>
-                        <a href="" target="myframe" title="" class="link"  data-value="" id="link"><i class=""></i> <span class="menu-item-parent"></span></a>
-
-                        <a href="#" class="repEmployees"><i class="fa fa-lg fa-fw fa-users"></i>    Trabajadores</a>
-
-                        <a href="" target="myframe" title="" data-value="" ><i class=""></i> <span class="menu-item-parent" ></span></a>
-
+                        
                     </li>
 
                 </ul>
