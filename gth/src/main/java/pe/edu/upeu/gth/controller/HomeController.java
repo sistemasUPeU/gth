@@ -5,13 +5,15 @@
  */
 package pe.edu.upeu.gth.controller;
 
-
+import com.google.gson.Gson;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-
-
-
 
 /**
  *
@@ -19,38 +21,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class HomeController {
-//    @Autowired
-//    private static UsuarioDAO uO;
-//    
-//    @RequestMapping(value="/")
-//    public String main(){	
-//            return "main";
-//    }
-//    @RequestMapping(value="/kk")
-//    public String ListarRol(){	
-//            return "ListarRol";
-//    }
-//    
-    @RequestMapping(value="/")
-    public String login(){	
-            return "index";
-    }
-//    @RequestMapping(value = "/login" ,  method = RequestMethod.POST)
-//        public ModelAndView Logueo(ModelAndView model ,HttpServletRequest resquest, HttpServletResponse response){
-//            String user = resquest.getParameter("user");
-//            String Pass = resquest.getParameter("pass");
-//            HttpSession sesion = resquest.getSession();
-//            UsuarioDTO d =uO.Validar(user, Pass);
-//                    if (d != null ) {
-//                        resquest.getSession().setAttribute("user", d);
-//                        model.setViewName("main");
-//                    }else{
-//                        sesion.setAttribute("Persona", null);
-//                       model.setViewName("index");
-//
-//                    }
-//        return model;
-//         }
-    
-}
 
+    Map<String, Object> mp = new HashMap<>();
+
+    @RequestMapping(value = "/")
+    public String login() {
+        return "index";
+    }
+    
+    @RequestMapping(value = "/principal")
+    public void  principal(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        try {
+            mp.put("respuesta", "okay"); 
+        } catch (Exception e) {
+            System.out.println("Error : "+e);
+        }
+        
+        Gson gson = new Gson();
+        out.println(gson.toJson(mp));
+        out.flush();
+        out.close();
+    }
+
+}
