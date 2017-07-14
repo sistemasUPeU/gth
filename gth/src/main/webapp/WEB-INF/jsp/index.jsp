@@ -42,7 +42,7 @@
                             <i class="fa fa-lock fa-4x fa-border"></i>
                         </ul>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="pull-right">
@@ -89,7 +89,7 @@
                 <div id="search-mobile" class="btn-header transparent pull-right hidden-xs">
                     <span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
                 </div>
-                
+
                 <div id="fullscreen" class="btn-header transparent pull-right">
                     <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
                 </div>
@@ -127,12 +127,9 @@
             </div>
 
             <nav>
-                
-                <ul>
-                    <li class="li-privilegio bounceInDown animated">
-                        <a href="#" data-value="fa fa-lg fa-fw fa-file"><i class="fa fa-lg fa-fw fa-file-text"></i> <span class="menu-item-parent">Generar Requerimiento</span></a>
-                        
-                    </li>
+
+                <ul id="dataPrivilegios">
+
 
                 </ul>
 
@@ -148,7 +145,7 @@
         <div id="main" role="main">
             <!-- RIBBON -->
             <div id="ribbon">
-                
+
                 <ol class="breadcrumb">
                 </ol>
             </div>
@@ -269,5 +266,27 @@
         <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
         <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
         <script src="<c:url value='resources/js/app.min.js'/>"></script>
+        <script>
+            $.ajax({
+                url: 'privilegios',
+                type: 'POST',
+                async: true,
+                data: '',
+                success: function (objJson) {
+                    var lista = objJson.pr;
+                    var s = '';
+                    if (lista.length > 0) {
+                        for (var i = 0; i < lista.length; i++) {
+                            s += '<li class="li-privilegio bounceInDown animated">';
+                            s += '<a href="'+lista[i].DI_URL+'" target="myframe"  data-value="fa fa-lg fa-fw fa-file"><i class="fa fa-lg fa-fw fa-file-text"></i> <span class="menu-item-parent">'+lista[i].NO_LINK+'</span></a>';
+                            s += '</li>';
+                        }
+                        $("#dataPrivilegios").empty();
+                        $("#dataPrivilegios").append(s);
+                    }
+                }
+            });
+
+        </script>
     </body>
 </html>

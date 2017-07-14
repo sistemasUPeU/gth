@@ -12,10 +12,13 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import pe.edu.upeu.gth.config.AppConfig;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
 
 /**
@@ -25,16 +28,16 @@ import pe.edu.upeu.gth.dao.PrivilegioDAO;
 @Controller
 public class MainController {
 
-    PrivilegioDAO pD = new PrivilegioDAO();
+    DataSource d = AppConfig.getDataSource();
+    PrivilegioDAO pD = new PrivilegioDAO(d);
     Map<String, Object> mp = new HashMap<>();
 
-    @RequestMapping(value = "/")
-    public ModelAndView Logueo(ModelAndView model, HttpServletRequest resquest, HttpServletResponse response) throws IOException {
+    @RequestMapping(value = "/privilegios", method = RequestMethod.POST)
+    public void Logueo(HttpServletRequest resquest, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         try {
-            model.setViewName("index");
-            mp.put("privilegios", pD.listarURLs("", ""));
+            mp.put("pr", pD.listarURLs("ROL-0019", "MOD-0002"));
         } catch (Exception e) {
             System.out.println("Error al listar privilegios : " + e);
         }
@@ -42,7 +45,6 @@ public class MainController {
         out.println(gson.toJson(mp));
         out.flush();
         out.close();
-        return model;
     }
 
 }

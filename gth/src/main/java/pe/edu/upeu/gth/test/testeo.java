@@ -5,11 +5,14 @@
  */
 package pe.edu.upeu.gth.test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
 import pe.edu.upeu.gth.config.AppConfig;
+import pe.edu.upeu.gth.dao.PrivilegioDAO;
 import pe.edu.upeu.gth.dao.ejemploDAO;
+import pe.edu.upeu.gth.wsclient.Client;
 
 /**
  *
@@ -20,11 +23,12 @@ public class testeo {
     /**
      * @param args the command line arguments
      */
-    public static     DataSource d = AppConfig.getDataSource();
+    public static DataSource d = AppConfig.getDataSource();
 
     public static ejemploDAO eA = new ejemploDAO(d);
+    public static PrivilegioDAO pD = new PrivilegioDAO(d);
     public static Map<String, Object> mp = new HashMap<>();
-
+    public static Client asd=new Client();
     public static void main(String[] args) {
         //conect();
         //listar_puestos();
@@ -32,14 +36,28 @@ public class testeo {
         //updatePuesto("1");
 //        deletePuesto("PUT-002012");
         //listar_puestosejemplo("PUT-000269");
-        listar_puestosejemplo("PUT-000198");
+        //listar_puestosejemplo("PUT-000198");
+        //pR("ROL-0019", "MOD-0003");
+        System.out.println(asd.getSessionJson());
     }
+
     //--
+
     public static void listar_puestosejemplo(String id) {
         //System.out.println(eA.listajt(id));
         System.out.println(eA.listajt(id));
     }
+
     ///
+
+    public static void pR(String a, String b) {
+        System.out.println(a);
+        System.out.println(b);
+        ArrayList<Map<String, Object>> s = pD.listarURLs(a, b);
+        for (int i = 0; i < s.size(); i++) {
+            System.out.println(s.get(i).get("ID_PRIVILEGIO").toString().trim());
+        }
+    }
 
     public static void conect() {
         DataSource d = AppConfig.getDataSource();

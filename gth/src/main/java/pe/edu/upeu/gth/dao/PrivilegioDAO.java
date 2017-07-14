@@ -39,7 +39,6 @@ public class PrivilegioDAO implements Operaciones {
     public PrivilegioDAO() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 
     @Override
     public ArrayList<Map<String, Object>> listar() {
@@ -62,7 +61,7 @@ public class PrivilegioDAO implements Operaciones {
     }
 
     public ArrayList<Map<String, Object>> listarURLs(String idrol, String id_modulo) {
-        sql = "";
-        return (ArrayList<Map<String, Object>>) jt.queryForList(sql, idrol,id_modulo);
+        sql = "select * from  RHVD_PRIVILEGIO where ID_ROL='" + idrol + "' and id_modulo='" + id_modulo + "' ";
+        return (ArrayList<Map<String, Object>>) jt.queryForList(sql);
     }
 }
