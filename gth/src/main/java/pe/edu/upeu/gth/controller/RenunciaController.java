@@ -12,40 +12,41 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-import pe.edu.upeu.gth.config.AppConfig;
-import pe.edu.upeu.gth.dao.PrivilegioDAO;
 
 /**
  *
  * @author Leandro Burgos
  */
 @Controller
-public class MainController {
+public class RenunciaController {
 
-    DataSource d = AppConfig.getDataSource();
-    PrivilegioDAO pD = new PrivilegioDAO(d);
     Map<String, Object> mp = new HashMap<>();
+    
+    @RequestMapping(value = "/renuncia") //redirecciones
+    public String login() {
+        return "vistas/renuncia/ejemplo";
+    }
 
-    @RequestMapping(value = "/privilegios", method = RequestMethod.POST)
-    public void Logueo(HttpServletRequest resquest, HttpServletResponse response) throws IOException {
+    @RequestMapping(value = "/ren", method = RequestMethod.POST)
+    public void principal(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
+        String opc = request.getParameter("opc");
         try {
-            //mp.put("pr", pD.listarURLs("ROL-0019", "MOD-0002"));//ROL Y MODULO PARA VACACIONES
-            mp.put("pr", pD.listarURLs("ROL-0002", "MOD-0003"));//ROL Y MODULO PARA VACACIONES
+            switch (opc) {
+                case "list":
+                    break;
+            }
         } catch (Exception e) {
-            System.out.println("Error al listar privilegios : " + e);
+            System.out.println("Error : " + e);
         }
+
         Gson gson = new Gson();
         out.println(gson.toJson(mp));
         out.flush();
         out.close();
     }
-
 }

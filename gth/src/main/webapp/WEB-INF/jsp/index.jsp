@@ -278,7 +278,7 @@
                     if (lista.length > 0) {
                         for (var i = 0; i < lista.length; i++) {
                             s += '<li class="li-privilegio bounceInDown animated">';
-                            s += '<a href="'+lista[i].DI_URL+'" target="myframe"  data-value="fa fa-lg fa-fw fa-file"><i class="fa fa-lg fa-fw fa-file-text"></i> <span class="menu-item-parent">'+lista[i].NO_LINK+'</span></a>';
+                            s += '<a href="'+lista[i].DI_URL+'" target="myframe"  data-value="'+lista[i].IC_LINK+'"><i class="'+lista[i].IC_LINK+'"></i> <span class="menu-item-parent">'+lista[i].NO_LINK+'</span></a>';
                             s += '</li>';
                         }
                         $("#dataPrivilegios").empty();
