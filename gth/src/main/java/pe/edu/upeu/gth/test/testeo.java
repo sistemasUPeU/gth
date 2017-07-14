@@ -7,9 +7,11 @@ package pe.edu.upeu.gth.test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.sql.DataSource;
 import pe.edu.upeu.gth.config.AppConfig;
+import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
 import pe.edu.upeu.gth.dao.ejemploDAO;
 import pe.edu.upeu.gth.wsclient.Client;
@@ -25,10 +27,11 @@ public class testeo {
      */
     public static DataSource d = AppConfig.getDataSource();
 
-    public static ejemploDAO eA = new ejemploDAO(d);
-    public static PrivilegioDAO pD = new PrivilegioDAO(d);
-    public static Map<String, Object> mp = new HashMap<>();
-    public static Client asd=new Client();
+//    public static ejemploDAO eA = new ejemploDAO(d);
+//    public static PrivilegioDAO pD = new PrivilegioDAO(d);
+//    public static Map<String, Object> mp = new HashMap<>();
+//    public static Client asd=new Client();
+    public static EmpleadoDAO Ea= new EmpleadoDAO(d);
     public static void main(String[] args) {
         //conect();
         //listar_puestos();
@@ -38,7 +41,8 @@ public class testeo {
         //listar_puestosejemplo("PUT-000269");
         //listar_puestosejemplo("PUT-000198");
         //pR("ROL-0019", "MOD-0003");
-        System.out.println(asd.getSessionJson());
+//        System.out.println(asd.getSessionJson());
+Listar_empleados();
     }
 
     //--
@@ -49,7 +53,13 @@ public class testeo {
     }
 
     ///
-
+ public static void Listar_empleados()
+ {
+     List<Map<String,Object>> l= Ea.listar_all();
+     for (Map<String, Object> map : l) {
+         System.out.println(map.get(("NO_TRABAJADOR")));
+     }
+ }
     public static void pR(String a, String b) {
         System.out.println(a);
         System.out.println(b);
