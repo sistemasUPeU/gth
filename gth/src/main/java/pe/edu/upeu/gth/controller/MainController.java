@@ -37,8 +37,8 @@ public class MainController {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         try {
-            //mp.put("pr", pD.listarURLs("ROL-0019", "MOD-0002"));//ROL Y MODULO PARA VACACIONES
-            mp.put("pr", pD.listarURLs("ROL-0002", "MOD-0003"));//ROL Y MODULO PARA VACACIONES
+            //mp.put("pr", pD.listarURLs("ROL-0019", "MOD-0002"));//ROL Y MODULO PARA VACACIONES -- ANALISTA DE CONTABILIDAD
+            mp.put("pr", pD.listarURLs("ROL-0002", "MOD-0003"));//ROL Y MODULO PARA RENUNCIA Y ABANDONO -- SECRETARIA DE DEPARTAMENTO
         } catch (Exception e) {
             System.out.println("Error al listar privilegios : " + e);
         }
