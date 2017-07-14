@@ -31,11 +31,11 @@ public class testeo {
         //addPuesto("Esclavo", "es", "1", "SEC-0003", "3");
         //updatePuesto("1");
 //        deletePuesto("PUT-002012");
-        listar_puestos();
+        listar_puestosejemplo("PUT-000269");
     }
     //--
-    public static void listar_puestosejemplo() {
-        System.out.println(eA.listajt());
+    public static void listar_puestosejemplo(String id) {
+        System.out.println(eA.listajt(id));
     }
     ///
 

@@ -38,9 +38,9 @@ public class ejemploDAO implements Operaciones {
 		jt = new JdbcTemplate(dataSource);
 	}
     // -------
-        public ArrayList<Map<String, Object>> listajt (){
-            String sql ="select * from rhtr_puesto";
-            return (ArrayList<Map<String, Object>>) jt.queryForList(sql);
+        public ArrayList<Map<String, Object>> listajt (String id){
+            String sql ="select * from rhtr_puesto where ID_PUESTO = ?";
+            return (ArrayList<Map<String, Object>>) jt.queryForList(sql , id);
         }
             
         
