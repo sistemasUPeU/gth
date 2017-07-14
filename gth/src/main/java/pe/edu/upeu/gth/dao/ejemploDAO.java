@@ -34,8 +34,8 @@ public class ejemploDAO implements Operaciones {
         sql = "select * from rhtr_puesto";
         ArrayList<Map<String, ?>> lista = new ArrayList<>();
         try {
-            cs = d.getConnection().prepareCall(sql);
-            rs = cs.executeQuery();
+            ps = d.getConnection().prepareStatement(sql);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 Map<String, Object> m = new HashMap<>();
                 m.put("id", rs.getString(1));
