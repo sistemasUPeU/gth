@@ -32,24 +32,24 @@ public class ejemploDAO implements Operaciones {
     DataSource d = AppConfig.getDataSource();
 
     //-------------------------------
-     private JdbcTemplate jt;
-	
-	public ejemploDAO(DataSource dataSource) {
-		jt = new JdbcTemplate(dataSource);
-	}
+    private JdbcTemplate jt;
+
+    public ejemploDAO(DataSource dataSource) {
+        jt = new JdbcTemplate(dataSource);
+    }
+
     // -------
-        public ArrayList<Map<String, Object>> listajt (String id){
-            String sql ="select * from rhtr_puesto where ID_PUESTO = ?";
-            return (ArrayList<Map<String, Object>>) jt.queryForList(sql , id);
-        }
-            
-        
+
+    public ArrayList<Map<String, Object>> listajt(String id) {
+        String sql = "select * from rhtr_puesto where ID_PUESTO = ?";
+        return (ArrayList<Map<String, Object>>) jt.queryForList(sql, id);
+    }
+
         //---------------
-    
     @Override
-    public ArrayList<Map<String, ?>> listar() {
+    public ArrayList<Map<String, Object>> listar() {
         sql = "select * from rhtr_puesto";
-        ArrayList<Map<String, ?>> lista = new ArrayList<>();
+        ArrayList<Map<String, Object>> lista = new ArrayList<>();
         try {
             ps = d.getConnection().prepareStatement(sql);
             rs = ps.executeQuery();

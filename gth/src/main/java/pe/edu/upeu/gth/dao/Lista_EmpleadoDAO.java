@@ -25,7 +25,7 @@ public class Lista_EmpleadoDAO implements Operaciones{
  }
  
     @Override
-    public ArrayList<Map<String, ?>> listar() {
+    public ArrayList<Map<String, Object>> listar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

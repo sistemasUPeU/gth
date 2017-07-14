@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
 import pe.edu.upeu.gth.config.AppConfig;
 import pe.edu.upeu.gth.interfaces.Operaciones;
 
@@ -29,8 +30,19 @@ public class PrivilegioDAO implements Operaciones {
     Connection cn;
     DataSource d = AppConfig.getDataSource();
 
+    private JdbcTemplate jt;
+
+    public PrivilegioDAO(DataSource dataSource) {
+        jt = new JdbcTemplate(dataSource);
+    }
+
+    public PrivilegioDAO() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+
     @Override
-    public ArrayList<Map<String, ?>> listar() {
+    public ArrayList<Map<String, Object>> listar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -49,58 +61,8 @@ public class PrivilegioDAO implements Operaciones {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ArrayList<Map<String, ?>> listarURLs(String idrol, String id_modulo) {
-        ArrayList<Map<String, ?>> lista = new ArrayList<>();
-        try {
-            sql = "select * from  RHVD_PRIVILEGIO where ID_ROL=? and id_modulo=?";
-            ps = d.getConnection().prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                Map<String, Object> m = new HashMap<>();
-                m.put("url", sql);
-                /*d.setDi_url(rs.getString("di_url"));
-     d.setId_detalle_privilegio(rs.getString("id_detalle_privilegio"));
-     d.setId_privilegio(rs.getString("id_privilegio"));
-     d.setId_rol(rs.getString("id_rol"));
-     d.setNo_link(rs.getString("no_link"));
-     d.setIc_link(rs.getString("ic_link"));
-     d.setNu_orden(rs.getInt("nu_orden"));*/
-                
-                lista.add(m);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return lista;
+    public ArrayList<Map<String, Object>> listarURLs(String idrol, String id_modulo) {
+        sql = "";
+        return (ArrayList<Map<String, Object>>) jt.queryForList(sql, idrol,id_modulo);
     }
-
-    /*
-     public List<V_Privilegio> listarURL(String idrol, String id_modulo) {
-     this.conn = FactoryConnectionDB.open(FactoryConnectionDB.ORACLE);
-     String sql = "select * from  RHVD_PRIVILEGIO where ID_ROL='" + idrol + "' and id_modulo='" + id_modulo + "'";
-     List<V_Privilegio> list = new ArrayList<V_Privilegio>();
-     try {
-     ResultSet rs = this.conn.query(sql);
-     while (rs.next()) {
-     V_Privilegio d = new V_Privilegio();
-     d.setDi_url(rs.getString("di_url"));
-     d.setId_detalle_privilegio(rs.getString("id_detalle_privilegio"));
-     d.setId_privilegio(rs.getString("id_privilegio"));
-     d.setId_rol(rs.getString("id_rol"));
-     d.setNo_link(rs.getString("no_link"));
-     d.setIc_link(rs.getString("ic_link"));
-     d.setNu_orden(rs.getInt("nu_orden"));
-     list.add(d);
-
-     }
-
-     } catch (SQLException e) {
-     } finally {
-     this.conn.close();
-     }
-
-     return list;
-     }
-     */
 }

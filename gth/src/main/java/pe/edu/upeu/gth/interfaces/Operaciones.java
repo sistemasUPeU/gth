@@ -11,7 +11,7 @@ import java.util.Map;
 
 public interface Operaciones {
 
-    public ArrayList<Map<String, ?>> listar();
+    public ArrayList<Map<String, Object>> listar();
 
     public boolean add(Object o);
 
