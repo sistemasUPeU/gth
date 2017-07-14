@@ -20,7 +20,9 @@ public class testeo {
     /**
      * @param args the command line arguments
      */
-    public static ejemploDAO eA = new ejemploDAO();
+    public static     DataSource d = AppConfig.getDataSource();
+
+    public static ejemploDAO eA = new ejemploDAO(d);
     public static Map<String, Object> mp = new HashMap<>();
 
     public static void main(String[] args) {
@@ -28,9 +30,14 @@ public class testeo {
         //listar_puestos();
         //addPuesto("Esclavo", "es", "1", "SEC-0003", "3");
         //updatePuesto("1");
-        deletePuesto("PUT-002012");
-        
+//        deletePuesto("PUT-002012");
+        listar_puestosejemplo("PUT-000269");
     }
+    //--
+    public static void listar_puestosejemplo(String id) {
+        System.out.println(eA.listajt(id));
+    }
+    ///
 
     public static void conect() {
         DataSource d = AppConfig.getDataSource();
