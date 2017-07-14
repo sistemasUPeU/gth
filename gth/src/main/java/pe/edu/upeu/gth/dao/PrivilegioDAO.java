@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
 import pe.edu.upeu.gth.config.AppConfig;
@@ -52,7 +53,21 @@ public class PrivilegioDAO implements Operaciones {
         ArrayList<Map<String, ?>> lista = new ArrayList<>();
         try {
             sql = "select * from  RHVD_PRIVILEGIO where ID_ROL=? and id_modulo=?";
-            
+            ps = d.getConnection().prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Map<String, Object> m = new HashMap<>();
+                m.put("url", sql);
+                /*d.setDi_url(rs.getString("di_url"));
+     d.setId_detalle_privilegio(rs.getString("id_detalle_privilegio"));
+     d.setId_privilegio(rs.getString("id_privilegio"));
+     d.setId_rol(rs.getString("id_rol"));
+     d.setNo_link(rs.getString("no_link"));
+     d.setIc_link(rs.getString("ic_link"));
+     d.setNu_orden(rs.getInt("nu_orden"));*/
+                
+                lista.add(m);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

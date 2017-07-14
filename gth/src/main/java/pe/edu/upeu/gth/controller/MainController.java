@@ -5,12 +5,18 @@
  */
 package pe.edu.upeu.gth.controller;
 
+import com.google.gson.Gson;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import pe.edu.upeu.gth.dao.PrivilegioDAO;
 
 /**
  *
@@ -19,9 +25,23 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
+    PrivilegioDAO pD = new PrivilegioDAO();
+    Map<String, Object> mp = new HashMap<>();
+
     @RequestMapping(value = "/")
-    public ModelAndView Logueo(ModelAndView model, HttpServletRequest resquest, HttpServletResponse response) {
-        model.setViewName("index");
+    public ModelAndView Logueo(ModelAndView model, HttpServletRequest resquest, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        try {
+            model.setViewName("index");
+            mp.put("privilegios", pD.listarURLs("", ""));
+        } catch (Exception e) {
+            System.out.println("Error al listar privilegios : " + e);
+        }
+        Gson gson = new Gson();
+        out.println(gson.toJson(mp));
+        out.flush();
+        out.close();
         return model;
     }
 
