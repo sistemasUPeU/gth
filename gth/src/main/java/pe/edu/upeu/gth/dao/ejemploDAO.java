@@ -9,6 +9,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,17 +55,57 @@ public class ejemploDAO implements Operaciones {
 
     @Override
     public boolean add(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean p = false;
+        sql = "INSERT INTO rhtr_puesto VALUES(null,?,?,?,?,?)";
+        Map<String, Object> m = (Map<String, Object>) o;
+        try {
+            ps = d.getConnection().prepareStatement(sql);
+            ps.setString(1, m.get("nombre").toString());
+            ps.setString(2, m.get("corto").toString());
+            ps.setString(3, m.get("estado").toString());
+            ps.setString(4, m.get("id_seccion").toString());
+            ps.setString(5, m.get("codigo").toString());
+            int r = ps.executeUpdate();
+            if (r > 0) {
+                p = true;
+            }
+        } catch (SQLException | NumberFormatException e) {
+            System.out.println("Error al agregar Puesto " + e);
+            p = false;
+        }
+        return p;
     }
 
     @Override
     public boolean edit(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean p = false;
+        sql = "UPDATE rhtr_puesto SET ESTADO=? ";
+        Map<String, Object> m = (Map<String, Object>) o;
+        try {
+            ps = d.getConnection().prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(m.get("estado").toString()));
+            int r = ps.executeUpdate();
+            if (r > 0) {
+                p = true;
+            }
+        } catch (SQLException | NumberFormatException e) {
+            System.out.println("Error al editar Puestos " + e);
+        }
+        return p;
     }
 
     @Override
     public boolean delete(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean p = true;
+        sql = "delete from rhtr_puesto where id_puesto=?";
+        try {
+            ps = d.getConnection().prepareStatement(sql);
+            ps.setString(1, o.toString());
+            ps.executeUpdate();
+        } catch (SQLException | NumberFormatException e) {
+            System.out.println("Error al eliminar PUESTO " + e);
+        }
+        return p;
     }
 
 }
