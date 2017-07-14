@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
 import pe.edu.upeu.gth.config.AppConfig;
 import pe.edu.upeu.gth.interfaces.Operaciones;
 
@@ -30,6 +31,21 @@ public class ejemploDAO implements Operaciones {
     Connection cn;
     DataSource d = AppConfig.getDataSource();
 
+    //-------------------------------
+     private JdbcTemplate jt;
+	
+	public ejemploDAO(DataSource dataSource) {
+		jt = new JdbcTemplate(dataSource);
+	}
+    // -------
+        public ArrayList<Map<String, Object>> listajt (){
+            String sql ="select * from rhtr_puesto";
+            return (ArrayList<Map<String, Object>>) jt.queryForList(sql);
+        }
+            
+        
+        //---------------
+    
     @Override
     public ArrayList<Map<String, ?>> listar() {
         sql = "select * from rhtr_puesto";
