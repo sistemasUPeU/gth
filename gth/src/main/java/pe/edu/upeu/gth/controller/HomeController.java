@@ -24,10 +24,10 @@ public class HomeController {
 
     Map<String, Object> mp = new HashMap<>();
 
-    @RequestMapping(value = "/")
+    /*@RequestMapping(value = "/")
     public String login() {
         return "index";
-    }
+    }*/
     
     @RequestMapping(value = "/principal")
     public void  principal(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -5,20 +5,18 @@
  */
 package pe.edu.upeu.gth.interfaces;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 
-/**
- *
- * @author junio
- * @param <Entidad>
- */
-public interface Operaciones<Entidad> {
-    
-    public void saveOrUpdate(Entidad e);
-	
-    public void delete(int id);
 
-    public Entidad read(int id);
+public interface Operaciones {
 
-    public List<Entidad> list();
+    public ArrayList<Map<String, ?>> listar();
+
+    public boolean add(Object o);
+
+    public boolean edit(Object o);
+
+    public boolean delete(Object o);
+
 }
