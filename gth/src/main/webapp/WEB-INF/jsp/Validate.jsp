@@ -78,7 +78,7 @@
              document.getElementById("myDiv").style.display = "block";
              }*/
             $(document).ready(function () {
-                $.getJSON("http://localhost:8089/TALENTO_HUMANO/webresources/authorization", function (datos) {
+                $.getJSON("http://192.168.21.9:8089/TALENTO_HUMANO/webresources/authorization", function (datos) {
                     try {                       
                         var sesion = datos.session;
                         var b = sesion.attributes;
@@ -94,7 +94,7 @@
                             if (conf.rs) {
                                 location.href="index";
                             }else{
-                                location.href="http://localhost:8089/TALENTO_HUMANO";
+                                location.href="http://192.168.21.9:8089/TALENTO_HUMANO";
                             }
                         });
                     } catch (e) {

@@ -125,16 +125,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
             <nav>
-
                 <ul id="dataPrivilegios">
-
-
                 </ul>
-
             </nav>
             <span id="btn-ocultar" class="minifyme" data-action="minifyMenu">
                 <i class="fa fa-arrow-circle-left hit"></i> 
@@ -255,7 +249,7 @@
         <!--Modal content-->
         <div class="modalContent"></div>
 
-        <script src="<c:url value='resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
+        <%@include file="../../jspf/scripts.jspf" %>  
         <script src="<c:url value='resources/js/app.config.js'/>"></script>
         <script src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
         <script src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>"></script>
