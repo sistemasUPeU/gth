@@ -12,9 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -25,9 +27,18 @@ public class RenunciaController {
 
     Map<String, Object> mp = new HashMap<>();
     
-    @RequestMapping(value = "/renuncia") //redirecciones
-    public String login() {
-        return "vistas/renuncia/RAarchivos";
+    @RequestMapping(value = "/renuncia")
+    public ModelAndView Logueo(ModelAndView model, HttpServletRequest request, HttpServletResponse response) {
+        String opc = request.getParameter("opc");
+        switch (opc) {
+            case "attach":
+                model.setViewName("vistas/renuncia/RAarchivos");
+                break;
+            case "status":
+                break;
+
+        }
+        return model;
     }
 
     @RequestMapping(value = "/ren", method = RequestMethod.POST)

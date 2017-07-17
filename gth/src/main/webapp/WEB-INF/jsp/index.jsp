@@ -267,7 +267,9 @@
         <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
         <script src="<c:url value='resources/js/app.min.js'/>"></script>
         <script>
-            $.ajax({
+            
+            $(document).ready(function(){
+                $.ajax({
                 url: 'privilegios',
                 type: 'POST',
                 async: true,
@@ -285,6 +287,10 @@
                         $("#dataPrivilegios").append(s);
                     }
                 }
+            });
+                /*$.post("http://localhost:8087/TALENTO_HUMANO/webresources/authorization",function(asd){
+                    console.log(asd);
+                });*/
             });
 
         </script>
