@@ -17,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
+import pe.edu.upeu.gth.dao.vacacionesDAO;
 
 
 
@@ -69,6 +70,11 @@ public class AppConfig extends WebMvcConfigurerAdapter{
         public PrivilegioDAO getPrivilegioDAO()
         {
             return new PrivilegioDAO(getDataSource());
+        }
+        @Bean
+        public vacacionesDAO getvacacionesDAO()
+        {
+            return new vacacionesDAO(getDataSource());
         }
     
 }
