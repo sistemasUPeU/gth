@@ -39,7 +39,11 @@
                  <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>">
 
         <!-- FAVICONS -->
-        <link rel="shortcut icon" type="image/x-icon" href="<c:url value='../../img/favicon/favicon.ico'/>">
+        <link rel="shortcut icon" type="image/x-icon" href="<c:url value='resources/img/favicon/favicon.ico'/>">
+         <link rel="shortcut icon" type="image/x-icon" href="<c:url value='resources/img/favicon/favicon.ico'/>">
+         <link rel="icon" type="image/x-icon" href="<c:url value='resources/img/favicon/favicon.ico'/>">
+
+
         <link rel="icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
 
         <!-- GOOGLE FONT -->
@@ -47,8 +51,10 @@
 
         <!-- Specifying a Webpage Icon for Web Clip 
                  Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-        <link rel="apple-touch-icon" href="../../img/splash/sptouch-icon-iphone.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="../../img/splash/touch-icon-ipad.png">
+         <link rel="apple-touch-icon" media="screen" href="<c:url value='resources/img/splash/sptouch-icon-iphone.png'/>">
+         <link rel="apple-touch-icon"  href="<c:url value='resources/img/splash/sptouch-icon-iphone.png'/>">
+         <link rel="apple-touch-icon" sizes="76x76" href="<c:url value='resources/img/splash/touch-icon-ipad.png'/>">
+        <link rel="apple-touch-icon"  href="../../img/splash/touch-icon-ipad.png">
         <link rel="apple-touch-icon" sizes="120x120" href="../../img/splash/touch-icon-iphone-retina.png">
         <link rel="apple-touch-icon" sizes="152x152" href="../../img/splash/touch-icon-ipad-retina.png">
 
@@ -63,7 +69,7 @@
 
     </head>
     <body>
-        <div class="container">
+        
         <article class="col-sm-6 col-md-6 col-lg-3"></article>
         <!-- widget grid -->
         <div class="row">
@@ -207,7 +213,7 @@
                 </div>
             </article>
         </div>
-        </div>
+     
         <script src="js/daterangepicker/moment.min.js" type="text/javascript"></script>
         <script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>
 
@@ -227,43 +233,38 @@
         </script>
 
         <!-- IMPORTANT: APP CONFIG -->
-        <script src="../../js/app.config.js"></script>
-
+        
+        <script src="<c:url value='resources/js/app.config.js'/>" ></script>
         <!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
-        <script src="../../js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> 
+          <script src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>" ></script>
 
         <!-- BOOTSTRAP JS -->
-        <script src="../../js/bootstrap/bootstrap.min.js"></script>
+       <script src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>" ></script>
 
         <!-- CUSTOM NOTIFICATION -->
-        <script src="../../js/notification/SmartNotification.min.js"></script>
+       <script src="<c:url value='resources/js/notification/SmartNotification.min.js'/>" ></script>      
 
         <!-- JARVIS WIDGETS -->
-        <script src="../../js/smartwidgets/jarvis.widget.min.js"></script>
-
+       <script src="<c:url value='resources/js/smartwidgets/jarvis.widget.min.js'/>" ></script>      
+ 
         <!-- EASY PIE CHARTS -->
-        <script src="../../js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
-
+        <script src="<c:url value='resources/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js'/>" ></script>      
         <!-- SPARKLINES -->
-        <script src="../../js/plugin/sparkline/jquery.sparkline.min.js"></script>
-
+        <script src="<c:url value='resources/js/plugin/sparkline/jquery.sparkline.min.js'/>" ></script>      
         <!-- JQUERY VALIDATE -->
-        <script src="../../js/plugin/jquery-validate/jquery.validate.min.js"></script>
+        <script src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>" ></script>      
 
         <!-- JQUERY MASKED INPUT -->
-        <script src="../../js/plugin/masked-input/jquery.maskedinput.min.js"></script>
-
+        <script src="<c:url value='resources/js/plugin/masked-input/jquery.maskedinput.min.js'/>" ></script>      
         <!-- JQUERY SELECT2 INPUT -->
-        <script src="../../js/plugin/select2/select2.min.js"></script>
-
+        <script src="<c:url value='resources/js/plugin/select2/select2.min.js'/>" ></script>      
         <!-- JQUERY UI + Bootstrap Slider -->
-        <script src="../../js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
-
+        <script src="<c:url value='resources/js/plugin/bootstrap-slider/bootstrap-slider.min.js'/>" ></script>
         <!-- browser msie issue fix -->
-        <script src="../../js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
-
+        <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>" ></script>
         <!-- FastClick: For mobile devices -->
-        <script src="../../js/plugin/fastclick/fastclick.min.js"></script>
+        <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>" ></script>
+       
 
         <!--[if IE 8]>
 
@@ -272,23 +273,20 @@
         <![endif]-->
 
         <!-- Demo purpose only -->
-        <script src="../../js/demo.min.js"></script>
+         <script src="<c:url value='resources/js/demo.min.js'/>" ></script>
 
         <!-- MAIN APP JS FILE -->
-        <script src="../../js/app.min.js"></script>
+         <script src="<c:url value='resources/js/app.min.js'/>" ></script>
 
         <!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
         <!-- Voice command : plugin -->
-        <script src="../../js/speech/voicecommand.min.js"></script>
-
+      <script src="<c:url value='resources/js/speech/voicecommand.min.js'/>" ></script>        
         <!-- SmartChat UI : plugin -->
-        <script src="../../js/smart-chat-ui/smart.chat.ui.min.js"></script>
-        <script src="../../js/smart-chat-ui/smart.chat.manager.min.js"></script>
-
+      <script src="<c:url value='resources/js/smart-chat-ui/smart.chat.ui.min.js'/>" ></script>        
+      <script src="<c:url value='resources/js/smart-chat-ui/smart.chat.manager.min.js'/>" ></script>        
         <!-- PAGE RELATED PLUGIN(S) -->
-        <script src="../../js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-        <script src="../../js/plugin/fuelux/wizard/wizard.min.js"></script>
-
+      <script src="<c:url value='resources/js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js'/>" ></script>   
+      <script src="<c:url value='resources/js/plugin/fuelux/wizard/wizard.min.js'/>" ></script>   
 
 
 
