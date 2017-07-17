@@ -30,25 +30,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="well">
-                    <h1><span class="semi-bold">Reporte</span> <i class="ultra-light">Carga Académica</i> (Docentes) <sup class="badge bg-color-red bounceIn animated">v 2.0</sup> <br>
-                        <small class="text-danger slideInRight fast animated"><strong>Inicio de contratación</strong></small></h1>
-                    <!--<div class="row">
-                        <div class="col-md-4">
-                            <select class="form-control" >
-                                <option value="" >[Condición Laboral]</option>
-                                <option value="1" >Contratado</option>
-                                <option value="2" >Tiempo Parcial</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <select class="form-control" >
-                                <option value="" >[Facultad Adscrita]</option>
-                                <option value="1" >item 1</option>
-                                <option value="2" >item 2</option>
-                            </select>
-                        </div>
-                    </div>-->
-
+                    <h1><span class="semi-bold">Reporte</span> <i class="ultra-light">Renuncias / Abandono  </i><sup class="badge bg-color-red bounceIn animated">v 2.0</sup> <br>
                 </div>
             </div>
         </div>
@@ -59,7 +41,7 @@
                          data-widget-deletebutton="false">
                         <header>
                             <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
-                            <h2>Carga Académica</h2>
+                            <h2>Trabajadores  en Renuncia / Abandono</h2>
                             <ul class="nav nav-tabs pull-right in" id="myTab"> 
                                 <li class="active">
                                     <a data-toggle="tab" href="#s1"><i class="fa fa-user"></i> <span class="hidden-mobile hidden-tablet">Usuarios RRHH</span></a>
@@ -73,13 +55,22 @@
                                     
                                     <div id="dt_basic_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                                         <div class="dt-toolbar">
+                                           
+                                            
                                             <div class="col-xs-12 col-sm-6">
-                                                <div id="dt_basic_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control" placeholder="" aria-controls="dt_basic"></label>
+                                                <div id="dt_basic_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control" placeholder="Buscar" aria-controls="dt_basic"></label>
                                                 </div>
                                             </div>
+                                            
+                                            
                                             <div class="col-sm-6 col-xs-12 hidden-xs">
-                                                <div class="dataTables_length" id="dt_basic_length"><label>Show <select name="dt_basic_length" aria-controls="dt_basic" class="form-control input-sm"><option value="10">10</option>
-                                                    <option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label>
+                                                <div class="dataTables_length" id="dt_basic_length"><label>Show 
+                                                        <select name="dt_basic_length" aria-controls="dt_basic" class="form-control input-sm">
+                                                            <option value="10">10</option>
+                                                            <option value="25">25</option>
+                                                            <option value="50">50</option>
+                                                            <option value="100">100</option>
+                                                        </select> entries</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,12 +115,29 @@
         </section>
     </div>
     <!-- END SHORTCUT AREA -->
-    <!--Modal content-->
+    <!--Cositas-->
     <script>
-        $(document).ready(function () {
-            $('#dt_basic_wrapper').DataTable();
-        });
+       
+        
+        
+        $(document).ready(function() {
+    $('#dt_basic').DataTable( {
+        "processing": true,
+        "ajax": "data/objects_deep.txt",
+        "columns": [
+            { "data": "name" },
+            { "data": "hr.position" },
+            { "data": "contact.0" },
+            { "data": "contact.1" },
+            { "data": "hr.start_date" },
+            { "data": "hr.salary" }
+        ]
+    } );
+} );
     </script>
+    
+    
+    
     <div class="modalContent"></div>
 
     <script src="<c:url value='resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
@@ -145,7 +153,6 @@
     <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
     <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
     <script src="<c:url value='resources/js/app.min.js'/>"></script>                                           
-
-
+    <script src="<c:url value='resources/js/jquery.dataTables.min.js'/>" type="text/javascript"></script>
 </body>
 </html>
