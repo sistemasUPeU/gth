@@ -93,7 +93,7 @@
                                                     <th>Condición</th>
                                                     <th>Ciclo</th>
                                                     <th>Inicio</th>
-                                                    <th>Cese</th>
+                                                    <th class="sorting_asc_disabled" >  Seleccionar Todo<center><input type="checkbox" name="all" id="all" onclick="checkAll();"></center></th>
 
                                                 </tr>
                                             </thead>
@@ -132,16 +132,14 @@
                                                         <sup class="badge bg-color-greenLight bounceIn animated"></sup></td>
                                                     <td>sa</td>
                                                     <td>as</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td>asa</td>
+                                                    <td>as</td>
+                                                    <td>sa</td>
+                                                    <td>as</td>
                                                     <td>
-                                                        <input type="text" class="dateDesdeItem form-control input-sm" style="width:100px"/>
-                                                       </td>
-                                                    <td>
-                                                        <input type="text" class="dateHastaItem form-control input-sm" style="width:100px"/>
-                                                       </td>
+                                                    <th class="sorting_asc_disabled" ><center><input type="checkbox" name="all" id="all" onclick="checkAll();"></center></th>
+
+                                                   
                                            <%-- <!--<input type="hidden" class="idtr<%=(i + 1)%>" value="<%=ca.getId_trabajador()%>"/>
                                             <input type="hidden" class="iddgp<%=(i + 1)%>" value=""/>
                                             <input type="hidden" class="proceso<%=(i + 1)%>" value=""/>
