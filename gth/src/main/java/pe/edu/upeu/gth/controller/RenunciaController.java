@@ -26,9 +26,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class RenunciaController {
 
     Map<String, Object> mp = new HashMap<>();
-    
+
     @RequestMapping(value = "/renuncia")
-    public ModelAndView Logueo(ModelAndView model, HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView RedireccionRenuncia(ModelAndView model, HttpServletRequest request, HttpServletResponse response) {
         String opc = request.getParameter("opc");
         switch (opc) {
             case "attach":
@@ -36,7 +36,12 @@ public class RenunciaController {
                 break;
             case "status":
                 break;
-
+            case "authorizationR":
+                model.setViewName("vistas/renuncia/Rautorizar");
+                break;
+            case "authorizationA":
+                model.setViewName("vistas/renuncia/Rautorizar");
+                break;
         }
         return model;
     }

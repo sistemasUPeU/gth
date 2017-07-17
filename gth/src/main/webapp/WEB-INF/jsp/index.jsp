@@ -5,21 +5,23 @@
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession sesion = request.getSession();
+    String id_user = (String) sesion.getAttribute("IDUSER");
+    if (id_user != null) {
+        String id_rol = (String) sesion.getAttribute("IDROL");
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title> SmartAdmin </title>
+        <title> .:RRHH:.</title>
         <meta name="description" content="">
         <meta name="author" content="">
+        <link rel="icon" href="<c:url value='resources/img/favicon/favicon.ico'/>" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/bootstrap.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/font-awesome.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production-plugins.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-rtl.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>"></head>
+        <%@include file="../../jspf/general.jspf" %>
+    </head>
     <body class="smart-style-1 fixed-header fixed-footer mainBody">
         <header id="header">
             <div id="logo-group" >
@@ -267,32 +269,33 @@
         <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
         <script src="<c:url value='resources/js/app.min.js'/>"></script>
         <script>
-            
-            $(document).ready(function(){
+
+            $(document).ready(function () {
                 $.ajax({
-                url: 'privilegios',
-                type: 'POST',
-                async: true,
-                data: '',
-                success: function (objJson) {
-                    var lista = objJson.pr;
-                    var s = '';
-                    if (lista.length > 0) {
-                        for (var i = 0; i < lista.length; i++) {
-                            s += '<li class="li-privilegio bounceInDown animated">';
-                            s += '<a href="'+lista[i].DI_URL+'" target="myframe"  data-value="'+lista[i].IC_LINK+'"><i class="'+lista[i].IC_LINK+'"></i> <span class="menu-item-parent">'+lista[i].NO_LINK+'</span></a>';
-                            s += '</li>';
+                    url: 'privilegios',
+                    type: 'POST',
+                    async: true,
+                    data: '',
+                    success: function (objJson) {
+                        var lista = objJson.pr;
+                        var s = '';
+                        if (lista.length > 0) {
+                            for (var i = 0; i < lista.length; i++) {
+                                s += '<li class="li-privilegio bounceInDown animated">';
+                                s += '<a href="' + lista[i].DI_URL + '" target="myframe"  data-value="' + lista[i].IC_LINK + '"><i class="' + lista[i].IC_LINK + '"></i> <span class="menu-item-parent">' + lista[i].NO_LINK + '</span></a>';
+                                s += '</li>';
+                            }
+                            $("#dataPrivilegios").empty();
+                            $("#dataPrivilegios").append(s);
                         }
-                        $("#dataPrivilegios").empty();
-                        $("#dataPrivilegios").append(s);
                     }
-                }
-            });
-                /*$.post("http://localhost:8087/TALENTO_HUMANO/webresources/authorization",function(asd){
-                    console.log(asd);
-                });*/
+                });
             });
 
         </script>
     </body>
 </html>
+<%} else {
+        out.print("<script> window.location.href = '/TALENTO_HUMANO/';</script>");
+    }
+%>

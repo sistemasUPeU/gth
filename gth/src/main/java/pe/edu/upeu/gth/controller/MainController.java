@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,9 +37,11 @@ public class MainController {
     public void Logueo(HttpServletRequest resquest, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
+        HttpSession sesion = resquest.getSession(true);
         try {
-            //mp.put("pr", pD.listarURLs("ROL-0019", "MOD-0002"));//ROL Y MODULO PARA VACACIONES -- ANALISTA DE CONTABILIDAD
-            mp.put("pr", pD.listarURLs("ROL-0002", "MOD-0003"));//ROL Y MODULO PARA RENUNCIA Y ABANDONO -- SECRETARIA DE DEPARTAMENTO
+            String Rol = sesion.getAttribute("ID_ROL").toString();
+            String Modulo = sesion.getAttribute("ID_MODULO").toString();
+            mp.put("pr", pD.listarURLs(Rol, Modulo));
         } catch (Exception e) {
             System.out.println("Error al listar privilegios : " + e);
         }
