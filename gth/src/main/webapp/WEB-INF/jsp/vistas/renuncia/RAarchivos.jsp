@@ -106,7 +106,7 @@
                                                         </td>
                                                         
                                                         
-                                                        
+                                                         
                                                         <td>
                                                              <span class="label label-primary">En Proceso</span>
                                                         </td>
