@@ -5,9 +5,14 @@
  */
 package pe.edu.upeu.gth.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import pe.edu.upeu.gth.dao.vacacionesDAO;
 
 /**
  *
@@ -15,13 +20,23 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class VacacionesController {
-    @RequestMapping(value = "/prog")
-    public ModelAndView prog(ModelAndView model)
-    {
-        model.setViewName("vistas/vacaciones/prog_vaca");
-        return model;
-    }
+    @Autowired
+    private vacacionesDAO vaO;
+   // @RequestMapping(value = "/prog")
+  //  public ModelAndView prog(ModelAndView model)
+  //  {
+     //   model.setViewName("vistas/vacaciones/prog_vaca");
+     //   return model;
+//    }
     
+    @RequestMapping(value = "/asig")
+    public ModelAndView asignar(ModelAndView modelo)
+    {
+        List<Map<String, Object>> vacac= vaO.asignar_permiso("TRB-002756");
+        modelo.addObject("vacac", vacac);
+        modelo.setViewName("vistas/vacaciones/prog_vaca");
+        return modelo;
+    }
     
 }
 

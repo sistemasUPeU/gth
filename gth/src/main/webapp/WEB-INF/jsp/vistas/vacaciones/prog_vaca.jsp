@@ -116,6 +116,7 @@
                                     Programacion de vacaciones  - Datos del trabajador
                                 </header>
                                 <fieldset>
+                                    
                                     <div class="row">
                                         <section class="col col-6">
                                             <label>Nombres:</label>
@@ -127,7 +128,11 @@
                                         <section class="col col-6">
                                             <label>Correo</label>
                                             <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
-                                                <input type="email" name="email" value='joselopez@upeu.edu.pe' disabled="disabled">
+                                                <c:forEach var="va" items="${vacac}" varStatus="status">
+                                                     
+                                                    <input type="email" name="email" value="${va.di_correo_inst}" disabled="disabled">
+                                                </c:forEach>                         
+
                                             </label>
                                         </section>
                                         <section class="col col-6">

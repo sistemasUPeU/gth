@@ -43,9 +43,9 @@ public class vacacionesDAO implements Operaciones{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-     public ArrayList<Map<String, Object>> asignar_permiso(String id)
+     public List<Map<String, Object>> asignar_permiso(String id)
      {
         String sql="select DI_CORREO_INST,NU_DOC,TI_DOC,ES_SEXO,FE_NAC FROM RHTM_TRABAJADOR WHERE ID_TRABAJADOR = ?"; 
-        return (ArrayList<Map<String, Object>>) jt.queryForList(sql,id);
+        return jt.queryForList(sql,id);
      }
 }
