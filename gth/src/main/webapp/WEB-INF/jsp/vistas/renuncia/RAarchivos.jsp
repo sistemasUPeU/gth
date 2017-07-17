@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <section id="widget-grid" class="">
+            <section id="widget-grid" class="col-md-6">
                 <div class="row">
                     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" 
@@ -82,7 +82,6 @@
                                                     <label>Search:<input type="search" class="form-control" placeholder="" aria-controls="dt_basic1"></label>
                                                 </tr>
                                                 <tr>
-                                                    <th></th>
                                                     <th>Tipo Doc.</th>
                                                     <th>N° Documento</th>
                                                     <th style="width: 16%">Apellidos y Nombres</th>
@@ -92,40 +91,14 @@
                                                     <th>Profesión Docente</th>
                                                     <th>Condición</th>
                                                     <th>Ciclo</th>
-                                                    <th>Inicio</th>
-                                                    <th class="sorting_asc_disabled" >  Seleccionar Todo<center><input type="checkbox" name="all" id="all" onclick="checkAll();"></center></th>
+                                                    <th>Imagen</th>
+                                                    <th>Seleccionar</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                               
                                                 <tr>
-                                                    <td>  
-                                                        <div class="btn-group"> 
-                                                            <button class="btn btn-primary dropdown-toggle bounceIn animated" data-toggle="dropdown">
-                                                                <i class="fa fa-gear fa-lg"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu">
-                                                                <li>
-                                                                    <a href="">Completar Datos</a>
-                                                                </li>
-
-                                                                <li class="divider"></li>
-                                                                <li>
-                                                                <li>
-                                                                    <button  data-toggle="modal" data-target="#myModal" data-backdrop="static" 
-                                                                             data-keyboard="false" class="btnCargaAcademica"
-                                                                             data-valor=""  value="" >Carga Academica</button>
-                                                                </li>
-                                                                
-                                                                <li>
-                                                                    <a href="" >Completar Datos</a>
-                                                                </li>
-                                                               
-                                                            </ul>
-                                                        </div>
-
-                                                    </td>
                                                     <td>asa</td>
                                                     <td>asa</td>
                                                     <td><label>asa</label>
