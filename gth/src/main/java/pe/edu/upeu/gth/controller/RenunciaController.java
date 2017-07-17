@@ -27,7 +27,7 @@ public class RenunciaController {
     
     @RequestMapping(value = "/renuncia") //redirecciones
     public String login() {
-        return "vistas/renuncia/ejemplo";
+        return "vistas/renuncia/RAarchivos";
     }
 
     @RequestMapping(value = "/ren", method = RequestMethod.POST)
