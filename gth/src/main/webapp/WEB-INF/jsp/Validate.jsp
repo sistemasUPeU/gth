@@ -78,7 +78,7 @@
              document.getElementById("myDiv").style.display = "block";
              }*/
             $(document).ready(function () {
-                $.getJSON("http://localhost:8087/TALENTO_HUMANO/webresources/authorization", function (datos) {
+                $.getJSON("http://localhost:8089/TALENTO_HUMANO/webresources/authorization", function (datos) {
                     try {                       
                         var sesion = datos.session;
                         var b = sesion.attributes;
@@ -90,11 +90,11 @@
                         data += "&PUESTO_ID=" + b.PUESTO_ID;
                         data += "&USER=" + b.USER;
                         var url = "principal";
-                        $.getJSON(url, data, function (conf) {
+                        $.post(url, data, function (conf) {
                             if (conf.rs) {
                                 location.href="index";
                             }else{
-                                location.href="http://localhost:8087/TALENTO_HUMANO";
+                                location.href="http://localhost:8089/TALENTO_HUMANO";
                             }
                         });
                     } catch (e) {

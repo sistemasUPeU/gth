@@ -43,16 +43,17 @@ public class HomeController {
         PrintWriter out = response.getWriter();
         HttpSession sesion = request.getSession(true);
         try {
+            System.out.println(request.getParameter("IDUSER"));
             sesion.setAttribute("ID_ROL", request.getParameter("ID_ROL"));
             sesion.setAttribute("ID_MODULO", request.getParameter("ID_MODULO"));
-            sesion.setAttribute("IDUSER", sesion.getAttribute("IDUSER").toString());
-            sesion.setAttribute("IDTR", sesion.getAttribute("IDTR").toString());
+            sesion.setAttribute("IDUSER", request.getParameter("IDUSER"));
+            sesion.setAttribute("IDTR", request.getParameter("IDTR"));
             sesion.setAttribute("NOMBRE_AP", request.getParameter("NOMBRE_AP"));
             sesion.setAttribute("PUESTO_ID", request.getParameter("PUESTO_ID"));
             sesion.setAttribute("USER", request.getParameter("USER"));
-            
             mp.put("rs", true);
         } catch (Exception e) {
+            mp.put("rs", false);
             System.out.println("Error al obtener sesion : " + e);
         }
         Gson gson = new Gson();

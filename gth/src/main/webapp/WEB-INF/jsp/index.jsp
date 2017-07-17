@@ -9,7 +9,7 @@
     HttpSession sesion = request.getSession();
     String id_user = (String) sesion.getAttribute("IDUSER");
     if (id_user != null) {
-        String id_rol = (String) sesion.getAttribute("IDROL");
+        String id_rol = (String) sesion.getAttribute("ID_ROL");
 %>
 <!DOCTYPE html>
 <html>
