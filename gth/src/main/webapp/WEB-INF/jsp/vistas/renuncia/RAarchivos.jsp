@@ -71,7 +71,19 @@
                                 <div class="tab-pane fade active in padding-10 no-padding-bottom" id="s1">
                                    
                                     
-                                    <div id="dt_basic_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="dt-toolbar"><div class="col-xs-12 col-sm-6"><div id="dt_basic_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control" placeholder="" aria-controls="dt_basic"></label></div></div><div class="col-sm-6 col-xs-12 hidden-xs"><div class="dataTables_length" id="dt_basic_length"><label>Show <select name="dt_basic_length" aria-controls="dt_basic" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div></div><table id="dt_basic" class="table table-striped table-bordered table-hover dataTable no-footer has-columns-hidden" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+                                    <div id="dt_basic_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                        <div class="dt-toolbar">
+                                            <div class="col-xs-12 col-sm-6">
+                                                <div id="dt_basic_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control" placeholder="" aria-controls="dt_basic"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-xs-12 hidden-xs">
+                                                <div class="dataTables_length" id="dt_basic_length"><label>Show <select name="dt_basic_length" aria-controls="dt_basic" class="form-control input-sm"><option value="10">10</option>
+                                                    <option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <table id="dt_basic" class="table table-striped table-bordered table-hover dataTable no-footer has-columns-hidden" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
                                                     <thead>
                                                         <tr role="row">
                                                             <th data-hide="phone" class="sorting" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Nro: activate to sort column ascending" style="width: 31px;">Nro</th>
