@@ -43,7 +43,6 @@ public class HomeController {
         PrintWriter out = response.getWriter();
         HttpSession sesion = request.getSession(true);
         try {
-            System.out.println(request.getParameter("IDUSER"));
             sesion.setAttribute("ID_ROL", request.getParameter("ID_ROL"));
             sesion.setAttribute("ID_MODULO", request.getParameter("ID_MODULO"));
             sesion.setAttribute("IDUSER", request.getParameter("IDUSER"));

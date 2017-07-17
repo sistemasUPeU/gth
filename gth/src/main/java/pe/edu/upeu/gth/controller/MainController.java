@@ -41,7 +41,6 @@ public class MainController {
         try {
             String Rol = sesion.getAttribute("ID_ROL").toString();
             String Modulo = sesion.getAttribute("ID_MODULO").toString();
-            System.out.println(Rol +" --- "+Modulo);
             mp.put("pr", pD.listarURLs(Rol, Modulo));
         } catch (Exception e) {
             System.out.println("Error al listar privilegios : " + e);
