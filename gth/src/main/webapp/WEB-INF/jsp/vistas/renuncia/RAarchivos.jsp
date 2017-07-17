@@ -72,13 +72,14 @@
                                         <table   class="table table-striped table-bordered table-hover datatableRepCargaAcademica" width="100%">
                                             <thead>
                                                 <tr>
-                                                    <th class="hasinput" colspan="10"  rowspan="1"></th>  
+                                                   <!-- <th class="hasinput" colspan="10"  rowspan="1"></th>  
                                                     <th class='hasinput' >
                                                         <input type="text" class='form-control input-sm dateDesdeM' />
                                                     </th>
                                                     <th class='hasinput' >
                                                         <input type="text" class='form-control input-sm dateHastaM' />
-                                                    </th>
+                                                    </th>-->
+                                                    <label>Search:<input type="search" class="form-control" placeholder="" aria-controls="dt_basic1"></label>
                                                 </tr>
                                                 <tr>
                                                     <th></th>
@@ -169,7 +170,6 @@
                 </div>
             </section>
         </div>
-
                                            <!-- END SHORTCUT AREA -->
                                            <!--Modal content-->
                                            <div class="modalContent"></div>
@@ -186,7 +186,8 @@
                                            <script src="<c:url value='resources/js/plugin/bootstrap-slider/bootstrap-slider.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/app.min.js'/>"></script>
+                                           <script src="<c:url value='resources/js/app.min.js'/>"></script>                                           
+
         
     </body>
 </html>
