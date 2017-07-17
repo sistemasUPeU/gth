@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import pe.edu.upeu.gth.dao.Lista_EmpleadoDAO;
+import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
 
 
@@ -61,9 +61,9 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 ////            return new UsuarioDAO(getDataSource());
 ////        }
         @Bean
-        public Lista_EmpleadoDAO getLista_EmpleadoDAO()
+        public EmpleadoDAO getLista_EmpleadoDAO()
         {
-            return new Lista_EmpleadoDAO(getDataSource());
+            return new EmpleadoDAO(getDataSource());
         }
         @Bean
         public PrivilegioDAO getPrivilegioDAO()
