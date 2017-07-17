@@ -27,9 +27,9 @@ public class testeo {
      */
     public static DataSource d = AppConfig.getDataSource();
 
-//    public static ejemploDAO eA = new ejemploDAO(d);
-//    public static PrivilegioDAO pD = new PrivilegioDAO(d);
-//    public static Map<String, Object> mp = new HashMap<>();
+    public static ejemploDAO eA = new ejemploDAO(d);
+    public static PrivilegioDAO pD = new PrivilegioDAO(d);
+    public static Map<String, Object> mp = new HashMap<>();
 //    public static Client asd=new Client();
     public static EmpleadoDAO Ea= new EmpleadoDAO(d);
     public static void main(String[] args) {
