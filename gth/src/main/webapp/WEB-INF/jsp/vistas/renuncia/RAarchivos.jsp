@@ -15,10 +15,13 @@
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/bootstrap.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/font-awesome.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production-plugins.min.css'/>">
+         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/jquery.dataTables.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-rtl.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>"></head>
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>">
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/jquery.dataTables.min.css'/>">
+    </head>
     </head>
     <body>
      
@@ -61,79 +64,34 @@
                                     <li class="active">
                                         <a data-toggle="tab" href="#s1"><i class="fa fa-user"></i> <span class="hidden-mobile hidden-tablet">Usuarios RRHH</span></a>
                                     </li>
-                                    <li>
-                                        <a data-toggle="tab" href="#s2"><i class="fa fa-users"></i> <span class="hidden-mobile hidden-tablet">Usuarios Académico</span></a>
-                                    </li>
                                 </ul>
                             </header>
                             <div class="no-padding">
                                 <div class="widget-body">
                                     <div class="tab-pane fade active in padding-10 no-padding-bottom" id="s1">
-                                        <table   class="table table-striped table-bordered table-hover datatableRepCargaAcademica" width="100%">
+                                        <table id="example" class="cell-border" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
-                                                   <!-- <th class="hasinput" colspan="10"  rowspan="1"></th>  
-                                                    <th class='hasinput' >
-                                                        <input type="text" class='form-control input-sm dateDesdeM' />
-                                                    </th>
-                                                    <th class='hasinput' >
-                                                        <input type="text" class='form-control input-sm dateHastaM' />
-                                                    </th>-->
-                                                    <label>Search:<input type="search" class="form-control" placeholder="" aria-controls="dt_basic1"></label>
-                                                </tr>
-                                                <tr>
-                                                    <th>Tipo Doc.</th>
-                                                    <th>N° Documento</th>
-                                                    <th style="width: 16%">Apellidos y Nombres</th>
-                                                    <th>Facultad</th>
-                                                    <th>Escuela</th>
-                                                    <th>Situación Educativa</th>
-                                                    <th>Profesión Docente</th>
-                                                    <th>Condición</th>
-                                                    <th>Ciclo</th>
-                                                    <th>Imagen</th>
-                                                    <th>Seleccionar</th>
-
+                                                    <th>Name</th>
+                                                    <th>Position</th>
+                                                    <th>Office</th>
+                                                    <th>Age</th>
+                                                    <th>Start date</th>
+                                                    <th>Salary</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                              
                                                 <tr>
-                                                    <td>asa</td>
-                                                    <td>asa</td>
-                                                    <td><label>asa</label>
-                                                        <sup class="badge bg-color-greenLight bounceIn animated"></sup></td>
-                                                    <td>sa</td>
-                                                    <td>as</td>
-                                                    <td>asa</td>
-                                                    <td>as</td>
-                                                    <td>sa</td>
-                                                    <td>as</td>
-                                                    <td>
-                                                    <th class="sorting_asc_disabled" ><center><input type="checkbox" name="all" id="all" onclick="checkAll();"></center></th>
-
-                                                   
-                                           <%-- <!--<input type="hidden" class="idtr<%=(i + 1)%>" value="<%=ca.getId_trabajador()%>"/>
-                                            <input type="hidden" class="iddgp<%=(i + 1)%>" value=""/>
-                                            <input type="hidden" class="proceso<%=(i + 1)%>" value=""/>
-                                            -->--%>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="tab-pane fade" id="s2">
-                                        <table id="example-table2" class="table table-condensed" >
-                                            <thead>
-                                                <tr>
-                                                    <th>AP_PATERNO</th>
-                                                    <th>AP_MATERNO</th>
-                                                    <th>NO_FACULTAD</th>
-                                                    <th>DE_CARGA</th>
+                                                    <td>Tiger Nixon</td>
+                                                    <td>System Architect</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>61</td>
+                                                    <td>2011/04/25</td>
+                                                    <td>$320,800</td>
                                                 </tr>
-                                            </thead>
+                                            </tbody>    
                                         </table>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -143,6 +101,11 @@
         </div>
                                            <!-- END SHORTCUT AREA -->
                                            <!--Modal content-->
+                                           <script>
+                                               $(document).ready(function() {
+                                                $('#example').DataTable();
+                                                } );
+                                           </script>
                                            <div class="modalContent"></div>
 
                                            <script src="<c:url value='resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
