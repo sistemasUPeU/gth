@@ -4,6 +4,7 @@
     Author     : Cesar
 --%>
 
+<%@page import="pe.edu.upeu.gth.dao.vacacionesDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><!DOCTYPE html>
 <html>
@@ -116,11 +117,11 @@
                                     Programacion de vacaciones  - Datos del trabajador
                                 </header>
                                 <fieldset>
-                                    
+                                    <c:forEach var="va" items="${vacac}" varStatus="status">
                                     <div class="row">
                                         <section class="col col-6">
                                             <label>Nombres:</label>
-                                            <label class="input" style="color: #005cac; font-weight: bold;">José Alfredo Lopez Cruz
+                                            <label class="input" style="color: #005cac; font-weight: bold;">${va.no_trabajador}, ${va.ap_paterno} ${va.ap_materno}
                                             </label>
                                         </section>
                                     </div>
@@ -128,17 +129,16 @@
                                         <section class="col col-6">
                                             <label>Correo</label>
                                             <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
-                                                <c:forEach var="va" items="${vacac}" varStatus="status">
+                                                
                                                      
                                                     <input type="email" name="email" value="${va.di_correo_inst}" disabled="disabled">
-                                                </c:forEach>                         
 
                                             </label>
                                         </section>
                                         <section class="col col-6">
                                             <label>Fecha de nacimiento</label>
                                             <label class="input"><i class="icon-prepend fa fa-home"></i>
-                                                <input type="text" name="fecha_nac" id="fecha_doc" disabled value="12/12/1985">
+                                                <input type="text" name="fecha_nac" id="fecha_doc" disabled value="${va.f}">
                                             </label>
                                         </section>
                                     </div>
@@ -146,19 +146,19 @@
                                         <section class="col col-4">
                                             <label>Sexo</label>
                                             <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
-                                                <input type="email" name="sexo" value='M' disabled="disabled">
+                                                <input type="email" name="sexo" value="${va.es_sexo}" disabled="disabled">
                                             </label>
                                         </section>
                                         <section class="col col-4">
                                             <label>Tipo de documento</label>
                                             <label class="input"><i class="icon-prepend fa fa-home"></i>
-                                                <input type="text" name="tip_doc" id="tip_doc" disabled value="DNI">
+                                                <input type="text" name="tip_doc" id="tip_doc" disabled value="${va.t}">
                                             </label>
                                         </section>
                                         <section class="col col-4">
                                             <label>Número de documento</label>
                                             <label class="input"><i class="icon-prepend fa fa-home"></i>
-                                                <input type="text" name="num_doc" id="num_doc" disabled value="12345678">
+                                                <input type="text" name="num_doc" id="num_doc" disabled value="${va.n_d}">
                                             </label>
                                         </section>
                                     </div>
@@ -200,6 +200,8 @@
                                             <h3><label>Total de días:</label><label style="color: #005cac;" id="ntd">0</label></h3>
                                         </div>
                                     </div>
+                                    </c:forEach>                         
+
                                 </fieldset>
                                 <footer>
                                     <input type="hidden" name="opc" value="VacationAsign">
