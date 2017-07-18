@@ -13,10 +13,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import pe.edu.upeu.gth.dao.RenunciaDAO;
 
 /**
  *
@@ -24,17 +26,28 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class RenunciaController {
-
+    
+    @Autowired
+    private RenunciaDAO rdao ;
+    
     Map<String, Object> mp = new HashMap<>();
 
     @RequestMapping(value = "/renuncia")
-    public ModelAndView RedireccionRenuncia(ModelAndView model, HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView RedireccionRenuncia(ModelAndView model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
         String opc = request.getParameter("opc");
         switch (opc) {
             case "attach":
                 model.setViewName("vistas/renuncia/RAarchivos");
                 break;
             case "status":
+                mp.put("pr", rdao.listarEmpleados());
+                Gson gson = new Gson();
+                out.println(gson.toJson(mp));
+                out.flush();
+                out.close();
+                
                 break;
             case "authorizationR":
                 model.setViewName("vistas/renuncia/Rautorizar");

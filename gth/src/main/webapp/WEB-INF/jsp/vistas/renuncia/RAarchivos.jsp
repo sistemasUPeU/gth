@@ -39,7 +39,7 @@
                         <div class="row">
                             <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" 
-                                     data-widget-deletebutton="false"/>
+                                     data-widget-deletebutton="false">
                                     <header>
                                         <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
                                         <h2>Trabajadores en el <strong>Departamento</strong></h2>
@@ -65,7 +65,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
+                                                        <tr id="data">
                                                             <td>1</td>
                                                             <td>Jennifer</td>
                                                             <td>1-342-463-8341</td>
@@ -78,6 +78,7 @@
                                                 </table>
                                             </div>
                                     </section>
+                                </div>
                             </article>
                         </div>
 
@@ -162,4 +163,54 @@
     <script type="text/javascript" src="<c:url value='resources/js/operacionesBuscar.js'/>"></script>
     <script type="text/javascript" src="<c:url value='resources/js/jquery.dataTables.min.js'/>"></script>
     </body>
+    
+    
+
+ <script>
+         $(document).ready(function () {
+            list(); 
+         });
+        
+        function list() {
+            var url = "renuncia?opc=status";//nombre del controlador ejm. renuncia?op=1
+            //var data = "";//atributos a mandar ejm. idusuario=$("#idu").val();
+            //data += "&iduser=";//comienza con --> &
+            try {
+                $.getJSON(url, function (objJson) {
+                    var lista = objJson.pr;
+                    if (lista.length > 0) {
+                        var m = "";
+                        for (var i = 0; i < lista.length; i++) {
+                            m += '<tr>';
+                            m += '<td>'+ lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' +lista[i].NO_TRABAJADOR +'</td>';// cambiar por el atributo que te da en tu DAO
+                            m += '<td>' + lista[i].NU_DOC + '</td>';
+                            m += '<td>' + lista[i].AP_MATERNO + '</td>';
+                            m += '<td>' + lista[i].NO_AREA + '</td>';
+                            m += '<td>' + lista[i].NO_SECCION + '</td>';
+                            m += '</tr>';
+                        }
+                        //$("#example").empty();
+                        //$("#example").append(createTable());
+                        $("#data").empty();
+                        $("#data").append(m);
+                        $.dataTable();
+                    } else {
+                        console.log("No hay datos en la tabla");
+                    }
+                });
+            } catch (e) {
+                console.error("Error al listar : " + e);
+            }
+
+        }
+        function createTable() {
+            var s = '<table>';
+            s += '<thead>';
+            s += '<tr><th>Nombre</th><th>Apellidos</th><th>DNI</th></tr>';
+            s += '</thead>';
+            s += '<tbody id="data"></tbody>';
+            s += '</table>';
+            return s;
+        }
+    </script>
 </html>
