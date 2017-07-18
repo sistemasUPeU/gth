@@ -6,10 +6,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    HttpSession sesion = request.getSession();
+    /*HttpSession sesion = request.getSession();
     String id_user = (String) sesion.getAttribute("IDUSER");
     if (id_user != null) {
-        String id_rol = (String) sesion.getAttribute("ID_ROL");
+        String id_rol = (String) sesion.getAttribute("ID_ROL");*/
 %>
 <!DOCTYPE html>
 <html>
@@ -109,19 +109,19 @@
             <div class="logininfo">
                 <div class="row">
                     <div class="avatar-user col-md-3">
-                        <input id="id_trabajador" type="hidden" value="<%out.println(sesion.getAttribute("IDTR"));%>" />
-                        <input id="iuser" type="hidden" value="<%out.println(id_user);%>" />
+                        <input id="id_trabajador" type="hidden" value="<%//out.println(sesion.getAttribute("IDTR"));%>" />
+                        <input id="iuser" type="hidden" value="<%//out.println(id_user);%>" />
                         <a href="javascript:void(0);" id="show-shortcut" >
                             <img id="foto_usuario" src="" class="bounceIn animated" />
                         </a>  
                     </div>
                     <div class="col-md-9">
                         <div class="login-info text-right">
-                            <span class="spanuser"> <%out.println((String) sesion.getAttribute("USER")); %></span>  
+                            <span class="spanuser"> <%//out.println((String) sesion.getAttribute("USER")); %></span>  
                         </div>
 
                         <div class="login-info text-right">
-                            <span ><%out.println((String) sesion.getAttribute("NOMBRE_AP").toString().trim()); %> </span> 
+                            <span ><%//out.println((String) sesion.getAttribute("NOMBRE_AP").toString().trim()); %> </span> 
                         </div>
                     </div>
                 </div>
@@ -289,7 +289,7 @@
         </script>
     </body>
 </html>
-<%} else {
+<%/*} else {
         out.print("<script> window.location.href = '/TALENTO_HUMANO/';</script>");
-    }
+    }*/
 %>

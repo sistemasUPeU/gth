@@ -28,11 +28,11 @@ public class HomeController {
     Map<String, Object> mp = new HashMap<>();
 
     @RequestMapping(value = "/")
-    public String validate() {
+    /*public String validate() {
         return "Validate";
     }
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/index")*/
     public String index() {
         return "index";
     }

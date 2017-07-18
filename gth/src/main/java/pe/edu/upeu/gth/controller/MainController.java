@@ -39,9 +39,12 @@ public class MainController {
         PrintWriter out = response.getWriter();
         HttpSession sesion = resquest.getSession(true);
         try {
-            String Rol = sesion.getAttribute("ID_ROL").toString();
-            String Modulo = sesion.getAttribute("ID_MODULO").toString();
+            String Rol = "ROL-0002";
+            String Modulo = "MOD-0003";
             mp.put("pr", pD.listarURLs(Rol, Modulo));
+            /*String Rol = sesion.getAttribute("ID_ROL").toString();
+            String Modulo = sesion.getAttribute("ID_MODULO").toString();
+            mp.put("pr", pD.listarURLs(Rol, Modulo));*/
         } catch (Exception e) {
             System.out.println("Error al listar privilegios : " + e);
         }
