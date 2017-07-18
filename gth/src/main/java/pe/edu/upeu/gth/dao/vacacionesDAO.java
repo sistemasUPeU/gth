@@ -49,6 +49,10 @@ public class vacacionesDAO implements Operaciones{
         return jt.queryForList(sql,id);
         
      }
-    
+     public List<Map<String,Object>>asignar_masivamente(String data [])
+     {
+         String sql="select DI_CORREO_INST,ES_SEXO,FE_NAC FROM RHTM_TRABAJADOR WHERE ID_TRABAJADOR IN(?,?,?,?)";
+        return jt.queryForList(sql, (Object[]) data);
+     }
 
 }
