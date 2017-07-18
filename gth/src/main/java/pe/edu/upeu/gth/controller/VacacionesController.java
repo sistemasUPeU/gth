@@ -30,9 +30,10 @@ import pe.edu.upeu.gth.dao.vacacionesDAO;
 @Controller
 public class VacacionesController {
     @Autowired
-    private vacacionesDAO vaO;
+//    private vacacionesDAO vaO;
     private EmpleadoDAO aO;
-    Map<String, Object> mp = new HashMap<>();
+//    Map<String, Object> mp = new HashMap<>();
+    
     @RequestMapping(value = "/prog")
     public ModelAndView prog(ModelAndView model)
     {
@@ -40,25 +41,25 @@ public class VacacionesController {
         return model;
     }
     
-    @RequestMapping(value = "/asig")
-    public ModelAndView asignar(ModelAndView modelo)
-    {
-        modelo.setViewName("vistas/vacaciones/prog_vaca");
-        return modelo;
-    }
-    @RequestMapping(value ="/returnjson", method = RequestMethod.POST)
-    public void retorna(HttpServletRequest request, HttpServletResponse response) throws IOException
-    {
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-         List<Map<String, Object>> vacac= vaO.asignar_permiso("TRB-002756");
-         Gson gson = new Gson();
-         
-        out.println (gson.toJson(vacac));
-        out.flush();
-        out.close();
-        
-    }
+//    @RequestMapping(value = "/asig")
+//    public ModelAndView asignar(ModelAndView modelo)
+//    {
+//        modelo.setViewName("vistas/vacaciones/prog_vaca");
+//        return modelo;
+//    }
+//    @RequestMapping(value ="/returnjson", method = RequestMethod.POST)
+//    public void retorna(HttpServletRequest request, HttpServletResponse response) throws IOException
+//    {
+//        response.setContentType("application/json");
+//        PrintWriter out = response.getWriter();
+//         List<Map<String, Object>> vacac= vaO.asignar_permiso("TRB-002756");
+//         Gson gson = new Gson();
+//         
+//        out.println (gson.toJson(vacac));
+//        out.flush();
+//        out.close();
+//        
+//    }
     
     @RequestMapping(value = "/lista")
      public ModelAndView lista(ModelAndView model) {
