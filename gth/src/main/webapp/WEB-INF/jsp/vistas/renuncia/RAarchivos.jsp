@@ -26,7 +26,6 @@
 </head>
 
 <body>
-    <div id="contTable">
             <div id="content" >
                     <div class="row">
                         <div class="col-sm-12">
@@ -64,8 +63,8 @@
                                                             <th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>OPC</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <tr id="data">
+                                                    <tbody id="data">
+                                                        <tr >
                                                             <td>1</td>
                                                             <td>Jennifer</td>
                                                             <td>1-342-463-8341</td>
@@ -136,7 +135,6 @@
                 </section>
             </div>
 
-   </div>
     <!-- END SHORTCUT AREA -->
     <!--Cositas-->
     <script>
@@ -182,6 +180,7 @@
                         var m = "";
                         for (var i = 0; i < lista.length; i++) {
                             m += '<tr>';
+                            m += '<td>'  + (i + 1) + '</td>';
                             m += '<td>'+ lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' +lista[i].NO_TRABAJADOR +'</td>';// cambiar por el atributo que te da en tu DAO
                             m += '<td>' + lista[i].NU_DOC + '</td>';
                             m += '<td>' + lista[i].AP_MATERNO + '</td>';
@@ -202,15 +201,6 @@
                 console.error("Error al listar : " + e);
             }
 
-        }
-        function createTable() {
-            var s = '<table>';
-            s += '<thead>';
-            s += '<tr><th>Nombre</th><th>Apellidos</th><th>DNI</th></tr>';
-            s += '</thead>';
-            s += '<tbody id="data"></tbody>';
-            s += '</table>';
-            return s;
         }
     </script>
 </html>
