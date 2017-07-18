@@ -47,8 +47,8 @@ public class EmpleadoDAO implements Operaciones{
     public List<Map<String,Object>>listar_all()
     {
         String sql_list_emp="select t.NO_TRABAJADOR,t.AP_PATERNO,t.AP_MATERNO,ar.NO_AREA,se.NO_SECCION,pu.NO_PUESTO,co.FE_DESDE,co.FE_HASTA\n" +
-"from RHTD_EMPLEADO e,RRHH.RHTM_TRABAJADOR t,RHTM_CONTRATO co,RHTR_PUESTO pu,RHTR_SECCION se,RHTD_AREA ar\n" +
-"WHERE e.ID_TRABAJADOR=t.ID_TRABAJADOR AND co.ID_TRABAJADOR=t.ID_TRABAJADOR and pu.ID_PUESTO=co.ID_PUESTO AND pu.ID_SECCION=se.ID_SECCION and ar.ID_AREA=se.ID_AREA";
+                            "from RHTD_EMPLEADO e,RRHH.RHTM_TRABAJADOR t,RHTM_CONTRATO co,RHTR_PUESTO pu,RHTR_SECCION se,RHTD_AREA ar\n" +
+                            "WHERE e.ID_TRABAJADOR=t.ID_TRABAJADOR AND co.ID_TRABAJADOR=t.ID_TRABAJADOR and pu.ID_PUESTO=co.ID_PUESTO AND pu.ID_SECCION=se.ID_SECCION and ar.ID_AREA=se.ID_AREA";
         return jt.queryForList(sql_list_emp);
     }
     public List<Map<String, Object>>listar_vacaciones(String id){
