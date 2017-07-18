@@ -41,9 +41,9 @@
                                 <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
                                 <h2>Carga de Vacaciones</h2>
                                 <ul class="nav nav-tabs pull-right in" id="myTab"> 
-                                  
-                                        <a href="#"><i class="fa fa-search"></i>Search Page</a>
-                                  
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                    </div>
                                 </ul>
                             </header>
                             <div class="no-padding">
