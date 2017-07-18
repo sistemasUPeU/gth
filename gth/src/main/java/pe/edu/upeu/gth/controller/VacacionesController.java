@@ -33,13 +33,14 @@ public class VacacionesController {
     private vacacionesDAO vaO;
     @Autowired
     private EmpleadoDAO aO;
+
     
-//    @RequestMapping(value = "/prog")
-//    public ModelAndView prog(ModelAndView model)
-//    {
-//        model.setViewName("vistas/vacaciones/prog_vaca");
-//        return model;
-//    }
+    @RequestMapping(value = "/prog")
+    public ModelAndView prog(ModelAndView model)
+    {
+        model.setViewName("vistas/vacaciones/prog_vaca");
+        return model;
+    }
     
     @RequestMapping(value = "/asig")
     public ModelAndView asignar(ModelAndView modelo)
@@ -61,7 +62,7 @@ public class VacacionesController {
         
     }
     
-    @RequestMapping(value = "/listar_vac")
+    @RequestMapping(value = "/lista")
      public ModelAndView lista(ModelAndView model) {
          List<Map<String, Object>> lista= aO.listar_empleado();
          model.addObject("listar",lista);

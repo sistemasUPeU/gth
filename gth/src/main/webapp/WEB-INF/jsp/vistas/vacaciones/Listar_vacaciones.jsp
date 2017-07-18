@@ -42,13 +42,13 @@
                                 <h2>Carga de Vacaciones</h2>
                                 <ul class="nav nav-tabs pull-right in" id="myTab"> 
                                     <div class="form-group">
-                                        <input type="text" id="Buscar" class="form-control" placeholder="Search">
+                                        <input type="text" id="Buscar" class="form-control" onkeyup="doseach()" placeholder="Search">
                                     </div>
                                 </ul>
                             </header>
                             <div class="no-padding">
                                 <div class="container">                                           
-                                      <table class="table">
+                                    <table class="table" id="table">
                                         <thead>
                                           <tr>
                                             <th>Nombre</th>
@@ -100,6 +100,7 @@
                                            <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/app.min.js'/>"></script>
+                                           <script src="<c:url value='resources/js/lista'/>"></script>
                                            <script>
                                             $(document).ready(function () {
                                             $("#ckbCheckAll").click(function () {
