@@ -1,17 +1,15 @@
 <%-- 
-    Document   : Worker
-    Created on : 17/07/2017, 10:33:08 AM
-    Author     : DiegoCrafter
+    Document   : index
+    Created on : 13-jul-2017, 9:49:04
+    Author     : dreyna
 --%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+    	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Lista de Vacaciones</title>
          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/bootstrap.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/font-awesome.min.css'/>">
@@ -20,14 +18,15 @@
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-rtl.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>">
-    </head>
-    <body>
+
+	</head>
+    	    <body>
      
         <div id="content">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="well">
-                        <h1><span class="semi-bold">Reporte</span> <i class="ultra-light">Vacaciones</i> (Trabajadores) <sup class="badge bg-color-red bounceIn animated">v 2.0</sup> <br>
+                        <h1><span class="semi-bold">Lista</span> <i class="ultra-light">De Vacaciones</i> (Trabajadores) <sup class="badge bg-color-red bounceIn animated">v 2.0</sup> <br>
                             <small class="text-danger slideInRight fast animated"><strong>Inicio de contratación</strong></small></h1>
        
                     </div>
@@ -40,14 +39,11 @@
                              data-widget-deletebutton="false">
                             <header>
                                 <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
-                                <h2>Carga Académica</h2>
+                                <h2>Carga de Vacaciones</h2>
                                 <ul class="nav nav-tabs pull-right in" id="myTab"> 
-                                    <li class="active">
-                                        <a data-toggle="tab" href="#s1"><i class="fa fa-user"></i> <span class="hidden-mobile hidden-tablet">Usuarios RRHH</span></a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tab" href="#s2"><i class="fa fa-users"></i> <span class="hidden-mobile hidden-tablet">Usuarios Académico</span></a>
-                                    </li>
+                                  
+                                        <a href="#"><i class="fa fa-search"></i>Search Page</a>
+                                  
                                 </ul>
                             </header>
                             <div class="no-padding">
@@ -56,24 +52,26 @@
                                         <thead>
                                           <tr>
                                             <th>Nombre</th>
-                                            <th>Apellidos</th>
-                                            <th>DNI</th>
-                                            <th>Telefono</th>
-                                            <th>Celular</th>
-                                            <th>Email Personal</th>
-                                            <th>Email Institucional</th>
+                                            <th>Apellido Paterno</th>
+                                            <th>Apellido Materno</th>
+                                            <th>Área</th>
+                                            <th>Sección</th>
+                                            <th>Puesto</th>
+                                            <th>Fecha-Desde</th>
+                                            <th>Fecha-Hasta</th>
                                             <th><input type="checkbox" id="ckbCheckAll" /></th>
                                           </tr>
                                         </thead>
-                                        <c:forEach var="va" items="${holiday}" varStatus="status">
+                                        <c:forEach var="va" items="${listar}" varStatus="status">
                                         <tbody>
-                                            <td>${va.no_trabajador}</td>
-                                            <td>${va.ap_paterno}</td>
-                                            <td>${va.nu_doc}</td>
-                                            <td>${va.te_trabajador}</td>
-                                            <td>${va.cl_tra}</td>
-                                            <td>${va.di_correo_personal}</td>
-                                            <td>${va.di_correo_inst}</td>
+                                            <td>${va.NO_TRABAJADOR}</td>
+                                            <td>${va.AP_PATERNO}</td>
+                                            <td>${va.AP_MATERNO}</td>
+                                            <td>${va.NO_AREA}</td>
+                                            <td>${va.NO_SECCION}</td>
+                                            <td>${va.NO_PUESTO}</td>
+                                            <td>${va.FE}</td>
+                                            <td>${va.FE2}</td>
                                             <td><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></td>
                                         </tbody>
                                         </c:forEach>

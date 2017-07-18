@@ -30,9 +30,9 @@ import pe.edu.upeu.gth.dao.vacacionesDAO;
 @Controller
 public class VacacionesController {
     @Autowired
-    private vacacionesDAO vaO;
+//    private vacacionesDAO vaO;
     private EmpleadoDAO aO;
-    Map<String, Object> mp = new HashMap<>();
+//    Map<String, Object> mp = new HashMap<>();
    // @RequestMapping(value = "/prog")
   //  public ModelAndView prog(ModelAndView model)
   //  {
@@ -40,41 +40,49 @@ public class VacacionesController {
      //   return model;
 //    }
     
-    @RequestMapping(value = "/asig")
-    public ModelAndView asignar(ModelAndView modelo)
-    {
-        modelo.setViewName("vistas/vacaciones/prog_vaca");
-        return modelo;
-    }
-    @RequestMapping(value ="/returnjson", method = RequestMethod.POST)
-    public void retorna(HttpServletRequest request, HttpServletResponse response) throws IOException
-    {
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-         List<Map<String, Object>> vacac= vaO.asignar_permiso("TRB-002756");
-         Gson gson = new Gson();
+//    @RequestMapping(value = "/asig")
+//    public ModelAndView asignar(ModelAndView modelo)
+//    {
+//        modelo.setViewName("vistas/vacaciones/prog_vaca");
+//        return modelo;
+//    }
+//    @RequestMapping(value ="/returnjson", method = RequestMethod.POST)
+//    public void retorna(HttpServletRequest request, HttpServletResponse response) throws IOException
+//    {
+//        response.setContentType("application/json");
+//        PrintWriter out = response.getWriter();
+//         List<Map<String, Object>> vacac= vaO.asignar_permiso("TRB-002756");
+//         Gson gson = new Gson();
+//         
+//        out.println (gson.toJson(vacac));
+//        out.flush();
+//        out.close();
+//        
+//    }
+    
+//    @RequestMapping(value = "/holiday")
+//    public ModelAndView Logueo(ModelAndView model, HttpServletRequest request, HttpServletResponse response) {
+//        String opc = request.getParameter("opc");
+//        switch (opc) {
+//            case "reg":
+//                List<Map<String, Object>> holiday= aO.listar_vacaciones("TRB-002756");
+//                model.addObject("holiday", holiday);
+//                model.setViewName("vistas/vacaciones/Worker");
+//                break;
+//            case "status":
+//                break;
+//        }
+//        return model;
+//    }  
+    
+    @RequestMapping(value = "/lista")
+     public ModelAndView lista(ModelAndView model) {
+         List<Map<String, Object>> lista= aO.listar_empleado();
+         model.addObject("listar",lista);
+         model.setViewName("vistas/vacaciones/Listar_vacaciones");
          
-        out.println (gson.toJson(vacac));
-        out.flush();
-        out.close();
-        
+         return model;
     }
-    
-    @RequestMapping(value = "/holiday")
-    public ModelAndView Logueo(ModelAndView model, HttpServletRequest request, HttpServletResponse response) {
-        String opc = request.getParameter("opc");
-        switch (opc) {
-            case "reg":
-                List<Map<String, Object>> holiday= aO.listar_vacaciones("TRB-002756");
-                model.addObject("holiday", holiday);
-                model.setViewName("vistas/vacaciones/Worker");
-                break;
-            case "status":
-                break;
-        }
-        return model;
-    }  
-    
 }
 
 

@@ -37,16 +37,12 @@ public class testeo {
         //listar_puestos();
         //addPuesto("Esclavo", "es", "1", "SEC-0003", "3");
         //updatePuesto("1");
-        deletejdbc("PUT-002012");
+        //deletejdbc("PUT-002012");
         //listar_puestosejemplo("PUT-000269");
         //listar_puestosejemplo("PUT-000198");
         //pR("ROL-0019", "MOD-0003");
 //        System.out.println(asd.getSessionJson());
-//   Listar_Holiday();
     }
-
-    //--
-
     public static void listar_puestosejemplo(String id) {
         //System.out.println(eA.listajt(id));
         System.out.println(eA.listajt(id));
@@ -64,9 +60,9 @@ public class testeo {
     
  public static void Listar_empleados()
  {
-     List<Map<String,Object>> l= Ea.listar_all();
+     List<Map<String,Object>> l= Ea.listar_empleado();
      for (Map<String, Object> map : l) {
-         System.out.println(map.get(("NO_TRABAJADOR")));
+         System.out.println(map.get(("FE")));
      }
  }
     public static void pR(String a, String b) {
