@@ -117,89 +117,87 @@
                                     Programacion de vacaciones  - Datos del trabajador
                                 </header>
                                 <fieldset>
-                                        <div class="row">
-                                            <section class="col col-6">
-                                                <label>Nombres:</label>
-                                                <label id='nombres' class="input" style="color: #005cac; font-weight: bold; font-size: 1.7vh;">
-                                                </label>
-                                            </section>
-                                        </div>
-                                        <div class="row">
-                                            <section class="col col-6">
-                                                <label>Correo</label>
-                                                <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <label>Nombres:</label>
+                                            <label id='nombres' class="input" style="color: #005cac; font-weight: bold; font-size: 1.7vh;">
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <label>Correo</label>
+                                            <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
+                                                <input id='correo' type="email" value="" name="email" disabled="disabled">
 
+                                            </label>
+                                        </section>
+                                        <section class="col col-6">
+                                            <label>Fecha de nacimiento</label>
+                                            <label class="input"><i class="icon-prepend fa fa-home"></i>
+                                                <input id="fecha" type="text" name="fecha_nac"  disabled="disabled">
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                        <section class="col col-4">
+                                            <label>Sexo</label>
+                                            <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
+                                                <input id="sexo" type="email" name="sexo" disabled="disabled">
+                                            </label>
+                                        </section>
+                                        <section class="col col-4">
+                                            <label>Tipo de documento</label>
+                                            <label class="input"><i class="icon-prepend fa fa-home"></i>
 
-                                                    <input type="email" name="email" value="${va.di_correo_inst}" disabled="disabled">
-
-                                                </label>
-                                            </section>
-                                            <section class="col col-6">
-                                                <label>Fecha de nacimiento</label>
-                                                <label class="input"><i class="icon-prepend fa fa-home"></i>
-                                                    <input type="text" name="fecha_nac" id="fecha_doc" disabled value="${va.f}">
-                                                </label>
-                                            </section>
+                                                <input type="text" id="tip_doc" disabled="disabled">
+                                            </label>
+                                        </section>
+                                        <section class="col col-4">
+                                            <label>Número de documento</label>
+                                            <label class="input"><i class="icon-prepend fa fa-home"></i>
+                                                <input type="text" name="num_doc" id="num_doc" disabled value="${va.n_d}">
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-12 text-center">
+                                            <h3><label>Seleccionar rango de fechas a solicitar:</label></h3>
                                         </div>
-                                        <div class="row">
-                                            <section class="col col-4">
-                                                <label>Sexo</label>
-                                                <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
-                                                    <input type="email" name="sexo" value="${va.es_sexo}" disabled="disabled">
-                                                </label>
-                                            </section>
-                                            <section class="col col-4">
-                                                <label>Tipo de documento</label>
-                                                <label class="input"><i class="icon-prepend fa fa-home"></i>
-
-                                                    <input type="text" name="tip_doc" id="tip_doc" disabled value="${va.t}">
-                                                </label>
-                                            </section>
-                                            <section class="col col-4">
-                                                <label>Número de documento</label>
-                                                <label class="input"><i class="icon-prepend fa fa-home"></i>
-                                                    <input type="text" name="num_doc" id="num_doc" disabled value="${va.n_d}">
-                                                </label>
-                                            </section>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col col-12 text-center">
-                                                <h3><label>Seleccionar rango de fechas a solicitar:</label></h3>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col col-2"></div>
-                                            <section class="row col col-6 dateranges ">
-                                                <div style="padding-bottom: 5px;" class="row col col-12 rangegroup1">
-                                                    <div class="col col-6">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input onchange="calnd()" class="form-control" id="from1" type="text" placeholder="Desde">
-                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col col-6 ">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input onchange="calnd()" class="form-control" id="to1" type="text" placeholder="Hasta">
-                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2"></div>
+                                        <section class="row col col-6 dateranges ">
+                                            <div style="padding-bottom: 5px;" class="row col col-12 rangegroup1">
+                                                <div class="col col-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input onchange="calnd()" class="form-control" id="from1" type="text" placeholder="Desde">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </section>
-                                            <div class="col col-4">
-                                                <a id="addrange" class="btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-plus"></i></a>
-                                                <a id="delrange" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-remove"></i></a>
+                                                <div class="col col-6 ">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input onchange="calnd()" class="form-control" id="to1" type="text" placeholder="Hasta">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
+                                        </section>
+                                        <div class="col col-4">
+                                            <a id="addrange" class="btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-plus"></i></a>
+                                            <a id="delrange" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-remove"></i></a>
                                         </div>
-                                        <div class="row">
-                                            <div class="col col-2"></div>
-                                            <div class="col col-10">
-                                                <h3><label>Total de días:</label><label style="color: #005cac;" id="ntd">0</label></h3>
-                                            </div>
-                                        </div>                       
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2"></div>
+                                        <div class="col col-10">
+                                            <h3><label>Total de días:</label><label style="color: #005cac;" id="ntd">0</label></h3>
+                                        </div>
+                                    </div>                       
 
                                 </fieldset>
                                 <footer>
@@ -304,8 +302,20 @@
                                                                     $(document).ready(function () {
                                                                         $.post('returnjson', function (obj) {
                                                                             console.log(obj[0]);
-                                                                            var trab=obj[0];
-                                                                            $("#nombres").text(trab.NOM+" "+trab.AP_PATERNO+" "+trab.AP_MATERNO);
+                                                                            var trab = obj[0];
+                                                                            $("#nombres").text(trab.NOM + " " + trab.AP_P + " " + trab.AP_M);
+                                                                            $("#correo").val(trab.CORREO);
+                                                                            $("#fecha").val(trab.F);
+                                                                            $("#sexo").val(trab.SEXO);
+                                                                            $("#num_doc").val(trab.N_D);
+                                                                            var o = trab.T;
+                                                                            if (o === '1 ') {
+                                                                                $("#tip_doc").val('DNI');
+                                                                            } else {
+                                                                                $("#tip_doc").val('Otros');
+                                                                            }
+
+
                                                                         });
 
                                                                         pageSetUp();
