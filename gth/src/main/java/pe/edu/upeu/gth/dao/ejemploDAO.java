@@ -124,4 +124,18 @@ public class ejemploDAO implements Operaciones {
         return p;
     }
 
+     public int asignar(Object o)
+     {
+         int a = 0; 
+         String sql ="delete from rhtr_puesto where id_puesto=?";
+         try {
+             a = jt.update(sql ,o.toString() );
+             a =1 ;
+         } catch (Exception e) {
+             System.out.println("error");
+         }
+         return a;
+
+     }
+    
 }
