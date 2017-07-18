@@ -43,16 +43,12 @@ public class RenunciaDAO implements Operaciones{
     
     
     public ArrayList<Map<String, Object>> listarEmpleados(){
-        String sql="SELECT CO.FE_DESDE, CO.FE_HASTA ,  CO.ID_TRABAJADOR  ,T.AP_PATERNO, T.AP_MATERNO, T.NO_TRABAJADOR , T.NU_DOC , P.NO_PUESTO , S.NO_SECCION , A.NO_AREA \n" +
-                                "FROM  RHTM_CONTRATO CO , RHTR_PUESTO P , RHTM_TRABAJADOR T ,RHTX_DEPARTAMENTO D , RHTR_SECCION S , RHTD_AREA A\n" +
-                                "WHERE  T.ID_TRABAJADOR = CO.ID_TRABAJADOR AND  P.ID_PUESTO = CO.ID_PUESTO AND P.ID_SECCION = S.ID_SECCION AND S.ID_AREA = A.ID_AREA AND A.ID_DEPARTAMENTO = D.ID_DEPARTAMENTO\n" +
-                                "AND P.ID_PUESTO IN (\n" +
-                                "      SELECT ID_PUESTO FROM rhtr_puesto WHERE ID_SECCION IN (\n" +
-                                "            SELECT ID_SECCION FROM rhtr_SECCION WHERE ID_AREA IN (SELECT ID_AREA FROM  RHTD_AREA A WHERE A.ID_DEPARTAMENTO = 'DPT-0017'\n" +
-                                "                  )\n" +
-                                "            )\n" +
-                                ") AND CO.FE_HASTA > SYSDATE \n" +
-                                "ORDER BY ( A.NO_AREA);"; 
+        String sql="select rt.ID_TRABAJADOR,rt.NO_TRABAJADOR,rt.AP_PATERNO,rt.AP_MATERNO,ra.NO_AREA,rs.NO_SECCION,rp.NO_PUESTO,rc.FE_DESDE,rc.FE_HASTA\n" +
+                        "from rhtr_puesto rp, rhtd_area ra, rhtr_seccion rs, rhtm_trabajador rt, rhtm_contrato rc,rhtx_departamento rd\n" +
+                        "where rp.ID_SECCION = rs.ID_SECCION and rs.ID_AREA = ra.ID_AREA and rc.ID_PUESTO = rp.ID_PUESTO  and rc.ID_TRABAJADOR = rt.ID_TRABAJADOR and rd.ID_DEPARTAMENTO = ra.ID_DEPARTAMENTO\n" +
+                        "       and rd.ID_DEPARTAMENTO='DPT-0017'\n" +
+                        "AND RC.FE_HASTA > SYSDATE \n" +
+                        "ORDER BY ( RA.NO_AREA);"; 
         return (ArrayList<Map<String, Object>>) jt.queryForList(sql);
         
     }
