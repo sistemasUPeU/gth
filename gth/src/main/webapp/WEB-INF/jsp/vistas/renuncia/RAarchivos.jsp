@@ -86,30 +86,17 @@
 
                 <section id="widget-grid" class="col-md-6">
                     <div class="row">
-                         
-                                    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <div class="container">
-                                            <h1>Bootstrap File Input Example</h1>
-                                            <form enctype="multipart/form-data">
-                                                <div class="form-group">
-                                                    <input id="file-1" type="file" class="file" multiple=true data-preview-file-type="any"> 
-                                                </div>
-                                                <div class="form-group">
-                                                    <input id="file-2" type="file" class="file" readonly=true>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input id="file-3" type="file" multiple=true>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button class="btn btn-primary">Submit</button>
-                                                    <button class="btn btn-default" type="reset">Reset</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </article>
-                             
-
-                            
+                        <h1>Bootstrap File Input Example</h1>
+                        <form enctype="multipart/form-data">
+                        <div class="form-group">
+                        <input id="file-1" type="file" class="file" multiple=true data-preview-file-type="any">
+                        </div>
+                        <div class="form-group">
+                        <button class="btn btn-primary">Submit</button>
+                        <button class="btn btn-default" type="reset">Reset</button>
+                        </div>
+                        </form>
+                        </div>
                     </div>
 
                 </section>
