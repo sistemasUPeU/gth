@@ -45,7 +45,7 @@ public class vacacionesDAO implements Operaciones{
     
      public List<Map<String, Object>> asignar_permiso(String id)
      {
-        String sql="select NO_TRABAJADOR,AP_PATERNO,AP_MATERNO,DI_CORREO_INST,NU_DOC n_d,TI_DOC t,ES_SEXO,to_char(FE_NAC,'DD-MM-YYYY') AS F FROM RHTM_TRABAJADOR WHERE ID_TRABAJADOR = ?"; 
+        String sql="select NO_TRABAJADOR nom,AP_PATERNO,AP_MATERNO,DI_CORREO_INST,NU_DOC n_d,TI_DOC t,ES_SEXO,to_char(FE_NAC,'DD-MM-YYYY') AS F FROM RHTM_TRABAJADOR WHERE ID_TRABAJADOR = ?"; 
         return jt.queryForList(sql,id);
      }
 }
