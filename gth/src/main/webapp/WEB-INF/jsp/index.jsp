@@ -21,6 +21,9 @@
         <link rel="icon" href="<c:url value='resources/img/favicon/favicon.ico'/>" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <%@include file="../../jspf/general.jspf" %>
+        
+
+        
     </head>
     <body class="smart-style-1 fixed-header fixed-footer mainBody">
         <header id="header">
