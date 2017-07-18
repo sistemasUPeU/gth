@@ -132,6 +132,9 @@
                             </table>
 
                         </div>
+                            
+                            
+                            
                 </section>
                         
                         </div>
@@ -139,6 +142,44 @@
             </div>
             
         </section>
+    
+    
+    <section id="widget-grid" class="col-md-6">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            
+                
+                <!--  aqui va segundo fomulario -->
+                    <div class="well well-sm"><div class=""><label>Horario escaneado</label>  </div> <div class=" caji12"> <div class="file-input file-input-new"><div class="file-preview">
+                                    <div class="file-drop-disabled">
+                                        <div class="file-preview-thumbnails"></div>
+                                        <div class="clearfix"></div>    <div class="file-preview-status text-center text-success"></div>
+                                        <div class="kv-fileinput-error file-error-message" style="display: none;"></div>
+                                    </div>
+                                </div>
+                                <div class="input-group file-caption-main">
+                                    <div class="input-group-btn">
+                                        <div tabindex="500" class="btn btn-primary btn-sm btn-file"><i class="glyphicon glyphicon-folder-open"></i>&nbsp  
+                                            <span class="hidden-xs">Examinar …</span>
+                                            <br><input class="fileDocument" type="file" multiple="true" style="display: none  ;" name="archivos12" id="1500392286362"/>
+                                        </div>
+
+                                        <button type="button" tabindex="500" title="Quitar archivos seleccionados" class="btn btn-danger btn-sm fileinput-remove fileinput-remove-button"><i class="glyphicon glyphicon-trash"></i>  <span class="hidden-xs">Quitar</span></button>
+                                    </div>
+                                    <div tabindex="500" class="form-control file-caption  kv-fileinput-caption">
+                                        <div class="file-caption-name" title=""></div>
+                                    </div>
+
+                                </div></div>
+
+                        </div> <div class=""><input type="text" placeholder="Escribe una descripción" class="form-control" name="lob_description12"></div> <div class="">  <label>¿Recibido en fisico?:</label> <label class="toggle"><input type="checkbox" value="1" name="estado12"> <i data-swchon-text="SI" data-swchoff-text="NO"></i></label></div><div class=""> </div>  </div>
+
+                
+                
+            </article>
+        </div>
+
+    </section>
         </div>
 
 
