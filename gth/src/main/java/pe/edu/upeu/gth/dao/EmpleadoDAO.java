@@ -51,5 +51,9 @@ public class EmpleadoDAO implements Operaciones{
 "WHERE e.ID_TRABAJADOR=t.ID_TRABAJADOR AND co.ID_TRABAJADOR=t.ID_TRABAJADOR and pu.ID_PUESTO=co.ID_PUESTO AND pu.ID_SECCION=se.ID_SECCION and ar.ID_AREA=se.ID_AREA";
         return jt.queryForList(sql_list_emp);
     }
+    public List<Map<String, Object>>listar_vacaciones(String id){
+        String sql_list_vac="SELECT A.ID_CONTRATO, A.FE_HASTA,A.FE_DESDE, A.ID_DGP,N.ID_DGP, N.ID_TRABAJADOR, D.ID_TRABAJADOR, D.NO_TRABAJADOR,D.AP_PATERNO,D.AP_MATERNO,D.DI_CORREO_PERSONAL,D.DI_CORREO_INST,D.NU_DOC,D.TE_TRABAJADOR, D.CL_TRA FROM RHTM_CONTRATO A, RHTM_DGP N, RHTM_TRABAJADOR D WHERE A.ID_DGP=N.ID_DGP AND N.ID_TRABAJADOR=D.ID_TRABAJADOR AND A.FE_HASTA>=SYSDATE AND (A.FE_HASTA-A.FE_DESDE)>=65";
+        return jt.queryForList(sql_list_vac);
+    }  
     
 }

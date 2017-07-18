@@ -42,7 +42,7 @@ public class testeo {
         //listar_puestosejemplo("PUT-000198");
         //pR("ROL-0019", "MOD-0003");
 //        System.out.println(asd.getSessionJson());
-Listar_empleados();
+   Listar_Holiday();
     }
 
     //--
@@ -53,6 +53,15 @@ Listar_empleados();
     }
 
     ///
+    public static void Listar_Holiday(){
+
+     List<Map<String,Object>> l= Ea.listar_vacaciones("TRB-002756");
+     for (Map<String, Object> map : l) {
+         System.out.println(map.get(("NO_TRABAJADOR")));
+     }
+    }
+ 
+    
  public static void Listar_empleados()
  {
      List<Map<String,Object>> l= Ea.listar_all();
