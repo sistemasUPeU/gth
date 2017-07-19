@@ -28,53 +28,41 @@ public class HomeController {
     Map<String, Object> mp = new HashMap<>();
 
     @RequestMapping(value = "/")
-    public String validate() {
-        return "Validate";
+    public String login() {
+        return "login";
     }
 
     @RequestMapping(value = "/index")
     public String index() {
         return "index";
     }
+    
+    @RequestMapping(value = "/menu")
+    public String menu() {
+        return "menu";
+    }
 
     @RequestMapping(value = "/principal")
     public void principal(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        HttpSession sesion = request.getSession(true);
+        HttpSession session = request.getSession(true);
         try {
-            sesion.setAttribute("ID_ROL", request.getParameter("ID_ROL"));
-            sesion.setAttribute("ID_MODULO", request.getParameter("ID_MODULO"));
-            sesion.setAttribute("IDUSER", request.getParameter("IDUSER"));
-            sesion.setAttribute("IDTR", request.getParameter("IDTR"));
-            sesion.setAttribute("NOMBRE_AP", request.getParameter("NOMBRE_AP"));
-            sesion.setAttribute("PUESTO_ID", request.getParameter("PUESTO_ID"));
-            sesion.setAttribute("USER", request.getParameter("USER"));
+            session.setAttribute("ID_ROL", request.getParameter("ID_ROL"));
+            session.setAttribute("ID_MODULO", request.getParameter("ID_MODULO"));
+            session.setAttribute("IDUSER", request.getParameter("IDUSER"));
+            session.setAttribute("IDTR", request.getParameter("IDTR"));
+            session.setAttribute("NOMBRE_AP", request.getParameter("NOMBRE_AP"));
+            session.setAttribute("PUESTO_ID", request.getParameter("PUESTO_ID"));
+            session.setAttribute("USER", request.getParameter("USER"));
             mp.put("rs", true);
         } catch (Exception e) {
             mp.put("rs", false);
-            System.out.println("Error al obtener sesion : " + e);
+            System.out.println("Error al obtener session : " + e);
         }
         Gson gson = new Gson();
         out.println(gson.toJson(mp));
         out.flush();
         out.close();
     }
-
-    @RequestMapping(value = "/pr")
-    public void asd(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-        try {
-            mp.put("respuesta", "okay");
-        } catch (Exception e) {
-            System.out.println("Error : " + e);
-        }
-
-        Gson gson = new Gson();
-        out.println(gson.toJson(mp));
-        out.flush();
-        out.close();
-    }
-
 }

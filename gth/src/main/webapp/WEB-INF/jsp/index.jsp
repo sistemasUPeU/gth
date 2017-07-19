@@ -265,12 +265,12 @@
         <script>
 
             $(document).ready(function () {
-                $.ajax({
-                    url: 'privilegios',
-                    type: 'POST',
-                    async: true,
-                    data: '',
-                    success: function (objJson) {
+                listPrivilegios();
+            });
+
+            function listPrivilegios() {
+                try {
+                    $.getJSON('components?opc=privilegios', function (objJson) {
                         var lista = objJson.pr;
                         var s = '';
                         if (lista.length > 0) {
@@ -282,14 +282,16 @@
                             $("#dataPrivilegios").empty();
                             $("#dataPrivilegios").append(s);
                         }
-                    }
-                });
-            });
+                    });
+                } catch (e) {
+                    console.error(e);
+                }
+            }
 
         </script>
     </body>
 </html>
 <%} else {
-        out.print("<script> window.location.href = '/TALENTO_HUMANO/';</script>");
+        out.print("<script> window.location.href = '/gth/';</script>");
     }
 %>

@@ -18,63 +18,60 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
 import pe.edu.upeu.gth.dao.vacacionesDAO;
-
-
-
+import pe.edu.upeu.gth.config.globalProperties;
+import pe.edu.upeu.gth.dao.UsuarioDAO;
 
 /**
  *
  * @author UPEU
  */
 @Configuration
-@ComponentScan(basePackages="pe.edu.upeu.gth")
+@ComponentScan(basePackages = "pe.edu.upeu.gth")
 @EnableWebMvc
-public class AppConfig extends WebMvcConfigurerAdapter{
-   @Bean
-	public ViewResolver getViewResolver(){
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/WEB-INF/jsp/");
-		resolver.setSuffix(".jsp");
-		return resolver;
-	} 
-        
-        @Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/**");
-		registry.addResourceHandler("/jspf/**").addResourceLocations("/jspf/**");
-	}
+public class AppConfig extends WebMvcConfigurerAdapter {
 
-        
-        @Bean
-	public static DataSource getDataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("oracle.jdbc.OracleDriver");//driver-conexion//
-		dataSource.setUrl("jdbc:oracle:thin:@192.168.21.9:1521:XE");//url-conexion//
-		dataSource.setUsername("gth");//user-conexion//
-		dataSource.setPassword("123");//pass-conexion//
-		return dataSource;
-	}
-//        @Bean
-//        
-////        //EXAMPLE---
-////        public UsuarioDAO geUsuarioDAO()
-////        {
-////            return new UsuarioDAO(getDataSource());
-////        }
-        @Bean
-        public EmpleadoDAO getLista_EmpleadoDAO()
-        {
-            return new EmpleadoDAO(getDataSource());
-        }
-        @Bean
-        public PrivilegioDAO getPrivilegioDAO()
-        {
-            return new PrivilegioDAO(getDataSource());
-        }
-        @Bean
-        public vacacionesDAO getvacacionesDAO()
-        {
-            return new vacacionesDAO(getDataSource());
-        }
+    @Bean
+    public ViewResolver getViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/jsp/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/**");
+        registry.addResourceHandler("/jspf/**").addResourceLocations("/jspf/**");
+    }
+
+    @Bean
+    public static DataSource getDataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");//driver-conexion//
+        dataSource.setUrl("jdbc:oracle:thin:@" + globalProperties.HOSTNAME + ":" + globalProperties.PORT + ":" + globalProperties.SID + "");
+        dataSource.setUsername(globalProperties.USER);//user-conexion//
+        dataSource.setPassword(globalProperties.USER_PWD);//pass-conexion//
+        return dataSource;
+    }
+
+    @Bean
+    public EmpleadoDAO getLista_EmpleadoDAO() {
+        return new EmpleadoDAO(getDataSource());
+    }
+
+    @Bean
+    public PrivilegioDAO getPrivilegioDAO() {
+        return new PrivilegioDAO(getDataSource());
+    }
+
+    @Bean
+    public vacacionesDAO getvacacionesDAO() {
+        return new vacacionesDAO(getDataSource());
+    }
     
+    @Bean
+    public UsuarioDAO getUsuarioDAO() {
+        return new UsuarioDAO(getDataSource());
+    }
+
 }

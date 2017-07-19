@@ -33,17 +33,37 @@ public class MainController {
     PrivilegioDAO pD = new PrivilegioDAO(d);
     Map<String, Object> mp = new HashMap<>();
 
-    @RequestMapping(value = "/privilegios", method = RequestMethod.POST)
-    public void Logueo(HttpServletRequest resquest, HttpServletResponse response) throws IOException {
+    @RequestMapping(value = "/components")
+    public void Logueo(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        HttpSession sesion = resquest.getSession(true);
+        HttpSession session = request.getSession(true);
+        String opc = request.getParameter("opc");
+        String idm;
         try {
-            String Rol = sesion.getAttribute("ID_ROL").toString();
-            String Modulo = sesion.getAttribute("ID_MODULO").toString();
-            mp.put("pr", pD.listarURLs(Rol, Modulo));
+            switch (opc) {
+                case "privilegios":
+                    String Rol = session.getAttribute("IDROL").toString();
+                    String Modulo = session.getAttribute("ModE").toString();
+                    mp.put("pr", pD.listarURLs(Rol, Modulo));
+                    break;
+                case "modulos":
+                    mp.put("lista", session.getAttribute("LIST_MODULO"));
+                    break;
+                case "redMod":
+                    idm = request.getParameter("idmod");
+                    if (!idm.equals("")) {
+                        session.setAttribute("ModE", idm);
+                        mp.put("rpta", true);
+                    } else {
+                        mp.put("rpta", false);
+                    }
+                    break;
+            }
+
         } catch (Exception e) {
-            System.out.println("Error al listar privilegios : " + e);
+            mp.put("rpta", false);
+            System.out.println("Error controlador COMPONENTS : " + e);
         }
         Gson gson = new Gson();
         out.println(gson.toJson(mp));

@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 import pe.edu.upeu.gth.config.AppConfig;
 import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
+import pe.edu.upeu.gth.dao.UsuarioDAO;
 import pe.edu.upeu.gth.dao.ejemploDAO;
 import pe.edu.upeu.gth.wsclient.Client;
 
@@ -31,7 +32,9 @@ public class testeo {
     public static PrivilegioDAO pD = new PrivilegioDAO(d);
     public static Map<String, Object> mp = new HashMap<>();
 //    public static Client asd=new Client();
-    public static EmpleadoDAO Ea= new EmpleadoDAO(d);
+    public static EmpleadoDAO Ea = new EmpleadoDAO(d);
+    public static UsuarioDAO uD=new UsuarioDAO(d);
+
     public static void main(String[] args) {
         //conect();
         //listar_puestos();
@@ -42,24 +45,29 @@ public class testeo {
         //listar_puestosejemplo("PUT-000198");
         //pR("ROL-0019", "MOD-0003");
 //        System.out.println(asd.getSessionJson());
-Listar_empleados();
+        //Listar_empleados();
+        validar("liliana", "123");
     }
 
+    public static void validar(String u,String p){
+        
+        System.out.println(uD.validar(u, p));
+    }
+    
     //--
-
     public static void listar_puestosejemplo(String id) {
         //System.out.println(eA.listajt(id));
         System.out.println(eA.listajt(id));
     }
 
     ///
- public static void Listar_empleados()
- {
-     List<Map<String,Object>> l= Ea.listar_all();
-     for (Map<String, Object> map : l) {
-         System.out.println(map.get(("NO_TRABAJADOR")));
-     }
- }
+    public static void Listar_empleados() {
+        List<Map<String, Object>> l = Ea.listar_all();
+        for (Map<String, Object> map : l) {
+            System.out.println(map.get(("NO_TRABAJADOR")));
+        }
+    }
+
     public static void pR(String a, String b) {
         System.out.println(a);
         System.out.println(b);
