@@ -22,9 +22,6 @@
         <%@include file="../../jspf/general.jspf" %>
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/jquery.dataTables.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
-        
-
-        
     </head>
     <body class="smart-style-1 fixed-header fixed-footer mainBody">
         <header id="header">
@@ -113,19 +110,19 @@
             <div class="logininfo">
                 <div class="row">
                     <div class="avatar-user col-md-3">
-                        <input id="id_trabajador" type="hidden" value="<%//out.println(sesion.getAttribute("IDTR"));%>" />
-                        <input id="iuser" type="hidden" value="<%//out.println(id_user);%>" />
+                        <input id="id_trabajador" type="hidden" value="<%out.println(sesion.getAttribute("IDTR"));%>" />
+                        <input id="iuser" type="hidden" value="<%out.println(id_user);%>" />
                         <a href="javascript:void(0);" id="show-shortcut" >
                             <img id="foto_usuario" src="" class="bounceIn animated" />
                         </a>  
                     </div>
                     <div class="col-md-9">
                         <div class="login-info text-right">
-                            <span class="spanuser"> <%//out.println((String) sesion.getAttribute("USER")); %></span>  
+                            <span class="spanuser"> <%out.println((String) sesion.getAttribute("USER")); %></span>  
                         </div>
 
                         <div class="login-info text-right">
-                            <span ><%//out.println((String) sesion.getAttribute("NOMBRE_AP").toString().trim()); %> </span> 
+                            <span ><%out.println((String) sesion.getAttribute("NOMBRE_AP").toString().trim()); %> </span> 
                         </div>
                     </div>
                 </div>
@@ -296,6 +293,6 @@
     </body>
 </html>
 <%} else {
-        out.print("<script> window.location.href = '/gth/';</script>");
+        out.print("<script> window.location.href = '/TALENTO_HUMANO/';</script>");
     }
 %>

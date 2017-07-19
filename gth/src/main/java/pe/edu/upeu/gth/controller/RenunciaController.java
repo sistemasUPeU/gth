@@ -26,10 +26,10 @@ import pe.edu.upeu.gth.dao.RenunciaDAO;
  */
 @Controller
 public class RenunciaController {
-    
+
     @Autowired
-    private RenunciaDAO rdao ;
-    
+    private RenunciaDAO rdao;
+
     Map<String, Object> mp = new HashMap<>();
 
     @RequestMapping(value = "/renuncia")
@@ -47,13 +47,16 @@ public class RenunciaController {
                 out.println(gson.toJson(mp));
                 out.flush();
                 out.close();
-                
+
                 break;
             case "authorizationR":
                 model.setViewName("vistas/renuncia/Rautorizar");
                 break;
             case "authorizationA":
                 model.setViewName("vistas/renuncia/Rautorizar");
+                break;
+            case "ejemplo":
+                model.setViewName("vistas/renuncia/ejemplo");
                 break;
         }
         return model;
