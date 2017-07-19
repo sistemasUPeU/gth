@@ -60,13 +60,28 @@ public class VacacionesController {
     }
     
     @RequestMapping(value = "/listar_vac")
-     public ModelAndView lista(ModelAndView model) {
-         List<Map<String, Object>> lista= aO.listar_empleado();
-         model.addObject("listar",lista);
-         model.setViewName("vistas/vacaciones/Worker");
-         
+     public ModelAndView lista(ModelAndView model){
+//         List<Map<String, Object>> lista= aO.listar_empleado();
+//         model.addObject("listar",lista);
+         model.setViewName("vistas/vacaciones/Listar_vacaciones");
          return model;
     }
+     @RequestMapping(value = "/vac_emple", method = RequestMethod.POST)
+    public void List_empleados(HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        try {
+            mp.put("list", aO.listar_empleado());
+
+        } catch (Exception e) {
+            System.out.println("Error al listar empleados : " + e);
+        }
+        Gson gson = new Gson();
+        out.println(gson.toJson(mp));
+        out.flush();
+        out.close();
+    }
+    
     @RequestMapping(value = "/turnh", method = RequestMethod.POST)
     public void List_vac(HttpServletRequest resquest, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
