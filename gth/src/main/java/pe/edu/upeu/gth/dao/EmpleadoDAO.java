@@ -47,7 +47,7 @@ public class EmpleadoDAO implements Operaciones{
     public List<Map<String,Object>>listar_empleado()
     {
 
-        String sql_list_emp="select t.NO_TRABAJADOR,t.AP_PATERNO,t.AP_MATERNO,ar.NO_AREA,se.NO_SECCION,pu.NO_PUESTO,TO_CHAR(co.FE_DESDE,'DD/MM/YYYY') as FE,TO_CHAR(co.FE_HASTA,'DD/MM/YYYY')as FE2\n" +
+        String sql_list_emp="select t.ID_TRABAJADOR as ID, UPPER(t.NO_TRABAJADOR) as NOM,UPPER(t.AP_PATERNO) as A_P,UPPER(t.AP_MATERNO) as A_M,ar.NO_AREA,se.NO_SECCION,pu.NO_PUESTO,TO_CHAR(co.FE_DESDE,'DD/MM/YYYY') as FE,TO_CHAR(co.FE_HASTA,'DD/MM/YYYY')as FE2\n" +
 "from RHTD_EMPLEADO e,RRHH.RHTM_TRABAJADOR t,RHTM_CONTRATO co,RHTR_PUESTO pu,RHTR_SECCION se,RHTD_AREA ar\n" +
 "WHERE e.ID_TRABAJADOR=t.ID_TRABAJADOR AND co.ID_TRABAJADOR=t.ID_TRABAJADOR and pu.ID_PUESTO=co.ID_PUESTO AND pu.ID_SECCION=se.ID_SECCION and ar.ID_AREA=se.ID_AREA AND co.FE_HASTA>=SYSDATE AND (co.FE_HASTA-co.FE_DESDE)>=365";
 
