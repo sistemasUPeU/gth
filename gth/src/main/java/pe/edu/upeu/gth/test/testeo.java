@@ -48,7 +48,7 @@ public class testeo {
 //        System.out.println(asd.getSessionJson());
         //Listar_empleados();
         //validar("liliana", "123");
-        detalleTr("TRB-003838");
+        detalleTr("TRB-002742");
     }
 
     public static void validar(String u,String p){
