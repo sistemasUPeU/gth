@@ -42,12 +42,7 @@ public class RenunciaController {
                 model.setViewName("vistas/renuncia/RAarchivos");
                 break;
             case "status":
-                mp.put("pr", rdao.listarEmpleados());
-                Gson gson = new Gson();
-                out.println(gson.toJson(mp));
-                out.flush();
-                out.close();
-
+                model.setViewName("vistas/renuncia/RAarchivos");
                 break;
             case "authorizationR":
                 model.setViewName("vistas/renuncia/Rautorizar");
@@ -62,7 +57,7 @@ public class RenunciaController {
         return model;
     }
 
-    @RequestMapping(value = "/ren", method = RequestMethod.POST)
+    @RequestMapping(value = "/renu", method = RequestMethod.POST)
     public void principal(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
@@ -70,7 +65,8 @@ public class RenunciaController {
         try {
             switch (opc) {
                 case "list":
-                    break;
+                    mp.put("pr", rdao.listarEmpleados());
+                break;
             }
         } catch (Exception e) {
             System.out.println("Error : " + e);

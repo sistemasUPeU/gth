@@ -86,8 +86,6 @@
 
                         </section>-->
                 </div>
-
-                <!-- END SHORTCUT AREA -->
                 <!--Cositas-->
                 
                 
@@ -111,14 +109,12 @@
                 <script>
                     $(document).ready(function () {
                         list();
-
-
                     });
 
                     function list() {
-                        var url = "renuncia?opc=status";//nombre del controlador ejm. renuncia?op=1
+                        var url = "renu?opc=list";//nombre del controlador ejm. renuncia?op=1
                         try {
-                            $.getJSON(url, function (objJson) {
+                            $.post(url , function (objJson) {
                                 var lista = objJson.pr;
                                 if (lista.length > 0) {
                                     var m = "";
@@ -138,10 +134,6 @@
                                     $("#data").empty();
                                     $("#data").append(m);
                                     $('#dt_basic').dataTable();
-
-                                    //naa
-
-
                                 } else {
                                     console.log("No hay datos en la tabla");
                                 }
@@ -149,10 +141,7 @@
                         } catch (e) {
                             console.error("Error al listar : " + e);
                         }
-
                     }
-
-
                     function createTable() {
                         var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">';
                         s += '<thead>';
@@ -168,7 +157,6 @@
                         s += '</table>';
                         return s;
                     }
-
                 </script>
      </body>
 </html>
