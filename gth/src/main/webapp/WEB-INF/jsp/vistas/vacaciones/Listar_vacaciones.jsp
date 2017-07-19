@@ -194,7 +194,7 @@
                             for (var i = 0; i < lista.length; i++) {
                                  s += '<tr>';
                                  s += '<td>' +(i + 1)+'</td>';
-                                 s += '<td>' +lista[i].NOM + ' , ' + lista[i].A_P+ '  ' +lista[i].A_M +'</td>';// cambiar por el atributo que te da en tu DAO
+                                 s += '<td><a href="asig?id='+lista[i].ID+'">'+lista[i].NOM + ' , ' + lista[i].A_P+ '  ' +lista[i].A_M +'</a></td>';// cambiar por el atributo que te da en tu DAO
                                  s += '<td>' + lista[i].NO_AREA+ '</td>';
                                  s += '<td>' + lista[i].NO_SECCION+ '</td>';
                                  s += '<td>' + lista[i].NO_PUESTO + '</td>';
