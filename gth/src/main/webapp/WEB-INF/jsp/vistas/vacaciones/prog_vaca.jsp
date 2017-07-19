@@ -4,6 +4,7 @@
     Author     : Cesar
 --%>
 
+<%@page import="pe.edu.upeu.gth.dao.vacacionesDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><!DOCTYPE html>
 <html>
@@ -18,30 +19,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
         <!-- Basic Styles -->
-                <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/bootstrap.min.css'/>">
-                <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/font-awesome.min'/>">
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/bootstrap.min.css'/>">
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/font-awesome.min'/>">
 
         <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
-         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production-plugins.min'/>">
-         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production.min.css'/>">
-         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production-plugins.min'/>">
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production.min.css'/>">
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
 
 
         <!-- SmartAdmin RTL Support -->
-  
-         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-rtl.min.css'/>">
+
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-rtl.min.css'/>">
 
         <!-- We recommend you use "your_style.css" to override SmartAdmin
              specific styles this will also ensure you retrain your customization with each SmartAdmin update.
         <link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
 
         <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
-                 <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>">
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>">
 
         <!-- FAVICONS -->
         <link rel="shortcut icon" type="image/x-icon" href="<c:url value='resources/img/favicon/favicon.ico'/>">
-         <link rel="shortcut icon" type="image/x-icon" href="<c:url value='resources/img/favicon/favicon.ico'/>">
-         <link rel="icon" type="image/x-icon" href="<c:url value='resources/img/favicon/favicon.ico'/>">
+        <link rel="shortcut icon" type="image/x-icon" href="<c:url value='resources/img/favicon/favicon.ico'/>">
+        <link rel="icon" type="image/x-icon" href="<c:url value='resources/img/favicon/favicon.ico'/>">
 
 
         <link rel="icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
@@ -51,9 +52,9 @@
 
         <!-- Specifying a Webpage Icon for Web Clip 
                  Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-         <link rel="apple-touch-icon" media="screen" href="<c:url value='resources/img/splash/sptouch-icon-iphone.png'/>">
-         <link rel="apple-touch-icon"  href="<c:url value='resources/img/splash/sptouch-icon-iphone.png'/>">
-         <link rel="apple-touch-icon" sizes="76x76" href="<c:url value='resources/img/splash/touch-icon-ipad.png'/>">
+        <link rel="apple-touch-icon" media="screen" href="<c:url value='resources/img/splash/sptouch-icon-iphone.png'/>">
+        <link rel="apple-touch-icon"  href="<c:url value='resources/img/splash/sptouch-icon-iphone.png'/>">
+        <link rel="apple-touch-icon" sizes="76x76" href="<c:url value='resources/img/splash/touch-icon-ipad.png'/>">
         <link rel="apple-touch-icon"  href="../../img/splash/touch-icon-ipad.png">
         <link rel="apple-touch-icon" sizes="120x120" href="../../img/splash/touch-icon-iphone-retina.png">
         <link rel="apple-touch-icon" sizes="152x152" href="../../img/splash/touch-icon-ipad-retina.png">
@@ -69,7 +70,7 @@
 
     </head>
     <body>
-        
+
         <article class="col-sm-6 col-md-6 col-lg-3"></article>
         <!-- widget grid -->
         <div class="row">
@@ -116,11 +117,10 @@
                                     Programacion de vacaciones  - Datos del trabajador
                                 </header>
                                 <fieldset>
-                                    
                                     <div class="row">
                                         <section class="col col-6">
                                             <label>Nombres:</label>
-                                            <label class="input" style="color: #005cac; font-weight: bold;">José Alfredo Lopez Cruz
+                                            <label id='nombres' class="input" style="color: #005cac; font-weight: bold; font-size: 1.7vh;">
                                             </label>
                                         </section>
                                     </div>
@@ -128,17 +128,14 @@
                                         <section class="col col-6">
                                             <label>Correo</label>
                                             <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
-                                                <c:forEach var="va" items="${vacac}" varStatus="status">
-                                                     
-                                                    <input type="email" name="email" value="${va.di_correo_inst}" disabled="disabled">
-                                                </c:forEach>                         
+                                                <input id='correo' type="email" value="" name="email" disabled="disabled">
 
                                             </label>
                                         </section>
                                         <section class="col col-6">
                                             <label>Fecha de nacimiento</label>
                                             <label class="input"><i class="icon-prepend fa fa-home"></i>
-                                                <input type="text" name="fecha_nac" id="fecha_doc" disabled value="12/12/1985">
+                                                <input id="fecha" type="text" name="fecha_nac"  disabled="disabled">
                                             </label>
                                         </section>
                                     </div>
@@ -146,19 +143,20 @@
                                         <section class="col col-4">
                                             <label>Sexo</label>
                                             <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
-                                                <input type="email" name="sexo" value='M' disabled="disabled">
+                                                <input id="sexo" type="email" name="sexo" disabled="disabled">
                                             </label>
                                         </section>
                                         <section class="col col-4">
                                             <label>Tipo de documento</label>
                                             <label class="input"><i class="icon-prepend fa fa-home"></i>
-                                                <input type="text" name="tip_doc" id="tip_doc" disabled value="DNI">
+
+                                                <input type="text" id="tip_doc" disabled="disabled">
                                             </label>
                                         </section>
                                         <section class="col col-4">
                                             <label>Número de documento</label>
                                             <label class="input"><i class="icon-prepend fa fa-home"></i>
-                                                <input type="text" name="num_doc" id="num_doc" disabled value="12345678">
+                                                <input type="text" name="num_doc" id="num_doc" disabled value="${va.n_d}">
                                             </label>
                                         </section>
                                     </div>
@@ -199,7 +197,8 @@
                                         <div class="col col-10">
                                             <h3><label>Total de días:</label><label style="color: #005cac;" id="ntd">0</label></h3>
                                         </div>
-                                    </div>
+                                    </div>                       
+
                                 </fieldset>
                                 <footer>
                                     <input type="hidden" name="opc" value="VacationAsign">
@@ -218,40 +217,40 @@
                 </div>
             </article>
         </div>
-     
+
         <script src="js/daterangepicker/moment.min.js" type="text/javascript"></script>
         <script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>
 
         <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
-                                                                if (!window.jQuery) {
-                                                                    document.write('<script src="js/libs/jquery-2.1.1.min.js"><\/script>');
-                                                                }
+                                                                    if (!window.jQuery) {
+                                                                        document.write('<script src="js/libs/jquery-2.1.1.min.js"><\/script>');
+                                                                    }
         </script>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script>
-                                                                if (!window.jQuery.ui) {
-                                                                    document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
-                                                                }
+                                                                    if (!window.jQuery.ui) {
+                                                                        document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+                                                                    }
         </script>
 
         <!-- IMPORTANT: APP CONFIG -->
-        
+
         <script src="<c:url value='resources/js/app.config.js'/>" ></script>
         <!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
-          <script src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>" ></script>
+        <script src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>" ></script>
 
         <!-- BOOTSTRAP JS -->
-       <script src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>" ></script>
+        <script src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>" ></script>
 
         <!-- CUSTOM NOTIFICATION -->
-       <script src="<c:url value='resources/js/notification/SmartNotification.min.js'/>" ></script>      
+        <script src="<c:url value='resources/js/notification/SmartNotification.min.js'/>" ></script>      
 
         <!-- JARVIS WIDGETS -->
-       <script src="<c:url value='resources/js/smartwidgets/jarvis.widget.min.js'/>" ></script>      
- 
+        <script src="<c:url value='resources/js/smartwidgets/jarvis.widget.min.js'/>" ></script>      
+
         <!-- EASY PIE CHARTS -->
         <script src="<c:url value='resources/js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js'/>" ></script>      
         <!-- SPARKLINES -->
@@ -269,7 +268,7 @@
         <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>" ></script>
         <!-- FastClick: For mobile devices -->
         <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>" ></script>
-       
+
 
         <!--[if IE 8]>
 
@@ -278,229 +277,246 @@
         <![endif]-->
 
         <!-- Demo purpose only -->
-         <script src="<c:url value='resources/js/demo.min.js'/>" ></script>
+        <script src="<c:url value='resources/js/demo.min.js'/>" ></script>
 
         <!-- MAIN APP JS FILE -->
-         <script src="<c:url value='resources/js/app.min.js'/>" ></script>
+        <script src="<c:url value='resources/js/app.min.js'/>" ></script>
 
         <!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
         <!-- Voice command : plugin -->
-      <script src="<c:url value='resources/js/speech/voicecommand.min.js'/>" ></script>        
+        <script src="<c:url value='resources/js/speech/voicecommand.min.js'/>" ></script>        
         <!-- SmartChat UI : plugin -->
-      <script src="<c:url value='resources/js/smart-chat-ui/smart.chat.ui.min.js'/>" ></script>        
-      <script src="<c:url value='resources/js/smart-chat-ui/smart.chat.manager.min.js'/>" ></script>        
+        <script src="<c:url value='resources/js/smart-chat-ui/smart.chat.ui.min.js'/>" ></script>        
+        <script src="<c:url value='resources/js/smart-chat-ui/smart.chat.manager.min.js'/>" ></script>        
         <!-- PAGE RELATED PLUGIN(S) -->
-      <script src="<c:url value='resources/js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js'/>" ></script>   
-      <script src="<c:url value='resources/js/plugin/fuelux/wizard/wizard.min.js'/>" ></script>   
+        <script src="<c:url value='resources/js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js'/>" ></script>   
+        <script src="<c:url value='resources/js/plugin/fuelux/wizard/wizard.min.js'/>" ></script>   
 
 
 
         <script type="text/javascript">
 
-                                                                // DO NOT REMOVE : GLOBAL FUNCTIONS!
+                                                                    // DO NOT REMOVE : GLOBAL FUNCTIONS!
 
-                                                                var nr = 1;
-                                                                $(document).ready(function () {
-
-                                                                    pageSetUp();
-
-                                                                    // Date Range Picker
-                                                                    $("#from1").datepicker({
-                                                                        defaultDate: "+1w",
-                                                                        changeMonth: true,
-                                                                        numberOfMonths: 2,
-                                                                        prevText: '<i class="fa fa-chevron-left"></i>',
-                                                                        nextText: '<i class="fa fa-chevron-right"></i>',
-                                                                        onClose: function (selectedDate) {
-                                                                            $("#to1").datepicker("option", "minDate", selectedDate);
-                                                                        }
-
-                                                                    });
-                                                                    $("#to1").datepicker({
-                                                                        defaultDate: "+1w",
-                                                                        changeMonth: true,
-                                                                        numberOfMonths: 2,
-                                                                        prevText: '<i class="fa fa-chevron-left"></i>',
-                                                                        nextText: '<i class="fa fa-chevron-right"></i>',
-                                                                        onClose: function (selectedDate) {
-                                                                            $("#from1").datepicker("option", "maxDate", selectedDate);
-                                                                        }
-                                                                    });
-
-
-
-
-
-                                                                    //Bootstrap Wizard Validations
-
-                                                                    var $validator = $("#wizard-1").validate({
-                                                                        rules: {
-                                                                            email: {
-                                                                                required: true,
-                                                                                email: "Your email address must be in the format of name@domain.com"
-                                                                            },
-                                                                            fname: {
-                                                                                required: true
-                                                                            },
-                                                                            lname: {
-                                                                                required: true
-                                                                            },
-                                                                            country: {
-                                                                                required: true
-                                                                            },
-                                                                            city: {
-                                                                                required: true
-                                                                            },
-                                                                            postal: {
-                                                                                required: true,
-                                                                                minlength: 4
-                                                                            },
-                                                                            wphone: {
-                                                                                required: true,
-                                                                                minlength: 10
-                                                                            },
-                                                                            hphone: {
-                                                                                required: true,
-                                                                                minlength: 10
-                                                                            }
-                                                                        },
-                                                                        messages: {
-                                                                            fname: "Please specify your First name",
-                                                                            lname: "Please specify your Last name",
-                                                                            email: {
-                                                                                required: "We need your email address to contact you",
-                                                                                email: "Your email address must be in the format of name@domain.com"
-                                                                            }
-                                                                        },
-                                                                        highlight: function (element) {
-                                                                            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-                                                                        },
-                                                                        unhighlight: function (element) {
-                                                                            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
-                                                                        },
-                                                                        errorElement: 'span',
-                                                                        errorClass: 'help-block',
-                                                                        errorPlacement: function (error, element) {
-                                                                            if (element.parent('.input-group').length) {
-                                                                                error.insertAfter(element.parent());
+                                                                    var nr = 1;
+                                                                    $(document).ready(function () {
+                                                                        $.post('returnjson', function (obj) {
+                                                                            console.log(obj[0]);
+                                                                            var trab = obj[0];
+                                                                            $("#nombres").text(trab.NOM + " " + trab.AP_P + " " + trab.AP_M);
+                                                                            $("#correo").val(trab.CORREO);
+                                                                            $("#fecha").val(trab.F);
+                                                                            $("#sexo").val(trab.SEXO);
+                                                                            $("#num_doc").val(trab.N_D);
+                                                                            var o = trab.T;
+                                                                            if (o === '1 ') {
+                                                                                $("#tip_doc").val('DNI');
                                                                             } else {
-                                                                                error.insertAfter(element);
+                                                                                $("#tip_doc").val('Otros');
                                                                             }
-                                                                        }
-                                                                    });
-
-                                                                    $('#bootstrap-wizard-1').bootstrapWizard({
-                                                                        'tabClass': 'form-wizard',
-                                                                        'onNext': function (tab, navigation, index) {
-                                                                            var $valid = $("#wizard-1").valid();
-                                                                            if (!$valid) {
-                                                                                $validator.focusInvalid();
-                                                                                return false;
-                                                                            } else {
-                                                                                $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
-                                                                                        'complete');
-                                                                                $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
-                                                                                        .html('<i class="fa fa-check"></i>');
-                                                                            }
-                                                                        }
-                                                                    });
 
 
-                                                                    // fuelux wizard
-                                                                    var wizard = $('.wizard').wizard();
-
-                                                                    wizard.on('finished', function (e, data) {
-                                                                        //$("#fuelux-wizard").submit();
-                                                                        //console.log("submitted!");
-                                                                        $.smallBox({
-                                                                            title: "Congratulations! Your form was submitted",
-                                                                            content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
-                                                                            color: "#5F895F",
-                                                                            iconSmall: "fa fa-check bounce animated",
-                                                                            timeout: 4000
                                                                         });
 
-                                                                    });
-                                                                    $("#submitbtn").click(function () {
+                                                                        pageSetUp();
 
-                                                                    });
+                                                                        // Date Range Picker
+                                                                        $("#from1").datepicker({
+                                                                            defaultDate: "+1w",
+                                                                            changeMonth: true,
+                                                                            numberOfMonths: 2,
+                                                                            prevText: '<i class="fa fa-chevron-left"></i>',
+                                                                            nextText: '<i class="fa fa-chevron-right"></i>',
+                                                                            onClose: function (selectedDate) {
+                                                                                $("#to1").datepicker("option", "minDate", selectedDate);
+                                                                            }
 
-                                                                    $("#addrange").click(function () {
-                                                                        var add = "";
-                                                                        if (nr < 4) {
-                                                                            nr = nr + 1;
-                                                                            add += "<div style='padding-bottom: 5px;' class='row col col-12 rangegroup" + nr + "'>";
-                                                                            add += "<div class='col col-6'>";
-                                                                            add += "<div class='form-group'>";
-                                                                            add += "<div class='input-group'>";
-                                                                            add += "<input onchange='calnd()' class='form-control' id='from" + nr + "' type='text' placeholder='Desde'>";
-                                                                            add += "<span class='input-group-addon'><i class='fa fa-calendar'></i></span>";
-                                                                            add += "</div>";
-                                                                            add += "</div>";
-                                                                            add += "</div>";
-                                                                            add += "<div class='col col-6 '>";
-                                                                            add += "<div class='form-group'>";
-                                                                            add += "<div class='input-group'>";
-                                                                            add += "<input onchange='calnd()' class='form-control' id='to" + nr + "' type='text' placeholder='Hasta'>";
-                                                                            add += "<span class='input-group-addon'><i class='fa fa-calendar'></i></span>";
-                                                                            add += "</div>";
-                                                                            add += "</div>";
-                                                                            add += "</div>";
-                                                                            add += "</div>";
-                                                                            $(".dateranges").append(add);
-                                                                            $("#from" + nr).datepicker({
-                                                                                defaultDate: "+1w",
-                                                                                changeMonth: true,
-                                                                                numberOfMonths: 2,
-                                                                                prevText: '<i class="fa fa-chevron-left"></i>',
-                                                                                nextText: '<i class="fa fa-chevron-right"></i>',
-                                                                                onClose: function (selectedDate) {
-                                                                                    $("#to" + nr).datepicker("option", "minDate", selectedDate);
+                                                                        });
+                                                                        $("#to1").datepicker({
+                                                                            defaultDate: "+1w",
+                                                                            changeMonth: true,
+                                                                            numberOfMonths: 2,
+                                                                            prevText: '<i class="fa fa-chevron-left"></i>',
+                                                                            nextText: '<i class="fa fa-chevron-right"></i>',
+                                                                            onClose: function (selectedDate) {
+                                                                                $("#from1").datepicker("option", "maxDate", selectedDate);
+                                                                            }
+                                                                        });
+
+
+
+
+
+                                                                        //Bootstrap Wizard Validations
+
+                                                                        var $validator = $("#wizard-1").validate({
+                                                                            rules: {
+                                                                                email: {
+                                                                                    required: true,
+                                                                                    email: "Your email address must be in the format of name@domain.com"
+                                                                                },
+                                                                                fname: {
+                                                                                    required: true
+                                                                                },
+                                                                                lname: {
+                                                                                    required: true
+                                                                                },
+                                                                                country: {
+                                                                                    required: true
+                                                                                },
+                                                                                city: {
+                                                                                    required: true
+                                                                                },
+                                                                                postal: {
+                                                                                    required: true,
+                                                                                    minlength: 4
+                                                                                },
+                                                                                wphone: {
+                                                                                    required: true,
+                                                                                    minlength: 10
+                                                                                },
+                                                                                hphone: {
+                                                                                    required: true,
+                                                                                    minlength: 10
                                                                                 }
-
-                                                                            });
-                                                                            $("#to" + nr).datepicker({
-                                                                                defaultDate: "+1w",
-                                                                                changeMonth: true,
-                                                                                numberOfMonths: 2,
-                                                                                prevText: '<i class="fa fa-chevron-left"></i>',
-                                                                                nextText: '<i class="fa fa-chevron-right"></i>',
-                                                                                onClose: function (selectedDate) {
-                                                                                    $("#from" + nr).datepicker("option", "maxDate", selectedDate);
+                                                                            },
+                                                                            messages: {
+                                                                                fname: "Please specify your First name",
+                                                                                lname: "Please specify your Last name",
+                                                                                email: {
+                                                                                    required: "We need your email address to contact you",
+                                                                                    email: "Your email address must be in the format of name@domain.com"
                                                                                 }
+                                                                            },
+                                                                            highlight: function (element) {
+                                                                                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                                                                            },
+                                                                            unhighlight: function (element) {
+                                                                                $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+                                                                            },
+                                                                            errorElement: 'span',
+                                                                            errorClass: 'help-block',
+                                                                            errorPlacement: function (error, element) {
+                                                                                if (element.parent('.input-group').length) {
+                                                                                    error.insertAfter(element.parent());
+                                                                                } else {
+                                                                                    error.insertAfter(element);
+                                                                                }
+                                                                            }
+                                                                        });
+
+                                                                        $('#bootstrap-wizard-1').bootstrapWizard({
+                                                                            'tabClass': 'form-wizard',
+                                                                            'onNext': function (tab, navigation, index) {
+                                                                                var $valid = $("#wizard-1").valid();
+                                                                                if (!$valid) {
+                                                                                    $validator.focusInvalid();
+                                                                                    return false;
+                                                                                } else {
+                                                                                    $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
+                                                                                            'complete');
+                                                                                    $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
+                                                                                            .html('<i class="fa fa-check"></i>');
+                                                                                }
+                                                                            }
+                                                                        });
+
+
+                                                                        // fuelux wizard
+                                                                        var wizard = $('.wizard').wizard();
+
+                                                                        wizard.on('finished', function (e, data) {
+                                                                            //$("#fuelux-wizard").submit();
+                                                                            //console.log("submitted!");
+                                                                            $.smallBox({
+                                                                                title: "Congratulations! Your form was submitted",
+                                                                                content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+                                                                                color: "#5F895F",
+                                                                                iconSmall: "fa fa-check bounce animated",
+                                                                                timeout: 4000
                                                                             });
+
+                                                                        });
+                                                                        $("#submitbtn").click(function () {
+
+                                                                        });
+
+                                                                        $("#addrange").click(function () {
+                                                                            var add = "";
+                                                                            if (nr < 4) {
+                                                                                nr = nr + 1;
+                                                                                add += "<div style='padding-bottom: 5px;' class='row col col-12 rangegroup" + nr + "'>";
+                                                                                add += "<div class='col col-6'>";
+                                                                                add += "<div class='form-group'>";
+                                                                                add += "<div class='input-group'>";
+                                                                                add += "<input onchange='calnd()' class='form-control' id='from" + nr + "' type='text' placeholder='Desde'>";
+                                                                                add += "<span class='input-group-addon'><i class='fa fa-calendar'></i></span>";
+                                                                                add += "</div>";
+                                                                                add += "</div>";
+                                                                                add += "</div>";
+                                                                                add += "<div class='col col-6 '>";
+                                                                                add += "<div class='form-group'>";
+                                                                                add += "<div class='input-group'>";
+                                                                                add += "<input onchange='calnd()' class='form-control' id='to" + nr + "' type='text' placeholder='Hasta'>";
+                                                                                add += "<span class='input-group-addon'><i class='fa fa-calendar'></i></span>";
+                                                                                add += "</div>";
+                                                                                add += "</div>";
+                                                                                add += "</div>";
+                                                                                add += "</div>";
+                                                                                $(".dateranges").append(add);
+                                                                                $("#from" + nr).datepicker({
+                                                                                    defaultDate: "+1w",
+                                                                                    changeMonth: true,
+                                                                                    numberOfMonths: 2,
+                                                                                    prevText: '<i class="fa fa-chevron-left"></i>',
+                                                                                    nextText: '<i class="fa fa-chevron-right"></i>',
+                                                                                    onClose: function (selectedDate) {
+                                                                                        $("#to" + nr).datepicker("option", "minDate", selectedDate);
+                                                                                    }
+
+                                                                                });
+                                                                                $("#to" + nr).datepicker({
+                                                                                    defaultDate: "+1w",
+                                                                                    changeMonth: true,
+                                                                                    numberOfMonths: 2,
+                                                                                    prevText: '<i class="fa fa-chevron-left"></i>',
+                                                                                    nextText: '<i class="fa fa-chevron-right"></i>',
+                                                                                    onClose: function (selectedDate) {
+                                                                                        $("#from" + nr).datepicker("option", "maxDate", selectedDate);
+                                                                                    }
+                                                                                });
+                                                                            } else {
+
+                                                                            }
+                                                                        });
+                                                                        $("#delrange").click(function () {
+                                                                            if (nr > 1) {
+                                                                                $(".rangegroup" + nr).remove();
+                                                                                nr = nr - 1;
+                                                                                calnd();
+                                                                            }
+                                                                        });
+                                                                    });
+                                                                    function calnd() {
+                                                                        var ntd = 0, datef = new Date(), datet = new Date();
+                                                                        for (var i = 1; i <= nr; i++) {
+                                                                            if ($("#from" + i).val() != "" && $("#to" + i).val() != "") {
+                                                                                datef = new Date($("#from" + i).val());
+                                                                                datet = new Date($("#to" + i).val());
+                                                                                var dater = datet - datef;
+                                                                                var rd = (((dater / 1000) / 60) / 60) / 24 + 1;
+                                                                                ntd = ntd + rd;
+                                                                            }
+                                                                        }
+                                                                        $("#ntd").text(ntd);
+                                                                        if (ntd > 30) {
+                                                                            $("#ntd").css("color", "#A90329");
+                                                                        } else if (ntd == 30) {
+                                                                            $("#ntd").css("color", "#1B641B");
                                                                         } else {
-
-                                                                        }
-                                                                    });
-                                                                    $("#delrange").click(function () {
-                                                                        if (nr > 1) {
-                                                                            $(".rangegroup" + nr).remove();
-                                                                            nr = nr - 1;
-                                                                            calnd();
-                                                                        }
-                                                                    });
-                                                                });
-                                                                function calnd() {
-                                                                    var ntd = 0, datef = new Date(), datet = new Date();
-                                                                    for (var i = 1; i <= nr; i++) {
-                                                                        if ($("#from" + i).val() != "" && $("#to" + i).val() != "") {
-                                                                            datef = new Date($("#from" + i).val());
-                                                                            datet = new Date($("#to" + i).val());
-                                                                            var dater = datet - datef;
-                                                                            var rd = (((dater / 1000) / 60) / 60) / 24 + 1;
-                                                                            ntd = ntd + rd;
+                                                                            $("#ntd").css("color", "#005cac");
                                                                         }
                                                                     }
-                                                                    $("#ntd").text(ntd);
-                                                                    if (ntd > 30) {
-                                                                        $("#ntd").css("color", "#A90329");
-                                                                    }else if(ntd==30){
-                                                                        $("#ntd").css("color", "#1B641B");
-                                                                    }else{
-                                                                        $("#ntd").css("color", "#005cac");
-                                                                    }
-                                                                }
 
         </script>
 

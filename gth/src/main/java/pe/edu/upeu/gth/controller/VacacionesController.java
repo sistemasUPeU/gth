@@ -5,13 +5,23 @@
  */
 package pe.edu.upeu.gth.controller;
 
+import com.google.gson.Gson;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.json.Json;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.vacacionesDAO;
 
 /**
@@ -22,22 +32,57 @@ import pe.edu.upeu.gth.dao.vacacionesDAO;
 public class VacacionesController {
     @Autowired
     private vacacionesDAO vaO;
-   // @RequestMapping(value = "/prog")
-  //  public ModelAndView prog(ModelAndView model)
-  //  {
-     //   model.setViewName("vistas/vacaciones/prog_vaca");
-     //   return model;
-//    }
+    @Autowired
+    private EmpleadoDAO aO;
+    public String id_t="";
+    Map<String, Object> mp = new HashMap<>();
+
     
-    @RequestMapping(value = "/asig")
-    public ModelAndView asignar(ModelAndView modelo)
+    @RequestMapping(value = "/asig",method = RequestMethod.GET)
+    public ModelAndView asignar(ModelAndView modelo, HttpServletRequest request)
     {
-        List<Map<String, Object>> vacac= vaO.asignar_permiso("TRB-002756");
-        modelo.addObject("vacac", vacac);
+        id_t=request.getParameter("id");
         modelo.setViewName("vistas/vacaciones/prog_vaca");
         return modelo;
     }
+    @RequestMapping(value ="/returnjson", method = RequestMethod.POST)
+    public void retorna(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+         List<Map<String, Object>> vacac= vaO.asignar_permiso(id_t);
+         Gson gson = new Gson();
+         
+        out.println (gson.toJson(vacac));
+        out.flush();
+        out.close();
+        
+    }
     
+    @RequestMapping(value = "/listar_vac")
+     public ModelAndView lista(ModelAndView model) {
+         List<Map<String, Object>> lista= aO.listar_empleado();
+         model.addObject("listar",lista);
+         model.setViewName("vistas/vacaciones/Worker");
+         
+         return model;
+    }
+    @RequestMapping(value = "/turnh", method = RequestMethod.POST)
+    public void List_vac(HttpServletRequest resquest, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        HttpSession sesion = resquest.getSession(true);
+        try {
+            mp.put("pr", aO.listar_vacaciones("TRB-002756"));
+
+        } catch (Exception e) {
+            System.out.println("Error al listar privilegios : " + e);
+        }
+        Gson gson = new Gson();
+        out.println(gson.toJson(mp));
+        out.flush();
+        out.close();
+    }
 }
 
 

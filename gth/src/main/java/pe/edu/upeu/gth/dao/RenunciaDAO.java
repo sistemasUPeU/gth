@@ -6,7 +6,6 @@
 package pe.edu.upeu.gth.dao;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,14 +13,13 @@ import pe.edu.upeu.gth.interfaces.Operaciones;
 
 /**
  *
- * @author Alfa003
+ * @author Brandux
  */
-public class vacacionesDAO implements Operaciones{
-    JdbcTemplate jt;
-    
-    public vacacionesDAO(DataSource dataSource)       
-    {
-     jt= new JdbcTemplate(dataSource);
+public class RenunciaDAO implements Operaciones{
+    private JdbcTemplate jt;
+
+    public RenunciaDAO(DataSource dataSource) {
+        jt = new JdbcTemplate(dataSource);
     }
     @Override
     public ArrayList<Map<String, Object>> listar() {
@@ -43,16 +41,15 @@ public class vacacionesDAO implements Operaciones{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-     public List<Map<String, Object>> asignar_permiso(String id)
-     {
-        String sql="select NO_TRABAJADOR nom,AP_PATERNO ap_p,AP_MATERNO ap_m,DI_CORREO_INST correo,NU_DOC n_d,TI_DOC t,ES_SEXO sexo,to_char(FE_NAC,'DD-MM-YYYY') AS F FROM RHTM_TRABAJADOR WHERE ID_TRABAJADOR = ?"; 
-        return jt.queryForList(sql,id);
+    
+    public ArrayList<Map<String, Object>> listarEmpleados(){
+        String sql="select rt.ID_TRABAJADOR,rt.NO_TRABAJADOR,rt.AP_PATERNO,rt.AP_MATERNO, rt.NU_DOC  ,ra.NO_AREA,rs.NO_SECCION,rp.NO_PUESTO,rc.FE_DESDE,rc.FE_HASTA\n" +
+                    "from rhtr_puesto rp, rhtd_area ra, rhtr_seccion rs, rhtm_trabajador rt, rhtm_contrato rc,rhtx_departamento rd\n" +
+                    "where rp.ID_SECCION = rs.ID_SECCION and rs.ID_AREA = ra.ID_AREA and rc.ID_PUESTO = rp.ID_PUESTO  and rc.ID_TRABAJADOR = rt.ID_TRABAJADOR and rd.ID_DEPARTAMENTO = ra.ID_DEPARTAMENTO\n" +
+                    "       and rd.ID_DEPARTAMENTO='DPT-0017'\n" +
+                    "AND RC.FE_HASTA > SYSDATE \n" +
+                    "ORDER BY ( RA.NO_AREA)"; 
+        return (ArrayList<Map<String, Object>>) jt.queryForList(sql);
         
-     }
-     public List<Map<String,Object>>asignar_masivamente(String data [])
-     {
-         String sql="select DI_CORREO_INST,ES_SEXO,FE_NAC FROM RHTM_TRABAJADOR WHERE ID_TRABAJADOR IN(?,?,?,?)";
-        return jt.queryForList(sql, (Object[]) data);
-     }
-
+    }
 }
