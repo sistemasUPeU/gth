@@ -122,7 +122,12 @@
 
             function enterMod(a) {
                 var m = a.toString();
-                var id = "MOD-000" + m;
+                var id;
+                if (m === "10") {
+                    id = "MOD-00" + m;
+                } else {
+                    id = "MOD-000" + m;
+                }
                 try {
                     $.get("components?opc=redMod", "idmod=" + id, function (objJson) {
                         if (objJson.rpta) {

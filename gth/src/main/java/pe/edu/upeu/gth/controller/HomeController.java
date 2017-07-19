@@ -36,10 +36,28 @@ public class HomeController {
     public String index() {
         return "index";
     }
-    
+
     @RequestMapping(value = "/menu")
-    public String menu() {
-        return "menu";
+    public String menu(HttpServletRequest request, HttpServletResponse response) {
+        String opc = request.getParameter("opc");
+        HttpSession session = request.getSession(true);
+        String pagina = "menu";
+        try {
+            if (opc == null) {
+                pagina = "menu";
+            } else {
+                switch (opc) {
+                    case "logout":
+                        session.invalidate();
+                        pagina = "login";
+                        break;
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error : " + e);
+        }
+        return pagina;
     }
 
     @RequestMapping(value = "/principal")

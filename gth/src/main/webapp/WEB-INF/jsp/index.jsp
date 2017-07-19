@@ -20,8 +20,6 @@
         <link rel="icon" href="<c:url value='resources/img/favicon/favicon.ico'/>" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <%@include file="../../jspf/general.jspf" %>
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/jquery.dataTables.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
     </head>
     <body class="smart-style-1 fixed-header fixed-footer mainBody">
         <header id="header">
@@ -293,6 +291,6 @@
     </body>
 </html>
 <%} else {
-        out.print("<script> window.location.href = '/TALENTO_HUMANO/';</script>");
+        out.print("<script> window.location.href = '/gth/';</script>");
     }
 %>

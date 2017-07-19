@@ -24,15 +24,15 @@
             }
         </style>
     </head>
-    <body class="animated fadeInDown">
+    <body onload="nobackbutton()" class="animated fadeInDown">
         <header id="header">
             <div id="logo-group" >
 
             </div>
 
         </header>
-        <div id="main" role="main" class="mainLogin" style="position: absolute;">
-            <div id="content" class="containerr">                
+        <div id="main" role="main" class="mainLogin">
+            <div id="content" class="containerr">
                 <div class="row">
                     <div
                         class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hidden-xs hidden-sm">
@@ -101,5 +101,14 @@
         <script src="<c:url value='resources/js/app.min.js'/>"></script>
         <script src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
         <script src="<c:url value='resources/js/index.js?v=<%=globalProperties.VERSION_JS%>'/>" type="text/javascript"></script>
+        <script>
+                                                                   function nobackbutton() {
+                                                                       window.location.hash = "no-back-button";
+                                                                       window.location.hash = "Again-No-back-button";
+                                                                       window.onhashchange = function () {
+                                                                           window.location.hash = "";
+                                                                       };
+                                                                   }
+        </script>
     </body>
 </html>
