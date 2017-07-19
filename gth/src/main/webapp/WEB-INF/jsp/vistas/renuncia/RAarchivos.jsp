@@ -63,7 +63,7 @@
                                                             <th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>OPC</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="data">
+                                                    <tbody>
                                                         <tr >
                                                             <td>1</td>
                                                             <td>Jennifer</td>
@@ -125,49 +125,95 @@
     <script type="text/javascript" src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
     <script type="text/javascript" src="<c:url value='resources/js/file/fileinput.min.js" type="text/javascript'/>"></script>
     <script type="text/javascript" src="<c:url value='resources/js/app.min.js'/>"></script> 
-    <script type="text/javascript" src="<c:url value='resources/js/operacionesBuscar.js'/>"></script>
     <script type="text/javascript" src="<c:url value='resources/js/jquery.dataTables.min.js'/>"></script>
-    </body>
     
     
 
- <script>
-         $(document).ready(function () {
-            list(); 
-         });
+    <script>
+            $(document).ready(function () {
+               list(); 
+                
+            
+            });
         
-        function list() {
-            var url = "renuncia?opc=status";//nombre del controlador ejm. renuncia?op=1
-            //var data = "";//atributos a mandar ejm. idusuario=$("#idu").val();
-            //data += "&iduser=";//comienza con --> &
-            try {
-                $.getJSON(url, function (objJson) {
-                    var lista = objJson.pr;
-                    if (lista.length > 0) {
-                        var m = "";
-                        for (var i = 0; i < lista.length; i++) {
-                            m += '<tr>';
-                            m += '<td>'  + (i + 1) + '</td>';
-                            m += '<td>'+ lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' +lista[i].NO_TRABAJADOR +'</td>';// cambiar por el atributo que te da en tu DAO
-                            m += '<td>' + lista[i].NU_DOC + '</td>';
-                            m += '<td>' + lista[i].AP_MATERNO + '</td>';
-                            m += '<td>' + lista[i].NO_AREA + '</td>';
-                            m += '<td>' + lista[i].NO_SECCION + '</td>';
-                            m += '</tr>';
-                        }
-                        //$("#example").empty();
-                        //$("#example").append(createTable());
-                        $("#data").empty();
-                        $("#data").append(m);
-                        $.dataTable();
-                    } else {
-                        console.log("No hay datos en la tabla");
-                    }
-                });
-            } catch (e) {
-                console.error("Error al listar : " + e);
-            }
+           function list() {
+               var url = "renuncia?opc=status";//nombre del controlador ejm. renuncia?op=1
+               try {
+                   $.getJSON(url, function (objJson) {
+                       var lista = objJson.pr;
+                       if (lista.length > 0) {
+                           var m = "";
+                           for (var i = 0; i < lista.length; i++) {
+                               m += '<tr>';
+                               m += '<td>'  + (i + 1) + '</td>';
+                               m += '<td>'+ lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' +lista[i].NO_TRABAJADOR +'</td>';// cambiar por el atributo que te da en tu DAO
+                               m += '<td>' + lista[i].NU_DOC + '</td>';
+                               m += '<td>' + lista[i].AP_MATERNO + '</td>';
+                               m += '<td>' + lista[i].NO_AREA + '</td>';
+                               m += '<td>' + lista[i].NO_SECCION + '</td>';
+                               m += '<td> HOLA </td>';
+                               m += '</tr>';
+                           }
+                           $("#example").empty();
+                           $("#example").append(createTable());
+                           $("#data").empty();
+                           $("#data").append(m);
+                           $('#example').DataTable();
+                         
+                         //naa
+                         
+                          
+                       } else {
+                           console.log("No hay datos en la tabla");
+                       }
+                   });
+               } catch (e) {
+                   console.error("Error al listar : " + e);
+               }
 
-        }
+           }
+        
+        
+           function createTable() {
+                               var s = '<table id="example" class="table table-striped table-bordered table-hover" width="100%">';
+                               s += '<thead>';
+                               s += '<th data-hide="phone">N°</th>';
+                               s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Apellidos y Nombres</th>';
+                               s += '<th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> DNI</th>';
+                               s += '<th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>AREA</th>';
+                               s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> SECCION</th>';
+                               s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>PUESTO</th>';
+                               s += '<th data-hide="phone,tablet">OPC</th>';
+                               s += '</thead>';
+                               s += '<tbody id="data"></tbody>';
+                               s += '</table>';
+                               return s;
+                           }
+                           
+          
+function filterGlobal () {
+    $('#example').DataTable().search(
+        $('#global_filter').val(),
+        $('#global_regex').prop('checked'),
+        $('#global_smart').prop('checked')
+    ).draw();
+}
+ 
+function filterColumn ( i ) {
+    $('#exaple').DataTable().column( i ).search(
+        $('#col'+i+'_filter').val(),
+        $('#col'+i+'_regex').prop('checked'),
+        $('#col'+i+'_smart').prop('checked')
+    ).draw();
+}
+                  
+                           
+             
     </script>
+    <script type="text/javascript" src="<c:url value='resources/js/operacionesBuscar.js'/>"></script>
+   
+    
+    <script type="text/javascript" src="<c:url value='resources/js/jquery.dataTables.min.js'/>"></script>
+
+    </body>
 </html>
