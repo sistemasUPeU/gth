@@ -21,7 +21,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-rtl.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/fileinput.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/jquery.dataTables.min.css'/>">
+        <link href="<c:url value='resources/css/datatable.css" rel="stylesheet'/>" type="text/css"/>
     </head>
 </head>
 
@@ -45,36 +45,15 @@
                                             <ul class="nav nav-tabs pull-right in" id="myTab"> 
                                                 <li class="active">
                                                     <a data-toggle="tab" href="#s1"><i class="fa fa-user"></i> <span class="hidden-mobile hidden-tablet">Usuarios RRHH</span></a>
+                                                    
                                                 </li>
                                             </ul>
                                         </header>
+                                        <br>
                                         <section>
-                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div id="conTable" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                                                <table id="example" class="table table-striped table-bordered table-hover" width="100%">
-                                                    <thead>			                
-                                                        <tr>
-                                                            <th data-hide="phone">N°</th>
-                                                            <th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Apellidos y Nombres</th>
-                                                            <th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> DNI</th>
-                                                            <th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>AREA</th>
-                                                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> SECCION</th>
-                                                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>PUESTO</th>
-                                                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>OPC</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr >
-                                                            <td>1</td>
-                                                            <td>Jennifer</td>
-                                                            <td>1-342-463-8341</td>
-                                                            <td>Et Rutrum Non Associates</td>
-                                                            <td>35728</td>
-                                                            <td>Fogo</td>
-                                                            <td>OPC</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                               
                                             </div>
                                         </section>
                                     </div>
@@ -84,7 +63,7 @@
                         </section>
 
 
-                        <section id="widget-grid" class="col-md-6">
+                      <!-- <section id="widget-grid" class="col-md-6">
                             <div class="row">
                                 <h1>Adjuntar solicitud</h1>
                                 <form>
@@ -103,20 +82,15 @@
                                     </div>
                                 </form>
                             </div>
-                            </div>
+             
 
-                        </section>
+                        </section>-->
                 </div>
 
                 <!-- END SHORTCUT AREA -->
                 <!--Cositas-->
-                <script>
-                    $("#file-3").fileinput({
-                        showCaption: false,
-                        browseClass: "btn btn-primary btn-lg",
-                        fileType: "any"
-                    });
-                </script>
+                
+                
                 <script type="text/javascript" src="<c:url value='resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
                 <script type="text/javascript" src="<c:url value='resources/js/app.config.js'/>"></script>
                 <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
@@ -131,8 +105,7 @@
                 <script type="text/javascript" src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
                 <script type="text/javascript" src="<c:url value='resources/js/file/fileinput.min.js" type="text/javascript'/>"></script>
                 <script type="text/javascript" src="<c:url value='resources/js/app.min.js'/>"></script> 
-                <script type="text/javascript" src="<c:url value='resources/js/jquery.dataTables.min.js'/>"></script>
-
+                <script src="<c:url value='resources/js/plugin/datatables/datatable.js'/>" type="text/javascript"></script>
 
 
                 <script>
@@ -160,11 +133,11 @@
                                         m += '<td> HOLA </td>';
                                         m += '</tr>';
                                     }
-                                    $("#example").empty();
-                                    $("#example").append(createTable());
+                                    $("#conTable").empty();
+                                    $("#conTable").append(createTable());
                                     $("#data").empty();
                                     $("#data").append(m);
-                                    $('#example').DataTable();
+                                    $('#dt_basic').dataTable();
 
                                     //naa
 
@@ -181,7 +154,7 @@
 
 
                     function createTable() {
-                        var s = '<table id="example" class="table table-striped table-bordered table-hover" width="100%">';
+                        var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">';
                         s += '<thead>';
                         s += '<th data-hide="phone">N°</th>';
                         s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Apellidos y Nombres</th>';
@@ -196,30 +169,6 @@
                         return s;
                     }
 
-
-                    function filterGlobal() {
-                        $('#example').DataTable().search(
-                                $('#global_filter').val(),
-                                $('#global_regex').prop('checked'),
-                                $('#global_smart').prop('checked')
-                                ).draw();
-                    }
-
-                    function filterColumn(i) {
-                        $('#exaple').DataTable().column(i).search(
-                                $('#col' + i + '_filter').val(),
-                                $('#col' + i + '_regex').prop('checked'),
-                                $('#col' + i + '_smart').prop('checked')
-                                ).draw();
-                    }
-
-
-
                 </script>
-                <script type="text/javascript" src="<c:url value='resources/js/operacionesBuscar.js'/>"></script>
-
-
-                <script type="text/javascript" src="<c:url value='resources/js/jquery.dataTables.min.js'/>"></script>
-
-                </body>
-                </html>
+     </body>
+</html>
