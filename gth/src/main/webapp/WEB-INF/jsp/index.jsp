@@ -14,13 +14,14 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title> .:RRHH:.</title>
+        <title> .:GTH:.</title>
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="<c:url value='resources/img/favicon/favicon.ico'/>" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <%@include file="../../jspf/general.jspf" %>
-    </head>
+
+    </head>    
     <body class="smart-style-1 fixed-header fixed-footer mainBody">
         <header id="header">
             <div id="logo-group" >
@@ -53,7 +54,7 @@
                 </div>
                 <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
                     <li class="">
-                        <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
+                        <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
                         </a>
                         <ul class="dropdown-menu pull-right">
                             <li>
@@ -111,7 +112,7 @@
                         <input id="id_trabajador" type="hidden" value="<%out.println(sesion.getAttribute("IDTR"));%>" />
                         <input id="iuser" type="hidden" value="<%out.println(id_user);%>" />
                         <a href="javascript:void(0);" id="show-shortcut" >
-                            <img id="foto_usuario" src="" class="bounceIn animated" />
+                            <img id="foto_usuario" src="<c:url value='resources/img/avatar_default.jpg'/>" class="bounceIn animated" style="width: 60px" />
                         </a>  
                     </div>
                     <div class="col-md-9">
@@ -142,6 +143,13 @@
             <div id="ribbon">
 
                 <ol class="breadcrumb">
+                    <%if (sesion.getAttribute("DEPARTAMENTO") != null) {%>
+                    <li><%out.println("Departamento de  " + ((String) sesion.getAttribute("DEPARTAMENTO")) + " / Area de "
+                                + ((String) sesion.getAttribute("AREA")) + " / Sección de "
+                                + ((String) sesion.getAttribute("SECCION")) + " / Puesto de "
+                        );
+                        %><%=((String) sesion.getAttribute("PUESTO"))%></li>
+                        <%}%>
                 </ol>
             </div>
             <div  id="content" style="display:none" class="newContent"></div>
@@ -167,88 +175,12 @@
                 <div class="col-xs-12 col-sm-6">
                     <span class="txt-color-white">AlphaTeam © 2017</span>
                 </div>
-                <%if (false) {
-                %>
-                <div class="col-xs-6 col-sm-6 text-right hidden-xs">
-                    <div class="txt-color-white inline-block">
-                        <i class="txt-color-blueLight hidden-mobile">Last account activity <i class="fa fa-clock-o"></i> <strong>52 mins ago &nbsp;</strong> </i>
-                        <div class="btn-group dropup">
-                            <button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
-                                <i class="fa fa-link"></i> <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu pull-right text-left">
-                                <li>
-                                    <div class="padding-5">
-                                        <p class="txt-color-darken font-sm no-margin">Download Progress</p>
-                                        <div class="progress progress-micro no-margin">
-                                            <div class="progress-bar progress-bar-success" style="width: 50%;"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <div class="padding-5">
-                                        <p class="txt-color-darken font-sm no-margin">Server Load</p>
-                                        <div class="progress progress-micro no-margin">
-                                            <div class="progress-bar progress-bar-success" style="width: 20%;"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <div class="padding-5">
-                                        <p class="txt-color-darken font-sm no-margin">Memory Load <span class="text-danger">*critical*</span></p>
-                                        <div class="progress progress-micro no-margin">
-                                            <div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <div class="padding-5">
-                                        <button class="btn btn-block btn-default">refresh</button>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <%}%>
             </div>
         </div>
-        <!-- END PAGE FOOTER -->
-
-        <!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
-        Note: These tiles are completely responsive,
-        you can add as many as you like
-        -->
-        <div id="shortcut">
-            <ul>
-                <li>
-                    <a href="#inbox.html" class="jarvismetro-tile big-cubes bg-color-blue"> <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>Correo<span class="label pull-right bg-color-darken">14</span></span> </span> </a>
-                </li>
-                <li>
-                    <a href="#calendar.html" class="jarvismetro-tile big-cubes bg-color-orangeDark"> <span class="iconbox"> <i class="fa fa-calendar fa-4x"></i> <span>Calendario</span> </span> </a>
-                </li>
-                <li>
-                    <a href="#gmap-xml.html" class="jarvismetro-tile big-cubes bg-color-purple"> <span class="iconbox"> <i class="fa fa-map-marker fa-4x"></i> <span>Mapas</span> </span> </a>
-                </li>
-                <li>
-                    <a href="#invoice.html" class="jarvismetro-tile big-cubes bg-color-blueDark"> <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span> </a>
-                </li>
-                <li>
-                    <a href="#gallery.html" class="jarvismetro-tile big-cubes bg-color-greenLight"> <span class="iconbox"> <i class="fa fa-picture-o fa-4x"></i> <span>Galeria </span> </span> </a>
-                </li>
-                <li>
-                    <a href="Usuario?opc=Ver_Perfil&id=" target="myframe" title="SS" class="jarvismetro-tile big-cubes selected bg-color-pinkDark"  > <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>Mi Perfil </span> </span> </a>
-                </li>
-            </ul>
-        </div>
-        <!-- END SHORTCUT AREA -->
-        <!--Modal content-->
         <div class="modalContent"></div>
 
         <%@include file="../../jspf/scripts.jspf" %>  
+        <script src="<c:url value='resources/js/JQuery/jquery.autoheight.js'/>" type="text/javascript"></script>
         <script src="<c:url value='resources/js/app.config.js'/>"></script>
         <script src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
         <script src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>"></script>
@@ -287,6 +219,16 @@
                 }
             }
 
+            $("#btn-ocultar").click(function () {
+                if (btnclose == 0) {
+                    $(".logininfo").css({display: "none"});
+                    btnclose += 1;
+                } else {
+                    $(".logininfo").css({display: "block"});
+                    btnclose = 0;
+                }
+
+            });
         </script>
     </body>
 </html>

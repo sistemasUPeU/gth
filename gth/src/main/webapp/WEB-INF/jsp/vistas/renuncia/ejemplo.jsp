@@ -55,7 +55,7 @@
             }
 
             function createTable() {
-                var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover">';
+                var s = '<table id="dt_basic" class="table table-striped table-bordered">';
                 s += '<thead>';
                 s += '<th>Nombre modulo</th>';
                 s += '<th>icono</th>';
