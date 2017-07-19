@@ -50,7 +50,10 @@
                                         </header>
                                         <br>
                                         <section>
-                                            <div id="conTable" class="col-xs-6 col-sm-12 col-md-12 col-lg-12"></div>
+                                            <div id="conTable" class="col-xs-6 col-sm-12 col-md-12 col-lg-12">
+                                                
+                                                
+                                            </div>
                                         </section>
                                     </div>
                                 </article>

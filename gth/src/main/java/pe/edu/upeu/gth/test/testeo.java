@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 import pe.edu.upeu.gth.config.AppConfig;
 import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
+import pe.edu.upeu.gth.dao.RenunciaDAO;
 import pe.edu.upeu.gth.dao.UsuarioDAO;
 import pe.edu.upeu.gth.dao.ejemploDAO;
 import pe.edu.upeu.gth.wsclient.Client;
@@ -46,7 +47,8 @@ public class testeo {
         //pR("ROL-0019", "MOD-0003");
 //        System.out.println(asd.getSessionJson());
         //Listar_empleados();
-        validar("liliana", "123");
+        //validar("liliana", "123");
+        detalleTr("TRB-003838");
     }
 
     public static void validar(String u,String p){
@@ -123,5 +125,8 @@ public class testeo {
         }
 
     }
-
-        }
+    public static void detalleTr (String id){
+        RenunciaDAO rda = new RenunciaDAO(d);
+        System.out.println(rda.DetalleEmp(id));
+    }
+}
