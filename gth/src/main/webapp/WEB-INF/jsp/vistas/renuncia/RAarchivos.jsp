@@ -19,7 +19,6 @@
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-rtl.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/fileinput.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>">
         <link href="<c:url value='resources/css/datatable.css" rel="stylesheet'/>" type="text/css"/>
     </head>
@@ -34,7 +33,7 @@
                         </div>
                         </div>
                         </div>
-                        <section id="widget-grid" class="col-md-6">
+                        <section id="widget-grid" class="col-md-6 jarviswidget">
                             <div class="row">
                                 <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" 
@@ -57,11 +56,11 @@
                                 </article>
                             </div>
                         </section>
-                        <section id="widget-grid" class="col-md-6">
+                        <section id="widget-grid" class="col-md-6 jarviswidget">
                             <div class="widget-body bordered">
                                 <form class="form-horizontal">
                                         <fieldset>
-                                            <legend>Disabled Form Elements</legend>
+                                            <legend>Datos Del Trabajor</legend>
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label">Text field</label>
                                                 <div class="col-md-10">
@@ -132,7 +131,6 @@
                 <script type="text/javascript" src="<c:url value='resources/js/plugin/bootstrap-slider/bootstrap-slider.min.js'/>"></script>
                 <script type="text/javascript" src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
                 <script type="text/javascript" src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
-                <script type="text/javascript" src="<c:url value='resources/js/file/fileinput.min.js" type="text/javascript'/>"></script>
                 <script type="text/javascript" src="<c:url value='resources/js/app.min.js'/>"></script> 
                 <script src="<c:url value='resources/js/plugin/datatables/datatable.js'/>" type="text/javascript"></script>
 
