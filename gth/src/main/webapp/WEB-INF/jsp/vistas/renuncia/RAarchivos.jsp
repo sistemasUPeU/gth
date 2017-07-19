@@ -136,56 +136,56 @@
 
 
                 <script>
-                    $(document).ready(function () {
-                        list();
-                    });
+                     $(document).ready(function () {
+                         list();
+                     });
 
-                    function list() {
-                        var url = "renu?opc=list";//nombre del controlador ejm. renuncia?op=1
-                        try {
-                            $.post(url , function (objJson) {
-                                var lista = objJson.pr;
-                                if (lista.length > 0) {
-                                    var m = "";
-                                    for (var i = 0; i < lista.length; i++) {
-                                        m += '<tr>';
-                                        m += '<td>' + (i + 1) + '</td>';
-                                        m += '<td>' + lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' + lista[i].NO_TRABAJADOR + '</td>';// cambiar por el atributo que te da en tu DAO
-                                        m += '<td>' + lista[i].NU_DOC + '</td>';
-                                        m += '<td>' + lista[i].AP_MATERNO + '</td>';
-                                        m += '<td>' + lista[i].NO_AREA + '</td>';
-                                        m += '<td>' + lista[i].NO_SECCION + '</td>';
-                                        m += '<td> HOLA </td>';
-                                        m += '</tr>';
-                                    }
-                                    $("#conTable").empty();
-                                    $("#conTable").append(createTable());
-                                    $("#data").empty();
-                                    $("#data").append(m);
-                                    $('#dt_basic').dataTable();
-                                } else {
-                                    console.log("No hay datos en la tabla");
-                                }
-                            });
-                        } catch (e) {
-                            console.error("Error al listar : " + e);
-                        }
-                    }
-                    function createTable() {
-                        var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">';
-                        s += '<thead>';
-                        s += '<th data-hide="phone">N°</th>';
-                        s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Apellidos y Nombres</th>';
-                        s += '<th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> DNI</th>';
-                        s += '<th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>AREA</th>';
-                        s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> SECCION</th>';
-                        s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>PUESTO</th>';
-                        s += '<th data-hide="phone,tablet">OPC</th>';
-                        s += '</thead>';
-                        s += '<tbody id="data"></tbody>';
-                        s += '</table>';
-                        return s;
-                    }
+                     function list() {
+                         var url = "renu?opc=list";//nombre del controlador ejm. renuncia?op=1
+                         try {
+                             $.post(url , function (objJson) {
+                                 var lista = objJson.pr;
+                                 if (lista.length > 0) {
+                                     var m = "";
+                                     for (var i = 0; i < lista.length; i++) {
+                                         m += '<tr>';
+                                         m += '<td>' + (i + 1) + '</td>';
+                                         m += '<td>' + lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' + lista[i].NO_TRABAJADOR + '</td>';// cambiar por el atributo que te da en tu DAO
+                                         m += '<td>' + lista[i].NU_DOC + '</td>';
+                                         m += '<td>' + lista[i].AP_MATERNO + '</td>';
+                                         m += '<td>' + lista[i].NO_AREA + '</td>';
+                                         m += '<td>' + lista[i].NO_SECCION + '</td>';
+                                         m += '<td><a href="hola?='+ lista[i].ID_TRABAJADOR +'" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-list"></i></a></td>';
+                                         m += '</tr>';
+                                     }
+                                     $("#conTable").empty();
+                                     $("#conTable").append(createTable());
+                                     $("#data").empty();
+                                     $("#data").append(m);
+                                     $('#dt_basic').dataTable();
+                                 } else {
+                                     console.log("No hay datos en la tabla");
+                                 }
+                             });
+                         } catch (e) {
+                             console.error("Error al listar : " + e);
+                         }
+                     }
+                     function createTable() {
+                         var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">';
+                         s += '<thead>';
+                         s += '<th data-hide="phone">N°</th>';
+                         s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Apellidos y Nombres</th>';
+                         s += '<th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> DNI</th>';
+                         s += '<th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>AREA</th>';
+                         s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> SECCION</th>';
+                         s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>PUESTO</th>';
+                         s += '<th data-hide="phone,tablet">OPC</th>';
+                         s += '</thead>';
+                         s += '<tbody id="data"></tbody>';
+                         s += '</table>';
+                         return s;
+                     }
                 </script>
      </body>
 </html>
