@@ -47,13 +47,11 @@
                                 </ul>
                             </header>
                             <div class="no-padding">
-                                <div class="container">                                           
+                                <div class="container-fluid">                                           
                                     <table class="table" id="table">
                                         <thead>
                                           <tr>
-                                            <th>Nombre</th>
-                                            <th>Apellido Paterno</th>
-                                            <th>Apellido Materno</th>
+                                            <th>Nombres y Apellidos</th>
                                             <th>Área</th>
                                             <th>Sección</th>
                                             <th>Puesto</th>
@@ -64,9 +62,7 @@
                                         </thead>
                                         <c:forEach var="va" items="${listar}" varStatus="status">
                                         <tbody>
-                                            <td>${va.NO_TRABAJADOR}</td>
-                                            <td>${va.AP_PATERNO}</td>
-                                            <td>${va.AP_MATERNO}</td>
+                                        <td><a href="asig?id=${va.ID}"> ${va.NOM}, ${va.A_P} ${va.A_M}</a> </td>
                                             <td>${va.NO_AREA}</td>
                                             <td>${va.NO_SECCION}</td>
                                             <td>${va.NO_PUESTO}</td>
