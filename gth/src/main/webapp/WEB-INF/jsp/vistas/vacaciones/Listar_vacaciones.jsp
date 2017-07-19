@@ -26,14 +26,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="well">
-                        <button class="btn btn-danger pull-right">ENVIAR</button>
                         <h1><span class="semi-bold">Lista</span> <i class="ultra-light">De Vacaciones</i> (Trabajadores) <sup class="badge bg-color-red bounceIn animated">v 2.0</sup> <br>
                             <small class="text-danger slideInRight fast animated"><strong>Inicio de contratación</strong></small></h1>
-                             
-
+       
                     </div>
                 </div>
-                
             </div>
             <section id="widget-grid" class="">
                 <div class="row">
@@ -50,16 +47,13 @@
                                 </ul>
                             </header>
                             <div class="no-padding">
-
                                 <div class="container">                                           
                                     <table class="table" id="table">
-
-                                <div class="container-fluid">                                           
-                                      <table class="table">
-
                                         <thead>
                                           <tr>
-                                            <th>Nombres y Apellidos</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido Paterno</th>
+                                            <th>Apellido Materno</th>
                                             <th>Área</th>
                                             <th>Sección</th>
                                             <th>Puesto</th>
@@ -70,7 +64,9 @@
                                         </thead>
                                         <c:forEach var="va" items="${listar}" varStatus="status">
                                         <tbody>
-                                        <td><a href="asig?id=${va.ID}">${va.NOM}, ${va.A_P} ${va.A_M}</a></td>
+                                            <td>${va.NO_TRABAJADOR}</td>
+                                            <td>${va.AP_PATERNO}</td>
+                                            <td>${va.AP_MATERNO}</td>
                                             <td>${va.NO_AREA}</td>
                                             <td>${va.NO_SECCION}</td>
                                             <td>${va.NO_PUESTO}</td>

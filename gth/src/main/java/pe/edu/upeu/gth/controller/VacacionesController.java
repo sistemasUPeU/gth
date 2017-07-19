@@ -34,16 +34,17 @@ public class VacacionesController {
     @Autowired
     private EmpleadoDAO aO;
 
-
     
-    
-    public String id_t="";
-
-    
-    @RequestMapping(value = "/asig",method = RequestMethod.GET)
-    public ModelAndView asignar(ModelAndView modelo, HttpServletRequest request)
+    @RequestMapping(value = "/prog")
+    public ModelAndView prog(ModelAndView model)
     {
-        id_t=request.getParameter("id");
+        model.setViewName("vistas/vacaciones/prog_vaca");
+        return model;
+    }
+    
+    @RequestMapping(value = "/asig")
+    public ModelAndView asignar(ModelAndView modelo)
+    {
         modelo.setViewName("vistas/vacaciones/prog_vaca");
         return modelo;
     }
@@ -52,7 +53,7 @@ public class VacacionesController {
     {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-         List<Map<String, Object>> vacac= vaO.asignar_permiso(id_t);
+         List<Map<String, Object>> vacac= vaO.asignar_permiso("TRB-002756");
          Gson gson = new Gson();
          
         out.println (gson.toJson(vacac));
