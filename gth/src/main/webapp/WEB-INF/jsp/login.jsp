@@ -11,18 +11,6 @@
         <link rel="icon" href="<c:url value='resources/img/favicon/favicon.ico'/>" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <%@include file="../../jspf/general.jspf" %>
-        <style>
-            @media screen and (min-width: 992px){
-                #content{
-                    margin-left: 70px;margin-right: 70px;
-                }
-            }
-            @media screen and (min-width: 992px) and (max-width: 1024px){
-                #content{
-                    margin-left: 35px;margin-right: 35px;
-                }
-            }
-        </style>
     </head>
     <body onload="nobackbutton()" class="animated fadeInDown">
         <header id="header">
