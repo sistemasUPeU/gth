@@ -52,32 +52,32 @@
                             </header>
                             <div class="no-padding">
                                 <div class="container">                                           
-                                      <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th>Nombre</th>
-                                            <th>Apellidos</th>
-                                            <th>DNI</th>
-                                            <th>Telefono</th>
-                                            <th>Celular</th>
-                                            <th>Email Personal</th>
-                                            <th>Email Institucional</th>
-                                            <th><input type="checkbox" id="ckbCheckAll" /></th>
-                                          </tr>
-                                        </thead>
-                                        <c:forEach var="va" items="${holiday}" varStatus="status">
-                                        <tbody>
-                                            <td>${va.no_trabajador}</td>
-                                            <td>${va.ap_paterno}</td>
-                                            <td>${va.nu_doc}</td>
-                                            <td>${va.te_trabajador}</td>
-                                            <td>${va.cl_tra}</td>
-                                            <td>${va.di_correo_personal}</td>
-                                            <td>${va.di_correo_inst}</td>
-                                            <td><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></td>
-                                        </tbody>
-                                        </c:forEach>
-                                      </table>
+                                       <table id="example" class="table table-striped table-bordered table-hover" width="100%">
+                                                    <thead>			                
+                                                        <tr>
+                                                            <th data-hide="phone">N°</th>
+                                                            <th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> APELLIDOS Y NOMBRES</th>
+                                                            <th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> DNI</th>
+                                                            <th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>TELEFONO</th>
+                                                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> CELULAR</th>
+                                                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Correo Personal</th>
+                                                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Correo Institucional</th>
+                                                            <th><input type="checkbox" id="ckbCheckAll" /></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="data">
+                                                        <tr >
+                                                            <td>1</td>
+                                                            <td>Jennifer</td>
+                                                            <td>1-342-463-8341</td>
+                                                            <td>Et Rutrum Non Associates</td>
+                                                            <td>35728</td>
+                                                            <td>Fogo</td>
+                                                            <td>OPC</td>
+                                                            <td><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                     </div>
                               </div>
                             </div>
@@ -102,14 +102,41 @@
                                            <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/app.min.js'/>"></script>
-                                           <--CHECKBOX ALL :D-->
-                                           <script>
-                                            $(document).ready(function () {
-                                            $("#ckbCheckAll").click(function () {
-                                                $(".checkBoxClass").prop('checked', $(this).prop('checked'));
+                                           
+                                        <script>
+                                        $(document).ready(function () {
+                    $.ajax({
+                    url: 'turnh',
+                    type: 'POST',
+                    async: true,
+                    data: '',
+                    success: function (objJson) {
+                        var lista = objJson.pr;
+                        var s = '';
+                        if (lista.length > 0) {
+                            for (var i = 0; i < lista.length; i++) {
+                                 s += '<tr>';
+                                 s += '<td>'  + (i + 1) + '</td>';
+                                 s += '<td>'+ lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' +lista[i].NO_TRABAJADOR +'</td>';// cambiar por el atributo que te da en tu DAO
+                                 s += '<td>' + lista[i].NU_DOC + '</td>';
+                                 s += '<td>' + lista[i].TE_TRABAJADOR + '</td>';
+                                 s += '<td>' + lista[i].CL_TRA + '</td>';
+                                 s += '<td>' + lista[i].DI_CORREO_PERSONAL + '</td>';
+                                 s += '<td>' + lista[i].DI_CORREO_INST + '</td>'; 
+                                 s += '<td>' + '<p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p>' +'</td>';
+                                 s += '</tr>';
+                            }
+                            $("#data").empty();
+                            $("#data").append(s);
+                        }
+                      }
+                     });
+                     
+                    $("#ckbCheckAll").click(function () {
+                    $(".checkBoxClass").prop('checked', $(this).prop('checked'));
                                             });
-});
-                                          </script>
+            });
+                                   </script>
         
     </body>
 </html>
