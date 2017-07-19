@@ -27,7 +27,7 @@
                 <div class="col-sm-12">
                     <div class="well">
                         <h1><span class="semi-bold">Lista</span> <i class="ultra-light">De Vacaciones</i> (Trabajadores) <sup class="badge bg-color-red bounceIn animated">v 2.0</sup> <br>
-                            <small class="text-danger slideInRight fast animated"><strong>Inicio de contratación</strong></small></h1>
+                            <small class="text-danger slideInRight fast animated"><strong>Inicio de Vacaciones</strong></small></h1>
        
                     </div>
                 </div>
@@ -38,39 +38,57 @@
                         <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" 
                              data-widget-deletebutton="false">
                             <header>
-                                <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                                <span class="widget-icon"> <i class="fa fa-table"></i> </span>
                                 <h2>Carga de Vacaciones</h2>
-                                <ul class="nav nav-tabs pull-right in" id="myTab"> 
-                                    <div class="form-group">
-                                        <input type="text" id="Buscar" class="form-control" onkeyup="doseach()" placeholder="Search">
-                                    </div>
-                                </ul>
+
                             </header>
-                            <div class="no-padding">
-                                <div class="container-fluid">                                           
-                                    <table class="table" id="table">
+
+                            <!-- widget div-->
+                            <div>
+
+                                <!-- widget edit box -->
+                                <div class="jarviswidget-editbox">
+                                    <!-- This area used as dropdown edit box -->
+
+                                </div>
+                                <!-- end widget edit box -->
+
+                                <!-- widget content -->
+                                <div class="widget-body no-padding">
+
+                                    <table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
+
                                         <thead>
-                                          <tr>
+                                            <tr>
+                                                <th class="hasinput" style="width:17%">
+                                                    <input type="text" class="form-control" placeholder="Filter Name" />
+                                                </th>                                       
+                                            </tr>
+                                            <tr>
+                                            <th>N°</th>
                                             <th>Nombres y Apellidos</th>
                                             <th>Área</th>
                                             <th>Sección</th>
                                             <th>Puesto</th>
                                             <th>Fecha-Desde</th>
                                             <th>Fecha-Hasta</th>
-                                            <th><input type="checkbox" id="ckbCheckAll" /></th>
+                                            <th>Seleccionar<input type="checkbox" id="ckbCheckAll" /></th>
                                           </tr>
                                         </thead>
-                                        <c:forEach var="va" items="${listar}" varStatus="status">
-                                        <tbody>
-                                        <td><a href="asig?id=${va.ID}"> ${va.NOM}, ${va.A_P} ${va.A_M}</a> </td>
-                                            <td>${va.NO_AREA}</td>
-                                            <td>${va.NO_SECCION}</td>
-                                            <td>${va.NO_PUESTO}</td>
-                                            <td>${va.FE}</td>
-                                            <td>${va.FE2}</td>
-                                            <td><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></td>
+
+                                        <tbody id="data">
+                                            <tr >
+                                                <td>1</td>
+                                                <td>Jennifer</td>
+                                                <td>1-342-463-8341</td>
+                                                <td>Et Rutrum Non Associates</td>
+                                                <td>35728</td>
+                                                <td>Fogo</td>
+                                                <td>OPC</td>
+                                                <td><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></td>
+                                            </tr>
                                         </tbody>
-                                        </c:forEach>
+
                                       </table>
                                     </div>
                               </div>
@@ -96,9 +114,36 @@
                                            <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/app.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/lista'/>"></script>
                                            <script>
                                             $(document).ready(function () {
+                                                $.ajax({
+                    url: 'vac_emple',
+                    type: 'POST',
+                    async: true,
+                    data: '',
+                    success: function (objJson) {
+                        var lista = objJson.list;
+                        var s = '';
+                        if (lista.length > 0) {
+                            for (var i = 0; i < lista.length; i++) {
+                                 s += '<tr>';
+                                 s += '<td>'  + (i + 1) + '</td>';
+                                 s += '<td>' +lista[i].NOM + ' , ' + lista[i].A_P+ '  ' +lista[i].A_M +'</td>';// cambiar por el atributo que te da en tu DAO
+                                 s += '<td>' + lista[i].NO_AREA+ '</td>';
+                                 s += '<td>' + lista[i].NO_SECCION+ '</td>';
+                                 s += '<td>' + lista[i].NO_PUESTO + '</td>';
+                                 s += '<td>' + lista[i].FE + '</td>';
+                                 s += '<td>' + lista[i].FE2+ '</td>'; 
+                                 s += '<td>' + '<p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p>' +'</td>';
+                                 s += '</tr>';
+                            }
+                            $("#data").empty();
+                            $("#data").append(s);
+                        }
+                      }
+                     });   
+                                                
+                                                     
                                             $("#ckbCheckAll").click(function () {
                                                 $(".checkBoxClass").prop('checked', $(this).prop('checked'));
                                                             });
