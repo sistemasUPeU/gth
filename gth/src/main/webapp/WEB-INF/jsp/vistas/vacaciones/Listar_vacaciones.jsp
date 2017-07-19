@@ -111,7 +111,7 @@
                                                         <th data-hide="phone,tablet">Puesto</th>
                                                         <th data-hide="phone,tablet">Fecha Inico</th>
                                                         <th data-hide="phone,tablet">Fecha Fin</th>
-                                                        <th>Seleccionar<input type="checkbox" id="ckbCheckAll" /></th>
+                                                        <th>Seleccionar<center><input type="checkbox" id="ckbCheckAll" /></center></th>
 
                                                 </tr>
                                                 </thead>
@@ -171,6 +171,15 @@
                                            <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/app.min.js'/>"></script>
+                                           <!-- PAGE RELATED PLUGIN(S) -->
+                                           <script src="resources/js/plugin/datatables/newjavascript.js"></script>
+                                           <script src="resources/js/plugin/datatables/dataTables.colVis.min.js"></script>
+                                           <script src="resources/js/plugin/datatables/dataTables.tableTools.min.js"></script>
+                                           <script src="resources/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+                                           <script src="resources/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+
+
+
                                            <script>
                                             $(document).ready(function () {
                                                 $.ajax({
@@ -191,7 +200,7 @@
                                  s += '<td>' + lista[i].NO_PUESTO + '</td>';
                                  s += '<td>' + lista[i].FE + '</td>';
                                  s += '<td>' + lista[i].FE2+ '</td>'; 
-                                 s += '<td>' + '<p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p>' +'</td>';
+                                 s += '<td>' + '<center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center>' +'</td>';
                                  s += '</tr>';
                             }
                             $("#data").empty();
