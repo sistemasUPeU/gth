@@ -51,17 +51,48 @@
                                         </header>
                                         <br>
                                         <section>
-                                            <div id="conTable" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-                                               
-                                            </div>
+                                            <div id="conTable" class="col-xs-6 col-sm-12 col-md-12 col-lg-12"></div>
                                         </section>
                                     </div>
                                 </article>
                             </div>
-
                         </section>
+                        <section id="widget-grid" class="col-md-6">
+                            <div class="widget-body bordered">
+                                <form class="form-horizontal">
+                                        <fieldset>
+                                            <legend>Disabled Form Elements</legend>
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">Text field</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" disabled="disabled" placeholder="Default Text Field" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">Auto Complete</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" disabled="disabled" placeholder="Type somethine..." type="text" list="list">
+                                                    <p class="note"><strong>Note:</strong> works in Chrome, Firefox, Opera and IE10.</p>
+                                                </div>
 
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">Password field</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" disabled="disabled" placeholder="Password field" type="password" value="mypassword">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">Textarea</label>
+                                                <div class="col-md-10">
+                                                    <textarea class="form-control" disabled="disabled" placeholder="Textarea" rows="4"></textarea>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                </form>
+                            </div>
+                        </section>
 
                       <!-- <section id="widget-grid" class="col-md-6">
                             <div class="row">
