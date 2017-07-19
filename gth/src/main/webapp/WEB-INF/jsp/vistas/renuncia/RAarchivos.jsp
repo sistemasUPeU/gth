@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="well">
-                    <h1><span class="semi-bold">Reporte</span> <i class="ultra-light">Renuncias / Abandono  </i><sup class="badge bg-color-red bounceIn animated">v 2.0</sup> <br>
+                    <h1><span class="semi-bold">Reporte</span> <i class="ultra-light">Renuncias / Abandono  </i><sup class="badge bg-color-red bounceIn animated">v 2.0</sup></h1> <br>
                         </div>
                         </div>
                         </div>
@@ -56,44 +56,50 @@
                                 </article>
                             </div>
                         </section>
+                        <!-- -->
                         <section id="widget-grid" class="col-md-6 jarviswidget">
                             <div class="widget-body bordered">
                                 <form class="form-horizontal">
                                         <fieldset>
                                             <legend>Datos Del Trabajor</legend>
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label">Text field</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" disabled="disabled" placeholder="Default Text Field" type="text">
+                                                <label class="col-md-2 control-label">Nombres</label>
+                                                <div class="col-md-7">
+                                                    <input class="form-control" disabled="disabled" placeholder="Nombres" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label">Auto Complete</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" disabled="disabled" placeholder="Type somethine..." type="text" list="list">
-                                                    <p class="note"><strong>Note:</strong> works in Chrome, Firefox, Opera and IE10.</p>
+                                                <label class="col-md-2 control-label">Apellidos</label>
+                                                <div class="col-md-7">
+                                                    <input class="form-control" disabled="disabled" placeholder="Apellidos" type="text">
                                                 </div>
 
                                             </div>
-
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label">Password field</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" disabled="disabled" placeholder="Password field" type="password" value="mypassword">
+                                                <label class="col-md-2 control-label">Celular</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control" disabled="disabled" placeholder="Celular" type="text">
+                                                </div>
+                                                <label class="col-md-2 control-label">DNI</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control" disabled="disabled" placeholder="DNI" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label">Textarea</label>
-                                                <div class="col-md-10">
-                                                    <textarea class="form-control" disabled="disabled" placeholder="Textarea" rows="4"></textarea>
+                                                <label class="col-md-2 control-label">Inicio Contrato</label>
+                                                <div class="col-md-4">
+                                                        <input class="form-control" disabled="disabled" placeholder="Incio Contrato" type="text">
+                                                </div>
+                                                <label class="col-md-2 control-label">Fin Contrato</label>
+                                                <div class="col-md-4">
+                                                    <input class="form-control" disabled="disabled" placeholder="Fin Contrato" type="text">
                                                 </div>
                                             </div>
+                                            
+                                            
                                         </fieldset>
                                 </form>
                             </div>
-                        </section>
-
-                      <!-- <section id="widget-grid" class="col-md-6">
                             <div class="row">
                                 <h1>Adjuntar solicitud</h1>
                                 <form>
@@ -112,11 +118,11 @@
                                     </div>
                                 </form>
                             </div>
-             
-
-                        </section>-->
+                        </section>
                 </div>
-                <!--Cositas-->
+    
+    
+                <!--SCRIP-->
                 
                 
                 <script type="text/javascript" src="<c:url value='resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
@@ -177,10 +183,10 @@
                          s += '<th data-hide="phone">N°</th>';
                          s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Apellidos y Nombres</th>';
                          s += '<th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> DNI</th>';
-                         s += '<th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>AREA</th>';
-                         s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> SECCION</th>';
-                         s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>PUESTO</th>';
-                         s += '<th data-hide="phone,tablet">OPC</th>';
+                         s += '<th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Area</th>';
+                         s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> Seccion</th>';
+                         s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Puesto</th>';
+                         s += '<th data-hide="phone,tablet">Opc</th>';
                          s += '</thead>';
                          s += '<tbody id="data"></tbody>';
                          s += '</table>';
