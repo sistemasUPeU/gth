@@ -36,6 +36,11 @@ public class HomeController {
     public String index() {
         return "index";
     }
+    
+    @RequestMapping(value = "/inicio")
+    public String inicio() {
+        return "vistas/inicio";
+    }
 
     @RequestMapping(value = "/menu")
     public String menu(HttpServletRequest request, HttpServletResponse response) {

@@ -16,7 +16,6 @@ import pe.edu.upeu.gth.dao.PrivilegioDAO;
 import pe.edu.upeu.gth.dao.RenunciaDAO;
 import pe.edu.upeu.gth.dao.UsuarioDAO;
 import pe.edu.upeu.gth.dao.ejemploDAO;
-import pe.edu.upeu.gth.wsclient.Client;
 
 /**
  *
