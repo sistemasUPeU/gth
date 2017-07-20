@@ -7,10 +7,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html style="width: 100%;overflow-x: hidden">
     <head>
         <meta charset="utf-8">
-        <title> .:RRHH:.</title>
+        <title> .:GTH:.</title>
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="<c:url value='resources/img/favicon/favicon.ico'/>" type="image/x-icon">
@@ -21,15 +21,15 @@
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production.min.css'/>">
     </head>
     <body>
-        <header id="header">
+        <header id="header" style="background: #424242;">
             <div id="logo-group" >
-                <span id="logo"> <img src="<c:url value='resources/img/logoRRHH.png'/>" style=" position: absolute;top: 6px; width:130px; height:36px " alt="Talento Humano"> </span>
+                <span id="logo"> <img src="<c:url value='resources/img/logoRRHH.png'/>" style=" position: absolute;top: 6px; width:130px; height:36px " alt="GTH"> </span>
             </div>
             <div class="pull-right">
                 <!-- logout button -->
                 <div id="logout" class="btn-header transparent pull-right">
                     <span> 
-                        <a href="menu?opc=logout" title="Sign Out" data-action="userLogout" data-logout-msg="¿Está complemetamente seguro de cerrar sesión?">
+                        <a class="btn btn-danger" href="menu?opc=logout" title="Sign Out" data-action="userLogout" data-logout-msg="¿Está complemetamente seguro de cerrar sesión?">
                             <i class="fa fa-sign-out"></i>
                             Salir
                         </a> 

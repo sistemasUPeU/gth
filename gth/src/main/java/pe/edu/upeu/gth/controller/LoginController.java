@@ -48,26 +48,24 @@ public class LoginController {
             if (Usuario.equals("") && Clave.equals("")) {
                 mp.put("rpta", false);
             } else if (user.size() == 1) {
-                session.setAttribute("IDUSER", user.get(0).get("id_usuario").toString());
-                session.setAttribute("IDTR", user.get(0).get("id_trabajador").toString());
-                //session.setAttribute("FECHA_MINIMA", user.get(0).get(""));
-                session.setAttribute("USER", user.get(0).get("no_usuario").toString());
-                session.setAttribute("IDPER", user.get(0).get("id_empleado").toString());
-                session.setAttribute("IDROL", user.get(0).get("id_rol").toString());
-                session.setAttribute("CL", user.get(0).get("pw_usuario").toString());
-                session.setAttribute("PUESTO_ID", user.get(0).get("id_puesto").toString());
-                session.setAttribute("AREA_ID", user.get(0).get("id_area").toString());
-                session.setAttribute("AREA", user.get(0).get("no_area").toString());
-                session.setAttribute("DEPARTAMENTO", user.get(0).get("no_dep").toString());
-                session.setAttribute("SECCION", user.get(0).get("no_seccion").toString());
-                session.setAttribute("DEPARTAMENTO_ID", user.get(0).get("id_departamento").toString());
-                session.setAttribute("PUESTO", user.get(0).get("no_puesto").toString());                
-                //session.setAttribute("AR_FOTO", user.get(0).get("ar_foto").toString());
-                session.setAttribute("IDDIR", user.get(0).get("id_direccion").toString());
-                if (user.get(0).get("ap_paterno").toString() == null) {
-                 session.setAttribute("NOMBRE_AP", "");
-                 } else {
-                session.setAttribute("NOMBRE_AP", user.get(0).get("ap_paterno").toString() + " " + user.get(0).get("ap_materno").toString() + " " + user.get(0).get("no_trabajador").toString());
+                session.setAttribute("IDUSER", user.get(0).get("id_usuario"));
+                session.setAttribute("IDTR", user.get(0).get("id_trabajador"));
+                session.setAttribute("USER", user.get(0).get("no_usuario"));
+                session.setAttribute("IDPER", user.get(0).get("id_empleado"));
+                session.setAttribute("IDROL", user.get(0).get("id_rol"));
+                session.setAttribute("CL", user.get(0).get("pw_usuario"));
+                session.setAttribute("PUESTO_ID", user.get(0).get("id_puesto"));
+                session.setAttribute("AREA_ID", user.get(0).get("id_area"));
+                session.setAttribute("AREA", user.get(0).get("no_area"));
+                session.setAttribute("DEPARTAMENTO", user.get(0).get("no_dep"));
+                session.setAttribute("SECCION", user.get(0).get("no_seccion"));
+                session.setAttribute("DEPARTAMENTO_ID", user.get(0).get("id_departamento"));
+                session.setAttribute("PUESTO", user.get(0).get("no_puesto"));
+                session.setAttribute("IDDIR", user.get(0).get("id_direccion"));
+                if (user.get(0).get("ap_paterno") == null) {
+                    session.setAttribute("NOMBRE_AP", "");
+                } else {
+                    session.setAttribute("NOMBRE_AP", user.get(0).get("ap_paterno") + " " + user.get(0).get("ap_materno") + " " + user.get(0).get("no_trabajador"));
                 }
                 session.setAttribute("LIST_MODULO", rD.List_Modulos(user.get(0).get("id_rol")));
                 mp.put("rpta", true);
