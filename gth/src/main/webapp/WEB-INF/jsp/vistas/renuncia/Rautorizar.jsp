@@ -50,11 +50,31 @@
                                             </header>
                                             <br>
                                             <section>
-                                                <div id="example" class="col-xs-6 col-sm-12 col-md-12 col-lg-12">
+                                                <table id="dt_basic"  class="table table-striped table-bordered" width="100%">
 
+                                                    <thead>
 
-                                                </div>
+                                                        <tr>
+                                                            <th data-class="expand">N°</th>
+                                                            <th data-hide="phone">Nombre Y Apellidos</th>
+                                                            <th data-hide="phone">Area</th>
+                                                            <th data-hide="phone,tablet">Seccion</th>
+                                                            <th data-hide="phone,tablet">Puesto</th>
+                                                            <th data-hide="phone,tablet"></th>
+
+                                                            <th>Seleccionar Todo<center><input type="checkbox" id="ckbCheckAll" /></center></th>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="data">
+                                                        <tr >
+
+                                                            <td><center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
                                             </section>
+
                                         </div>
                                     </article>
                                 </div>
@@ -62,7 +82,7 @@
                             </section>
 
                     </div>
-
+                    <%@include file="../../../../jspf/scripts.jspf" %>
                     <script type="text/javascript" src="<c:url value='resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
                     <script type="text/javascript" src="<c:url value='resources/js/app.config.js'/>"></script>
                     <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
@@ -82,7 +102,7 @@
 
 
                     <script>
-                                $(document).ready(function () {
+                        $(document).ready(function () {
                             list();
                         });
                         function list() {
@@ -96,11 +116,11 @@
                                             m += '<tr>';
                                             m += '<td>' + (i + 1) + '</td>';
                                             m += '<td>' + lista[i].IDRENUNCIA + '</td>'; // cambiar por el atributo que te da en tu DAO
-                                            m += '<td>' + lista[i].NU_DOC + '</td>';
+                                            m += '<td>' + lista[i].ID_CONTRATO + '</td>';
                                             m += '<td>' + lista[i].AP_MATERNO + '</td>';
                                             m += '<td>' + lista[i].NO_AREA + '</td>';
                                             m += '<td>' + lista[i].NO_SECCION + '</td>';
-                                            m += '<td>  </td>';
+                                            m += '<td><center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center></td>';
                                             m += '</tr>';
                                         }
                                         $("#example").empty();
@@ -125,14 +145,25 @@
                             s += '<th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>AREA</th>';
                             s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> SECCION</th>';
                             s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>PUESTO</th>';
-                            s += '<th data-hide="phone,tablet">OPC</th>';
+                            s += '<th>Seleccionar Todo<center><input type="checkbox" id="ckbCheckAll" /></center></th>'
+
                             s += '</thead>';
                             s += '<tbody id="data"></tbody>';
                             s += '</table>';
                             return s;
                         }
+
+                        $("#ckbCheckAll").click(function () {
+                            $(".checkBoxClass").prop('checked', $(this).prop('checked'));
+                        });
+
+
+
                     </script>
-                    </body>
-                    </html>
+
+
+                    </body>                   
 
                     </html>
+
+
