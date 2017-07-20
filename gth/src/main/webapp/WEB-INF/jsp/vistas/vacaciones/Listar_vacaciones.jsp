@@ -183,32 +183,32 @@
                                            <script>
                                             $(document).ready(function () {
                                                 $.ajax({
-                    url: 'vac_emple',
-                    type: 'POST',
-                    async: true,
-                    data: '',
-                    success: function (objJson) {
-                        var lista = objJson.list;
-                        var s = '';
-                        if (lista.length > 0) {
-                            for (var i = 0; i < lista.length; i++) {
-                                 s += '<tr>';
-                                 s += '<td>' +(i + 1)+'</td>';
-                                 s += '<td><a href="asig?id='+lista[i].ID+'">'+lista[i].NOM + ' , ' + lista[i].A_P+ '  ' +lista[i].A_M +'</a></td>';// cambiar por el atributo que te da en tu DAO
-                                 s += '<td>' + lista[i].NO_AREA+ '</td>';
-                                 s += '<td>' + lista[i].NO_SECCION+ '</td>';
-                                 s += '<td>' + lista[i].NO_PUESTO + '</td>';
-                                 s += '<td>' + lista[i].FE + '</td>';
-                                 s += '<td>' + lista[i].FE2+ '</td>'; 
-                                 s += '<td>' + '<center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center>' +'</td>';
-                                 s += '</tr>';
-                            }
-                            $("#data").empty();
-                            $("#data").append(s);
-                        }
-                      }
-                     });   
-                                                
+                                                    url: 'vac_emple',
+                                                    type: 'POST',
+                                                    async: true,
+                                                    data: '',
+                                                    success: function (objJson) {
+                                                        var lista = objJson.list;
+                                                        var s = '';
+                                                        if (lista.length > 0) {
+                                                            for (var i = 0; i < lista.length; i++) {
+                                                                 s += '<tr>';
+                                                                 s += '<td>' +(i + 1)+'</td>';
+                                                                 s += '<td><a href="asig?id='+lista[i].ID+'">'+lista[i].NOM + ' , ' + lista[i].A_P+ '  ' +lista[i].A_M +'</a></td>';// cambiar por el atributo que te da en tu DAO
+                                                                 s += '<td>' + lista[i].NO_AREA+ '</td>';
+                                                                 s += '<td>' + lista[i].NO_SECCION+ '</td>';
+                                                                 s += '<td>' + lista[i].NO_PUESTO + '</td>';
+                                                                 s += '<td>' + lista[i].FE + '</td>';
+                                                                 s += '<td>' + lista[i].FE2+ '</td>'; 
+                                                                 s += '<td>' + '<center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center>' +'</td>';
+                                                                 s += '</tr>';
+                                                            }
+                                                            $("#data").empty();
+                                                            $("#data").append(s);
+                                                        }
+                                                      }
+                                                     });   
+
                                                      
                                             $("#ckbCheckAll").click(function () {
                                                 $(".checkBoxClass").prop('checked', $(this).prop('checked'));

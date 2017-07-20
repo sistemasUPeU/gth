@@ -34,7 +34,6 @@ public class RenunciaController {
 
     @RequestMapping(value = "/renuncia")
     public ModelAndView RedireccionRenuncia(ModelAndView model, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         String opc = request.getParameter("opc");
         switch (opc) {
@@ -58,7 +57,7 @@ public class RenunciaController {
     }
 
     @RequestMapping(value = "/renu", method = RequestMethod.POST)
-    public void principal(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void principal(HttpServletRequest request, HttpServletResponse response, ModelAndView model) throws IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         String opc = request.getParameter("opc");
@@ -67,6 +66,11 @@ public class RenunciaController {
                 case "list":
                     mp.put("pr", rdao.listarEmpleados());
                 break;
+                case "Detalle":
+                    String idTR = request.getAttribute("idT").toString();
+                    model.setViewName("vistas/renuncia/RAarchivos");
+                    mp.put("ls", rdao.DetalleEmp(idTR));
+                 break;
             }
         } catch (Exception e) {
             System.out.println("Error : " + e);
@@ -77,4 +81,28 @@ public class RenunciaController {
         out.flush();
         out.close();
     }
+    
+//     @RequestMapping(value = "/Det", method = RequestMethod.GET)
+//      public ModelAndView DetalleEmp(HttpServletRequest request, HttpServletResponse response, ModelAndView model) throws IOException {
+//        response.setContentType("application/json");
+//        HttpSession session = request.getSession(true);
+//        PrintWriter out = response.getWriter();
+//        String opc = request.getParameter("opc");
+//        try {
+//            switch (opc) {
+//                case "Detalle":
+//                    String idTR = session.getAttribute("idT").toString();
+//                    model.setViewName("vistas/renuncia/RAarchivos");
+//                    mp.put("ls", rdao.DetalleEmp(idTR));
+//                 break;
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Error : " + e);
+//        }
+//        Gson gson = new Gson();
+//        out.println(gson.toJson(mp));
+//        out.flush();
+//        out.close();
+//        return model;
+//    }
 }

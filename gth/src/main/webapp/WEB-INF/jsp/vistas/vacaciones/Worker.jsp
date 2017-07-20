@@ -193,7 +193,7 @@
 
               
                     $('#data input:checkbox:checked').each(function() {
-                    var array = $(this).parents("tr").find("td").eq([0]).html();
+                    var array = $(this).parents("tr").find("td").eq(0).html();
                     console.log(array)
                     $('#log').append(JSON.stringify(array));
                   });

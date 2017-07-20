@@ -17,6 +17,9 @@
         <meta name="author" content="">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- file-input csss-->
+         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/file-input/fileinput-rtl.min.css'/>">
+         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/file-input/fileinput.min.css'/>">
 
         <!-- Basic Styles -->
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/bootstrap.min.css'/>">
@@ -146,19 +149,20 @@
                                                 <input id="sexo" type="email" name="sexo" disabled="disabled">
                                             </label>
                                         </section>
-                                        <section class="col col-4">
+                                        <section class="col col-2">
                                             <label>Tipo de documento</label>
                                             <label class="input"><i class="icon-prepend fa fa-home"></i>
 
                                                 <input type="text" id="tip_doc" disabled="disabled">
                                             </label>
                                         </section>
-                                        <section class="col col-4">
+                                        <section class="col col-2">
                                             <label>Número de documento</label>
                                             <label class="input"><i class="icon-prepend fa fa-home"></i>
-                                                <input type="text" name="num_doc" id="num_doc" disabled value="${va.n_d}">
+                                                <input type="text" name="num_doc" id="num_doc" disabled="disabled">
                                             </label>
                                         </section>
+                                       
                                     </div>
                                     <div class="row">
                                         <div class="col col-12 text-center">
@@ -187,13 +191,17 @@
                                                 </div>
                                             </div>
                                         </section>
-                                        <div class="col col-4">
+                                        <div class="col col-2">
                                             <a id="addrange" class="btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-plus"></i></a>
                                             <a id="delrange" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-remove"></i></a>
                                         </div>
+                                        <div class="col col-2">
+                                            <label class="control-label">Adjuntar archivos</label>
+                                            <input id="input-1" name="input2[]" type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf"]'>                               
+                                        </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col col-2"></div>
+                                        <div class="col-2"></div>
                                         <div class="col col-10">
                                             <h3><label>Total de días:</label><label style="color: #005cac;" id="ntd">0</label></h3>
                                         </div>
@@ -237,6 +245,11 @@
         </script>
 
         <!-- IMPORTANT: APP CONFIG -->
+
+        <!--IMPORTANTE : FILE INPUTS-->
+        
+                <script src="<c:url value='resources/js/plugin/file-input/fileinput.js'/>" ></script>
+                <script src="<c:url value='resources/js/plugin/file-input/fileinput.min.js'/>" ></script>
 
         <script src="<c:url value='resources/js/app.config.js'/>" ></script>
         <!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
@@ -300,6 +313,9 @@
 
                                                                     var nr = 1;
                                                                     $(document).ready(function () {
+                                                                        
+  
+                                                                        
                                                                         $.post('returnjson', function (obj) {
                                                                             console.log(obj[0]);
                                                                             var trab = obj[0];

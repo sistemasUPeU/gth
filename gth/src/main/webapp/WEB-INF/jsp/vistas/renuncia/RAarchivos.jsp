@@ -34,7 +34,7 @@
                         </div>
                         </div>
                         <section id="widget-grid" class="col-md-6 jarviswidget">
-                            <div class="row">
+                            <div id="close" class="row">
                                 <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" 
                                          data-widget-deletebutton="false">
@@ -147,7 +147,7 @@
                 <script>
                      $(document).ready(function () {
                          list();
-                         $("#Contes").hide();
+                         Detalle();
                      });
 
                      function list() {
