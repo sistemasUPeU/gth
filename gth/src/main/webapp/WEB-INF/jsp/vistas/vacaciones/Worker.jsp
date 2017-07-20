@@ -123,6 +123,7 @@
                                                             <td>OPC</td>
                                                             <td><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></td>
                                                         </tr>
+                                                       
                                                     </tbody>
                                                 </table>
                             </div>
@@ -193,9 +194,12 @@
 
               
                     $('#data input:checkbox:checked').each(function() {
-                    var array = $(this).parents("tr").find("td").eq(0).html();
-                    console.log(array)
-                    $('#log').append(JSON.stringify(array));
+                    var array = $(this).parents("tr").eq(0).find("td").eq(0);
+                   for(i=0;i<array.length;i++)
+                   {
+                    console.log(array.text())
+                };
+                    $('#log').append(JSON.stringify(array.text()));
                   });
                   });
 

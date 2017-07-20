@@ -25,7 +25,6 @@
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/file-input/fileinput-rtl.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/file-input/fileinput.min.css'/>">
     </head>
-</head>
 
 <body>
     <div id="content" >
@@ -62,14 +61,10 @@
                 </article>
             </div>
         </section>
-        <!-- -->
+        
         <section  class="col-md-6 jarviswidget">
             
             <div id="ONG" class="widget-body bordered">
-              <!-- carga el formulario 
-              <form id="Contes" class="form-horizontal"> 
-                </form>
-              -->
               
             </div>
             
@@ -84,7 +79,9 @@
                 <div class="form-group">
                     <button class="btn btn-primary" id="enviar" disabled="">Submit</button>
                     <button class="btn btn-default" id="reset" onclick="Cerrar();" type="reset" disabled="" >Reset</button>
+                    <!--<button class="btn btn-primary" onclick="Noti();" >Submit</button>-->
                 </div>
+                
             </div>
             
         </section>
@@ -109,8 +106,9 @@
     <!--IMPORTANTE : FILE INPUTS-->
     <script src="<c:url value='resources/js/plugin/file-input/fileinput.js'/>" ></script>
     <script src="<c:url value='resources/js/plugin/file-input/fileinput.min.js'/>" ></script>
-
-
+    <!--NOTIFY-->
+    <script src="<c:url value='resources/js/notification/push.min.js'/>"></script>
+    
     <script>
                                     $(document).ready(function () {
                                         list();
@@ -133,7 +131,7 @@
                                                         m += '<td>' + lista[i].NO_AREA + '</td>';
                                                         m += '<td>' + lista[i].NO_SECCION + '</td>';
                                                         m += '<td>' + lista[i].NO_PUESTO + '</td>';
-                                                        m += '<td><a id=' + lista[i].ID_TRABAJADOR + ' onclick="getDataWorker(this.id)" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-list"></i></a></td>';
+                                                        m += '<td><a id=' + lista[i].ID_TRABAJADOR + ' onclick="getDataWorker(this.id);"  class="btn btn-primary btn-circle"><i class="fa fa-search"></i></a></td>';
                                                         m += '</tr>';
                                                     }
                                                     $("#conTable").empty();
@@ -141,6 +139,7 @@
                                                     $("#data").empty();
                                                     $("#data").append(m);
                                                     $('#dt_basic').dataTable();
+                                                    
                                                 } else {
                                                     console.log("No hay datos en la tabla");
                                                 }
@@ -186,7 +185,7 @@
                                                             l += '<div class="form-group">';
                                                             l += '<label class="col-md-2 control-label">Apellidos : </label>';
                                                             l += '<div class="col-md-7">';
-                                                            l += '<input class="form-control" disabled="disabled" value="' + listaD[i].AP_MATERNO + ' , ' + listaD[i].NO_TRABAJADOR + '" type="text">';
+                                                            l += '<input class="form-control" disabled="disabled" value="' + listaD[i].AP_PATERNO + '  ' + listaD[i].AP_MATERNO + '" type="text">';
                                                             l += '</div>';
                                                             l += '</div>';
                                                             l += '<div class="form-group">';
@@ -212,12 +211,13 @@
                                                             l += '<div class="form-group">';
                                                             l += '<label class="col-md-2 control-label"> Descripción :</label>';
                                                             l += '<div class="col-md-10">';
-                                                            l += '<textarea  class="form-control"   placeholder="Descripción acerca de la renuncia del trabajador."  rows="3" cols="100">';
+                                                            l += '<textarea  class="form-control" placeholder="Descripción acerca de la renuncia del trabajador."  rows="3" cols="100">';
                                                             l += '</textarea>';
                                                             l += '</div>';
                                                             l += '</div>';
                                                             l += '</fieldset>';
                                                             l += '</form>';
+                                                            Noti(listaD[i].FEC_FIN);
                                                         }
                                                         $("#ONG").empty();
                                                         $("#ONG").append(l);
@@ -240,7 +240,17 @@
                                          $("#reset").attr( 'disabled=""' );
                                          $("#file").attr( 'disabled=""' );
                                     }
-
+                                    
+                                    function Noti(st){
+                                        Push.create("Hola su Contrato Vence en:", {
+                                            body: st,
+                                            icon: '<c:url value="resources/images/alert.png"/>',
+                                            timeout: 3000,
+                                            onClick: function () {
+                                                this.close();
+                                            }
+                                        });
+                                    }     
     </script>
 </body>
 </html>
