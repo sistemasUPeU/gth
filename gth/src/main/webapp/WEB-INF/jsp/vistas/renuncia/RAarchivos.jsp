@@ -1,8 +1,10 @@
-<%-- 
-    Document   : RAarchivos
-    Created on : 17/07/2017, 09:27:55 AM
-    Author     : Leandro Burgos
---%>
+
+<%
+    HttpSession sesion = request.getSession();
+    String id_user = (String) sesion.getAttribute("IDUSER");
+    if (id_user != null) {
+        
+%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,11 +29,12 @@
     </head>
 
 <body>
+    <input type="hidden"  value="<%out.println(id_user); %>" 
     <div id="content" >
         <div class="row">
             <div class="col-sm-12">
                 <div class="well">
-                    <h1><span class="semi-bold">Reporte</span> <i class="ultra-light">Renuncias / Abandono  </i><sup class="badge bg-color-red bounceIn animated">v 2.0</sup></h1> <br>
+                    <h1><span class="semi-bold">Reporte</span> <i class="ultra-light"> <strong>Renuncias / Abandono</strong>  </i><sup class="badge bg-color-red bounceIn animated">v 3.0</sup></h1> <br>
                 </div>
             </div>
         </div>
@@ -268,3 +271,7 @@
     </script>
 </body>
 </html>
+<%} else {
+        out.print("<script> window.location.href = '/gth/';</script>");
+    }
+%>
