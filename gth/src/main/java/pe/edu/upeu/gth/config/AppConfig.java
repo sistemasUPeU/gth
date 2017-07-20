@@ -69,12 +69,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public vacacionesDAO getvacacionesDAO() {
         return new vacacionesDAO(getDataSource());
     }
-            
+
     @Bean
     public RenunciaDAO getRenunciaDAO() {
         return new RenunciaDAO(getDataSource());
     }
-    
+
     @Bean
     public UsuarioDAO getUsuarioDAO() {
         return new UsuarioDAO(getDataSource());
