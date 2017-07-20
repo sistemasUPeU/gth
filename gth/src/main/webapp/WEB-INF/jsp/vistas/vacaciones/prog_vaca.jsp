@@ -195,18 +195,20 @@
                                             <a id="addrange" class="btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-plus"></i></a>
                                             <a id="delrange" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-remove"></i></a>
                                         </div>
-                                        <div class="col col-2">
-                                            <label class="control-label">Adjuntar archivos</label>
-                                            <input id="input-1" name="input2[]" type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf"]'>                               
-                                        </div>
+                                        
                                     </div>
                                     <div class="row">
                                         <div class="col-2"></div>
                                         <div class="col col-10">
                                             <h3><label>Total de días:</label><label style="color: #005cac;" id="ntd">0</label></h3>
                                         </div>
-                                    </div>                       
-
+                                    </div> 
+                                    
+                                    <div class="col col-sm-3" style="margin-left:  35%;">
+                                        <label class="control-label">Adjuntar archivos</label>
+                                        <input id="file" type="file" class="file-loading" data-show-upload="false" data-show-remove="false" data-show-caption="true" accept="document/*">                               
+                                    </div>
+                                    
                                 </fieldset>
                                 <footer>
                                     <input type="hidden" name="opc" value="VacationAsign">
@@ -313,8 +315,15 @@
 
                                                                     var nr = 1;
                                                                     $(document).ready(function () {
-                                                                        
-  
+                                                                        ///script para input-file/*limite*tamaño*extension//
+                                                                          $("#file").fileinput({
+                                                                            uploadUrl: "/file-upload-batch/2",
+                                                                            allowedFileExtensions: ["pdf", "doc", "docx","jpg"],
+                                                                            maxImageWidth: 250,
+                                                                            maxImageHeight: 250,
+                                                                            initialPreviewFileType:'docx',
+                                                                            browseOnZoneClick: true
+                                                                        });
                                                                         
                                                                         $.post('returnjson', function (obj) {
                                                                             console.log(obj[0]);
