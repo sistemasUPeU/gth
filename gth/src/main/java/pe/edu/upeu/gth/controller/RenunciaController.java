@@ -68,13 +68,13 @@ public class RenunciaController {
                     mp.put("pr", rdao.listarEmpleados());
                     break;
                 case "Detalle":
-                    String idTR = request.getAttribute("idT").toString();
+                    String idTR = request.getParameter("idtr").toString();
                     mp.put("ls", rdao.DetalleEmp(idTR));
                     break;
-                case "ejemplo":
-                    id=request.getParameter("idtr");
-                    mp.put("ls", rdao.DetalleEmp(id));
-                    break;
+//                case "ejemplo":
+//                    id=request.getParameter("idtr");
+//                    mp.put("ls", rdao.DetalleEmp(id));
+//                    break;
             }
         } catch (Exception e) {
             System.out.println("Error : " + e);
@@ -85,28 +85,4 @@ public class RenunciaController {
         out.flush();
         out.close();
     }
-
-//     @RequestMapping(value = "/Det", method = RequestMethod.GET)
-//      public ModelAndView DetalleEmp(HttpServletRequest request, HttpServletResponse response, ModelAndView model) throws IOException {
-//        response.setContentType("application/json");
-//        HttpSession session = request.getSession(true);
-//        PrintWriter out = response.getWriter();
-//        String opc = request.getParameter("opc");
-//        try {
-//            switch (opc) {
-//                case "Detalle":
-//                    String idTR = session.getAttribute("idT").toString();
-//                    model.setViewName("vistas/renuncia/RAarchivos");
-//                    mp.put("ls", rdao.DetalleEmp(idTR));
-//                 break;
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Error : " + e);
-//        }
-//        Gson gson = new Gson();
-//        out.println(gson.toJson(mp));
-//        out.flush();
-//        out.close();
-//        return model;
-//    }
 }

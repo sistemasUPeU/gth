@@ -103,21 +103,21 @@
                     </fieldset>
                 </form>
             </div>
-            <div id="adj" class="row">
+            <div id="adj" class="row" >
                 <h1>Adjuntar solicitud</h1>
-                <form>
+                <form >
                     <div class="smart-form">
                         <section>
                             <label class="label">File input</label>
                             <div class="input input-file state-error">
-                                <span class="button"><input type="file" id="file2" onchange="this.parentNode.nextSibling.value = this.value">Browse</span><input type="text" readonly>
+                                <span class="button"><input type="file" id="file2" disabled="" onchange="this.parentNode.nextSibling.value = this.value">Browse</span><input type="text" readonly>
                             </div>
                             <div class="note note-error">File size must be less than 3Mb.</div>
                         </section>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary">Submit</button>
-                        <button class="btn btn-default" type="reset">Reset</button>
+                        <button class="btn btn-primary" disabled="">Submit</button>
+                        <button class="btn btn-default" type="reset" disabled="" >Reset</button>
                     </div>
                 </form>
             </div>
@@ -145,7 +145,7 @@
     <script>
                                     $(document).ready(function () {
                                         list();
-                                        Detalle();
+                                        $("#Contes").hide();
                                     });
 
                                     function list() {
@@ -160,9 +160,9 @@
                                                         m += '<td>' + (i + 1) + '</td>';
                                                         m += '<td>' + lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' + lista[i].NO_TRABAJADOR + '</td>';// cambiar por el atributo que te da en tu DAO
                                                         m += '<td>' + lista[i].NU_DOC + '</td>';
-                                                        m += '<td>' + lista[i].AP_MATERNO + '</td>';
                                                         m += '<td>' + lista[i].NO_AREA + '</td>';
                                                         m += '<td>' + lista[i].NO_SECCION + '</td>';
+                                                        m += '<td>' + lista[i].NO_PUESTO + '</td>';
                                                         m += '<td><a id=' + lista[i].ID_TRABAJADOR + ' onclick="getDataWorker(this.id)" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-list"></i></a></td>';
                                                         m += '</tr>';
                                                     }
