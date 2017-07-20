@@ -21,6 +21,9 @@
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-rtl.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>">
         <link href="<c:url value='resources/css/datatable.css" rel="stylesheet'/>" type="text/css"/>
+        <!-- file-input csss-->
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/file-input/fileinput-rtl.min.css'/>">
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/file-input/fileinput.min.css'/>">
     </head>
 </head>
 
@@ -98,15 +101,16 @@
                                 <input class="form-control" disabled="disabled" placeholder="Fin Contrato" type="text">
                             </div>
                         </div>
-
-
-                    </fieldset>
+                     </fieldset>
                 </form>
             </div>
             <div id="adj" class="row" >
-                <h1>Adjuntar solicitud</h1>
+                <h1>Adjuntar solicitud de Renuncia y/o Abandono</h1>
                 <form >
-                    <div class="smart-form">
+                    <div class="col col-2">
+                        <input id="input-1" name="input2[]" disabled="" type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf"]'>                               
+                    </div>
+                    <!--<div class="smart-form">
                         <section>
                             <label class="label">File input</label>
                             <div class="input input-file state-error">
@@ -114,12 +118,13 @@
                             </div>
                             <div class="note note-error">File size must be less than 3Mb.</div>
                         </section>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary" disabled="">Submit</button>
-                        <button class="btn btn-default" type="reset" disabled="" >Reset</button>
-                    </div>
+                    </div>-->
                 </form>
+                <br>
+                <div class="form-group">
+                    <button class="btn btn-primary" disabled="">Submit</button>
+                    <button class="btn btn-default" type="reset" disabled="" >Reset</button>
+                </div>
             </div>
         </section>
     </div>
@@ -140,6 +145,9 @@
     <script type="text/javascript" src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
     <script type="text/javascript" src="<c:url value='resources/js/app.min.js'/>"></script> 
     <script src="<c:url value='resources/js/plugin/datatables/datatable.js'/>" type="text/javascript"></script>
+    <!--IMPORTANTE : FILE INPUTS-->
+    <script src="<c:url value='resources/js/plugin/file-input/fileinput.js'/>" ></script>
+    <script src="<c:url value='resources/js/plugin/file-input/fileinput.min.js'/>" ></script>
 
 
     <script>
