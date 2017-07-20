@@ -64,45 +64,13 @@
         </section>
         <!-- -->
         <section  class="col-md-6 jarviswidget">
-            <div id="Contes" class="widget-body bordered">
-                <form class="form-horizontal">
-                    <fieldset>
-                        <legend>Datos Del Trabajor</legend>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">Nombres</label>
-                            <div class="col-md-7">
-                                <input class="form-control" disabled="disabled" placeholder="Nombres" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">Apellidos</label>
-                            <div class="col-md-7">
-                                <input class="form-control" disabled="disabled" placeholder="Apellidos" type="text">
-                            </div>
-
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">Celular</label>
-                            <div class="col-md-4">
-                                <input class="form-control" disabled="disabled" placeholder="Celular" type="text">
-                            </div>
-                            <label class="col-md-2 control-label">DNI</label>
-                            <div class="col-md-4">
-                                <input class="form-control" disabled="disabled" placeholder="DNI" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">Inicio Contrato</label>
-                            <div class="col-md-4">
-                                <input class="form-control" disabled="disabled" placeholder="Incio Contrato" type="text">
-                            </div>
-                            <label class="col-md-2 control-label">Fin Contrato</label>
-                            <div class="col-md-4">
-                                <input class="form-control" disabled="disabled" placeholder="Fin Contrato" type="text">
-                            </div>
-                        </div>
-                     </fieldset>
+            
+            <div id="ONG" class="widget-body bordered">
+              <!-- carga el formulario 
+              <form id="Contes" class="form-horizontal"> 
                 </form>
+              -->
+              
             </div>
             <div id="adj" class="row" >
                 <h1>Adjuntar solicitud de Renuncia y/o Abandono</h1>
@@ -153,7 +121,8 @@
     <script>
                                     $(document).ready(function () {
                                         list();
-                                        $("#Contes").hide();
+                                        
+                                        $("#ONG").hide();
                                     });
 
                                     function list() {
@@ -206,9 +175,59 @@
                                     function getDataWorker(id) {
                                         var url = 'renu?opc=Detalle';//controlador
                                         var data = 'idtr=' + id;//datos a enviar
-                                        $.post(url, data, function (obj) {
-                                            console.log(obj.ls);
-                                        });
+                                        try {
+                                                $.post(url, data, function (obj) {
+                                                    var listaD = obj.ls;
+                                                    if(listaD.length > 0){
+                                                        var l ="";
+                                                        for  (var  i =0 ; i< listaD.length; i++){
+                                                            l += '<form id="Contes" class="form-horizontal">';
+                                                            l += '<fieldset>';
+                                                            l += '<legend>Datos Del Trabajor</legend>';
+                                                            l += '<div class="form-group">';
+                                                            l += '<label class="col-md-2 control-label"> Nombre :</label>';
+                                                            l += '<div class="col-md-7">';
+                                                            l += '<input class="form-control"  disabled="disabled"  value="'+ listaD[i].NO_TRABAJADOR +'" type="text">';
+                                                            l += '</div>';
+                                                            l += '</div>';
+                                                            l += '<div class="form-group">';
+                                                            l += '<label class="col-md-2 control-label">Apellidos : </label>';
+                                                            l += '<div class="col-md-7">';
+                                                            l += '<input class="form-control" disabled="disabled" placeholder="Apellidos" value="' + listaD[i].AP_MATERNO + ' , ' + listaD[i].NO_TRABAJADOR + '" type="text">';
+                                                            l += '</div>';
+                                                            l += '</div>';
+                                                            l += '<div class="form-group">';
+                                                            l += '<label class="col-md-2 control-label">Celular</label>';
+                                                            l += '<div class="col-md-4">';
+                                                            l += '<input class="form-control" disabled="disabled" value = "'+ listaD[i].CL_TRA+'" type="text">';
+                                                            l += '</div>';
+                                                            l += '<label class="col-md-2 control-label">DNI</label>';
+                                                            l += '<div class="col-md-4">';
+                                                            l += '<input class="form-control" disabled="disabled" value="' + listaD[i].NU_DOC + '" type="text">';
+                                                            l += '</div>';
+                                                            l += '</div>';
+                                                            l += '<div class="form-group">';
+                                                            l += '<label class="col-md-2 control-label">Inicio Contrato</label>';
+                                                            l += '<div class="col-md-4">';
+                                                            l += '<input class="form-control" disabled="disabled" value ="'+ listaD[i].FEC_INI +'" type="text">';
+                                                            l += '</div>';
+                                                            l += '<label class="col-md-2 control-label">Fin Contrato</label>';
+                                                            l += '<div class="col-md-4">';
+                                                            l += '<input class="form-control" disabled="disabled" value ="'+listaD[i].FEC_FIN +'" type="text">';
+                                                            l += '</div>';
+                                                            l += '</div>';
+                                                            l += '</fieldset>';
+                                                            l += '</form>';
+                                                        }
+                                                        $("#ONG").empty();
+                                                        $("#ONG").append(l);
+                                                       $("#ONG").show();
+                                                    }
+                                                });
+
+                                        } catch (e) {
+                                            console.error("Error al listar : " + e);
+                                        }
                                     }
 
 
