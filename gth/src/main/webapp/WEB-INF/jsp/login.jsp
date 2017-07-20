@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html style="width: 100%;overflow-x: hidden">
     <head>
         <meta charset="utf-8">
         <title> .:RRHH:.</title>
@@ -13,26 +13,26 @@
         <%@include file="../../jspf/general.jspf" %>
     </head>
     <body onload="nobackbutton()" class="animated fadeInDown">
-        <header id="header">
+        <header id="header" style="background: #424242;">
             <div id="logo-group" >
-
+                <span id="logo"> <img src="<c:url value='resources/img/logoRRHH.png'/>" style=" position: absolute;top: 6px; width:130px; height:36px " alt="GTH"> </span>
             </div>
-
         </header>
         <div id="main" role="main" class="mainLogin">
             <div id="content" class="containerr">
                 <div class="row">
                     <div
-                        class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hidden-xs hidden-sm">
-                        <h1 class="text-info login-header-big text-center">Gestión de Talento Humano</h1>
+                        class="col col-md-12 col-md-offset-4">
+                        <h1><span class="semi-bold">Gestión de</span> <i class="ultra-light">Talento Humano</i> <sup class="badge bg-color-red bounceIn animated"> v 3.0</sup> <br>
+            </h1>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col col-md-12 col-md-offset-4">
+                    <div class="col col-md-12 col-md-offset-3">
                         <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 ">
                             <div class="well no-padding">
                                 <form   id="login-form" class="form-horizontal formLogin"   autocomplete="off" >
-                                    <fieldset>
+                                    <fieldset style="box-shadow: 0 0 5px 0 black">
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <div class="icon-addon addon-md">

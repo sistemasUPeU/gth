@@ -184,7 +184,6 @@
         <script src="<c:url value='resources/js/app.config.js'/>"></script>
         <script src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
         <script src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>"></script>
-        <script src="<c:url value='resources/js/notification/SmartNotification.min.js'/>"></script>
         <script src="<c:url value='resources/js/smartwidgets/jarvis.widget.min.js'/>"></script>
         <script src="<c:url value='resources/js/plugin/sparkline/jquery.sparkline.min.js'/>"></script>
         <script src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
