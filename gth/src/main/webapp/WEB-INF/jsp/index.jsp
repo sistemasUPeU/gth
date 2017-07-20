@@ -28,7 +28,7 @@
         <header id="header">
             <div id="logo-group" >
                 <span id="logo"> <img src="<c:url value='resources/img/logoRRHH.png'/>" style=" position: absolute;top: 8px; width:100px; height:36px " alt="Talento Humano"> </span>
-                <span id="activity" class="activity-dropdown hola2"> <i class="fa fa-user"></i> <b class="badge total"> 0 </b> </span>
+                <span id="activity" class="activity-dropdown hola2"> <i class="fa fa-bell-o"></i> <b class="badge total"> 5 </b> </span>
                 <div class="ajax-dropdown">
                     <div class="btn-group btn-group-justified"  data-toggle="buttons">
                         <label class="btn btn-default autorizacionList">
@@ -53,34 +53,7 @@
 
                 <div id="hide-menu" class="btn-header pull-right">
                     <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
-                </div>
-                <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
-                    <li class="">
-                        <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li>
-                                <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="login.html" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                </div>               
 
                 <div id="logout" class="btn-header transparent pull-right">
                     <span> 
@@ -107,7 +80,7 @@
         </header>
         <aside id="left-panel">
 
-            <!-- User info -->
+            <br/>
             <div class="logininfo">
                 <div class="row">
                     <div class="avatar-user col-md-3">
@@ -133,11 +106,7 @@
             </span>
 
         </aside>
-        <!-- END NAVIGATION -->
-
-        <!-- MAIN PANEL -->
         <div id="main" role="main">
-            <!-- RIBBON -->
             <div id="ribbon">
 
                 <ol class="breadcrumb">
@@ -161,13 +130,10 @@
                         <div class="animacion_load"></div>
                     </div>
 
-                    <iframe id="myframe" name="myframe" class="iframe_principal" scrolling="si"  width="100%" height="2000" frameborder="0"  src=""></iframe>
+                    <iframe id="myframe" name="myframe" class="iframe_principal" scrolling="si"  width="100%" height="2000" frameborder="0"  src="<c:url value='inicio'/>"></iframe>
                 </div>
             </div>
-            <!-- END MAIN CONTENT -->
         </div>
-        <!-- END MAIN PANEL -->
-        <!-- PAGE FOOTER -->
         <div class="page-footer">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
@@ -175,7 +141,6 @@
                 </div>
             </div>
         </div>
-        <div class="modalContent"></div>
 
         <%@include file="../../jspf/scripts.jspf" %>  
         <script src="<c:url value='resources/js/JQuery/jquery.autoheight.js'/>" type="text/javascript"></script>

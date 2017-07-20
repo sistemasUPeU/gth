@@ -32,7 +32,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 ">
                             <div class="well no-padding">
                                 <form   id="login-form" class="form-horizontal formLogin"   autocomplete="off" >
-                                    <fieldset style="box-shadow: 0 0 5px 0 black">
+                                    <fieldset >
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <div class="icon-addon addon-md">
