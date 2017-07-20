@@ -47,7 +47,7 @@ public class RenunciaController {
                 model.setViewName("vistas/renuncia/Rautorizar");
                 break;
             case "authorizationA":
-                model.setViewName("vistas/renuncia/Rautorizar");
+                model.setViewName("vistas/renuncia/Aautorizar");
                 break;
             case "ejemplo":
                 model.setViewName("vistas/renuncia/ejemplo");
@@ -70,6 +70,9 @@ public class RenunciaController {
                 case "Detalle":
                     String idTR = request.getParameter("idtr").toString();
                     mp.put("ls", rdao.DetalleEmp(idTR));
+                    break;
+                case "listR":
+                    mp.put("pr", rdao.listar());
                     break;
 //                case "ejemplo":
 //                    id=request.getParameter("idtr");
