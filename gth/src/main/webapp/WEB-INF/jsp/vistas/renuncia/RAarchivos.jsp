@@ -34,7 +34,7 @@
                         </div>
                         </div>
                         <section id="widget-grid" class="col-md-6 jarviswidget">
-                            <div class="row">
+                            <div id="close" class="row">
                                 <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" 
                                          data-widget-deletebutton="false">
@@ -147,6 +147,7 @@
                 <script>
                      $(document).ready(function () {
                          list();
+                         Detalle();
                      });
 
                      function list() {
@@ -164,7 +165,7 @@
                                          m += '<td>' + lista[i].AP_MATERNO + '</td>';
                                          m += '<td>' + lista[i].NO_AREA + '</td>';
                                          m += '<td>' + lista[i].NO_SECCION + '</td>';
-                                         m += '<td><a href="hola?='+ lista[i].ID_TRABAJADOR +'" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-list"></i></a></td>';
+                                         m += '<td><a href="renu?opc=Detalle&idT='+ lista[i].ID_TRABAJADOR +'" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-list"></i></a></td>';
                                          m += '</tr>';
                                      }
                                      $("#conTable").empty();
@@ -195,6 +196,42 @@
                          s += '</table>';
                          return s;
                      }
+                     
+                     
+                     /*function Detalle(){
+                          var url = "nun?opc=Detalle";//nombre del controlador ejm. renuncia?op=1
+                          var data = "&iduser=";
+                          data += idusuario = $;
+                         try {
+                             $.post(url , function (objJson) {
+                                 var lista = objJson.pr;
+                                 if (lista.length > 0) {
+                                     var m = "";
+                                     for (var i = 0; i < lista.length; i++) {
+                                         m += '<tr>';
+                                         m += '<td>' + (i + 1) + '</td>';
+                                         m += '<td>' + lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' + lista[i].NO_TRABAJADOR + '</td>';// cambiar por el atributo que te da en tu DAO
+                                         m += '<td>' + lista[i].NU_DOC + '</td>';
+                                         m += '<td>' + lista[i].AP_MATERNO + '</td>';
+                                         m += '<td>' + lista[i].NO_AREA + '</td>';
+                                         m += '<td>' + lista[i].NO_SECCION + '</td>';
+                                         m += '<td><a href="nun?opc=Detalle&idT='+ lista[i].ID_TRABAJADOR +'" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-list"></i></a></td>';
+                                         m += '</tr>';
+                                     }
+                                     $("#conTable").empty();
+                                     $("#conTable").append(createTable());
+                                     $("#data").empty();
+                                     $("#data").append(m);
+                                     $('#dt_basic').dataTable();
+                                 } else {
+                                     console.log("No hay datos en la tabla");
+                                 }
+                             });
+                         } catch (e) {
+                             console.error("Error al listar : " + e);
+                         }
+                     }
+                     }*/
                 </script>
      </body>
 </html>

@@ -45,7 +45,7 @@ public class testeo {
         //listar_puestosejemplo("PUT-000269");
         //listar_puestosejemplo("PUT-000198");
         //pR("ROL-0019", "MOD-0003");
-//        System.out.println(asd.getSessionJson());
+        //System.out.println(asd.getSessionJson());
         //Listar_empleados();
         //validar("liliana", "123");
         detalleTr("TRB-002742");
