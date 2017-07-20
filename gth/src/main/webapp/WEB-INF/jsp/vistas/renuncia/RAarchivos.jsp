@@ -60,8 +60,8 @@
                             </div>
                         </section>
                         <!-- -->
-                        <section id="widget-grid" class="col-md-6 jarviswidget">
-                            <div class="widget-body bordered">
+                        <section  class="col-md-6 jarviswidget">
+                            <div id="Contes" class="widget-body bordered">
                                 <form class="form-horizontal">
                                         <fieldset>
                                             <legend>Datos Del Trabajor</legend>
@@ -103,7 +103,7 @@
                                         </fieldset>
                                 </form>
                             </div>
-                            <div class="row">
+                            <div id="adj" class="row">
                                 <h1>Adjuntar solicitud</h1>
                                 <form>
                                     <div class="smart-form">
@@ -125,7 +125,7 @@
                 </div>
     
     
-                <!--SCRIP-->
+                <!--SCRIPT-->
                 
                 
                 <script type="text/javascript" src="<c:url value='resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
@@ -147,6 +147,7 @@
                 <script>
                      $(document).ready(function () {
                          list();
+                         $("#Contes").hide();
                      });
 
                      function list() {
@@ -164,7 +165,7 @@
                                          m += '<td>' + lista[i].AP_MATERNO + '</td>';
                                          m += '<td>' + lista[i].NO_AREA + '</td>';
                                          m += '<td>' + lista[i].NO_SECCION + '</td>';
-                                         m += '<td><a href="hola?='+ lista[i].ID_TRABAJADOR +'" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-list"></i></a></td>';
+                                         m += '<td><a id='+ lista[i].ID_TRABAJADOR +' onclick="getDataWorker(this.id)" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-list"></i></a></td>';
                                          m += '</tr>';
                                      }
                                      $("#conTable").empty();
@@ -195,6 +196,16 @@
                          s += '</table>';
                          return s;
                      }
+                     
+                     function getDataWorker(id){
+                         var url='';//controlador
+                         var data='idtr='+id;//datos a enviar
+                         $.post(url,data,function(obj){
+                             console.log(obj);
+                         });
+                     }
+                     
+                     
                 </script>
      </body>
 </html>
