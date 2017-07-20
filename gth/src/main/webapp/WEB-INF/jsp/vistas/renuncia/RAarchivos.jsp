@@ -72,28 +72,21 @@
               -->
               
             </div>
+            
             <div id="adj" class="row" >
                 <h1>Adjuntar solicitud de Renuncia y/o Abandono</h1>
                 <form >
                     <div class="col col-2">
-                        <input id="input-1" name="input2[]" disabled="" type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf"]'>                               
+                        <input id="input-1" id="file" name="input2[]"  type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf"]'>                               
                     </div>
-                    <!--<div class="smart-form">
-                        <section>
-                            <label class="label">File input</label>
-                            <div class="input input-file state-error">
-                                <span class="button"><input type="file" id="file2" disabled="" onchange="this.parentNode.nextSibling.value = this.value">Browse</span><input type="text" readonly>
-                            </div>
-                            <div class="note note-error">File size must be less than 3Mb.</div>
-                        </section>
-                    </div>-->
                 </form>
                 <br>
                 <div class="form-group">
-                    <button class="btn btn-primary" disabled="">Submit</button>
-                    <button class="btn btn-default" type="reset" disabled="" >Reset</button>
+                    <button class="btn btn-primary" id="enviar" disabled="">Submit</button>
+                    <button class="btn btn-default" id="reset" onclick="Cerrar();" type="reset" disabled="" >Reset</button>
                 </div>
             </div>
+            
         </section>
     </div>
 
@@ -183,7 +176,7 @@
                                                         for  (var  i =0 ; i< listaD.length; i++){
                                                             l += '<form id="Contes" class="form-horizontal">';
                                                             l += '<fieldset>';
-                                                            l += '<legend>Datos Del Trabajor</legend>';
+                                                            l += '<legend>Datos del Trabajor</legend>';
                                                             l += '<div class="form-group">';
                                                             l += '<label class="col-md-2 control-label"> Nombre :</label>';
                                                             l += '<div class="col-md-7">';
@@ -193,27 +186,34 @@
                                                             l += '<div class="form-group">';
                                                             l += '<label class="col-md-2 control-label">Apellidos : </label>';
                                                             l += '<div class="col-md-7">';
-                                                            l += '<input class="form-control" disabled="disabled" placeholder="Apellidos" value="' + listaD[i].AP_MATERNO + ' , ' + listaD[i].NO_TRABAJADOR + '" type="text">';
+                                                            l += '<input class="form-control" disabled="disabled" value="' + listaD[i].AP_MATERNO + ' , ' + listaD[i].NO_TRABAJADOR + '" type="text">';
                                                             l += '</div>';
                                                             l += '</div>';
                                                             l += '<div class="form-group">';
-                                                            l += '<label class="col-md-2 control-label">Celular</label>';
+                                                            l += '<label class="col-md-2 control-label">Celular : </label>';
                                                             l += '<div class="col-md-4">';
                                                             l += '<input class="form-control" disabled="disabled" value = "'+ listaD[i].CL_TRA+'" type="text">';
                                                             l += '</div>';
-                                                            l += '<label class="col-md-2 control-label">DNI</label>';
+                                                            l += '<label class="col-md-2 control-label">DNI :</label>';
                                                             l += '<div class="col-md-4">';
                                                             l += '<input class="form-control" disabled="disabled" value="' + listaD[i].NU_DOC + '" type="text">';
                                                             l += '</div>';
                                                             l += '</div>';
                                                             l += '<div class="form-group">';
-                                                            l += '<label class="col-md-2 control-label">Inicio Contrato</label>';
+                                                            l += '<label class="col-md-2 control-label">Inicio Contrato : </label>';
                                                             l += '<div class="col-md-4">';
                                                             l += '<input class="form-control" disabled="disabled" value ="'+ listaD[i].FEC_INI +'" type="text">';
                                                             l += '</div>';
-                                                            l += '<label class="col-md-2 control-label">Fin Contrato</label>';
+                                                            l += '<label class="col-md-2 control-label">Fin Contrato : </label>';
                                                             l += '<div class="col-md-4">';
                                                             l += '<input class="form-control" disabled="disabled" value ="'+listaD[i].FEC_FIN +'" type="text">';
+                                                            l += '</div>';
+                                                            l += '</div>';
+                                                            l += '<div class="form-group">';
+                                                            l += '<label class="col-md-2 control-label"> Descripción :</label>';
+                                                            l += '<div class="col-md-10">';
+                                                            l += '<textarea  class="form-control"   placeholder="Descripción acerca de la renuncia del trabajador."  rows="3" cols="100">';
+                                                            l += '</textarea>';
                                                             l += '</div>';
                                                             l += '</div>';
                                                             l += '</fieldset>';
@@ -221,7 +221,10 @@
                                                         }
                                                         $("#ONG").empty();
                                                         $("#ONG").append(l);
-                                                       $("#ONG").show();
+                                                        $("#ONG").show();
+                                                        $("#enviar").removeAttr( 'disabled' );
+                                                        $("#reset").removeAttr( 'disabled' );
+                                                        $("#file").removeAttr( 'disabled' );
                                                     }
                                                 });
 
@@ -229,7 +232,14 @@
                                             console.error("Error al listar : " + e);
                                         }
                                     }
-
+                                    
+                                    function Cerrar(){
+                                         $("#ONG").hide();
+                                         $("#ONG").empty();
+                                         $("#enviar").attr( "disabled " ,"");
+                                         $("#reset").attr( 'disabled=""' );
+                                         $("#file").attr( 'disabled=""' );
+                                    }
 
     </script>
 </body>
