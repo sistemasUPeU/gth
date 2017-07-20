@@ -52,6 +52,7 @@
                         </header>
                         <br>
                         <section>
+                            
                             <div id="conTable" class="col-xs-6 col-sm-12 col-md-12 col-lg-12">
 
 
@@ -63,7 +64,7 @@
         </section>
         
         <section  class="col-md-6 jarviswidget">
-            
+            <!-- FORMULARIO-->
             <div id="ONG" class="widget-body bordered">
               
             </div>
@@ -72,7 +73,7 @@
                 <h1>Adjuntar solicitud de Renuncia y/o Abandono</h1>
                 <form >
                     <div class="col col-2">
-                        <input id="input-1" id="file" name="input2[]"  type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf"]'>                               
+                        <input id="input-24" id="file" name="input24[]"  type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf","png"]'>                               
                     </div>
                 </form>
                 <br>
@@ -110,6 +111,7 @@
     <script src="<c:url value='resources/js/notification/push.min.js'/>"></script>
     
     <script>
+        
                                     $(document).ready(function () {
                                         list();
                                         
@@ -236,9 +238,9 @@
                                     function Cerrar(){
                                          $("#ONG").hide();
                                          $("#ONG").empty();
-                                         $("#enviar").attr( "disabled " ,"");
-                                         $("#reset").attr( 'disabled=""' );
-                                         $("#file").attr( 'disabled=""' );
+                                        // $("#enviar").attr( "disabled " ,"");
+                                         //$("#reset").attr( 'disabled=""' );
+                                         //$("#file").attr( 'disabled=""' );
                                     }
                                     
                                     function Noti(st){
@@ -251,6 +253,7 @@
                                             }
                                         });
                                     }     
+                                    
     </script>
 </body>
 </html>
