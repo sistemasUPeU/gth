@@ -34,7 +34,6 @@ public class RenunciaController {
 
     @RequestMapping(value = "/renuncia")
     public ModelAndView RedireccionRenuncia(ModelAndView model, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         String opc = request.getParameter("opc");
         switch (opc) {
@@ -62,11 +61,20 @@ public class RenunciaController {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         String opc = request.getParameter("opc");
+        String id="";
         try {
             switch (opc) {
                 case "list":
                     mp.put("pr", rdao.listarEmpleados());
-                break;
+                    break;
+                case "Detalle":
+                    String idTR = request.getParameter("idtr").toString();
+                    mp.put("ls", rdao.DetalleEmp(idTR));
+                    break;
+//                case "ejemplo":
+//                    id=request.getParameter("idtr");
+//                    mp.put("ls", rdao.DetalleEmp(id));
+//                    break;
             }
         } catch (Exception e) {
             System.out.println("Error : " + e);

@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="well">
-                         <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" id="save">Large modal</button>
                         <h1><span class="semi-bold">Reporte</span> <i class="ultra-light">Vacaciones</i> (Trabajadores) <sup class="badge bg-color-red bounceIn animated">v 2.0</sup> <br>
                             <small class="text-danger slideInRight fast animated"><strong>Inicio de contratación</strong></small></h1>
        
@@ -91,10 +91,74 @@
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Programación de vacaciones - Datos de los Trabajadores</h5>
+                                <h1 class="modal-title" id="exampleModalLongTitle" style="text-align: center;">Programación de fechas para vacaciones</h1>
+                                <h4 class="modal-title" id="exampleModalLongTitle" >Datos de los Trabajadores</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
+                            </div>
+                            <div class="modal-body">
+                                
+                                <table id="example" class="table table-striped table-bordered table-hover" width="100%">
+                                                    <thead>			                
+                                                        <tr>
+                                                            <th data-hide="phone">N°</th>
+                                                            <th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> APELLIDOS Y NOMBRES</th>
+                                                            <th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> DNI</th>
+                                                            <th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>TELEFONO</th>
+                                                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> CELULAR</th>
+                                                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Correo Personal</th>
+                                                            <th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Correo Institucional</th>
+                                                            <th><input type="checkbox" id="ckbCheckAll" /></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="log">
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Jennifer</td>
+                                                            <td>1-342-463-8341</td>
+                                                            <td>Et Rutrum Non Associates</td>
+                                                            <td>35728</td>
+                                                            <td>Fogo</td>
+                                                            <td>OPC</td>
+                                                            <td><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="row">
+                                    <div class="col col-12 text-center">
+                                        <h3><label>Seleccionar rango de fechas a solicitar:</label></h3>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2"></div>
+                                        <section class="row col col-6 dateranges ">
+                                            <div style="padding-bottom: 5px; margin-left: 2vh;" class="row col-sm-4 rangegroup1">
+                                                <div class="col col-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input onchange="calnd()" class="form-control" id="from1" type="text" placeholder="Desde">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-6 ">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input onchange="calnd()" class="form-control" id="to1" type="text" placeholder="Hasta">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <div class="col col-2">
+                                            <a id="addrange" class="btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-plus"></i></a>
+                                            <a id="delrange" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-remove"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                       </div>
@@ -123,6 +187,18 @@
                                            
                                         <script>
                                         $(document).ready(function () {
+                                            $("#save").click(function() {
+                  //reset the logger
+                   $('#log').empty();
+
+              
+                    $('#data input:checkbox:checked').each(function() {
+                    var array = $(this).parents("tr").find("td").eq(0).html();
+                    console.log(array)
+                    $('#log').append(JSON.stringify(array));
+                  });
+                  });
+
                     $.ajax({
                     url: 'turnh',
                     type: 'POST',

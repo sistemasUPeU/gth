@@ -28,76 +28,133 @@
                     <div class="well">
                         <h1><span class="semi-bold">Lista</span> <i class="ultra-light">De Vacaciones</i> (Trabajadores) <sup class="badge bg-color-red bounceIn animated">v 2.0</sup> <br>
                             <small class="text-danger slideInRight fast animated"><strong>Inicio de Vacaciones</strong></small></h1>
-       
+
                     </div>
                 </div>
             </div>
-            <section id="widget-grid" class="">
-                <div class="row">
-                    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" 
-                             data-widget-deletebutton="false">
-                            <header>
-                                <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                                <h2>Carga de Vacaciones</h2>
+            <!-- MAIN PANEL -->
+            <div id="main" role="main" style="margin-left: 0px;">
+                <!-- MAIN CONTENT -->
+                <div id="content">
+                    <!-- widget grid -->
+                    <section id="widget-grid" class="">
 
-                            </header>
+                        <!-- row -->
+                        <div class="row">
 
-                            <!-- widget div-->
-                            <div>
+                            <!-- NEW WIDGET START -->
+                            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                                <!-- widget edit box -->
-                                <div class="jarviswidget-editbox">
-                                    <!-- This area used as dropdown edit box -->
+                                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+                                    <!-- widget options:
+                                    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+    
+                                    data-widget-colorbutton="false"
+                                    data-widget-editbutton="false"
+                                    data-widget-togglebutton="false"
+                                    data-widget-deletebutton="false"
+                                    data-widget-fullscreenbutton="false"
+                                    data-widget-custombutton="false"
+                                    data-widget-collapsed="true"
+                                    data-widget-sortable="false"
+    
+                                    -->
+                                    <header>
+                                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                                        <h2>Lista de Empleados </h2>
 
-                                </div>
-                                <!-- end widget edit box -->
+                                    </header>
 
-                                <!-- widget content -->
-                                <div class="widget-body no-padding">
+                                    <!-- widget div-->
+                                    <div>
 
-                                    <table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
+                                        <!-- widget edit box -->
+                                        <div class="jarviswidget-editbox">
+                                            <!-- This area used as dropdown edit box -->
 
-                                        <thead>
-                                            <tr>
-                                                <th class="hasinput" style="width:17%">
-                                                    <input type="text" class="form-control" placeholder="Filter Name" />
-                                                </th>                                       
-                                            </tr>
-                                            <tr>
-                                            <th>N°</th>
-                                            <th>Nombres y Apellidos</th>
-                                            <th>Área</th>
-                                            <th>Sección</th>
-                                            <th>Puesto</th>
-                                            <th>Fecha-Desde</th>
-                                            <th>Fecha-Hasta</th>
-                                            <th>Seleccionar<input type="checkbox" id="ckbCheckAll" /></th>
-                                          </tr>
-                                        </thead>
+                                        </div>
+                                        <!-- end widget edit box -->
 
-                                        <tbody id="data">
-                                            <tr >
-                                                <td>1</td>
-                                                <td>Jennifer</td>
-                                                <td>1-342-463-8341</td>
-                                                <td>Et Rutrum Non Associates</td>
-                                                <td>35728</td>
-                                                <td>Fogo</td>
-                                                <td>OPC</td>
-                                                <td><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></td>
-                                            </tr>
-                                        </tbody>
+                                        <!-- widget content -->
+                                        <div class="widget-body no-padding">
 
-                                      </table>
+                                            <table id="datatable_fixed_column"  class="table table-striped table-bordered" width="100%">
+
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th class="hasinput" style="width:16%">
+                                                            <input type="text" class="form-control" placeholder="Filtro Nombre" />
+                                                        </th>
+                                                        <th class="hasinput" style="width:16%">
+                                                            <input type="text" class="form-control" placeholder="Filtro Área" />
+                                                        </th>
+                                                        <th class="hasinput" style="width:16%">
+                                                            <input type="text" class="form-control" placeholder="Filtro Sección" />
+                                                        </th>
+                                                        <th class="hasinput" style="width:16%">
+                                                            <input type="text" class="form-control" placeholder="Filtro Puesto" />
+                                                        </th>
+                                                        <th class="hasinput" style="width:12%">
+                                                            <input type="text" class="form-control" placeholder="Filtro Puesto" />
+                                                        </th>
+                                                        <th class="hasinput" style="width:12%">
+                                                            <input type="text" class="form-control" placeholder="Filtro Puesto" />
+                                                        </th>
+                                                        <th></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th data-class="expand">ID</th>
+                                                        <th data-hide="phone">Nombre Y Apellidos</th>
+                                                        <th data-hide="phone">Area</th>
+                                                        <th data-hide="phone,tablet">Seccion</th>
+                                                        <th data-hide="phone,tablet">Puesto</th>
+                                                        <th data-hide="phone,tablet">Fecha Inico</th>
+                                                        <th data-hide="phone,tablet">Fecha Fin</th>
+                                                        <th>Seleccionar<center><input type="checkbox" id="ckbCheckAll" /></center></th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody id="data">
+                                                    <tr >
+                                                        <td>1</td>
+                                                        <td>Jennifer</td>
+                                                        <td>1-342-463-8341</td>
+                                                        <td>Et Rutrum Non Associates</td>
+                                                        <td>35728</td>
+                                                        <td>Fogo</td>
+                                                        <td>OPC</td>
+                                                        <td><center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- end widget content -->
                                     </div>
-                              </div>
-                            </div>
+                                    <!-- end widget div -->
+                                </div>
+                            </article>
+                            <!-- WIDGET END -->
+                            <footer>
+                                <center>
+                                    <button type="submit" class="btn btn-primary">
+                                        Enviar Lista de  Empelados  
+                                </center>
+                            </footer>
                         </div>
-            </section>
-        </div>  
+                        <!-- end row -->
 
-                                           <!-- END SHORTCUT AREA -->
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end widget grid -->
+
+                </div>
+                <!-- END MAIN CONTENT -->
+
+            </div>
+            <!-- END MAIN PANEL -->
+            <!-- END SHORTCUT AREA -->
                                            <!--Modal content-->
                                            <div class="modalContent"></div>
 
@@ -114,35 +171,44 @@
                                            <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
                                            <script src="<c:url value='resources/js/app.min.js'/>"></script>
+                                           <!-- PAGE RELATED PLUGIN(S) -->
+                                           <script src="resources/js/plugin/datatables/newjavascript.js"></script>
+                                           <script src="resources/js/plugin/datatables/dataTables.colVis.min.js"></script>
+                                           <script src="resources/js/plugin/datatables/dataTables.tableTools.min.js"></script>
+                                           <script src="resources/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+                                           <script src="resources/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+
+
+
                                            <script>
                                             $(document).ready(function () {
                                                 $.ajax({
-                    url: 'vac_emple',
-                    type: 'POST',
-                    async: true,
-                    data: '',
-                    success: function (objJson) {
-                        var lista = objJson.list;
-                        var s = '';
-                        if (lista.length > 0) {
-                            for (var i = 0; i < lista.length; i++) {
-                                 s += '<tr>';
-                                 s += '<td>'  + (i + 1) + '</td>';
-                                 s += '<td>' +lista[i].NOM + ' , ' + lista[i].A_P+ '  ' +lista[i].A_M +'</td>';// cambiar por el atributo que te da en tu DAO
-                                 s += '<td>' + lista[i].NO_AREA+ '</td>';
-                                 s += '<td>' + lista[i].NO_SECCION+ '</td>';
-                                 s += '<td>' + lista[i].NO_PUESTO + '</td>';
-                                 s += '<td>' + lista[i].FE + '</td>';
-                                 s += '<td>' + lista[i].FE2+ '</td>'; 
-                                 s += '<td>' + '<p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p>' +'</td>';
-                                 s += '</tr>';
-                            }
-                            $("#data").empty();
-                            $("#data").append(s);
-                        }
-                      }
-                     });   
-                                                
+                                                    url: 'vac_emple',
+                                                    type: 'POST',
+                                                    async: true,
+                                                    data: '',
+                                                    success: function (objJson) {
+                                                        var lista = objJson.list;
+                                                        var s = '';
+                                                        if (lista.length > 0) {
+                                                            for (var i = 0; i < lista.length; i++) {
+                                                                 s += '<tr>';
+                                                                 s += '<td>' +(i + 1)+'</td>';
+                                                                 s += '<td><a href="asig?id='+lista[i].ID+'">'+lista[i].NOM + ' , ' + lista[i].A_P+ '  ' +lista[i].A_M +'</a></td>';// cambiar por el atributo que te da en tu DAO
+                                                                 s += '<td>' + lista[i].NO_AREA+ '</td>';
+                                                                 s += '<td>' + lista[i].NO_SECCION+ '</td>';
+                                                                 s += '<td>' + lista[i].NO_PUESTO + '</td>';
+                                                                 s += '<td>' + lista[i].FE + '</td>';
+                                                                 s += '<td>' + lista[i].FE2+ '</td>'; 
+                                                                 s += '<td>' + '<center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center>' +'</td>';
+                                                                 s += '</tr>';
+                                                            }
+                                                            $("#data").empty();
+                                                            $("#data").append(s);
+                                                        }
+                                                      }
+                                                     });   
+
                                                      
                                             $("#ckbCheckAll").click(function () {
                                                 $(".checkBoxClass").prop('checked', $(this).prop('checked'));

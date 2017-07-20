@@ -19,9 +19,11 @@
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-rtl.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/fileinput.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>">
         <link href="<c:url value='resources/css/datatable.css" rel="stylesheet'/>" type="text/css"/>
+        <!-- file-input csss-->
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/file-input/fileinput-rtl.min.css'/>">
+        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/file-input/fileinput.min.css'/>">
     </head>
 </head>
 
@@ -30,164 +32,186 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="well">
-                    <h1><span class="semi-bold">Reporte</span> <i class="ultra-light">Renuncias / Abandono  </i><sup class="badge bg-color-red bounceIn animated">v 2.0</sup> <br>
-                        </div>
-                        </div>
-                        </div>
-                        <section id="widget-grid" class="col-md-6">
-                            <div class="row">
-                                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" 
-                                         data-widget-deletebutton="false">
-                                        <header>
-                                            <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
-                                            <h2>Trabajadores en el <strong>Departamento</strong></h2>
-                                            <ul class="nav nav-tabs pull-right in" id="myTab"> 
-                                                <li class="active">
-                                                    <a data-toggle="tab" href="#s1"><i class="fa fa-user"></i> <span class="hidden-mobile hidden-tablet">Usuarios RRHH</span></a>
-                                                    
-                                                </li>
-                                            </ul>
-                                        </header>
-                                        <br>
-                                        <section>
-                                            <div id="conTable" class="col-xs-6 col-sm-12 col-md-12 col-lg-12"></div>
-                                        </section>
-                                    </div>
-                                </article>
-                            </div>
-                        </section>
-                        <section id="widget-grid" class="col-md-6">
-                            <div class="widget-body bordered">
-                                <form class="form-horizontal">
-                                        <fieldset>
-                                            <legend>Disabled Form Elements</legend>
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label">Text field</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" disabled="disabled" placeholder="Default Text Field" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label">Auto Complete</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" disabled="disabled" placeholder="Type somethine..." type="text" list="list">
-                                                    <p class="note"><strong>Note:</strong> works in Chrome, Firefox, Opera and IE10.</p>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label">Password field</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" disabled="disabled" placeholder="Password field" type="password" value="mypassword">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label">Textarea</label>
-                                                <div class="col-md-10">
-                                                    <textarea class="form-control" disabled="disabled" placeholder="Textarea" rows="4"></textarea>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                </form>
-                            </div>
-                        </section>
-
-                      <!-- <section id="widget-grid" class="col-md-6">
-                            <div class="row">
-                                <h1>Adjuntar solicitud</h1>
-                                <form>
-                                    <div class="smart-form">
-                                        <section>
-                                            <label class="label">File input</label>
-                                            <div class="input input-file state-error">
-                                                <span class="button"><input type="file" id="file2" onchange="this.parentNode.nextSibling.value = this.value">Browse</span><input type="text" readonly>
-                                            </div>
-                                            <div class="note note-error">File size must be less than 3Mb.</div>
-                                        </section>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary">Submit</button>
-                                        <button class="btn btn-default" type="reset">Reset</button>
-                                    </div>
-                                </form>
-                            </div>
-             
-
-                        </section>-->
+                    <h1><span class="semi-bold">Reporte</span> <i class="ultra-light">Renuncias / Abandono  </i><sup class="badge bg-color-red bounceIn animated">v 2.0</sup></h1> <br>
                 </div>
-                <!--Cositas-->
-                
-                
-                <script type="text/javascript" src="<c:url value='resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
-                <script type="text/javascript" src="<c:url value='resources/js/app.config.js'/>"></script>
-                <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
-                <script type="text/javascript" src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>"></script><!-- bootstrap min.js-->
-                <script type="text/javascript" src="<c:url value='resources/js/notification/SmartNotification.min.js'/>"></script>
-                <script type="text/javascript" src="<c:url value='resources/js/smartwidgets/jarvis.widget.min.js'/>"></script>
-                <script type="text/javascript" src="<c:url value='resources/js/plugin/sparkline/jquery.sparkline.min.js'/>"></script>
-                <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
-                <script type="text/javascript" src="<c:url value='resources/js/plugin/masked-input/jquery.maskedinput.min.js'/>"></script>
-                <script type="text/javascript" src="<c:url value='resources/js/plugin/bootstrap-slider/bootstrap-slider.min.js'/>"></script>
-                <script type="text/javascript" src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
-                <script type="text/javascript" src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
-                <script type="text/javascript" src="<c:url value='resources/js/file/fileinput.min.js" type="text/javascript'/>"></script>
-                <script type="text/javascript" src="<c:url value='resources/js/app.min.js'/>"></script> 
-                <script src="<c:url value='resources/js/plugin/datatables/datatable.js'/>" type="text/javascript"></script>
+            </div>
+        </div>
+        <section id="widget-grid" class="col-md-6 jarviswidget">
+            <div id="close" class="row">
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" 
+                         data-widget-deletebutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                            <h2>Trabajadores en el <strong>Departamento</strong></h2>
+                            <ul class="nav nav-tabs pull-right in" id="myTab"> 
+                                <li class="active">
+                                    <a data-toggle="tab" href="#s1"><i class="fa fa-user"></i> <span class="hidden-mobile hidden-tablet">Usuarios RRHH</span></a>
+
+                                </li>
+                            </ul>
+                        </header>
+                        <br>
+                        <section>
+                            <div id="conTable" class="col-xs-6 col-sm-12 col-md-12 col-lg-12">
 
 
-                <script>
-                    $(document).ready(function () {
-                        list();
-                    });
+                            </div>
+                        </section>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- -->
+        <section  class="col-md-6 jarviswidget">
+            <div id="Contes" class="widget-body bordered">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend>Datos Del Trabajor</legend>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Nombres</label>
+                            <div class="col-md-7">
+                                <input class="form-control" disabled="disabled" placeholder="Nombres" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Apellidos</label>
+                            <div class="col-md-7">
+                                <input class="form-control" disabled="disabled" placeholder="Apellidos" type="text">
+                            </div>
 
-                    function list() {
-                        var url = "renu?opc=list";//nombre del controlador ejm. renuncia?op=1
-                        try {
-                            $.post(url , function (objJson) {
-                                var lista = objJson.pr;
-                                if (lista.length > 0) {
-                                    var m = "";
-                                    for (var i = 0; i < lista.length; i++) {
-                                        m += '<tr>';
-                                        m += '<td>' + (i + 1) + '</td>';
-                                        m += '<td>' + lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' + lista[i].NO_TRABAJADOR + '</td>';// cambiar por el atributo que te da en tu DAO
-                                        m += '<td>' + lista[i].NU_DOC + '</td>';
-                                        m += '<td>' + lista[i].AP_MATERNO + '</td>';
-                                        m += '<td>' + lista[i].NO_AREA + '</td>';
-                                        m += '<td>' + lista[i].NO_SECCION + '</td>';
-                                        m += '<td> HOLA </td>';
-                                        m += '</tr>';
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Celular</label>
+                            <div class="col-md-4">
+                                <input class="form-control" disabled="disabled" placeholder="Celular" type="text">
+                            </div>
+                            <label class="col-md-2 control-label">DNI</label>
+                            <div class="col-md-4">
+                                <input class="form-control" disabled="disabled" placeholder="DNI" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Inicio Contrato</label>
+                            <div class="col-md-4">
+                                <input class="form-control" disabled="disabled" placeholder="Incio Contrato" type="text">
+                            </div>
+                            <label class="col-md-2 control-label">Fin Contrato</label>
+                            <div class="col-md-4">
+                                <input class="form-control" disabled="disabled" placeholder="Fin Contrato" type="text">
+                            </div>
+                        </div>
+                     </fieldset>
+                </form>
+            </div>
+            <div id="adj" class="row" >
+                <h1>Adjuntar solicitud de Renuncia y/o Abandono</h1>
+                <form >
+                    <div class="col col-2">
+                        <input id="input-1" name="input2[]" disabled="" type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf"]'>                               
+                    </div>
+                    <!--<div class="smart-form">
+                        <section>
+                            <label class="label">File input</label>
+                            <div class="input input-file state-error">
+                                <span class="button"><input type="file" id="file2" disabled="" onchange="this.parentNode.nextSibling.value = this.value">Browse</span><input type="text" readonly>
+                            </div>
+                            <div class="note note-error">File size must be less than 3Mb.</div>
+                        </section>
+                    </div>-->
+                </form>
+                <br>
+                <div class="form-group">
+                    <button class="btn btn-primary" disabled="">Submit</button>
+                    <button class="btn btn-default" type="reset" disabled="" >Reset</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!--SCRIPT-->
+    <%@include file="../../../../jspf/scripts.jspf" %>
+
+    <script type="text/javascript" src="<c:url value='resources/js/app.config.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
+    <script type="text/javascript" src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>"></script><!-- bootstrap min.js-->
+    <script type="text/javascript" src="<c:url value='resources/js/smartwidgets/jarvis.widget.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='resources/js/plugin/sparkline/jquery.sparkline.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='resources/js/plugin/masked-input/jquery.maskedinput.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='resources/js/plugin/bootstrap-slider/bootstrap-slider.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='resources/js/app.min.js'/>"></script> 
+    <script src="<c:url value='resources/js/plugin/datatables/datatable.js'/>" type="text/javascript"></script>
+    <!--IMPORTANTE : FILE INPUTS-->
+    <script src="<c:url value='resources/js/plugin/file-input/fileinput.js'/>" ></script>
+    <script src="<c:url value='resources/js/plugin/file-input/fileinput.min.js'/>" ></script>
+
+
+    <script>
+                                    $(document).ready(function () {
+                                        list();
+                                        $("#Contes").hide();
+                                    });
+
+                                    function list() {
+                                        var url = "renu?opc=list";//nombre del controlador ejm. renuncia?op=1
+                                        try {
+                                            $.post(url, function (objJson) {
+                                                var lista = objJson.pr;
+                                                if (lista.length > 0) {
+                                                    var m = "";
+                                                    for (var i = 0; i < lista.length; i++) {
+                                                        m += '<tr>';
+                                                        m += '<td>' + (i + 1) + '</td>';
+                                                        m += '<td>' + lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' + lista[i].NO_TRABAJADOR + '</td>';// cambiar por el atributo que te da en tu DAO
+                                                        m += '<td>' + lista[i].NU_DOC + '</td>';
+                                                        m += '<td>' + lista[i].NO_AREA + '</td>';
+                                                        m += '<td>' + lista[i].NO_SECCION + '</td>';
+                                                        m += '<td>' + lista[i].NO_PUESTO + '</td>';
+                                                        m += '<td><a id=' + lista[i].ID_TRABAJADOR + ' onclick="getDataWorker(this.id)" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-list"></i></a></td>';
+                                                        m += '</tr>';
+                                                    }
+                                                    $("#conTable").empty();
+                                                    $("#conTable").append(createTable());
+                                                    $("#data").empty();
+                                                    $("#data").append(m);
+                                                    $('#dt_basic').dataTable();
+                                                } else {
+                                                    console.log("No hay datos en la tabla");
+                                                }
+                                            });
+                                        } catch (e) {
+                                            console.error("Error al listar : " + e);
+                                        }
                                     }
-                                    $("#conTable").empty();
-                                    $("#conTable").append(createTable());
-                                    $("#data").empty();
-                                    $("#data").append(m);
-                                    $('#dt_basic').dataTable();
-                                } else {
-                                    console.log("No hay datos en la tabla");
-                                }
-                            });
-                        } catch (e) {
-                            console.error("Error al listar : " + e);
-                        }
-                    }
-                    function createTable() {
-                        var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">';
-                        s += '<thead>';
-                        s += '<th data-hide="phone">N°</th>';
-                        s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Apellidos y Nombres</th>';
-                        s += '<th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> DNI</th>';
-                        s += '<th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>AREA</th>';
-                        s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> SECCION</th>';
-                        s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>PUESTO</th>';
-                        s += '<th data-hide="phone,tablet">OPC</th>';
-                        s += '</thead>';
-                        s += '<tbody id="data"></tbody>';
-                        s += '</table>';
-                        return s;
-                    }
-                </script>
-     </body>
+                                    function createTable() {
+                                        var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">';
+                                        s += '<thead>';
+                                        s += '<th data-hide="phone">N°</th>';
+                                        s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Apellidos y Nombres</th>';
+                                        s += '<th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> DNI</th>';
+                                        s += '<th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Area</th>';
+                                        s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> Seccion</th>';
+                                        s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Puesto</th>';
+                                        s += '<th data-hide="phone,tablet">Opc</th>';
+                                        s += '</thead>';
+                                        s += '<tbody id="data"></tbody>';
+                                        s += '</table>';
+                                        return s;
+                                    }
+
+                                    function getDataWorker(id) {
+                                        var url = 'renu?opc=Detalle';//controlador
+                                        var data = 'idtr=' + id;//datos a enviar
+                                        $.post(url, data, function (obj) {
+                                            console.log(obj.ls);
+                                        });
+                                    }
+
+
+    </script>
+</body>
 </html>
