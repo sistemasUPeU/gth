@@ -122,44 +122,42 @@
                                 <fieldset>
                                     <div class="row">
                                         <section class="col col-6">
-                                            <label>Nombres:</label>
-                                            <label id='nombres' class="input" style="color: #005cac; font-weight: bold; font-size: 1.7vh;">
+                                            <label style="color: #005cac; font-weight: bold; font-size: 1vh;">Nombres:</label>
+                                            <label id='nombres' class="input" style="font-weight: bold; font-family:Arial; font-size: 0.8vh;">
                                             </label>
                                         </section>
                                     </div>
                                     <div class="row">
                                         <section class="col col-6">
-                                            <label>Correo</label>
-                                            <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
-                                                <input id='correo' type="email" value="" name="email" disabled="disabled">
+                                            <label style="color: #005cac; font-weight: bold; font-size: 1vh;">Correo:</label>
+                                            <label class="input" id="correo" style="font-weight: bold; font-family:Arial; font-size: 0.8vh;">
 
                                             </label>
                                         </section>
                                         <section class="col col-6">
-                                            <label>Fecha de nacimiento</label>
-                                            <label class="input"><i class="icon-prepend fa fa-home"></i>
-                                                <input id="fecha" type="text" name="fecha_nac"  disabled="disabled">
+                                            <label style="color: #005cac; font-weight: bold; font-size: 1vh;">Fecha de nacimiento</label>
+                                            <label class="input" id="fecha" style="font-weight: bold; font-family:Arial; font-size: 0.8vh;">
+                                                
                                             </label>
                                         </section>
                                     </div>
                                     <div class="row">
                                         <section class="col col-4">
-                                            <label>Sexo</label>
-                                            <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
-                                                <input id="sexo" type="email" name="sexo" disabled="disabled">
+                                            <label style="color: #005cac; font-weight: bold; font-size: 1vh;">Sexo</label>
+                                            <label class="input" id="sexo" style="font-weight: bold; font-family:Arial; font-size: 0.8vh;">
+                                                
                                             </label>
                                         </section>
                                         <section class="col col-2">
-                                            <label>Tipo de documento</label>
-                                            <label class="input"><i class="icon-prepend fa fa-home"></i>
-
-                                                <input type="text" id="tip_doc" disabled="disabled">
+                                            <label style="color: #005cac; font-weight: bold; font-size: 1vh;">Documento</label>
+                                            <label class="input" id="tip_doc" style="font-weight: bold; font-family:Arial; font-size: 0.8vh;">
+                                                
                                             </label>
                                         </section>
                                         <section class="col col-2">
-                                            <label>Número de documento</label>
-                                            <label class="input"><i class="icon-prepend fa fa-home"></i>
-                                                <input type="text" name="num_doc" id="num_doc" disabled="disabled">
+                                            <label style="color: #005cac; font-weight: bold; font-size: 1vh;">Número de documento</label>
+                                            <label class="input" id="num_doc" style="font-weight: bold; font-family:Arial; font-size: 0.8vh;">
+                                                
                                             </label>
                                         </section>
                                        
@@ -329,15 +327,15 @@
                                                                             console.log(obj[0]);
                                                                             var trab = obj[0];
                                                                             $("#nombres").text(trab.NOM + " " + trab.AP_P + " " + trab.AP_M);
-                                                                            $("#correo").val(trab.CORREO);
-                                                                            $("#fecha").val(trab.F);
-                                                                            $("#sexo").val(trab.SEXO);
-                                                                            $("#num_doc").val(trab.N_D);
+                                                                            $("#correo").text(trab.CORREO);
+                                                                            $("#fecha").text(trab.F);
+                                                                            $("#sexo").text(trab.SEXO);
+                                                                            $("#num_doc").text(trab.N_D);
                                                                             var o = trab.T;
                                                                             if (o === '1 ') {
-                                                                                $("#tip_doc").val('DNI');
+                                                                                $("#tip_doc").text('DNI');
                                                                             } else {
-                                                                                $("#tip_doc").val('Otros');
+                                                                                $("#tip_doc").text('Otros');
                                                                             }
 
 
