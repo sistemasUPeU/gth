@@ -9,6 +9,8 @@
     HttpSession sesion = request.getSession();
     String id_user = (String) sesion.getAttribute("IDUSER");
     if (id_user != null) {
+        String a = sesion.getAttribute("SEXO").toString();
+        String sexo = "resources/img/user" + a + ".png";
 %>
 <!DOCTYPE html>
 <html>
@@ -111,15 +113,11 @@
                     <div class="avatar-user col-md-3">
                         <input id="id_trabajador" type="hidden" value="<%out.println(sesion.getAttribute("IDTR"));%>" />
                         <input id="iuser" type="hidden" value="<%out.println(id_user);%>" />
-                        <a href="javascript:void(0);" id="show-shortcut" >
-                            <img id="foto_usuario" src="<c:url value='resources/img/avatar_default.jpg'/>" class="bounceIn animated" style="width: 60px" />
+                        <a href="javascript:void(0);" id="show-shortcut" >                                             
+                            <img id="foto_usuario" src="<c:url value='<%=sexo%>'/>" class="bounceIn animated" style="width: 60px" />
                         </a>  
                     </div>
                     <div class="col-md-9">
-                        <div class="login-info text-right">
-                            <span class="spanuser"> <%out.println((String) sesion.getAttribute("USER")); %></span>  
-                        </div>
-
                         <div class="login-info text-right">
                             <span ><%out.println((String) sesion.getAttribute("NOMBRE_AP").toString().trim()); %> </span> 
                         </div>

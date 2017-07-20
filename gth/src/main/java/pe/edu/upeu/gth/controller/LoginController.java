@@ -62,6 +62,7 @@ public class LoginController {
                 session.setAttribute("DEPARTAMENTO_ID", user.get(0).get("id_departamento"));
                 session.setAttribute("PUESTO", user.get(0).get("no_puesto"));
                 session.setAttribute("IDDIR", user.get(0).get("id_direccion"));
+                session.setAttribute("SEXO", user.get(0).get("es_sexo"));
                 if (user.get(0).get("ap_paterno") == null) {
                     session.setAttribute("NOMBRE_AP", "");
                 } else {

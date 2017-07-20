@@ -107,7 +107,7 @@ public class UsuarioDAO implements Operaciones {
                 m.put("no_trabajador", rs.getString("no_trabajador"));
                 m.put("ap_paterno", rs.getString("ap_paterno"));
                 m.put("ap_materno", rs.getString("ap_materno"));
-                //m.put("ar_foto", rs.getString("ar_foto"));
+                m.put("es_sexo", rs.getString("es_sexo"));
                 m.put("id_direccion", rs.getString("id_direccion"));
                 lista.add(m);
             }
