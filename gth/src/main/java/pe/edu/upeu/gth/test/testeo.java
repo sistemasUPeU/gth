@@ -46,8 +46,9 @@ public class testeo {
         //pR("ROL-0019", "MOD-0003");
         //System.out.println(asd.getSessionJson());
         //Listar_empleados();
-        //validar("liliana", "123");
-        detalleTr("TRB-002742");
+        validar("liliana", "123");
+        //detalleTr("TRB-002742");
+        //listar_puestosejemplo("PUT-002011");
     }
 
     public static void validar(String u,String p){
@@ -58,7 +59,7 @@ public class testeo {
     //--
     public static void listar_puestosejemplo(String id) {
         //System.out.println(eA.listajt(id));
-        System.out.println(eA.listajt(id));
+        System.out.println(eA.listajt(id,"1"));
     }
 
     ///
@@ -89,7 +90,7 @@ public class testeo {
     }
 
     public static void listar_puestos() {
-        System.out.println(eA.listar());
+        System.out.println(eA.listara("PUT-002011","1"));
     }
 
     public static void addPuesto(String nombre, String corto, String estado, String ids, String cod) {

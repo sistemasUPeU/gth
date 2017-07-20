@@ -58,12 +58,7 @@ public class UsuarioDAO implements Operaciones {
             }
         } catch (Exception e) {
             System.out.println("Error al Listar Usuarios" + e);
-        } finally {
-            try {
-                cn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
         }
         return lista;
     }
@@ -84,10 +79,12 @@ public class UsuarioDAO implements Operaciones {
     }
 
     public ArrayList<Map<String, ?>> validar(String usuario, String pass) {
-        sql = "select * from rhvd_usuario where no_usuario='"+usuario+"' and pw_usuario='"+pass+"'";
+        sql = "select * from rhvd_usuario where trim(no_usuario)=? and trim(pw_usuario)=?";
         ArrayList<Map<String, ?>> lista = new ArrayList<>();
         try {
             ps = d.getConnection().prepareStatement(sql);
+            ps.setString(1, usuario);
+            ps.setString(2, pass);
             rs = ps.executeQuery();
             while (rs.next()) {
                 Map<String, Object> m = new HashMap<>();

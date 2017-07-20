@@ -39,16 +39,16 @@ public class ejemploDAO implements Operaciones {
     }
 
     // -------
+    public ArrayList<Map<String, Object>> listajt(String id, String codigo) {
 
-    public ArrayList<Map<String, Object>> listajt(String id) {
-        String sql = "select * from rhtr_puesto where ID_PUESTO = ?";
-        return (ArrayList<Map<String, Object>>) jt.queryForList(sql, id);
+        sql = "select * from rhtr_puesto where ID_PUESTO = ? ";
+        return (ArrayList<Map<String, Object>>) jt.queryForList(sql, id.trim(), codigo.trim());
     }
 
-        //---------------
+    //---------------
     @Override
     public ArrayList<Map<String, Object>> listar() {
-        sql = "select * from rhtr_puesto";
+        sql = "select * from rhtr_puesto where id_puesto=?";
         ArrayList<Map<String, Object>> lista = new ArrayList<>();
         try {
             ps = d.getConnection().prepareStatement(sql);
@@ -124,18 +124,40 @@ public class ejemploDAO implements Operaciones {
         return p;
     }
 
-     public int asignar(Object o)
-     {
-         int a = 0; 
-         String sql ="delete from rhtr_puesto where id_puesto=?";
-         try {
-             a = jt.update(sql ,o.toString() );
-             a =1 ;
-         } catch (Exception e) {
-             System.out.println("error");
-         }
-         return a;
+    public int asignar(Object o) {
+        int a = 0;
+        String sql = "delete from rhtr_puesto where id_puesto=?";
+        try {
+            a = jt.update(sql, o.toString());
+            a = 1;
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        return a;
 
-     }
-    
+    }
+
+    public ArrayList<Map<String, Object>> listara(String id, String codigo) {
+        sql = "select * from rhtr_puesto where id_puesto=? and co_grupo=?";
+        ArrayList<Map<String, Object>> lista = new ArrayList<>();
+        try {
+            ps = d.getConnection().prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, codigo);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Map<String, Object> m = new HashMap<>();
+                m.put("id", rs.getString(1));
+                m.put("puesto", rs.getString(2));
+                m.put("nombre", rs.getString(3));
+                m.put("estado", rs.getString(4));
+                m.put("id_seccion", rs.getString(5));
+                m.put("codigo", rs.getString(6));
+                lista.add(m);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al Listar Puestos" + e);
+        }
+        return lista;
+    }
 }

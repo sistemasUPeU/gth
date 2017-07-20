@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
 import pe.edu.upeu.gth.interfaces.Operaciones;
 
 /**
@@ -18,7 +19,7 @@ import pe.edu.upeu.gth.interfaces.Operaciones;
  */
 public class vacacionesDAO implements Operaciones{
     JdbcTemplate jt;
-    
+   
     public vacacionesDAO(DataSource dataSource)       
     {
      jt= new JdbcTemplate(dataSource);
@@ -45,7 +46,7 @@ public class vacacionesDAO implements Operaciones{
     
      public List<Map<String, Object>> asignar_permiso(String id)
      {
-        String sql="select NO_TRABAJADOR nom,AP_PATERNO ap_p,AP_MATERNO ap_m,DI_CORREO_INST correo,NU_DOC n_d,TI_DOC t,ES_SEXO sexo,to_char(FE_NAC,'DD-MM-YYYY') AS F FROM RHTM_TRABAJADOR WHERE ID_TRABAJADOR = ?"; 
+        String sql="select co.ID_CONTRATO, t.NO_TRABAJADOR nom,t.AP_PATERNO ap_p,t.AP_MATERNO ap_m,t.DI_CORREO_INST correo,t.NU_DOC n_d,t.TI_DOC t,t.ES_SEXO sexo,to_char(t.FE_NAC,'DD-MM-YYYY') AS F FROM RHTM_TRABAJADOR t,RHTM_CONTRATO co WHERE co.ID_TRABAJADOR=t.ID_TRABAJADOR AND t.ID_TRABAJADOR = ?"; 
         return jt.queryForList(sql,id);
         
      }
