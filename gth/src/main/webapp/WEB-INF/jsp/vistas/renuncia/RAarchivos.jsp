@@ -109,7 +109,6 @@
     <!--NOTIFY-->
     <script src="<c:url value='resources/js/notification/push.min.js'/>"></script>
     
-    
     <script>
                                     $(document).ready(function () {
                                         list();
@@ -245,7 +244,7 @@
                                     function Noti(st){
                                         Push.create("Hola su Contrato Vence en:", {
                                             body: st,
-                                            icon: '',
+                                            icon: '<c:url value="resources/images/alert.png"/>',
                                             timeout: 3000,
                                             onClick: function () {
                                                 this.close();
