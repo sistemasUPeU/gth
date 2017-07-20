@@ -61,14 +61,10 @@
                 </article>
             </div>
         </section>
-        <!-- -->
+        
         <section  class="col-md-6 jarviswidget">
             
             <div id="ONG" class="widget-body bordered">
-              <!-- carga el formulario 
-              <form id="Contes" class="form-horizontal"> 
-                </form>
-              -->
               
             </div>
             
@@ -136,7 +132,7 @@
                                                         m += '<td>' + lista[i].NO_AREA + '</td>';
                                                         m += '<td>' + lista[i].NO_SECCION + '</td>';
                                                         m += '<td>' + lista[i].NO_PUESTO + '</td>';
-                                                        m += '<td><a id=' + lista[i].ID_TRABAJADOR + ' onclick="getDataWorker(this.id);"  class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-list"></i></a></td>';
+                                                        m += '<td><a id=' + lista[i].ID_TRABAJADOR + ' onclick="getDataWorker(this.id);"  class="btn btn-primary btn-circle"><i class="fa fa-search"></i></a></td>';
                                                         m += '</tr>';
                                                     }
                                                     $("#conTable").empty();
@@ -190,7 +186,7 @@
                                                             l += '<div class="form-group">';
                                                             l += '<label class="col-md-2 control-label">Apellidos : </label>';
                                                             l += '<div class="col-md-7">';
-                                                            l += '<input class="form-control" disabled="disabled" value="' + listaD[i].AP_MATERNO + ' , ' + listaD[i].NO_TRABAJADOR + '" type="text">';
+                                                            l += '<input class="form-control" disabled="disabled" value="' + listaD[i].AP_PATERNO + '  ' + listaD[i].AP_MATERNO + '" type="text">';
                                                             l += '</div>';
                                                             l += '</div>';
                                                             l += '<div class="form-group">';
@@ -250,7 +246,7 @@
                                         Push.create("Hola su Contrato Vence en:", {
                                             body: st,
                                             icon: '',
-                                            timeout: 5000,
+                                            timeout: 3000,
                                             onClick: function () {
                                                 this.close();
                                             }
