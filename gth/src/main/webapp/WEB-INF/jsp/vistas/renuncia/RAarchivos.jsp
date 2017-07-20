@@ -71,15 +71,17 @@
             
             <div id="adj" class="row" >
                 <h1>Adjuntar solicitud de Renuncia y/o Abandono</h1>
-                <form >
+                <form>
                     <div class="col col-2">
-                        <input id="input-24" id="file" name="input24[]"  type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf","png"]'>                               
+                        <input id="input-24" id="file" name="input24[]"  type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf","png"]'  maxFileSize='[0.5]'>                               
                     </div>
                 </form>
                 <br>
                 <div class="form-group">
-                    <button class="btn btn-primary" id="enviar" disabled="">Submit</button>
-                    <button class="btn btn-default" id="reset" onclick="Cerrar();" type="reset" disabled="" >Reset</button>
+                    <button class="btn btn-primary btn-upload-4" id="enviar" disabled="">Submit</button>
+                    <button class="btn btn-default btn-reset-4" id="reset" onclick="Cerrar();" type="reset" disabled="" >Reset</button>
+                  
+
                     <!--<button class="btn btn-primary" onclick="Noti();" >Submit</button>-->
                 </div>
                 
@@ -114,9 +116,8 @@
         
                                     $(document).ready(function () {
                                         list();
-                                        
                                         $("#ONG").hide();
-                                    });
+                                        });
 
                                     function list() {
                                         var url = "renu?opc=list";//nombre del controlador ejm. renuncia?op=1
@@ -151,7 +152,7 @@
                                         }
                                     }
                                     function createTable() {
-                                        var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">';
+                                        var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover " width="100%">';
                                         s += '<thead>';
                                         s += '<th data-hide="phone">N°</th>';
                                         s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Apellidos y Nombres</th>';
@@ -175,7 +176,7 @@
                                                     if(listaD.length > 0){
                                                         var l ="";
                                                         for  (var  i =0 ; i< listaD.length; i++){
-                                                            l += '<form id="Contes" class="form-horizontal">';
+                                                            l += '<form id="Contes" class="form-horizontal ">';
                                                             l += '<fieldset>';
                                                             l += '<legend>Datos del Trabajor</legend>';
                                                             l += '<div class="form-group">';
@@ -208,6 +209,15 @@
                                                             l += '<label class="col-md-2 control-label">Fin Contrato : </label>';
                                                             l += '<div class="col-md-4">';
                                                             l += '<input class="form-control" disabled="disabled" value ="'+listaD[i].FEC_FIN +'" type="text">';
+                                                            l += '<br>';
+                                                            l += '</div>';
+                                                            l += '<label class="col-md-2 control-label"> Opciones :</label>';
+                                                            l += '<div class="col-md-4 selectContainer">';
+                                                            l += '<select class="form-control" name="genre">';
+                                                            l += '<option value="">Seleccion uno de ellos</option>';
+                                                            l += '<option value="">Abandono</option>';
+                                                            l += '<option value="action">Renuncia</option>';
+                                                            l += '<select>';
                                                             l += '</div>';
                                                             l += '</div>';
                                                             l += '<div class="form-group">';
@@ -215,7 +225,8 @@
                                                             l += '<div class="col-md-10">';
                                                             l += '<textarea  class="form-control" placeholder="Descripción acerca de la renuncia del trabajador."  rows="3" cols="100">';
                                                             l += '</textarea>';
-                                                            l += '</div>';
+                                                           
+                                                            l +='</div>';
                                                             l += '</div>';
                                                             l += '</fieldset>';
                                                             l += '</form>';
