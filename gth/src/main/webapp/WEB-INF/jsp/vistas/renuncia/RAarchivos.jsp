@@ -77,13 +77,13 @@
                 <h1>Adjuntar solicitud de Renuncia y/o Abandono</h1>
                 <form>
                     <div class="col col-2">
-                        <input id="input-24" id="file" name="input24[]"  type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf","png"]'  maxFileSize='[0.5]'>                               
+                        <input id="fileid" id="file" name="fileid"  type="file" class="file file-loading" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf","png"]'  maxFileSize='[0.5]'>                               
                     </div>
                 </form>
                 <br>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-upload-4" id="enviar" disabled="">Submit</button>
-                    <button class="btn btn-default btn-reset-4" id="reset" onclick="Cerrar();" type="reset" disabled="" >Reset</button>
+                    <button class="btn btn-primary btn-upload-4" onclick="Registro()" id="enviar" disabled=""> Registrar </button>
+                    <button class="btn btn-default btn-reset-4" id="reset" onclick="Cerrar();" type="reset" disabled="" > Cancelar </button>
                   
 
                     <!--<button class="btn btn-primary" onclick="Noti();" >Submit</button>-->
@@ -215,7 +215,7 @@
                                                             l += '<input class="form-control" disabled="disabled" value ="'+listaD[i].FEC_FIN +'" type="text">';
                                                             l += '<br>';
                                                             l += '</div>';
-                                                            l += '<label class="col-md-2 control-label"> Opciones :</label>';
+                                                            l += '<label class="col-md-2 control-label"> Opciones:</label>';
                                                             l += '<div class="col-md-4 selectContainer">';
                                                             l += '<select class="form-control" name="genre">';
                                                             l += '<option value="">Seleccion uno de ellos</option>';
@@ -225,12 +225,15 @@
                                                             l += '</div>';
                                                             l += '</div>';
                                                             l += '<div class="form-group">';
-                                                            l += '<label class="col-md-2 control-label"> Descripción :</label>';
+                                                            l += '<label class="col-md-2 control-label"> Descripción:</label>';
                                                             l += '<div class="col-md-10">';
                                                             l += '<textarea  class="form-control" placeholder="Descripción acerca de la renuncia del trabajador."  rows="3" cols="100">';
                                                             l += '</textarea>';
-                                                           
+                                                            //nesesarios
+                                                            l += '<input type="hidden" id="idco" value="' + listaD[i].ID_CONTRATO+ '"';
+                                                            
                                                             l +='</div>';
+                                                            l += '<input type="hidden" id="iddgp" value="' + listaD[i].ID_DGP + '"';
                                                             l += '</div>';
                                                             l += '</fieldset>';
                                                             l += '</form>';
@@ -269,6 +272,14 @@
                                         });
                                     }     
                                     
+                                    function Registro (){
+                                       var idco =  $("#idco").val();
+                                       var iddgp =  $("#iddgp").val();
+                                       var user_aut =  $("#user_auto").val();
+                                        console.log(idco);
+                                        console.log(iddgp);
+                                        console.log(user_aut);
+                                    }
     </script>
 </body>
 </html>
