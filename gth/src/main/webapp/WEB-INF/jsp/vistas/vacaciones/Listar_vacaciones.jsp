@@ -65,7 +65,7 @@
                                         <h2>Lista de Empleados </h2>
 
                                     </header>
-
+                                  
                                     <!-- widget div-->
                                     <div>
 
@@ -77,60 +77,8 @@
                                         <!-- end widget edit box -->
 
                                         <!-- widget content -->
-                                        <div class="widget-body no-padding">
-                                            
-                                                
-
-                                            <table id="datatable_fixed_column"  class="table table-striped table-bordered" width="100%" role>
-
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th></th>
-                                                        <th class="hasinput" style="width:16%">
-                                                            <input type="text" class="form-control" placeholder="Filtro Nombre" />
-                                                        </th>
-                                                        <th class="hasinput" style="width:16%">
-                                                            <input type="text" class="form-control" placeholder="Filtro Área" />
-                                                        </th>
-                                                        <th class="hasinput" style="width:16%">
-                                                            <input type="text" class="form-control" placeholder="Filtro Sección" />
-                                                        </th>
-                                                        <th class="hasinput" style="width:16%">
-                                                            <input type="text" class="form-control" placeholder="Filtro Puesto" />
-                                                        </th>
-                                                        <th class="hasinput" style="width:12%">
-                                                            <input type="text" class="form-control" placeholder="Filtro Puesto" />
-                                                        </th>
-                                                        <th class="hasinput" style="width:12%">
-                                                            <input type="text" class="form-control" placeholder="Filtro Puesto" />
-                                                        </th>
-                                                        <th></th>
-                                                    </tr>
-                                                    <tr role="row">
-                                                        <th data-class="expand">ID</th>
-                                                        <th data-hide="phone">Nombre Y Apellidos</th>
-                                                        <th data-hide="phone">Area</th>
-                                                        <th data-hide="phone,tablet">Seccion</th>
-                                                        <th data-hide="phone,tablet">Puesto</th>
-                                                        <th data-hide="phone,tablet">Fecha Inico</th>
-                                                        <th data-hide="phone,tablet">Fecha Fin</th>
-                                                        <th>Seleccionar<center><input type="checkbox" id="ckbCheckAll" /></center></th>
-
-                                                </tr>
-                                                </thead>
-                                                <tbody id="data">
-                                                    <tr >
-                                                        <td>1</td>
-                                                        <td>Jennifer</td>
-                                                        <td>1-342-463-8341</td>
-                                                        <td>Et Rutrum Non Associates</td>
-                                                        <td>35728</td>
-                                                        <td>Fogo</td>
-                                                        <td>OPC</td>
-                                                        <td><center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                        <div class="widget-body no-padding" id="tablecont">
+                                                       
                                         </div>
                                         <!-- end widget content -->
                                     </div>
@@ -144,6 +92,7 @@
                                         Enviar Lista de  Empelados  
                                 </center>
                             </footer>
+                            
                         </div>
                         <!-- end row -->
 
@@ -185,6 +134,10 @@
 
                 <script>
                  $(document).ready(function () {
+                      console.log("si");  
+                     listar();   
+                 });
+                 function listar(){
                      $.ajax({
                          url: 'vac_emple',
                          type: 'POST',
@@ -206,17 +159,45 @@
                                       s += '<td>' + '<center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center>' +'</td>';
                                       s += '</tr>';
                                  }
+                                 $("#tablecont").empty();
+                                 $("#tablecont").append(creartable());
                                  $("#data").empty();
                                  $("#data").append(s);
+                                 $("#datatable_fixed_column").DataTable();
+                                 
                              }
                            }
-                          });  
+                       });
+                   }
+                           function creartable(){
+                               var s = '<table id="datatable_fixed_column"  class="table table-striped table-bordered" width="100%">';
+                               s += '<thead>';
+                               s += '<tr>';
+                               s += ' <th data-class="expand">ID</th>';
+                               s += '<th data-hide="phone">Nombre Y Apellidos</th>';
+                               s += '<th data-hide="phone">Area</th>';
+                               s += '<th data-hide="phone,tablet">Seccion</th>';
+                               s += '<th data-hide="phone,tablet">Puesto</th>';
+                               s += ' <th data-hide="phone,tablet">Fecha Inico</th>';
+                               s += '<th data-hide="phone,tablet">Fecha Fin</th>';
+                               s += ' <th>Seleccionar<center><input type="checkbox" id="ckbCheckAll" /></center></th>';
+                               s += ' </tr>';
+                               s += ' </thead>';
+                               s += ' <tbody id="data">';
+                               s += ' </tbody>';
+                               s += ' </table>  ';
+                               return s;
+                               
+                               
+                               $("#ckbCheckAll").click(function () {
+                               $(".checkBoxClass").prop('checked', $(this).prop('checked'));
+                                 });
+ 
+                           }
+                   
 
                                                      
-                 $("#ckbCheckAll").click(function () {
-                     $(".checkBoxClass").prop('checked', $(this).prop('checked'));
-                                 });
-                        });
+                 
                 </script>
 
                 <script type="text/javascript">
