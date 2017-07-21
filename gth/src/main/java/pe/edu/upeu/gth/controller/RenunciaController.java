@@ -78,14 +78,15 @@ public class RenunciaController {
                     String idContr = request.getParameter("idco").toString();
                     String idDgp = request.getParameter("iddgp").toString();
                     String User_au = request.getParameter("user_aut").toString();
-                    String DirecADj = request.getParameter("").toString();
-                    String Nom_Adj = request.getParameter("").toString();
+                    String DirecADj = request.getParameter("direcAdj").toString();
+                    String Nom_Adj = request.getParameter("Nom_adj").toString();
                     String Desc = request.getParameter("desc").toString();
-                    String Size_Adj = request.getParameter("").toString();
-                    String Type_Adj = request.getParameter("").toString();
+                    String Size_Adj = request.getParameter("Size_Adj").toString();
+                    String Type_Adj = request.getParameter("Type_ADJ").toString();
                     String Opc = request.getParameter("opc").toString();
-                    //rdao.Renuncia(idContr, idDgp , User_au, DirecADj, Nom_Adj, Desc, Size_Adj, Type_Adj, Opc);
+                    rdao.Renuncia(idContr, idDgp , User_au, DirecADj, Nom_Adj, Desc, Size_Adj, Type_Adj, Opc);
                     mp.put("si", true);
+                    //System.out.println(idContr);
                     break;
 //                case "ejemplo":
 //                    id=request.getParameter("idtr");
