@@ -65,7 +65,6 @@ public class RenunciaController {
         try {
             switch (opc) {
                 case "list":
-                    
                     mp.put("pr", rdao.listarEmpleados());
                     break;
                 case "Detalle":
@@ -74,6 +73,9 @@ public class RenunciaController {
                     break;
                 case "listR":
                     mp.put("pr", rdao.listar());
+                    break;
+                case "InserRenuncia":  
+                    
                     break;
 //                case "ejemplo":
 //                    id=request.getParameter("idtr");
