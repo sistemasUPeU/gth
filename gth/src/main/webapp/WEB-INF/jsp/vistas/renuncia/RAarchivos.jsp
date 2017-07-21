@@ -217,10 +217,10 @@
                                                             l += '</div>';
                                                             l += '<label class="col-md-2 control-label"> Opciones:</label>';
                                                             l += '<div class="col-md-4 selectContainer">';
-                                                            l += '<select class="form-control" name="genre">';
-                                                            l += '<option id="opc" value="">Seleccion uno de ellos</option>';
-                                                            l += '<option value="1" >Abandono</option>';
-                                                            l += '<option value="2" >Renuncia</option>';
+                                                            l += '<select id="opc" class="form-control" name="genre">';
+                                                            l += '<option value=""> Selc. Mododalidad </option>';
+                                                            l += '<option value="1" > Renuncia </option>';
+                                                            l += '<option value="2" > Abandono </option>';
                                                             l += '<select>';
                                                             l += '</div>';
                                                             l += '</div>';

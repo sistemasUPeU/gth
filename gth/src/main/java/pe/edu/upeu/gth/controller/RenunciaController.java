@@ -85,6 +85,7 @@ public class RenunciaController {
                     String Type_Adj = request.getParameter("").toString();
                     String Opc = request.getParameter("opc").toString();
                     //rdao.Renuncia(idContr, idDgp , User_au, DirecADj, Nom_Adj, Desc, Size_Adj, Type_Adj, Opc);
+                    mp.put("si", true);
                     break;
 //                case "ejemplo":
 //                    id=request.getParameter("idtr");
