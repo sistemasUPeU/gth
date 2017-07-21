@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : 13-jul-2017, 9:49:04
-    Author     : dreyna
+    Author     : JoseRayo
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,6 +18,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-rtl.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/demo.min.css'/>">
+        <link rel="stylesheet" type="text/css" href="<c:url value='resources/css/datatable.css'/>" />
 
 	</head>
     	    <body>
@@ -158,26 +159,25 @@
                                            <!--Modal content-->
                                            <div class="modalContent"></div>
 
-                                           <script src="<c:url value='resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
-                                           <script src="<c:url value='resources/js/app.config.js'/>"></script>
-                                           <script src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
-                                           <script src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/notification/SmartNotification.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/smartwidgets/jarvis.widget.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/plugin/sparkline/jquery.sparkline.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/plugin/masked-input/jquery.maskedinput.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/plugin/bootstrap-slider/bootstrap-slider.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/app.min.js'/>"></script>
-                                           <script src="<c:url value='resources/js/plugin/datatables/datatable.js'/>" type="text/javascript"></script>
-                                           <!-- PAGE RELATED PLUGIN(S) -->
-                                           <script src="resources/js/plugin/datatables/newjavascript.js"></script>
-                                           <script src="resources/js/plugin/datatables/dataTables.colVis.min.js"></script>
-                                           <script src="resources/js/plugin/datatables/dataTables.tableTools.min.js"></script>
-                                           <script src="resources/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
-                                           <script src="resources/js/plugin/datatable-responsive/datatables.responsive.min.js"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
+                <script type="text/javascript" src="<c:url value='resources/js/app.config.js'/>"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
+                <script type="text/javascript" src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>"></script><!-- bootstrap min.js-->
+                <script type="text/javascript" src="<c:url value='resources/js/notification/SmartNotification.min.js'/>"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/smartwidgets/jarvis.widget.min.js'/>"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/sparkline/jquery.sparkline.min.js'/>"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/masked-input/jquery.maskedinput.min.js'/>"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/bootstrap-slider/bootstrap-slider.min.js'/>"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/app.min.js'/>"></script> 
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/datatables/newjavascript.js'/>" ></script>
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/datatables/dataTables.colVis.min.js'/>" ></script>
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/datatables/dataTables.tableTools.min.js'/>"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/datatables/dataTables.bootstrap.min.js'/>"></script>
+                <script type="text/javascript"src="<c:url value='resources/js/plugin/datatable-responsive/datatables.responsive.min.js'/>"></script>
+                <script type="text/javascript" src="<c:url value='resources/js/plugin/datatables/datatable.js'/>" ></script>
 
 
 
@@ -215,9 +215,9 @@
                                                 $(".checkBoxClass").prop('checked', $(this).prop('checked'));
                                                             });
                                                    });
-                                           </script>
+                 </script>
                                            
-                                           <script type="text/javascript">
+                            <script type="text/javascript">
 
                                // DO NOT REMOVE : GLOBAL FUNCTIONS!
 
@@ -343,7 +343,7 @@
 
                                                                                                                                                           
 
-                                           </script>                          
+                                    </script>                          
         
     </body>
 </html>
