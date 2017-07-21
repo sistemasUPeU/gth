@@ -75,7 +75,16 @@ public class RenunciaController {
                     mp.put("pr", rdao.listar());
                     break;
                 case "InserRenuncia":  
-                    
+                    String idContr = request.getParameter("idco").toString();
+                    String idDgp = request.getParameter("iddgp").toString();
+                    String User_au = request.getParameter("user_aut").toString();
+                    String DirecADj = request.getParameter("").toString();
+                    String Nom_Adj = request.getParameter("").toString();
+                    String Desc = request.getParameter("desc").toString();
+                    String Size_Adj = request.getParameter("").toString();
+                    String Type_Adj = request.getParameter("").toString();
+                    String Opc = request.getParameter("opc").toString();
+                    //rdao.Renuncia(idContr, idDgp , User_au, DirecADj, Nom_Adj, Desc, Size_Adj, Type_Adj, Opc);
                     break;
 //                case "ejemplo":
 //                    id=request.getParameter("idtr");
