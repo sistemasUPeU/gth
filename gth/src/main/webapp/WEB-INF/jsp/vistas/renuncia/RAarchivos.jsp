@@ -2,6 +2,7 @@
 <%
     HttpSession sesion = request.getSession();
     String id_user = (String) sesion.getAttribute("IDUSER");
+    
     if (id_user != null) {
         
 %>
@@ -29,7 +30,7 @@
     </head>
 
 <body>
-    <input type="hidden"  value="<%out.println(id_user); %>" 
+    <input type="hidden" id="user_auto" value="<%out.println(id_user); %>" 
     <div id="content" >
         <div class="row">
             <div class="col-sm-12">

@@ -97,5 +97,10 @@ public class RenunciaDAO implements Operaciones {
                 + "       and rd.ID_DEPARTAMENTO='DPT-0017' and RT.ID_TRABAJADOR = ? ";
         return (ArrayList<Map<String, Object>>) jt.queryForList(sql, idTR.trim());
     }
-
+            
+    
+    public void Renuncia (String idContr , String idDgp , String User_au , String DirecADj , String Nom_Adj , String Desc , String Size_Adj , String Type_Adj , String Opc){
+        String sql ="{CALL RHSP_INSERT_ADJUNTARRENUNCIA ( ? , ? , ? , ? , ? , ? , ? , ? , ? )}"; 
+        jt.update(sql, idContr ,idDgp , User_au , DirecADj , Nom_Adj , Desc , Size_Adj , Type_Adj ,Opc);
+    }
 }
