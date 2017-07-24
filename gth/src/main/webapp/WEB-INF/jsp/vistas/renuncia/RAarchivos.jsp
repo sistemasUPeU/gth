@@ -47,10 +47,10 @@
                                  data-widget-deletebutton="false">
                                 <header>
                                     <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
-                                    <h2>Trabajadores en el <strong>Departamento</strong></h2>
+                                    <h2>Trabajadores en el Departamento de <strong><%out.println((String) sesion.getAttribute("DEPARTAMENTO"));%></strong></h2>
                                     <ul class="nav nav-tabs pull-right in" id="myTab"> 
                                         <li class="active">
-                                            <a data-toggle="tab" href="#s1"><i class="fa fa-user"></i> <span class="hidden-mobile hidden-tablet">Usuarios RRHH</span></a>
+                                            <a data-toggle="tab" href="#s1"><i class="fa fa-users"></i> <span class="hidden-mobile hidden-tablet">Trabajadores</span></a>
 
                                         </li>
                                     </ul>
@@ -68,7 +68,7 @@
                     </div>
                 </section>
 
-                <section  class="col col-md-6 col-lg-6 jarviswidget">
+                <section  class="col col-md-12 col-lg-6 jarviswidget">
                     <!-- FORMULARIO-->
                     <div id="ONG" class="widget-body bordered">
 
@@ -139,7 +139,7 @@
                                                     m += '<td>' + lista[i].NO_AREA + '</td>';
                                                     m += '<td>' + lista[i].NO_SECCION + '</td>';
                                                     m += '<td>' + lista[i].NO_PUESTO + '</td>';
-                                                    m += '<td><a id=' + lista[i].ID_TRABAJADOR + ' onclick="getDataWorker(this.id);"  class="btn btn-primary btn-circle"><i class="fa fa-search"></i></a></td>';
+                                                    m += '<td><a id=' + lista[i].ID_TRABAJADOR + ' onclick="getDataWorker(this.id);"  class="btn btn-success btn-circle"><i class="fa fa-check"></i></a></td>';
                                                     m += '</tr>';
                                                 }
                                                 $("#conTable").empty();
