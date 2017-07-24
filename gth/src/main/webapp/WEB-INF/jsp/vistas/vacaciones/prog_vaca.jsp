@@ -315,8 +315,8 @@
                                                                     $(document).ready(function () {
                                                                         ///script para input-file/*limite*tamaño*extension//
                                                                           $("#file").fileinput({
-                                                                            uploadUrl: "/file-upload-batch/2",
-                                                                            allowedFileExtensions: ["pdf", "doc", "docx","jpg"],
+                                                                            uploadUrl: "imagen",
+                                                                            allowedFileExtensions: ["pdf", "doc", "docx","jpg","Png"],
                                                                             maxImageWidth: 250,
                                                                             maxImageHeight: 250,
                                                                             initialPreviewFileType:'docx',
