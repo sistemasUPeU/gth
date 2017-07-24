@@ -17,10 +17,6 @@
         <%@include file="../../../../jspf/general.jspf" %>
     </head>
     <body>
-
-
-
-
         <div class="well well-light">
             <div class="row">
 
