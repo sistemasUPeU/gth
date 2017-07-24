@@ -164,6 +164,7 @@
                                  $("#data").empty();
                                  $("#data").append(s);
                                  $("#datatable_fixed_column").DataTable();
+                                 $("#ckbCheckAll").append(checkbox());
                                  
                              }
                            }
@@ -189,10 +190,14 @@
                                return s;
                                
                                
+                              
+ 
+                           }
+                           function checkbox(){
+                               
                                $("#ckbCheckAll").click(function () {
                                $(".checkBoxClass").prop('checked', $(this).prop('checked'));
                                  });
- 
                            }
                    
 
