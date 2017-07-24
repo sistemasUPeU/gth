@@ -332,7 +332,7 @@
                                                                             $("#sexo").text(trab.SEXO);
                                                                             $("#num_doc").text(trab.N_D);
                                                                             var o = trab.T;
-                                                                            if (o === '1 ') {
+                                                                            if (o === '1') {
                                                                                 $("#tip_doc").text('DNI');
                                                                             } else {
                                                                                 $("#tip_doc").text('Otros');

@@ -47,7 +47,7 @@ public class RenunciaController {
                 model.setViewName("vistas/renuncia/Rautorizar");
                 break;
             case "authorizationA":
-                model.setViewName("vistas/renuncia/Rautorizar");
+                model.setViewName("vistas/renuncia/Aautorizar");
                 break;
             case "ejemplo":
                 model.setViewName("vistas/renuncia/ejemplo");
@@ -70,6 +70,23 @@ public class RenunciaController {
                 case "Detalle":
                     String idTR = request.getParameter("idtr").toString();
                     mp.put("ls", rdao.DetalleEmp(idTR));
+                    break;
+                case "listR":
+                    mp.put("pr", rdao.listar());
+                    break;
+                case "InserRenuncia":  
+                    String idContr = request.getParameter("idco").toString();
+                    String idDgp = request.getParameter("iddgp").toString();
+                    String User_au = request.getParameter("user_aut").toString();
+                    String DirecADj = request.getParameter("direcAdj").toString();
+                    String Nom_Adj = request.getParameter("Nom_adj").toString();
+                    String Desc = request.getParameter("desc").toString();
+                    String Size_Adj = request.getParameter("Size_Adj").toString();
+                    String Type_Adj = request.getParameter("Type_ADJ").toString();
+                    String Opc = request.getParameter("opc").toString();
+                    rdao.Renuncia(idContr, idDgp , User_au, DirecADj, Nom_Adj, Desc, Size_Adj, Type_Adj, Opc);
+                    mp.put("si", true);
+                    //System.out.println(idContr);
                     break;
 //                case "ejemplo":
 //                    id=request.getParameter("idtr");
