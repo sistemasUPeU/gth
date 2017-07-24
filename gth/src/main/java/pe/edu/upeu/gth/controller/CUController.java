@@ -31,7 +31,7 @@ public class CUController {
         PrintWriter out = response.getWriter();
         String opc = request.getParameter("opc");
         switch (opc) {
-            case "attach":
+            case "voto":
                 model.setViewName("vistas/consejo_universitario/CUauthorizatio");
                 break;
         }
@@ -46,7 +46,7 @@ public class CUController {
         String id = "";
         try {
             switch (opc) {
-                case "list":
+                case "ListaECU":
                     break;
             }
         } catch (Exception e) {
