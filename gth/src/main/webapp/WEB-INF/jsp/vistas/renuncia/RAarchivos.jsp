@@ -30,94 +30,85 @@
     </head>
 
     <body>
-        <input type="hidden" id="user_auto" value="<%out.println(id_user); %>" 
-               <div id="content" >
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="well">
-                        <h1><span class="semi-bold">Reporte</span> <i class="ultra-light"> <strong>Renuncias / Abandono</strong>  </i><sup class="badge bg-color-red bounceIn animated">v 3.0</sup></h1> <br>
-                    </div>
-                </div>
-            </div>
-            <div class="row col col-lg-12 col-md-12">
-                <section id="widget-grid" class="col col-md-6 col-lg-6 jarviswidget">
-                    <div id="close" class="row">
-                        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" 
-                                 data-widget-deletebutton="false">
-                                <header>
-                                    <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
-                                    <h2>Trabajadores en el Departamento de <strong><%out.println((String) sesion.getAttribute("DEPARTAMENTO"));%></strong></h2>
-                                    <ul class="nav nav-tabs pull-right in" id="myTab"> 
-                                        <li class="active">
-                                            <a data-toggle="tab" href="#s1"><i class="fa fa-users"></i> <span class="hidden-mobile hidden-tablet">Trabajadores</span></a>
+        <input type="hidden" id="user_auto" value="<%out.println(id_user); %>"> 
+        <div id="content" class="row col col-lg-12 col-md-12">
+            <section id="widget-grid" class="col col-md-6 col-lg-6 jarviswidget">
+                <div>
+                    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" 
+                             data-widget-deletebutton="false">
+                            <header>
+                                <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                                <h2>Trabajadores en el Departamento de <strong><%out.println((String) sesion.getAttribute("DEPARTAMENTO"));%></strong></h2>
+                                <ul class="nav nav-tabs pull-right in" id="myTab"> 
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#s1"><i class="fa fa-users"></i> <span class="hidden-mobile hidden-tablet">Trabajadores</span></a>
 
-                                        </li>
-                                    </ul>
-                                </header>
-                                <br>
-                                <section>
+                                    </li>
+                                </ul>
+                            </header>
+                            <br>
+                            <section>
 
-                                    <div id="conTable" class="col-xs-6 col-sm-12 col-md-12 col-lg-12">
+                                <div id="conTable" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 
-                                    </div>
-                                </section>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-
-                <section  class="col col-md-12 col-lg-6 jarviswidget">
-                    <!-- FORMULARIO-->
-                    <div id="ONG" class="widget-body bordered">
-
-                    </div>
-
-                    <div id="adj" class="row" >
-                        <h1>Adjuntar solicitud de Renuncia y/o Abandono</h1>
-                        <form>
-                            <div class="col col-2">
-                                <input id="fileid"  id="file" name="fileid" size="500"  type="file" class="file file-loading fileDocument" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf","png"]'   maxFileSize='[0.5]'>                               
-                            </div>
-                        </form>
-                        <br>
-                        <div class="form-group">
-                            <button class="btn btn-primary btn-upload-4" onclick="Registro()" id="enviar" disabled=""> Registrar </button>
-                            <button class="btn btn-default btn-reset-4" id="reset" onclick="Cerrar();" type="reset" disabled="" > Cancelar </button>
-
-
-                            <!--<button class="btn btn-primary" onclick="Noti();" >Submit</button>-->
+                                </div>
+                            </section>
                         </div>
+                    </article>
+                </div>
+            </section>
 
+            <section  class="col col-md-12 col-lg-6 jarviswidget">
+                <!-- FORMULARIO-->
+                <div id="ONG" class="widget-body bordered">
+
+                </div>
+
+                <div id="adj" class="row" >
+                    <h1>Adjuntar solicitud de Renuncia y/o Abandono</h1>
+                    <form>
+                        <div class="col col-2">
+                            <input id="fileid"  id="file" name="fileid" size="500"  type="file" class="file file-loading fileDocument" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg","doc","docx","pdf","png"]'   maxFileSize='[0.5]'>                               
+                        </div>
+                    </form>
+                    <br>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-upload-4" onclick="Registro()" id="enviar" disabled=""> Registrar </button>
+                        <button class="btn btn-default btn-reset-4" id="reset" onclick="Cerrar();" type="reset" disabled="" > Cancelar </button>
+
+
+                        <!--<button class="btn btn-primary" onclick="Noti();" >Submit</button>-->
                     </div>
 
-                </section>
-            </div>
+                </div>
 
+            </section>
+        </div>
 
-            <!--SCRIPT-->
-            <%@include file="../../../../jspf/scripts.jspf" %>
+        <!--SCRIPT-->
+        <%@include file="../../../../jspf/scripts.jspf" %>
 
-            <script type="text/javascript" src="<c:url value='resources/js/app.config.js'/>"></script>
-            <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
-            <script type="text/javascript" src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>"></script><!-- bootstrap min.js-->
-            <script type="text/javascript" src="<c:url value='resources/js/smartwidgets/jarvis.widget.min.js'/>"></script>
-            <script type="text/javascript" src="<c:url value='resources/js/plugin/sparkline/jquery.sparkline.min.js'/>"></script>
-            <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
-            <script type="text/javascript" src="<c:url value='resources/js/plugin/masked-input/jquery.maskedinput.min.js'/>"></script>
-            <script type="text/javascript" src="<c:url value='resources/js/plugin/bootstrap-slider/bootstrap-slider.min.js'/>"></script>
-            <script type="text/javascript" src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
-            <script type="text/javascript" src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
-            <script type="text/javascript" src="<c:url value='resources/js/app.min.js'/>"></script> 
-            <script src="<c:url value='resources/js/plugin/datatables/datatable.js'/>" type="text/javascript"></script>
-            <!--IMPORTANTE : FILE INPUTS-->
-            <script src="<c:url value='resources/js/plugin/file-input/fileinput.js'/>" ></script>
-            <script src="<c:url value='resources/js/plugin/file-input/fileinput.min.js'/>" ></script>
-            <!--NOTIFY-->
-            <script src="<c:url value='resources/js/notification/push.min.js'/>"></script>
+        <script type="text/javascript" src="<c:url value='resources/js/app.config.js'/>"></script>
+        <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
+        <script type="text/javascript" src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>"></script><!-- bootstrap min.js-->
+        <script type="text/javascript" src="<c:url value='resources/js/smartwidgets/jarvis.widget.min.js'/>"></script>
+        <script type="text/javascript" src="<c:url value='resources/js/plugin/sparkline/jquery.sparkline.min.js'/>"></script>
+        <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
+        <script type="text/javascript" src="<c:url value='resources/js/plugin/masked-input/jquery.maskedinput.min.js'/>"></script>
+        <script type="text/javascript" src="<c:url value='resources/js/plugin/bootstrap-slider/bootstrap-slider.min.js'/>"></script>
+        <script type="text/javascript" src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
+        <script type="text/javascript" src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
+        <script type="text/javascript" src="<c:url value='resources/js/app.min.js'/>"></script> 
+        <script src="<c:url value='resources/js/plugin/datatables/datatable.js'/>" type="text/javascript"></script>
+        <!--IMPORTANTE : FILE INPUTS-->
+        <script src="<c:url value='resources/js/plugin/file-input/fileinput.js'/>" ></script>
+        <script src="<c:url value='resources/js/plugin/file-input/fileinput.min.js'/>" ></script>
+        <!--NOTIFY-->
+        <script src="<c:url value='resources/js/notification/push.min.js'/>"></script>
 
-            <script>
+        <script>
 
                                 $(document).ready(function () {
                                     list();
@@ -182,7 +173,7 @@
                                     }
                                 }
                                 function createTable() {
-                                    var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover " width="100%">';
+                                    var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover" >';
                                     s += '<thead>';
                                     s += '<th data-hide="phone">N°</th>';
                                     s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Apellidos y Nombres</th>';
@@ -391,7 +382,7 @@
                                     });
                                     return x;
                                 }
-            </script>
+        </script>
     </body>
 </html>
 <%} else {
