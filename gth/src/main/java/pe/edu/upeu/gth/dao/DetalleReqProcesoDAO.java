@@ -25,7 +25,9 @@ public class DetalleReqProcesoDAO {
         jt=new JdbcTemplate(datasource);
     }
     
-    /*CHECK USE OF THIS METHOD (DTO OBJECTS WERE REPlACED, WE USE MAP OBJECTS INSTEAD)*/
+    /*CHECK USE OF THIS METHOD (DTO OBJECTS WERE REPLACED, 
+    WE USE MAP OBJECTS INSTEAD). ONCE EDITED, 
+    PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
     public String insertDetalleReqProceso(String IdProceso,String EsReqProceso,String IdDireccion,String IdDepartamento,String IdArea,String IdRequerimiento) {
         SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(jt).withProcedureName("RHSP_INSERT_DETALLE_REQ_PROC");
         Map<String, Object> inParamMap = new HashMap<String, Object>();
