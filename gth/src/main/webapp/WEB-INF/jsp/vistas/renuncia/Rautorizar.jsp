@@ -49,32 +49,8 @@
                                                 </ul>
                                             </header>
                                             <br>
-                                            <section>
-                                                <table id="dt_basic"  class="table table-striped table-bordered" width="100%">
-
-                                                    <thead>
-
-                                                        <tr>
-                                                            <th data-class="expand">N°</th>
-                                                            <th data-hide="phone">Nombre Y Apellidos</th>
-                                                            <th data-hide="phone">Area</th>
-                                                            <th data-hide="phone,tablet">Seccion</th>
-                                                            <th data-hide="phone,tablet">Puesto</th>
-                                                            <th data-hide="phone,tablet"></th>
-
-                                                            <th>Seleccionar Todo<center><input type="checkbox" id="ckbCheckAll" /></center></th>
-
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody id="data">
-                                                        <tr >
-
-                                                            <td><center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </section>
-
+                                            <div id="contTable">                                               
+                                            </div>
                                         </div>
                                     </article>
                                 </div>
@@ -109,25 +85,26 @@
                             var url = "renu?opc=listR"; //nombre del controlador ejm. renuncia?op=1
                             try {
                                 $.post(url, function (objJson) {
-                                    var lista = objJson.pr;
+                                    var lista = objJson.ar;
                                     if (lista.length > 0) {
                                         var m = "";
                                         for (var i = 0; i < lista.length; i++) {
                                             m += '<tr>';
                                             m += '<td>' + (i + 1) + '</td>';
-                                            m += '<td>' + lista[i].IDRENUNCIA + '</td>'; // cambiar por el atributo que te da en tu DAO
-                                            m += '<td>' + lista[i].ID_CONTRATO + '</td>';
-                                            m += '<td>' + lista[i].AP_MATERNO + '</td>';
-                                            m += '<td>' + lista[i].NO_AREA + '</td>';
-                                            m += '<td>' + lista[i].NO_SECCION + '</td>';
+                                            m += '<td>' + lista[i].IDRENUNCIA + '</td>';
+                                            m += '<td>' + lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' + lista[i].NO_TRABAJADOR + '</td>';
                                             m += '<td><center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center></td>';
                                             m += '</tr>';
                                         }
-                                        $("#example").empty();
-                                        $("#example").append(createTable());
+                                        $("#contTable").empty();
+                                        $("#contTable").append(createTable());
                                         $("#data").empty();
                                         $("#data").append(m);
                                         $('#dt_basic').dataTable();
+
+                                        $("#ckbCheckAll").click(function () {
+                                            $(".checkBoxClass").prop('checked', $(this).prop('checked'));
+                                        });
                                     } else {
                                         console.log("No hay datos en la tabla");
                                     }
@@ -140,22 +117,15 @@
                             var s = '<table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">';
                             s += '<thead>';
                             s += '<th data-hide="phone">N°</th>';
-                            s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Apellidos y Nombres</th>';
-                            s += '<th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> DNI</th>';
-                            s += '<th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>AREA</th>';
-                            s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> SECCION</th>';
-                            s += '<th data-hide="phone,tablet"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>PUESTO</th>';
-                            s += '<th>Seleccionar Todo<center><input type="checkbox" id="ckbCheckAll" /></center></th>'
-
+                            s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>Renuncia</th>';
+                            s += '<th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Apellidos y Nombres</th>';
+                            s += '<th>Seleccionar Todo<center><input type="checkbox" id="ckbCheckAll" ></center></th>'
                             s += '</thead>';
                             s += '<tbody id="data"></tbody>';
                             s += '</table>';
                             return s;
                         }
 
-                        $("#ckbCheckAll").click(function () {
-                            $(".checkBoxClass").prop('checked', $(this).prop('checked'));
-                        });
 
 
 

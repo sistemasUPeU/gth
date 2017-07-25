@@ -25,7 +25,7 @@ import pe.edu.upeu.gth.interfaces.Operaciones;
  * @author Brandux
  */
 public class RenunciaDAO implements Operaciones {
-    
+
     String sql;
     PreparedStatement ps;
     CallableStatement cs;
@@ -41,7 +41,9 @@ public class RenunciaDAO implements Operaciones {
 
     @Override
     public ArrayList<Map<String, Object>> listar() {
-        sql = "SELECT * FROM RENUNCIA";
+        sql = "SELECT * FROM RENUNCIA r,RHTM_DGP d,RHTM_TRABAJADOR t\n"
+                + "where r.ID_DGP=d.ID_DGP\n"
+                + "and d.ID_TRABAJADOR=t.ID_TRABAJADOR;";
         ArrayList<Map<String, Object>> lista = new ArrayList<>();
         try {
             cn = d.getConnection();
@@ -50,8 +52,12 @@ public class RenunciaDAO implements Operaciones {
             while (rs.next()) {
                 Map<String, Object> m = new HashMap<>();
                 m.put("idrenuncia", rs.getString("idrenuncia"));
+                //              m.put("no_trabajador", rs.getString("no_trabajador"));
+//                m.put("ap_paterno", rs.getString("ap_paterno"));
+//                m.put("ap_materno", rs.getString("ap_materno"));
+//                m.put("id_contrato", rs.getString("id_contrato"));
                 lista.add(m);
-               
+
             }
         } catch (Exception e) {
             System.out.println("Error al Listar Renuncias" + e);
@@ -96,6 +102,15 @@ public class RenunciaDAO implements Operaciones {
                 + "where rp.ID_SECCION = rs.ID_SECCION and rs.ID_AREA = ra.ID_AREA and rc.ID_PUESTO = rp.ID_PUESTO  and rc.ID_TRABAJADOR = rt.ID_TRABAJADOR and rd.ID_DEPARTAMENTO = ra.ID_DEPARTAMENTO\n"
                 + "       and rd.ID_DEPARTAMENTO='DPT-0017' and RT.ID_TRABAJADOR = ? ";
         return (ArrayList<Map<String, Object>>) jt.queryForList(sql, idTR.trim());
+    }
+
+    public ArrayList<Map<String, Object>> DetRen() {
+        String sql = "SELECT * FROM RENUNCIA r,RHTM_DGP d,RHTM_TRABAJADOR t\n"
+                + "where r.ID_DGP=d.ID_DGP\n"
+                + "and d.ID_TRABAJADOR=t.ID_TRABAJADOR";
+
+        return (ArrayList<Map<String, Object>>) jt.queryForList(sql);
+
     }
 
 }
