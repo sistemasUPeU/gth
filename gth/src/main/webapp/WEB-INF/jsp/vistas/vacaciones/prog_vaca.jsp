@@ -327,7 +327,7 @@
                                                                        
                                                                         
                                                                         $.post('returnjson', function (obj) {
-                                                                            console.log(obj[0]);
+                                                                        
                                                                             var trab = obj[0];
                                                                             $("#nombres").text(trab.NOM + " " + trab.AP_P + " " + trab.AP_M);
                                                                             $("#correo").text(trab.CORREO);

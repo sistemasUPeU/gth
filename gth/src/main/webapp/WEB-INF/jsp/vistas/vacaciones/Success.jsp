@@ -15,25 +15,27 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <h1>${archi}</h1>
-        <c:forEach items="${archi}" var="archivo"></c:forEach>
-           
-            <div class="row">
-                <div class="col-md-8">
-                    <h2>Uploaded File Details</h2>
-                    <c:forEach items="${archi}" var="file">
-                        <div class="row" style="border:1px solid #ccc; margin:5px;">
-                            <div class="col-md-4">
-                                <b><c:out value="${file.name}" /></b>
-                            </div>
-                            <div class="col-md-4">
-                                <c:out value="${file.path}" />
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-            </div>
-        </div>
+        <label id="nombre">text</label>
+        <%--<h1>${archi}</h1>
         
+        <c:forEach items="${archi}" var="archivo"></c:forEach>--%>
+        <script type="text/javascript">
+            $(document).ready(function (){
+                $.post('archivos', function (archi) {
+                            console.log(archi);
+                            var ar = archi[0];
+                            $("#nombre").text(ar);
+
+
+                        });
+            })
+         </script>
+                 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+                 <script>
+                                                                    if (!window.jQuery.ui) {
+                                                                        document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+                                                                    }
+        </script>
+
     </body>
 </html>
