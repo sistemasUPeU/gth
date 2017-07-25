@@ -46,6 +46,7 @@ public class VacacionesController {
     private EmpleadoDAO aO;
     public String id_t="";
     Map<String, Object> mp = new HashMap<>();
+    public List<String> archi= new ArrayList<>();
     
     @RequestMapping(value = "/asig",method = RequestMethod.GET)
     public ModelAndView asignar(ModelAndView modelo, HttpServletRequest request)
@@ -113,8 +114,7 @@ public class VacacionesController {
     @RequestMapping(value = "/archivos", method = RequestMethod.POST)
     public ModelAndView Upload(@RequestParam("files") List<MultipartFile> file,ModelAndView model,HttpServletResponse response) throws IOException
     {
-            List<String> archi= new ArrayList<String>();
-        System.out.println(archi);
+            
         if (!file.isEmpty()) {
             try {
                 
@@ -129,24 +129,27 @@ public class VacacionesController {
                     archi.add(String.valueOf(destFile.length()));
                     
                     
-                    System.out.println(path);
                 }
-                mp.put("archivo", archi);
                 
             } catch (IOException | IllegalStateException ec) {
                 ec.getMessage();
                 ec.printStackTrace();
             }
                    
-        }
-       PrintWriter out = response.getWriter();
-
-           Gson g= new Gson();
-        out.print(g.toJson(archi));
-        out.flush();
-        out.close();
+        }     
         model.setViewName("vistas/vacaciones/Success");
         return model;
+    }
+    @RequestMapping(value ="/jarchivos", method = RequestMethod.POST)
+    public void jarchiv(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        response.setContentType("application/json");
+        try (PrintWriter out = response.getWriter()) {
+            Gson g= new Gson();
+            out.print(g.toJson(archi));
+            out.flush();
+        }
+        
     }
 }
 
