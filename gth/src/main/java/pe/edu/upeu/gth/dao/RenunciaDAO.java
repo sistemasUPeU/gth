@@ -87,11 +87,11 @@ public class RenunciaDAO implements Operaciones {
     }
 
     public ArrayList<Map<String, Object>> listarEmpleados() { // lista a todos los empleados por departamento.
-        String sql = "select rt.ID_TRABAJADOR,rt.NO_TRABAJADOR,rt.AP_PATERNO,rt.AP_MATERNO, rt.NU_DOC  ,ra.NO_AREA,rs.NO_SECCION,rp.NO_PUESTO,rc.FE_DESDE,rc.FE_HASTA\n"
-                + "from rhtr_puesto rp, rhtd_area ra, rhtr_seccion rs, rhtm_trabajador rt, rhtm_contrato rc,rhtx_departamento rd\n"
-                + "where rp.ID_SECCION = rs.ID_SECCION and rs.ID_AREA = ra.ID_AREA and rc.ID_PUESTO = rp.ID_PUESTO  and rc.ID_TRABAJADOR = rt.ID_TRABAJADOR and rd.ID_DEPARTAMENTO = ra.ID_DEPARTAMENTO\n"
-                + "       and rd.ID_DEPARTAMENTO='DPT-0017'\n"
-                + "AND RC.FE_HASTA > SYSDATE \n"
+        sql = "select rt.ID_TRABAJADOR,rt.NO_TRABAJADOR,rt.AP_PATERNO,rt.AP_MATERNO, rt.NU_DOC  ,ra.NO_AREA,rs.NO_SECCION,rp.NO_PUESTO,rc.FE_DESDE,rc.FE_HASTA "
+                + "from rhtr_puesto rp, rhtd_area ra, rhtr_seccion rs, rhtm_trabajador rt, rhtm_contrato rc,rhtx_departamento rd "
+                + "where rp.ID_SECCION = rs.ID_SECCION and rs.ID_AREA = ra.ID_AREA and rc.ID_PUESTO = rp.ID_PUESTO  and rc.ID_TRABAJADOR = rt.ID_TRABAJADOR and rd.ID_DEPARTAMENTO = ra.ID_DEPARTAMENTO "
+                + "       and rd.ID_DEPARTAMENTO='DPT-0017' "
+                + "AND RC.FE_HASTA > SYSDATE "
                 + "ORDER BY ( RA.NO_AREA)";
         return (ArrayList<Map<String, Object>>) jt.queryForList(sql);
     }
@@ -112,5 +112,8 @@ public class RenunciaDAO implements Operaciones {
         return (ArrayList<Map<String, Object>>) jt.queryForList(sql);
 
     }
-
+    public void Renuncia(String idContr, String idDgp, String User_au, String DirecADj, String Nom_Adj, String Desc, String Size_Adj, String Type_Adj, String Opc) {
+        String sql = "{CALL RHSP_INSERT_ADJUNTARRENUNCIA ( ? , ? , ? , ? , ? , ? , ? , ? , ? )}";
+        jt.update(sql, idContr, idDgp, User_au, DirecADj, Nom_Adj, Desc, Size_Adj, Type_Adj, Opc);
+    }
 }

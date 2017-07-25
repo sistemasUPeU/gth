@@ -123,7 +123,7 @@
             function enterMod(a) {
                 var m = a.toString();
                 var id;
-                if (m === "10") {
+                if (m === "10"||m === "11") {
                     id = "MOD-00" + m;
                 } else {
                     id = "MOD-000" + m;

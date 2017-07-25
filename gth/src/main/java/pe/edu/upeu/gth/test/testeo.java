@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import javax.sql.DataSource;
 import pe.edu.upeu.gth.config.AppConfig;
+import pe.edu.upeu.gth.dao.CUniversitarioDAO;
 import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
 import pe.edu.upeu.gth.dao.RenunciaDAO;
@@ -33,7 +34,8 @@ public class testeo {
     public static Map<String, Object> mp = new HashMap<>();
 //    public static Client asd=new Client();
     public static EmpleadoDAO Ea = new EmpleadoDAO(d);
-    public static UsuarioDAO uD=new UsuarioDAO(d);
+    public static UsuarioDAO uD = new UsuarioDAO(d);
+    public static CUniversitarioDAO cD = new CUniversitarioDAO(d);
 
     public static void main(String[] args) {
         //conect();
@@ -46,28 +48,33 @@ public class testeo {
         //pR("ROL-0019", "MOD-0003");
         //System.out.println(asd.getSessionJson());
         //Listar_empleados();
-        validar("liliana", "123");
+        //validar("liliana", "123");
         //detalleTr("TRB-002742");
         //listar_puestosejemplo("PUT-002011");
+        testearL("");
     }
 
-    public static void validar(String u,String p){
-        
+    public static void validar(String u, String p) {
+
         System.out.println(uD.validar(u, p));
     }
-    
+
+    public static void testearL(String a) {
+        System.out.println(cD.listar_c_cu(a));
+    }
+
     //--
     public static void listar_puestosejemplo(String id) {
         //System.out.println(eA.listajt(id));
-        System.out.println(eA.listajt(id,"1"));
+        System.out.println(eA.listajt(id, "1"));
     }
 
     ///
     public static void Listar_empleados() {
         /*List<Map<String, Object>> l = Ea.listar_all();
-        for (Map<String, Object> map : l) {
-            System.out.println(map.get(("NO_TRABAJADOR")));
-        }*/
+         for (Map<String, Object> map : l) {
+         System.out.println(map.get(("NO_TRABAJADOR")));
+         }*/
     }
 
     public static void pR(String a, String b) {
@@ -90,7 +97,7 @@ public class testeo {
     }
 
     public static void listar_puestos() {
-        System.out.println(eA.listara("PUT-002011","1"));
+        System.out.println(eA.listara("PUT-002011", "1"));
     }
 
     public static void addPuesto(String nombre, String corto, String estado, String ids, String cod) {
@@ -125,7 +132,8 @@ public class testeo {
         }
 
     }
-    public static void detalleTr (String id){
+
+    public static void detalleTr(String id) {
         RenunciaDAO rda = new RenunciaDAO(d);
         System.out.println(rda.DetalleEmp(id));
     }
