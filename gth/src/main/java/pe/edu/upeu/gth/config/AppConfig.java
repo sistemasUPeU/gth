@@ -5,11 +5,13 @@
  */
 package pe.edu.upeu.gth.config;
 
+import java.io.IOException;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -19,7 +21,6 @@ import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
 import pe.edu.upeu.gth.dao.RenunciaDAO;
 import pe.edu.upeu.gth.dao.vacacionesDAO;
-import pe.edu.upeu.gth.config.globalProperties;
 import pe.edu.upeu.gth.dao.UsuarioDAO;
 
 /**
@@ -54,7 +55,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         dataSource.setPassword(globalProperties.USER_PWD);//pass-conexion//
         return dataSource;
     }
-
+    
+    
     @Bean
     public EmpleadoDAO getLista_EmpleadoDAO() {
         return new EmpleadoDAO(getDataSource());
@@ -78,6 +80,15 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public UsuarioDAO getUsuarioDAO() {
         return new UsuarioDAO(getDataSource());
+    }
+    
+//    CONFIGURACION DE MULTIPARTRESOLVER PARA TRABAJAR CONN ARCHUIVOS--
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver getResolver() throws IOException {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        // no limit
+        resolver.setMaxUploadSize(-1);
+        return resolver;
     }
 
 }

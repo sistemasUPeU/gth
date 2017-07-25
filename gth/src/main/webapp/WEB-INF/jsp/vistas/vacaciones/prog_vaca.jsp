@@ -115,7 +115,7 @@
 
                         <!-- widget content -->
                         <div class="widget-body no-padding">
-                            <form class="smart-form">
+                            <form class="smart-form" method="post" action="archivos"enctype="multipart/form-data">
                                 <header>
                                     Programacion de vacaciones  - Datos del trabajador
                                 </header>
@@ -204,7 +204,7 @@
                                     
                                     <div class="col col-sm-3" style="margin-left:  35%;">
                                         <label class="control-label">Adjuntar archivos</label>
-                                        <input id="file" type="file" class="file-loading" data-show-upload="false" data-show-remove="false" data-show-caption="true" accept="document/*">                               
+                                        <input id="files" type="file" name="files" class="file-loading" data-show-upload="false" data-show-remove="false" data-show-caption="true" accept="document/*">                               
                                     </div>
                                     
                                 </fieldset>
@@ -212,7 +212,7 @@
                                     <input type="hidden" name="opc" value="VacationAsign">
                                     <input type="hidden" name="iddgp" value="">
                                     <input type="hidden" name="idtra" value="">
-                                    <button id="submitbtn" type="button" class="btn btn-labeled btn-success">
+                                    <button id="submitbtn" type="submit" class="btn btn-labeled btn-success">
                                         Registrar
                                     </button>
                                     <button type="button" id="cancelbtn" class="btn btn-labeled btn-danger">
@@ -305,7 +305,7 @@
         <script src="<c:url value='resources/js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js'/>" ></script>   
         <script src="<c:url value='resources/js/plugin/fuelux/wizard/wizard.min.js'/>" ></script>   
 
-
+       
 
         <script type="text/javascript">
 
@@ -314,14 +314,17 @@
                                                                     var nr = 1;
                                                                     $(document).ready(function () {
                                                                         ///script para input-file/*limite*tamaño*extension//
-                                                                          $("#file").fileinput({
-                                                                            uploadUrl: "imagen",
-                                                                            allowedFileExtensions: ["pdf", "doc", "docx","jpg","Png"],
+                                                                          $("#files").fileinput({
+                                                                            uploadUrl: "http://localhost:8080/gth/resources/archivos/vacaciones/",
+                                                                            allowedFileExtensions: ["pdf", "doc", "docx","jpg"],
                                                                             maxImageWidth: 250,
                                                                             maxImageHeight: 250,
                                                                             initialPreviewFileType:'docx',
-                                                                            browseOnZoneClick: true
+                                                                            browseOnZoneClick: true,
+                                                                            dropZoneTitle:'Arrastre y suelte archivos aquí ... ',
+                                                                            
                                                                         });
+                                                                       
                                                                         
                                                                         $.post('returnjson', function (obj) {
                                                                             console.log(obj[0]);

@@ -6,26 +6,33 @@
 package pe.edu.upeu.gth.controller;
 
 import com.google.gson.Gson;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.json.Json;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.vacacionesDAO;
+import pe.edu.upeu.gth.dto.FileInfo;
 
 /**
  *
@@ -39,7 +46,6 @@ public class VacacionesController {
     private EmpleadoDAO aO;
     public String id_t="";
     Map<String, Object> mp = new HashMap<>();
-
     
     @RequestMapping(value = "/asig",method = RequestMethod.GET)
     public ModelAndView asignar(ModelAndView modelo, HttpServletRequest request)
@@ -101,7 +107,34 @@ public class VacacionesController {
         out.flush();
         out.close();
     }
-   
+
+    @Autowired
+    ServletContext context;
+    @RequestMapping(value = "/archivos", method = RequestMethod.POST)
+    public ModelAndView Upload(@RequestParam("files") List<MultipartFile> file,ModelAndView model) throws IOException
+    {
+        List<FileInfo> archi= new ArrayList<FileInfo>();
+        System.out.println(archi);
+        if (!file.isEmpty()) {
+            try {
+                
+                for (MultipartFile fi: file) {
+                    String path=context.getRealPath("/")+ File.separator + fi.getOriginalFilename();
+                    File destFile= new File(path);
+                    fi.transferTo(destFile);
+                    archi.add(new FileInfo(destFile.getName(), path));
+                    System.out.println(path);
+                }
+                
+            } catch (IOException | IllegalStateException ec) {
+                ec.getMessage();
+                ec.printStackTrace();
+            }
+        }
+        model.setViewName("vistas/vacaciones/Success");
+        model.addObject("archi",archi);
+        return model;
+    }
 }
 
 
