@@ -76,6 +76,17 @@ public class VacacionesController {
          model.setViewName("vistas/vacaciones/Listar_vacaciones");
          return model;
     }
+     
+          /*EJEMPLO*/
+     @RequestMapping(value = "/listar_vac_ejemplo")
+     public ModelAndView ejemplo(ModelAndView model){
+//         List<Map<String, Object>> lista= aO.listar_empleado();
+//         model.addObject("listar",lista);
+         model.setViewName("vistas/vacaciones/prueba");
+         return model;
+    }
+     /*FIN EJEMPLO*/
+     
      @RequestMapping(value = "/vac_emple", method = RequestMethod.POST)
     public void List_empleados(HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
