@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +33,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.vacacionesDAO;
-import pe.edu.upeu.gth.dto.FileInfo;
 
 /**
  *
@@ -46,6 +46,7 @@ public class VacacionesController {
     private EmpleadoDAO aO;
     public String id_t="";
     Map<String, Object> mp = new HashMap<>();
+    public List<String> archi= new ArrayList<>();
     
     @RequestMapping(value = "/asig",method = RequestMethod.GET)
     public ModelAndView asignar(ModelAndView modelo, HttpServletRequest request)
@@ -75,6 +76,17 @@ public class VacacionesController {
          model.setViewName("vistas/vacaciones/Listar_vacaciones");
          return model;
     }
+     
+          /*EJEMPLO*/
+     @RequestMapping(value = "/listar_vac_ejemplo")
+     public ModelAndView ejemplo(ModelAndView model){
+//         List<Map<String, Object>> lista= aO.listar_empleado();
+//         model.addObject("listar",lista);
+         model.setViewName("vistas/vacaciones/prueba");
+         return model;
+    }
+     /*FIN EJEMPLO*/
+     
      @RequestMapping(value = "/vac_emple", method = RequestMethod.POST)
     public void List_empleados(HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
@@ -111,10 +123,9 @@ public class VacacionesController {
     @Autowired
     ServletContext context;
     @RequestMapping(value = "/archivos", method = RequestMethod.POST)
-    public ModelAndView Upload(@RequestParam("files") List<MultipartFile> file,ModelAndView model) throws IOException
+    public ModelAndView Upload(@RequestParam("files") List<MultipartFile> file,ModelAndView model,HttpServletResponse response) throws IOException
     {
-        List<FileInfo> archi= new ArrayList<FileInfo>();
-        System.out.println(archi);
+            
         if (!file.isEmpty()) {
             try {
                 
@@ -122,18 +133,34 @@ public class VacacionesController {
                     String path=context.getRealPath("/WEB-INF/")+ File.separator + fi.getOriginalFilename();
                     File destFile= new File(path);
                     fi.transferTo(destFile);
-                    archi.add(new FileInfo(destFile.getName(), path));
-                    System.out.println(path);
+                    archi.add(destFile.getName());
+                    archi.add(destFile.getPath());
+                    FilenameUtils fich= new FilenameUtils();
+                    archi.add(FilenameUtils.getExtension(path));
+                    archi.add(String.valueOf(destFile.length()));
+                    
+                    
                 }
                 
             } catch (IOException | IllegalStateException ec) {
                 ec.getMessage();
                 ec.printStackTrace();
             }
-        }
+                   
+        }     
         model.setViewName("vistas/vacaciones/Success");
-        model.addObject("archi",archi);
         return model;
+    }
+    @RequestMapping(value ="/jarchivos", method = RequestMethod.POST)
+    public void jarchiv(HttpServletRequest request, HttpServletResponse response) throws IOException
+    {
+        response.setContentType("application/json");
+        try (PrintWriter out = response.getWriter()) {
+            Gson g= new Gson();
+            out.print(g.toJson(archi));
+            out.flush();
+        }
+        
     }
 }
 
