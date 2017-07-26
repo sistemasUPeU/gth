@@ -51,6 +51,7 @@
                                             <br>
                                             <div id="contTable">                                               
                                             </div>
+                                            
                                         </div>
                                     </article>
                                 </div>
@@ -82,7 +83,7 @@
                             list();
                         });
                         function list() {
-                            var url = "renu?opc=listR"; //nombre del controlador ejm. renuncia?op=1
+                            var url = "renu?opc=listR";
                             try {
                                 $.post(url, function (objJson) {
                                     var lista = objJson.ar;
@@ -93,7 +94,8 @@
                                             m += '<td>' + (i + 1) + '</td>';
                                             m += '<td>' + lista[i].IDRENUNCIA + '</td>';
                                             m += '<td>' + lista[i].AP_PATERNO + '  ' + lista[i].AP_MATERNO + ' , ' + lista[i].NO_TRABAJADOR + '</td>';
-                                            m += '<td><center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="Checkbox1" /></p></center></td>';
+                                            m += '<td><center><a id=' + lista[i].ID_TRABAJADOR + ' onclick="getDataWorker(this.id);"  class="btn btn-primary btn-circle"><i class="fa fa-list"></i></a></center></td>';
+                                            m += '<td><center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" id="checked" /></p></center></td>';
                                             m += '</tr>';
                                         }
                                         $("#contTable").empty();
@@ -119,6 +121,7 @@
                             s += '<th data-hide="phone">N°</th>';
                             s += '<th data-class="expand"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>Renuncia</th>';
                             s += '<th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Apellidos y Nombres</th>';
+                            s += '<th data-hide="phone"><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Ver Archivo</th>';
                             s += '<th>Seleccionar Todo<center><input type="checkbox" id="ckbCheckAll" ></center></th>'
                             s += '</thead>';
                             s += '<tbody id="data"></tbody>';
