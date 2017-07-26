@@ -15,6 +15,7 @@ import pe.edu.upeu.gth.dao.CUniversitarioDAO;
 import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
 import pe.edu.upeu.gth.dao.RenunciaDAO;
+import pe.edu.upeu.gth.dao.RolDAO;
 import pe.edu.upeu.gth.dao.UsuarioDAO;
 import pe.edu.upeu.gth.dao.ejemploDAO;
 
@@ -30,6 +31,7 @@ public class testeo {
     public static DataSource d = AppConfig.getDataSource();
 
     public static ejemploDAO eA = new ejemploDAO(d);
+    public static RolDAO rD=new RolDAO(d);
     public static PrivilegioDAO pD = new PrivilegioDAO(d);
     public static Map<String, Object> mp = new HashMap<>();
 //    public static Client asd=new Client();
@@ -51,9 +53,15 @@ public class testeo {
         //validar("liliana", "123");
         //detalleTr("TRB-002742");
         //listar_puestosejemplo("PUT-002011");
-        testearL("");
+        //testearL("");
+        testListRol("ROL-0002");
     }
 
+    public static void testListRol(String a){
+        System.out.println(rD.List_Modulos(a));
+    
+    }
+    
     public static void validar(String u, String p) {
 
         System.out.println(uD.validar(u, p));

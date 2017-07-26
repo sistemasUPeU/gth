@@ -86,7 +86,7 @@ public class CProceso {
 
                 String area = "0";
                 String departamento = "0";
-                
+
                 if (request.getParameter("area") .equals("")) {
                     area = "0";
                 } else {
@@ -97,14 +97,14 @@ public class CProceso {
                 } else {
                     departamento = request.getParameter("departamento");
                 }
-                
+
                 drp.setIdArea(area);
                 drp.setIdDepartamento(departamento);
                 drp.setIdDireccion(request.getParameter("direccion"));
 
                 drp.setIdProceso(request.getParameter("proceso"));
                 drp.setIdRequerimiento(request.getParameter("requerimiento"));
-                  rpta.put("serialize", drp);
+                rpta.put("serialize", drp);
                 String id = iddrp.insertDetalleReqProceso(drp);
                 rpta.put("id", CCriptografiar.Encriptar(id));
                 rpta.put("status", true);
@@ -118,4 +118,4 @@ public class CProceso {
         out.flush();
         out.close();
     }*/
-}
+    }

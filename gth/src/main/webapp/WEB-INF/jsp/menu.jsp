@@ -90,8 +90,8 @@
                     var s = "";
                     if (list.length > 0) {
                         for (var i = 0; i < list.length; i++) {
-                            var idmod = list[i].id_modulo;
-                            var nom = list[i].no_modulo;
+                            var idmod = list[i].ID_MODULO;
+                            var nom = list[i].NO_MODULO;
                             var ico = list[i].IC_MODULO;
                             s += createModulo(idmod, nom, ico);
                         }
