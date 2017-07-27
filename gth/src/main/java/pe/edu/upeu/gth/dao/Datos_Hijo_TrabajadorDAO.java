@@ -24,7 +24,7 @@ public class Datos_Hijo_TrabajadorDAO {
     JdbcTemplate jt = new JdbcTemplate();
     String sql = "";
 
-    public void Datos_Hijo_TrabajadorDAO(DataSource datasource) {
+    public Datos_Hijo_TrabajadorDAO(DataSource datasource) {
         jt = new JdbcTemplate(datasource);
     }
 

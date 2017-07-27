@@ -25,7 +25,7 @@ public class DgpDAO {
     JdbcTemplate jt = new JdbcTemplate();
     String sql = "";
 
-    public void DgpDAO(DataSource datasource) {
+    public DgpDAO(DataSource datasource) {
         jt = new JdbcTemplate(datasource);
     }
 

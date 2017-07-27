@@ -20,7 +20,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 public class Detalle_Centro_Costo_DAO {
     JdbcTemplate jt=new JdbcTemplate();
     String sql="";
-    public void Detalle_Centro_Costo_DAO(DataSource datasource){
+    public Detalle_Centro_Costo_DAO(DataSource datasource){
         jt=new JdbcTemplate(datasource);
     }
     
