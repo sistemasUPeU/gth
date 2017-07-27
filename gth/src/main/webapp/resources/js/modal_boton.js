@@ -83,6 +83,8 @@ function ezBSAlert (options) {
 				$('#ezAlerts-footer').html(btnhtml).on('click', 'button', function (e) {
 						if (e.target.id === 'ezok-btn') {
 							calbackParam = true;
+                                                        var arrid=getSelected();
+                                                         console.log(arrid);        
 							$('#ezAlerts').modal('hide');
 						} else if (e.target.id === 'ezclose-btn') {
 							calbackParam = false;
@@ -116,10 +118,13 @@ function ezBSAlert (options) {
   _show();  
   return deferredObject.promise();    
 }
-
-
-
-
+function getSelected() {
+           var allVals = [];
+            $('#data :checked').each(function () {
+            allVals.push($(this).val());
+            });
+            return allVals;
+}
 
 $(document).ready(function(){
   $("#btnAlert").on("click", function(){  	
@@ -129,7 +134,7 @@ $(document).ready(function(){
     }).done(function (e) {
       $("body").append('<div>Callback from alert</div>');
     });
-  });   
+  }); 
   
   $("#btnsbt").on("click", function(){  	
     ezBSAlert({

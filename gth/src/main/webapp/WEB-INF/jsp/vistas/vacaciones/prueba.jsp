@@ -155,13 +155,13 @@
                             $("#ckbCheckAll").click(function () {
                                 $(".checkBoxClass").prop('checked', $(this).prop('checked'));
                             });   
-                            function getSelected() {
+                            /*function getSelected() {
                                 var allVals = [];
                                 $('#data :checked').each(function () {
                                     allVals.push($(this).val());
                                 });
                                 return allVals;
-                            }
+                            }*/
                             var responsiveHelper_dt_basic = undefined;
                             var responsiveHelper_datatable_fixed_column = undefined;
                             var responsiveHelper_datatable_col_reorder = undefined;
@@ -212,10 +212,10 @@
                             });
                             /* END COLUMN FILTER */
                             //$("#ckbCheckAll").append(checkbox());
-                            $("#btnsbt").click(function (){
+                            /* $("#btnsbt").click(function (){
                                 var arrid=getSelected();
                                 console.log(arrid);                                
-                            });
+                            }); */
 
                         }
                     }
