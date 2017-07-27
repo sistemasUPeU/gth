@@ -42,28 +42,7 @@ public class RolDAO implements Operaciones {
     @Override
     public ArrayList<Map<String, Object>> listar() {
         sql = "select * from RHTR_ROL order by no_rol asc";
-        ArrayList<Map<String, Object>> lista = new ArrayList<>();
-        try {
-            cn = d.getConnection();
-            ps = cn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                Map<String, Object> m = new HashMap<>();
-                m.put("id_rol", rs.getString("id_rol"));
-                m.put("no_rol", rs.getString("no_rol"));
-                m.put("es_rol", rs.getString("es_rol"));
-                lista.add(m);
-            }
-        } catch (Exception e) {
-            System.out.println("Error al Listar Roles" + e);
-        } finally {
-            try {
-                cn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return lista;
+        return (ArrayList<Map<String, Object>>) jt.queryForList(sql);
     }
 
     @Override
@@ -103,86 +82,18 @@ public class RolDAO implements Operaciones {
     }
 
     public ArrayList<Map<String, Object>> List_rol(String idrol) {
-        sql = "select * from RHTR_ROL where id_rol=?";
-        ArrayList<Map<String, Object>> lista = new ArrayList<>();
-        try {
-            cn = d.getConnection();
-            ps = cn.prepareStatement(sql);
-            ps.setString(1, idrol);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                Map<String, Object> m = new HashMap<>();
-                m.put("id_rol", rs.getString("id_rol"));
-                m.put("no_rol", rs.getString("no_rol"));
-                m.put("es_rol", rs.getString("es_rol"));
-                lista.add(m);
-            }
-        } catch (Exception e) {
-            System.out.println("Error al Listar Roles" + e);
-        } finally {
-            try {
-                cn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return lista;
+        sql = "select * from RHTR_ROL where trim(id_rol)=?";
+        return (ArrayList<Map<String, Object>>) jt.queryForList(sql, idrol.trim());
     }
 
     public ArrayList<Map<String, Object>> List_Modulos(Object idrol) {
-        sql = "select DISTINCT(ID_MODULO) AS ID_MODULO,NO_MODULO ,DE_MODULO, IC_MODULO,ID_ROL from  RHVD_PRIVILEGIO WHERE ID_ROL='"+idrol.toString()+"'";
-        ArrayList<Map<String, Object>> lista = new ArrayList<>();
-        try {
-            cn = d.getConnection();
-            ps = cn.prepareStatement(sql);
-            //ps.setString(1, idrol.toString());
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                Map<String, Object> m = new HashMap<>();
-                m.put("id_rol", rs.getString("id_rol"));
-                m.put("id_modulo", rs.getString("id_modulo"));
-                m.put("no_modulo", rs.getString("no_modulo"));
-                m.put("IC_MODULO", rs.getString("IC_MODULO"));
-                m.put("de_modulo", rs.getString("de_modulo"));
-                lista.add(m);
-            }
-        } catch (Exception e) {
-            System.out.println("Error al Listar List_Modulos : " + e);
-        } finally {
-            try {
-                cn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return lista;
+        sql = "select DISTINCT(ID_MODULO) AS ID_MODULO,NO_MODULO ,DE_MODULO, IC_MODULO,ID_ROL from  RHVD_PRIVILEGIO WHERE trim(id_rol)=?";
+        return (ArrayList<Map<String, Object>>) jt.queryForList(sql, idrol.toString().trim());
     }
 
     public ArrayList<Map<String, Object>> Listar_Rol_Privilegio(String idrol) {
         sql = "SELECT P.NO_LINK, e.ES_DETALLE_PRIVILEGIO,e.ID_DETALLE_PRIVILEGIO FROM RHTD_DETALLE_PRIVILEGIO e , RHTR_ROL r, RHTV_PRIVILEGIO WHERE e.ID_ROL = r.ID_ROL AND e.ID_PRIVILEGIO=P.ID_PRIVILEGIO AND e.ID_ROL =?";
-        ArrayList<Map<String, Object>> lista = new ArrayList<>();
-        try {
-            cn = d.getConnection();
-            ps = cn.prepareStatement(sql);
-            ps.setString(1, idrol);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                Map<String, Object> m = new HashMap<>();
-                m.put("No_link", rs.getString("No_link"));
-                m.put("Es_detalle_privilegio", rs.getString("Es_detalle_privilegio"));
-                m.put("Id_detalle_privilegio", rs.getString("Id_detalle_privilegio"));
-                lista.add(m);
-            }
-        } catch (Exception e) {
-            System.out.println("Error al Listar Listar_Rol_Privilegio" + e);
-        } finally {
-            try {
-                cn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(RolDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return lista;
+        return (ArrayList<Map<String, Object>>) jt.queryForList(sql, idrol.trim());
     }
 
 }

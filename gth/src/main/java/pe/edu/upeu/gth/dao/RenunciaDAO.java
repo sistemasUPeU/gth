@@ -25,7 +25,7 @@ import pe.edu.upeu.gth.interfaces.Operaciones;
  * @author Brandux
  */
 public class RenunciaDAO implements Operaciones {
-    
+
     String sql;
     PreparedStatement ps;
     CallableStatement cs;
@@ -41,7 +41,9 @@ public class RenunciaDAO implements Operaciones {
 
     @Override
     public ArrayList<Map<String, Object>> listar() {
-        sql = "SELECT * FROM RENUNCIA";
+        sql = "SELECT * FROM RENUNCIA r,RHTM_DGP d,RHTM_TRABAJADOR t\n"
+                + "where r.ID_DGP=d.ID_DGP\n"
+                + "and d.ID_TRABAJADOR=t.ID_TRABAJADOR;";
         ArrayList<Map<String, Object>> lista = new ArrayList<>();
         try {
             cn = d.getConnection();
@@ -50,8 +52,12 @@ public class RenunciaDAO implements Operaciones {
             while (rs.next()) {
                 Map<String, Object> m = new HashMap<>();
                 m.put("idrenuncia", rs.getString("idrenuncia"));
+                //              m.put("no_trabajador", rs.getString("no_trabajador"));
+//                m.put("ap_paterno", rs.getString("ap_paterno"));
+//                m.put("ap_materno", rs.getString("ap_materno"));
+//                m.put("id_contrato", rs.getString("id_contrato"));
                 lista.add(m);
-               
+
             }
         } catch (Exception e) {
             System.out.println("Error al Listar Renuncias" + e);
@@ -97,10 +103,17 @@ public class RenunciaDAO implements Operaciones {
                 + "       and rd.ID_DEPARTAMENTO='DPT-0017' and RT.ID_TRABAJADOR = ? ";
         return (ArrayList<Map<String, Object>>) jt.queryForList(sql, idTR.trim());
     }
-            
-    
-    public void Renuncia (String idContr , String idDgp , String User_au , String DirecADj , String Nom_Adj , String Desc , String Size_Adj , String Type_Adj , String Opc){
-        String sql ="{CALL RHSP_INSERT_ADJUNTARRENUNCIA ( ? , ? , ? , ? , ? , ? , ? , ? , ? )}"; 
-        jt.update(sql, idContr ,idDgp , User_au , DirecADj , Nom_Adj , Desc , Size_Adj , Type_Adj ,Opc);
+
+    public ArrayList<Map<String, Object>> DetRen() {
+        String sql = "SELECT * FROM RENUNCIA r,RHTM_DGP d,RHTM_TRABAJADOR t\n"
+                + "where r.ID_DGP=d.ID_DGP\n"
+                + "and d.ID_TRABAJADOR=t.ID_TRABAJADOR";
+
+        return (ArrayList<Map<String, Object>>) jt.queryForList(sql);
+
+    }
+    public void Renuncia(String idContr, String idDgp, String User_au, String DirecADj, String Nom_Adj, String Desc, String Size_Adj, String Type_Adj, String Opc) {
+        String sql = "{CALL RHSP_INSERT_ADJUNTARRENUNCIA ( ? , ? , ? , ? , ? , ? , ? , ? , ? )}";
+        jt.update(sql, idContr, idDgp, User_au, DirecADj, Nom_Adj, Desc, Size_Adj, Type_Adj, Opc);
     }
 }

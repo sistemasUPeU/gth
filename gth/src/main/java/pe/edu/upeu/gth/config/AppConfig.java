@@ -206,7 +206,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public CommonsMultipartResolver getResolver() throws IOException {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
         // no limit
-        resolver.setMaxUploadSize(-1);
+        resolver.setMaxUploadSize(500000);
+        
         return resolver;
     }
    

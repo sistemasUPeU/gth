@@ -72,7 +72,7 @@ public class RenunciaController {
                     mp.put("ls", rdao.DetalleEmp(idTR));
                     break;
                 case "listR":
-                    mp.put("pr", rdao.listar());
+                    mp.put("ar", rdao.DetRen());
                     break;
                 case "InserRenuncia":  
                     String idContr = request.getParameter("idco").toString();
