@@ -44,29 +44,29 @@ public class LoginController {
         try {
             String Usuario = request.getParameter("username");
             String Clave = request.getParameter("clave");
-            ArrayList<Map<String, ?>> user = uD.validar(Usuario, Clave);
+            ArrayList<Map<String, Object>> user = uD.validar(Usuario, Clave);
             if (Usuario.equals("") && Clave.equals("")) {
                 mp.put("rpta", false);
             } else if (user.size() == 1) {
-                session.setAttribute("IDUSER", user.get(0).get("id_usuario"));
-                session.setAttribute("IDTR", user.get(0).get("id_trabajador"));
-                session.setAttribute("USER", user.get(0).get("no_usuario"));
-                session.setAttribute("IDPER", user.get(0).get("id_empleado"));
-                session.setAttribute("IDROL", user.get(0).get("id_rol"));
-                session.setAttribute("CL", user.get(0).get("pw_usuario"));
-                session.setAttribute("PUESTO_ID", user.get(0).get("id_puesto"));
-                session.setAttribute("AREA_ID", user.get(0).get("id_area"));
-                session.setAttribute("AREA", user.get(0).get("no_area"));
-                session.setAttribute("DEPARTAMENTO", user.get(0).get("no_dep"));
-                session.setAttribute("SECCION", user.get(0).get("no_seccion"));
-                session.setAttribute("DEPARTAMENTO_ID", user.get(0).get("id_departamento"));
-                session.setAttribute("PUESTO", user.get(0).get("no_puesto"));
-                session.setAttribute("IDDIR", user.get(0).get("id_direccion"));
-                session.setAttribute("SEXO", user.get(0).get("es_sexo"));
-                if (user.get(0).get("ap_paterno") == null) {
+                session.setAttribute("IDUSER", user.get(0).get("ID_USUARIO"));
+                session.setAttribute("IDTR", user.get(0).get("ID_TRABAJADOR"));
+                session.setAttribute("USER", user.get(0).get("NO_USUARIO"));
+                session.setAttribute("IDPER", user.get(0).get("ID_EMPLEADO"));
+                session.setAttribute("IDROL", user.get(0).get("ID_ROL"));
+                session.setAttribute("CL", user.get(0).get("PW_USUARIO"));
+                session.setAttribute("PUESTO_ID", user.get(0).get("ID_PUESTO"));
+                session.setAttribute("AREA_ID", user.get(0).get("ID_AREA"));
+                session.setAttribute("AREA", user.get(0).get("NO_AREA"));
+                session.setAttribute("DEPARTAMENTO", user.get(0).get("NO_DEP"));
+                session.setAttribute("SECCION", user.get(0).get("NO_SECCION"));
+                session.setAttribute("DEPARTAMENTO_ID", user.get(0).get("ID_DEPARTAMENTO"));
+                session.setAttribute("PUESTO", user.get(0).get("NO_PUESTO"));
+                session.setAttribute("IDDIR", user.get(0).get("NO_DIRECCION"));
+                session.setAttribute("SEXO", user.get(0).get("ES_SEXO"));
+                if (user.get(0).get("AP_PATERNO") == null) {
                     session.setAttribute("NOMBRE_AP", "");
                 } else {
-                    session.setAttribute("NOMBRE_AP", user.get(0).get("ap_paterno") + " " + user.get(0).get("ap_materno") + " " + user.get(0).get("no_trabajador"));
+                    session.setAttribute("NOMBRE_AP", user.get(0).get("AP_PATERNO") + " " + user.get(0).get("AP_MATERNO") + " " + user.get(0).get("NO_TRABAJADOR"));
                 }
                 session.setAttribute("LIST_MODULO", rD.List_Modulos(user.get(0).get("id_rol")));
                 mp.put("rpta", true);

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import pe.edu.upeu.gth.config.AppConfig;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
+import pe.edu.upeu.gth.dao.RolDAO;
 
 /**
  *
@@ -31,6 +32,7 @@ public class MainController {
 
     DataSource d = AppConfig.getDataSource();
     PrivilegioDAO pD = new PrivilegioDAO(d);
+    RolDAO rD = new RolDAO(d);
     Map<String, Object> mp = new HashMap<>();
 
     @RequestMapping(value = "/components")
