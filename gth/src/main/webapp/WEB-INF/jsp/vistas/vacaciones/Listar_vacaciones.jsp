@@ -89,7 +89,7 @@
                             <!-- WIDGET END -->
                             <footer>
                                 <center>
-                                    <button type="button" id='btnsbt' class="btn btn-primary">
+                                    <button type="submit" id='btnsbt' class="btn btn-primary">
                                         Enviar Lista de  Empelados  </button>
                                 </center>
                             </footer>
@@ -129,6 +129,7 @@
         <script type="text/javascript" src="<c:url value='resources/js/plugin/datatables/dataTables.tableTools.min.js'/>"></script>
         <script type="text/javascript" src="<c:url value='resources/js/plugin/datatables/dataTables.bootstrap.min.js'/>"></script>
         <script type="text/javascript" src="<c:url value='resources/js/plugin/datatable-responsive/datatables.responsive.min.js'/>"></script>
+
         <script>
             function listar() {
                 $.ajax({

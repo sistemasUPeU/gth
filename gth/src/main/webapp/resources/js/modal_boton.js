@@ -149,7 +149,7 @@ $(document).ready(function(){
   $("#btnsbt").on("click", function(){  	
     ezBSAlert({
       type: "confirm",
-      messageText: "¿Desea enviar la lista seleccionada?",
+      messageText: "¿Desea enviar la lista de trabajadores seleccionados?",
       alertType: "info"
     }).done(function (e) {
       $("body").append('<div>Callback from confirm ' + e + '</div>');
