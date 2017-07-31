@@ -120,10 +120,20 @@ function ezBSAlert (options) {
 }
 function getSelected() {
            var allVals = [];
+           
             $('#data :checked').each(function () {
-            allVals.push($(this).val());
-            });
-            return allVals;
+                
+               if(allVals === ""){
+                   allVals = 0;                      
+                   //return allVals;  
+               }else{
+                   allVals.push($(this).val());
+               }
+ 
+            });         
+          //return false;
+           return allVals;
+            
 }
 
 $(document).ready(function(){
