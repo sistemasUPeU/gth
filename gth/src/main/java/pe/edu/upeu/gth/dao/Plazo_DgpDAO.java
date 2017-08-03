@@ -195,4 +195,126 @@ public class Plazo_DgpDAO {
         return (String) simpleJdbcCallResult.get("fecha");
     }
 
+    public void Validar_Cumplimiento_plazo_t2() {
+        //Comentarios extraídos de la versión original del sistema//
+        String id_plazo = "";
+        String id_cum_plazo = "";
+        String id_dgp = "";
+        String estado = "";
+        //Busco los CUMPLIMIENTOS DE DGP DE PLAZO  TIPO 2
+        sql = "SELECT pl.ID_PLAZO,cp.ID_CUMPLIMIENTO_PLAZO ,cp.ID_DGP,"
+                + "pl.FE_DESDE,pl.FE_HASTA,cp.ES_CUMPLE_PLAZO FROM "
+                + "RHTR_CUMPLIMIENTO_PLAZO cp, RHTR_PLAZO pl WHERE "
+                + "pl.ID_PLAZO = cp.ID_PLAZO and pl.TI_PLAZO='2' AND "
+                + "pl.ES_PLAZO='1'";
+        List<Map<String, Object>> list = jt.queryForList(sql);
+        for (int i = 0; i < list.size(); i++) {
+            Map<String, Object> mp = list.get(i);
+            id_plazo = (String) mp.get("ID_PLAZO");
+            id_cum_plazo = (String) mp.get("ID_CUMPLIMIENTO_PLAZO");
+            id_dgp = (String) mp.get("ID_DGP");
+            estado = (String) mp.get("ES_CUMPLE_PLAZO");
+            if (estado.trim().equals("0")) {
+
+            } // ELEGIR Los DGP cuyo cumplimiento esta ok
+            else if (estado.trim().equals("1")) {
+                String dep = "";
+                int cont = 0;
+                int cont2 = 0;
+                //ELEGIR LOS DGP EN PROCESO
+                sql = "SELECT COUNT(*) FROM RHVD_USER_AUT u, "
+                        + "RHTC_PASOS p, RHVD_USUARIO du WHERE "
+                        + "u.ID_EMPLEADO=du.ID_EMPLEADO AND "
+                        + "u.ID_PASOS=p.ID_PASOS AND "
+                        + "u.ID_DGP =? AND TRIM(u.ID_PUESTO)<>'0'";
+                cont = jt.queryForObject(sql, Integer.class, id_dgp.trim());
+                //SI ESTA EN PROCESO
+                if (cont > 0) {
+                    sql = "SELECT u.ID_TRABAJADOR, u.ID_ROL, "
+                            + "u.ID_DEPARTAMENTO, du.NO_TRABAJADOR,"
+                            + "du.AP_PATERNO,du.AP_MATERNO, p.DE_PASOS AS paso "
+                            + "FROM RHVD_USER_AUT u, RHTC_PASOS p, "
+                            + "RHVD_USUARIO du WHERE u.ID_EMPLEADO="
+                            + "du.ID_EMPLEADO AND u.ID_PASOS = p.ID_PASOS AND "
+                            + "u.ID_DGP =? AND TRIM(u.ID_PUESTO)<>'0'";
+                    List<Map<String, Object>> list2 = jt.queryForList(sql, id_dgp.trim());
+                    for (int j = 0; j < list2.size(); j++) {
+                        dep = (String) list2.get(j).get("ID_DEPARTAMENTO");
+                        if (dep.trim().equals("DPT-0019")) {
+                            //valida la llegada a rrhh
+                            cont2++;
+                        }
+                    }// EXISTEN USUARIOS PROXIMOS A RRHH
+                    if (cont == cont2) {
+                        jt.update("CALL VAL_CUMPLE_PLAZO( ?, ?, ?)", 1, id_plazo, id_cum_plazo);
+                    } //NO EXISTE NINGUN USUARIO PROXIMO A RRHH
+                    else if (cont2 == 0) {
+                        System.out.print("OK" + cont2);
+                        //jt.update("CALL VAL_CUMPLE_PLAZO( ?, ?, ?)",0,id_plazo,id_cum_plazo);
+                    }
+                }//caso contrario no existe ningun usuario proximo a autorizar (no esta en proceso)
+                else if (cont == 0) {
+                    jt.update("CALL VAL_CUMPLE_PLAZO( ?, ?, ?)", 0, id_plazo, id_cum_plazo);
+                }
+            } else if (estado.trim().equals("2")) {
+
+            }
+        }
+    }
+
+    public void Validar_Cumplimiento_plazo_t1() {
+        String id = "";
+        String id_cumplimiento_plazo = "";
+        String es_cumple_plazo = "";
+        Double dia = 0.0;
+        Double mes = 0.0;
+        Double ano = 0.0;
+        sql = "SELECT pl.ID_PLAZO,cp.ID_CUMPLIMIENTO_PLAZO,cp.ID_DGP,"
+                + "pl.FE_DESDE,(extract (month from pl.FE_HASTA) - "
+                + "extract(month from sysdate))as meses_con,(extract (day "
+                + "from pl.FE_HASTA) - extract(day from sysdate))as dia_con,("
+                + "extract (year from pl.FE_HASTA) - extract(year from sysdate))"
+                + "as anno_con,cp.ES_CUMPLE_PLAZO FROM RHTR_CUMPLIMIENTO_PLAZO "
+                + "cp, RHTR_PLAZO pl WHERE pl.ID_PLAZO = cp.ID_PLAZO and "
+                + "pl.TI_PLAZO='1' AND pl.ES_PLAZO='1'";
+        List<Map<String, Object>> list = jt.queryForList(sql);
+        for (int i = 0; i < list.size(); i++) {
+            id = (String) list.get(i).get("ID_PLAZO");
+            id_cumplimiento_plazo = (String) list.get(i).get("ID_CUMPLIMIENTO_PLAZO");
+            mes = (Double) list.get(i).get("MESES_CON");
+            dia = (Double) list.get(i).get("DIA_CON");
+            ano = (Double) list.get(i).get("ANNO_CON");
+            es_cumple_plazo = (String) list.get(i).get("ES_CUMPLE_PLAZO");
+            if (es_cumple_plazo.equals("1")) {
+                if (ano < 0) {
+                    jt.update("CALL RHSP_DESHABI_CUMPL_PLAZO(?)", id_cumplimiento_plazo);
+                } else if (ano == 0) {
+                    if (mes < 0) {
+                        jt.update("CALL RHSP_DESHABI_CUMPL_PLAZO(?)", id_cumplimiento_plazo);
+                    } else if (mes == 0) {
+                        if (dia < 0) {
+                            jt.update("CALL RHSP_DESHABI_CUMPL_PLAZO(?)", id_cumplimiento_plazo);
+                        } else if (dia == 0 || dia > 0) {
+
+                        }
+                    } else if (mes > 0) {
+
+                    }
+                } else if (ano > 0) {
+
+                }
+            } else if (es_cumple_plazo.equals("0")) {
+
+            }
+        }
+    }
+    
+    public int Validar_cumple_dias_pt2(String dgp) {
+        int n = 0;
+        SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(jt).withFunctionName("rhfu_habilitar_terminar_plazo");
+        SqlParameterSource in = new MapSqlParameterSource().addValue("dgp", dgp);
+        n = simpleJdbcCall.executeFunction(Integer.class, in);
+        return n;
+    }
+
 }

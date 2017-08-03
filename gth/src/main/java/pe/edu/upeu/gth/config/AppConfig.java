@@ -37,6 +37,22 @@ import pe.edu.upeu.gth.dao.EmpleadoDAO;
 import pe.edu.upeu.gth.dao.Formato_HorarioDAO;
 import pe.edu.upeu.gth.dao.Fotos_TrabajadorDAO;
 import pe.edu.upeu.gth.dao.FuncionDAO;
+import pe.edu.upeu.gth.dao.GrupoOcupacionesDAO;
+import pe.edu.upeu.gth.dao.Hist_Estado_CivilDAO;
+import pe.edu.upeu.gth.dao.HorarioDAO;
+import pe.edu.upeu.gth.dao.ImagenDAO;
+import pe.edu.upeu.gth.dao.ListaDAO;
+import pe.edu.upeu.gth.dao.ModuloDAO;
+import pe.edu.upeu.gth.dao.NacionalidadDAO;
+import pe.edu.upeu.gth.dao.NotificationDAO;
+import pe.edu.upeu.gth.dao.Padre_Madre_ConyugeDAO;
+import pe.edu.upeu.gth.dao.PagoDocenteDAO;
+import pe.edu.upeu.gth.dao.PasoDAO;
+import pe.edu.upeu.gth.dao.Periodo_PagoDAO;
+import pe.edu.upeu.gth.dao.PlantillaContractualDAO;
+import pe.edu.upeu.gth.dao.PlantillaDAO;
+import pe.edu.upeu.gth.dao.Plazo_DgpDAO;
+import pe.edu.upeu.gth.dao.PresupuestoDAO;
 import pe.edu.upeu.gth.dao.PrivilegioDAO;
 import pe.edu.upeu.gth.dao.RenunciaDAO;
 import pe.edu.upeu.gth.dao.SeccionDAO;
@@ -169,6 +185,86 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public FuncionDAO getFuncionDAO() {
         return new FuncionDAO(getDataSource());
+    }
+    
+    @Bean
+    public GrupoOcupacionesDAO getGrupoOcupacionesDAO() {
+        return new GrupoOcupacionesDAO(getDataSource());
+    }
+    
+    @Bean
+    public Hist_Estado_CivilDAO getHist_Estado_CivilDAO() {
+        return new Hist_Estado_CivilDAO(getDataSource());
+    }
+    
+    @Bean
+    public HorarioDAO getHorarioDAO() {
+        return new HorarioDAO(getDataSource());
+    }
+    
+    @Bean
+    public ImagenDAO getImagenDAO() {
+        return new ImagenDAO(getDataSource());
+    }
+    
+    @Bean
+    public ListaDAO getListaDAO() {
+        return new ListaDAO(getDataSource());
+    }
+    
+    @Bean
+    public ModuloDAO getModuloDAO() {
+        return new ModuloDAO(getDataSource());
+    }
+    
+    @Bean
+    public NacionalidadDAO getNacionalidadDAO() {
+        return new NacionalidadDAO(getDataSource());
+    }
+    
+    @Bean
+    public NotificationDAO getNotificationDAO() {
+        return new NotificationDAO(getDataSource());
+    }
+    
+    @Bean
+    public Padre_Madre_ConyugeDAO getPadre_Madre_ConyugeDAO() {
+        return new Padre_Madre_ConyugeDAO(getDataSource());
+    }
+    
+    @Bean
+    public PagoDocenteDAO getPagoDocenteDAO() {
+        return new PagoDocenteDAO(getDataSource());
+    }
+    
+    @Bean
+    public PasoDAO getPasoDAO() {
+        return new PasoDAO(getDataSource());
+    }
+    
+    @Bean
+    public Periodo_PagoDAO getPeriodo_PagoDAO() {
+        return new Periodo_PagoDAO(getDataSource());
+    }
+    
+    @Bean
+    public PlantillaContractualDAO getPlantillaContractualDAO() {
+        return new PlantillaContractualDAO(getDataSource());
+    }
+    
+    @Bean
+    public PlantillaDAO getPlantillaDAO() {
+        return new PlantillaDAO(getDataSource());
+    }
+    
+    @Bean
+    public Plazo_DgpDAO getPlazo_DgpDAO() {
+        return new Plazo_DgpDAO(getDataSource());
+    }
+    
+    @Bean
+    public PresupuestoDAO getPresupuestoDAO() {
+        return new PresupuestoDAO(getDataSource());
     }
     
     @Bean
