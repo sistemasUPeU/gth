@@ -324,6 +324,7 @@
                                                                         $.post('returnjson', function (obj) {
                                                                         
                                                                             var trab = obj[0];
+                                                                            console.log(trab);
                                                                             $("#nombres").text(trab.NOM + " " + trab.AP_P + " " + trab.AP_M);
                                                                             $("#correo").text(trab.CORREO);
                                                                             $("#fecha").text(trab.F);
@@ -509,6 +510,7 @@
                                                                             } else {
 
                                                                             }
+                                                                           
                                                                         });
                                                                         $("#delrange").click(function () {
                                                                             if (nr > 1) {
@@ -516,6 +518,20 @@
                                                                                 nr = nr - 1;
                                                                                 calnd();
                                                                             }
+                                                                        });
+                                                                        
+            <%--enviar datos hacia controlador para el detalle del documento--%>
+                                                                        $("#").click(function(evento) 
+                                                                        {
+                                                                            $.ajax(
+                                                                                    {
+                                                                                      url:'VacacionesDAO',
+                                                                                      type:'POST',
+                                                                                      data: JSON.stringify(nr).val,
+                                                                                      processData:false,
+                                                                                      contentType:"application/json"
+                                                                                    });
+                                                                                    evento.preventDefault();
                                                                         });
                                                                     });
                                                                     function calnd() {
