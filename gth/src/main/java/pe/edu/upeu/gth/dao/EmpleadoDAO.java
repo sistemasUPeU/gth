@@ -46,7 +46,7 @@ public class EmpleadoDAO {
         String sql_list_emp="select t.ID_TRABAJADOR as ID,co.ID_CONTRATO as IDC,UPPER(t.NO_TRABAJADOR) as NOM,UPPER(t.AP_PATERNO) as A_P,UPPER(t.AP_MATERNO) as A_M,ar.NO_AREA,se.NO_SECCION,pu.NO_PUESTO,TO_CHAR(co.FE_DESDE,'DD/MM/YYYY') as FE,TO_CHAR(co.FE_HASTA,'DD/MM/YYYY')as FE2\n" +
 "from RHTD_EMPLEADO e,RRHH.RHTM_TRABAJADOR t,RHTM_CONTRATO co,RHTR_PUESTO pu,RHTR_SECCION se,RHTD_AREA ar\n" +
 "WHERE e.ID_TRABAJADOR=t.ID_TRABAJADOR AND co.ID_TRABAJADOR=t.ID_TRABAJADOR and pu.ID_PUESTO=co.ID_PUESTO AND pu.ID_SECCION=se.ID_SECCION and ar.ID_AREA=se.ID_AREA AND co.FE_HASTA>=SYSDATE AND MONTHS_BETWEEN\n" +
-"(co.FE_HASTA,co.FE_DESDE)/12>=1 AND co.es_contrato_trabajador='1' AND co.ID_DGP is not null or co.ID_DGP<>''" ;
+"(co.FE_HASTA,co.FE_DESDE)/12>=1 AND co.es_contrato_trabajador='1'" ;
 
         return jt.queryForList(sql_list_emp);
     }
