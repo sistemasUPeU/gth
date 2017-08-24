@@ -19,7 +19,7 @@ public class DepartamentoDao {
     JdbcTemplate jt = new JdbcTemplate();
     String sql = "";
 
-    public void DepartamentoDao(DataSource datasource) {
+    public DepartamentoDao(DataSource datasource) {
         jt = new JdbcTemplate(datasource);
     }
 

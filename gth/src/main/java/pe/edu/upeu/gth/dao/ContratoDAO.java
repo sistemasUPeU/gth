@@ -23,7 +23,7 @@ public class ContratoDAO {
     JdbcTemplate jt = new JdbcTemplate();
     String sql = "";
 
-    public void ContratoDAO(DataSource datasource) {
+    public ContratoDAO(DataSource datasource) {
         jt = new JdbcTemplate(datasource);
     }
 

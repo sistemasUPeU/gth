@@ -5,6 +5,9 @@
  */
 package pe.edu.upeu.gth.dao;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -56,4 +59,16 @@ public class vacacionesDAO implements Operaciones{
         return jt.queryForList(sql, (Object[]) data);
      }
 
+     public void vacacion(String id_trabajador, String direccion_doc,String nombre_doc,String descripcion_doc,String size_doc,
+     String type_doc,String es_vacacion,String iddocumento, Date rang_año_inicio,Date rang_año_fin,String fecha_inicio [],String fecha_fin[]) throws ParseException
+     {
+         String a[]={"7-Jun-2013","7-Jun-2013"};
+         String sql="{}";
+         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+         for (String string : a) {
+             Date d=(Date) formatter.parse(string);
+         }
+         
+         jt.update(sql,id_trabajador,direccion_doc,nombre_doc,descripcion_doc,size_doc,type_doc,es_vacacion,iddocumento,rang_año_inicio,rang_año_fin,fecha_inicio,fecha_fin);
+     }
 }

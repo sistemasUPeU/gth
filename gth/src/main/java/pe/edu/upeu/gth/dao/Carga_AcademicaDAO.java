@@ -45,7 +45,7 @@ public class Carga_AcademicaDAO {
         jt.update("CALL RHSP_INSERT_CARGA_ACADEMICA( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )", null, null, CAMPUS, ES_TIPO_DOC, NU_DOC, AP_PATERNO, AP_MATERNO, NO_TRABAJADOR, NO_FACULTAD, NO_EAP, DE_CARGA, NO_CURSO, NU_GRUPO, DE_HORARIO, CA_HLAB, DE_CONDICION, DE_TIPO_CURSO, ES_PROCESADO, null);
     }
 
-    /* REVISARUSO PARA PODER MODIFICAR
+    /* REVISAR USO PARA PODER MODIFICAR
     public String insertDGP(DGP d) {
         
     }

@@ -17,7 +17,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class Comentario_DGPDAO {
     JdbcTemplate jt=new JdbcTemplate();
     String sql="";
-    public void Comentario_DGPDAO(DataSource datasource){
+    public Comentario_DGPDAO(DataSource datasource){
         jt=new JdbcTemplate(datasource);
     }
     

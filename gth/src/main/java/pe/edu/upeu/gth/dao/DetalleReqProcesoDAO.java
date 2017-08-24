@@ -21,7 +21,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 public class DetalleReqProcesoDAO {
     JdbcTemplate jt=new JdbcTemplate();
     String sql="";
-    public void DetalleReqProcesoDAO(DataSource datasource){
+    public DetalleReqProcesoDAO(DataSource datasource){
         jt=new JdbcTemplate(datasource);
     }
     

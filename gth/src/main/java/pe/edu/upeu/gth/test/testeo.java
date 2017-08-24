@@ -5,11 +5,21 @@
  */
 package pe.edu.upeu.gth.test;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.json.Json;
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
+import org.json.JSONArray;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import pe.edu.upeu.gth.config.AppConfig;
 import pe.edu.upeu.gth.dao.CUniversitarioDAO;
 import pe.edu.upeu.gth.dao.EmpleadoDAO;
@@ -40,6 +50,8 @@ public class testeo {
     public static CUniversitarioDAO cD = new CUniversitarioDAO(d);
 
     public static void main(String[] args) {
+       String o="";
+        obtener(o);
         //conect();
         //listar_puestos();
         //addPuesto("Esclavo", "es", "1", "SEC-0003", "3");
@@ -54,8 +66,43 @@ public class testeo {
         //detalleTr("TRB-002742");
         //listar_puestosejemplo("PUT-002011");
         //testearL("");
-        testListRol("ROL-0002");
+//        String queryColumns = "SELECT c.id_contrato,DT.\"ID_TRABAJADOR\",DT.\"AP_PATERNO\",DT.\"AP_MATERNO\",DT.\"NO_TRABAJADOR\",DT.\"TI_DOC\",DT.\"NU_DOC\",DT.\"ES_CIVIL\",\n"
+//                + "    DT.\"FE_NAC\",DT.\"NO_NACIONALIDAD\",DT.\"NO_DEPARTAMENTO\",DT.\"NO_PROVINCIA\",DT.\"NO_DISTRITO\",DT.\"TE_TRABAJADOR\",DT.\"CL_TRA\",DT.\"DI_CORREO_PERSONAL\",DT.\"DI_CORREO_INST\",\n"
+//                + "    DT.\"CO_SISTEMA_PENSIONARIO\",DT.\"ID_SITUACION_EDUCATIVA\",DT.\"LI_REG_INST_EDUCATIVA\",DT.\"ES_INST_EDUC_PERU\",\n"
+//                + "    DT.\"CM_OTROS_ESTUDIOS\",DT.\"ES_SEXO\",DT.\"LI_GRUPO_SANGUINEO\",DT.\"DE_REFERENCIA\",\n"
+//                + "    DT.\"LI_RELIGION\",DT.\"NO_IGLESIA\",DT.\"DE_CARGO\",DT.\"LI_AUTORIDAD\",DT.\"NO_AP_AUTORIDAD\",DT.\"CL_AUTORIDAD\",\n"
+//                + "    DT.\"ID_NO_AFP\",DT.\"ES_AFILIADO_ESSALUD\",DT.\"LI_TIPO_TRABAJADOR\",DT.\"CA_TIPO_HORA_PAGO_REFEERENCIAL\",\n"
+//                + "    DT.\"ES_FACTOR_RH\",DT.\"LI_DI_DOM_A_D1\",\n"
+//                + "    DT.\"DI_DOM_A_D2\",DT.\"LI_DI_DOM_A_D3\",DT.\"DI_DOM_A_D4\",DT.\"LI_DI_DOM_A_D5\",DT.\"DI_DOM_A_D6\",DT.\"DI_DOM_A_REF\",DT.\"DI_DOM_A_DISTRITO\",DT.\"LI_DI_DOM_LEG_D1\",\n"
+//                + "    DT.\"DI_DOM_LEG_D2\",DT.\"LI_DI_DOM_LEG_D3\",\n"
+//                + "    DT.\"DI_DOM_LEG_D4\",DT.\"LI_DI_DOM_LEG_D5\",DT.\"DI_DOM_LEG_D6\",DT.\"DI_DOM_LEG_DISTRITO\",\n"
+//                + "    DT.\"CA_ING_QTA_CAT_EMPRESA\",DT.\"CA_ING_QTA_CAT_RUC\",DT.\"CA_ING_QTA_CAT_OTRAS_EMPRESAS\",\n"
+//                + "    DT.\"CM_OBSERVACIONES\",DT.\"US_CREACION\",  DT.\"FE_CREACION\",DT.\"US_MODIF\",DT.\"FE_MODIF\",DT.\"IP_USUARIO\",DT.\"ID_USUARIO_CREACION\",DT.\"ID_UNIVERSIDAD_CARRERA\",\n"
+//                + "    DT.\"ID_NACIONALIDAD\",DT.\"DISTRITO_NAC\",DT.\"NO_S_EDUCATIVA\",DT.\"AP_NOMBRES_MADRE\",DT.\"AP_NOMBRES_PADRE\",DT.\"ES_TRABAJA_UPEU_C\",DT.\"AP_NOMBRES_C\",DT.\"FE_NAC_C\",\n"
+//                + "    DT.\"ID_TIPO_DOC_C\",DT.\"NU_DOC_C\",DT.\"LI_INSCRIPCION_VIG_ESSALUD_C\",DT.\"ID_CONYUGUE\",DT.\"NO_CARRERA\",DT.\"NO_UNIVERSIDAD\",DT.\"AR_FOTO\",DT.\"DE_FOTO\",DT.\"ID_FOTO\",DT.\"NO_AR_FOTO\",DT.\"TA_AR_FOTO\",\n"
+//                + "    dpd.no_puesto ,dpd.no_seccion,dpd.no_area,dpd.id_direccion,dpd.no_dep,dpd.id_departamento ,\n"
+//                + "    dpd.id_area,dpd.id_seccion,c.id_puesto,e.id_empleado,c.fe_creacion AS fe_creacion_contrato, c.ca_sueldo,to_char(c.fe_desde, 'yyyy-mm-dd') as fe_desde,\n"
+//                + "    to_char(c.fe_hasta, 'yyyy-mm-dd') as fe_hasta,dt.ID_UNIVERSIDAD,dt.ID_TIPO_INSTITUCION,\n"
+//                + "    dt.CO_UNIVERSIDAD,dt.ID_CARRERA,dt.CO_NACIONALIDAD,dpd.NO_DIRECCION ";
+//        String query = "  FROM RHTD_EMPLEADO e,\n"
+//                + "    RHVD_TRABAJADOR dt ,\n"
+//                + "    RHTM_CONTRATO c ,\n"
+//                + "    RHVD_PUESTO_DIRECCION dpd"
+//                + "  WHERE dt.id_trabajador = c.id_trabajador\n"
+//                + "  AND e.id_trabajador    = c.id_trabajador\n"
+//                + "  AND dpd.id_puesto      = c.id_puesto\n"
+//                + "  AND c.es_contrato      =1  ";
+//        System.out.println(getformatString(queryColumns + ", %s " + query + " %s",1,1,"c.fe_creacion"));
+//        testListRol("ROL-0002");
     }
+     @RequestMapping(value = "/testeo", method = RequestMethod.POST)
+    public static void obtener(@RequestParam("dato") String x) {
+                Gson g= new Gson();
+                String p=g.toJson(x);
+         System.out.println(x);
+    }
+ 
+
 
     public static void testListRol(String a){
         System.out.println(rD.List_Modulos(a));
@@ -144,5 +191,9 @@ public class testeo {
     public static void detalleTr(String id) {
         RenunciaDAO rda = new RenunciaDAO(d);
         System.out.println(rda.DetalleEmp(id));
+    }
+    public static String getformatString(String o, int pageNumber, int pageSize,String orderby){
+        return String.format(" SELECT * FROM(  " + o + "  ) WHERE row_number >= (((" + pageNumber + "-1) * " + pageSize + ") + 1)", 
+                " row_number() over (order by "+orderby+" desc) row_number    ", " AND  rownum < ((" + pageNumber + " * " + pageSize + ") + 1 ) ");
     }
 }

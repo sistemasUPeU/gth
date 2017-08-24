@@ -19,7 +19,7 @@ public class DireccionDAO {
     JdbcTemplate jt = new JdbcTemplate();
     String sql = "";
 
-    public void DireccionDAO(DataSource datasource) {
+    public DireccionDAO(DataSource datasource) {
         jt = new JdbcTemplate(datasource);
     }
 

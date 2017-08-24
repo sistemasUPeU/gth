@@ -17,7 +17,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class Detalle_PrivilegioDAO {
     JdbcTemplate jt=new JdbcTemplate();
     String sql="";
-    public void Detalle_PrivilegioDAO(DataSource datasource){
+    public Detalle_PrivilegioDAO(DataSource datasource){
         jt=new JdbcTemplate(datasource);
     }
     

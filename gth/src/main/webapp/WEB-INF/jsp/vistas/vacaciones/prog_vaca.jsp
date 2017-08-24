@@ -23,10 +23,7 @@
 
         <!-- Basic Styles -->
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/bootstrap.min.css'/>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/font-awesome.min'/>">
-
         <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
-        <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production-plugins.min'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-production.min.css'/>">
         <link rel="stylesheet" type="text/css" media="screen" href="<c:url value='resources/css/smartadmin-skins.min.css'/>">
 
@@ -226,8 +223,6 @@
             </article>
         </div>
 
-        <script src="js/daterangepicker/moment.min.js" type="text/javascript"></script>
-        <script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>
 
         <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -329,6 +324,7 @@
                                                                         $.post('returnjson', function (obj) {
                                                                         
                                                                             var trab = obj[0];
+                                                                            console.log(trab);
                                                                             $("#nombres").text(trab.NOM + " " + trab.AP_P + " " + trab.AP_M);
                                                                             $("#correo").text(trab.CORREO);
                                                                             $("#fecha").text(trab.F);
@@ -463,9 +459,7 @@
                                                                             });
 
                                                                         });
-                                                                        $("#submitbtn").click(function () {
-
-                                                                        });
+                         
 
                                                                         $("#addrange").click(function () {
                                                                             var add = "";
@@ -514,6 +508,7 @@
                                                                             } else {
 
                                                                             }
+                                                                           
                                                                         });
                                                                         $("#delrange").click(function () {
                                                                             if (nr > 1) {
@@ -521,6 +516,22 @@
                                                                                 nr = nr - 1;
                                                                                 calnd();
                                                                             }
+                                                                        });
+                                                                        
+            <%--enviar datos hacia controlador para el detalle del documento--%>
+                                                                        $("#submitbtn").click(function() 
+                                                                        {
+                                                                                var num={cantidad:nr};
+                                                                                console.log(num);
+                                                                            $.ajax(
+                                                                                    {
+                                                                                      url:'testeo',
+                                                                                      type:'POST',
+                                                                                      data:{"dato":JSON.stringify(num)},
+                                                                                      processData:false,
+                                                                                      contentType:"application/json"
+                                                                                      
+                                                                                    });
                                                                         });
                                                                     });
                                                                     function calnd() {

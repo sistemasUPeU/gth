@@ -84,7 +84,7 @@
                             <!-- WIDGET END -->
                             <footer>
                                 <center>
-                                    <button type="button" id='btnsbt' class="btn btn-primary">
+                                    <button type="submit" id='btnsbt' class="btn btn-primary">
                                         Enviar Lista de  Empelados  </button>
                                 </center>
                             </footer>
@@ -106,6 +106,7 @@
             <!--Modal content-->
             <div class="modalContent"></div>
         </div>
+        
         <script type="text/javascript" src="<c:url value='resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
         <script type="text/javascript" src="<c:url value='resources/js/app.config.js'/>"></script>
         <script type="text/javascript" src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
@@ -124,6 +125,8 @@
         <script type="text/javascript" src="<c:url value='resources/js/plugin/datatables/dataTables.tableTools.min.js'/>"></script>
         <script type="text/javascript" src="<c:url value='resources/js/plugin/datatables/dataTables.bootstrap.min.js'/>"></script>
         <script type="text/javascript" src="<c:url value='resources/js/plugin/datatable-responsive/datatables.responsive.min.js'/>"></script>
+        <script src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>" type="text/javascript"></script>
+        <script  type="text/javascript" src="<c:url value='resources/js/modal_boton.js'/>"></script>
         <script>
             function listar() {
                 $.ajax({
@@ -143,7 +146,7 @@
                                 s += '<td>' + lista[i].NO_PUESTO + '</td>';
                                 s += '<td>' + lista[i].FE + '</td>';
                                 s += '<td>' + lista[i].FE2 + '</td>';
-                                s += '<td><center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" value="' + lista[i].ID + '" /></p></center></td>';
+                                s += '<td><center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" value="' + lista[i].IDC + '" /></p></center></td>';
                                 s += '</tr>';
                             }
                             $("#tablecont").empty();
@@ -152,14 +155,14 @@
                             $("#data").append(s);
                             $("#ckbCheckAll").click(function () {
                                 $(".checkBoxClass").prop('checked', $(this).prop('checked'));
-                            });
-                            function getSelected() {
+                            });   
+                            /*function getSelected() {
                                 var allVals = [];
                                 $('#data :checked').each(function () {
                                     allVals.push($(this).val());
                                 });
                                 return allVals;
-                            }
+                            }*/
                             var responsiveHelper_dt_basic = undefined;
                             var responsiveHelper_datatable_fixed_column = undefined;
                             var responsiveHelper_datatable_col_reorder = undefined;
@@ -210,10 +213,10 @@
                             });
                             /* END COLUMN FILTER */
                             //$("#ckbCheckAll").append(checkbox());
-                            $("#btnsbt").click(function (){
+                            /* $("#btnsbt").click(function (){
                                 var arrid=getSelected();
                                 console.log(arrid);                                
-                            });
+                            }); */
 
                         }
                     }

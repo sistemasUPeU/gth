@@ -162,6 +162,21 @@ public class VacacionesController {
         }
         
     }
+     @RequestMapping(value = "/guardar_list", method = RequestMethod.POST)
+    public void guardar_list(HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        Gson gson = new Gson();
+        try {
+           out.println(gson.toJson("se guardo correctamente"));
+           out.flush();
+           out.close();
+
+        } catch (Exception e) {
+            System.out.println("Error al listar empleados : " + e);
+        }
+  
+    }
 }
 
 

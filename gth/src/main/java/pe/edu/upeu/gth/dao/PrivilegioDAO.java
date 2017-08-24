@@ -21,45 +21,17 @@ import pe.edu.upeu.gth.interfaces.Operaciones;
  *
  * @author Leandro Burgos
  */
-public class PrivilegioDAO implements Operaciones {
+public class PrivilegioDAO {
 
     String sql;
-    PreparedStatement ps;
-    CallableStatement cs;
-    ResultSet rs;
-    Connection cn;
-    DataSource d = AppConfig.getDataSource();
 
     private JdbcTemplate jt;
 
     public PrivilegioDAO(DataSource dataSource) {
         jt = new JdbcTemplate(dataSource);
     }
-
-    public PrivilegioDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<Map<String, Object>> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean add(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean edit(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean delete(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
+    
     public ArrayList<Map<String, Object>> listarURLs(String idrol, String id_modulo) {
         sql = "select * from  RHVD_PRIVILEGIO where ID_ROL='" + idrol + "' and id_modulo='" + id_modulo + "' ";
         return (ArrayList<Map<String, Object>>) jt.queryForList(sql);

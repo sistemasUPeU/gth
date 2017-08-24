@@ -24,7 +24,7 @@ public class DocumentoDAO {
     String sql = "";
     String UrlArchivo = "";//Check this variable
 
-    public void DocumentoDAO(DataSource datasource) {
+    public DocumentoDAO(DataSource datasource) {
         jt = new JdbcTemplate(datasource);
     }
 

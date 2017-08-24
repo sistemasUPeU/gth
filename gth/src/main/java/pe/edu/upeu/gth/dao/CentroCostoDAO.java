@@ -23,7 +23,7 @@ public class CentroCostoDAO {
     JdbcTemplate jt = new JdbcTemplate();
     String sql = "";
 
-    public void CentroCostoDAO(DataSource datasource) {
+    public CentroCostoDAO(DataSource datasource) {
         jt = new JdbcTemplate(datasource);
     }
 

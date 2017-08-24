@@ -17,7 +17,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class Carrera_UniversidadDAO {
     JdbcTemplate jt=new JdbcTemplate();
     String sql="";
-    public void Carrera_UniversidadDAO(DataSource datasource){
+    public Carrera_UniversidadDAO(DataSource datasource){
         jt=new JdbcTemplate(datasource);
     }
     /*EVALUAR EL USO DE ESTE MÉTODO (NOMBRE DE VARIABLES)*/
