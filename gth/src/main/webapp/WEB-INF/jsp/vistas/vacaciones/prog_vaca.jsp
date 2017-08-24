@@ -459,9 +459,7 @@
                                                                             });
 
                                                                         });
-                                                                        $("#submitbtn").click(function () {
-
-                                                                        });
+                         
 
                                                                         $("#addrange").click(function () {
                                                                             var add = "";
@@ -521,17 +519,20 @@
                                                                         });
                                                                         
             <%--enviar datos hacia controlador para el detalle del documento--%>
-                                                                        $("#").click(function(evento) 
+                                                                        $("#submitbtn").click(function() 
                                                                         {
+                                                                                var num={cantidad:nr};
+                                                                                console.log(num);
                                                                             $.ajax(
                                                                                     {
-                                                                                      url:'VacacionesDAO',
+                                                                                      url:'testeo',
                                                                                       type:'POST',
-                                                                                      data: JSON.stringify(nr).val,
+                                                                                      data:{"dato":JSON.stringify(num)},
                                                                                       processData:false,
                                                                                       contentType:"application/json"
+                                                                                      
                                                                                     });
-                                                                                    evento.preventDefault();
+                                                                                   
                                                                         });
                                                                     });
                                                                     function calnd() {
