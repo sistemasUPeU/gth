@@ -532,7 +532,6 @@
                                                                                       contentType:"application/json"
                                                                                       
                                                                                     });
-                                                                                   
                                                                         });
                                                                     });
                                                                     function calnd() {
