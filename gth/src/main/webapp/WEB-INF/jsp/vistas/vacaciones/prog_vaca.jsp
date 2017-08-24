@@ -525,13 +525,23 @@
                                                                                 console.log(num);
                                                                             $.ajax(
                                                                                     {
-                                                                                      url:'testeo',
+                                                                                      /*url:'testeo',//nombre controller
+                                                                                      type:'POST',
+                                                                                      data:{"dato":JSON.stringify(num)},
+                                                                                      processData:false,
+                                                                                      contentType:"application/json"
+                                                                                      
+                                                                                    });*/
+            {
+                                                                                      url:'aaa',//nombre controller
                                                                                       type:'POST',
                                                                                       data:{"dato":JSON.stringify(num)},
                                                                                       processData:false,
                                                                                       contentType:"application/json"
                                                                                       
                                                                                     });
+                                                                                    //$.post(url,data,funtion(objJson){
+                                                                                    //});
                                                                         });
                                                                     });
                                                                     function calnd() {
