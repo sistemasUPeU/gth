@@ -84,7 +84,7 @@
                             <!-- WIDGET END -->
                             <footer>
                                 <center>
-                                    <button type="submit" id='btnsbt' class="btn btn-primary" disabled>
+                                    <button type="submit" id='btnsbt' class="btn btn-primary">
                                         Enviar Lista de  Empelados  </button>
                                 </center>
                             </footer>
