@@ -146,7 +146,7 @@
                                 s += '<td>' + lista[i].NO_PUESTO + '</td>';
                                 s += '<td>' + lista[i].FE + '</td>';
                                 s += '<td>' + lista[i].FE2 + '</td>';
-                                s += '<td><center><p id="checkBoxes"><input type="checkbox" class="checkBoxClass" value="' + lista[i].IDC + '" /></p></center></td>';
+                                s += '<td><center><p id="checkBoxes"><input id="checkboxx" type="checkbox" class="checkBoxClass" value="' + lista[i].IDC + '" /></p></center></td>';
                                 s += '</tr>';
                             }
                             $("#tablecont").empty();
@@ -155,14 +155,12 @@
                             $("#data").append(s);
                             $("#ckbCheckAll").click(function () {
                                 $(".checkBoxClass").prop('checked', $(this).prop('checked'));
-                            });   
-                            /*function getSelected() {
-                                var allVals = [];
-                                $('#data :checked').each(function () {
-                                    allVals.push($(this).val());
-                                });
-                                return allVals;
-                            }*/
+                            });
+                            
+                            $("#checkboxx").click(function () {
+                                 console.log("entro al check");
+                              });
+                       
                             var responsiveHelper_dt_basic = undefined;
                             var responsiveHelper_datatable_fixed_column = undefined;
                             var responsiveHelper_datatable_col_reorder = undefined;
@@ -261,16 +259,9 @@
                 return s;
 
 
-
-
             }
-            /*function checkbox() {
-             
-             $("#ckbCheckAll").click(function () {
-             $(".checkBoxClass").prop('checked', $(this).prop('checked'));
-             });
-             }*/
 
+      
             // DO NOT REMOVE : GLOBAL FUNCTIONS!
 
             $(document).ready(function () {

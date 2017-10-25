@@ -83,7 +83,7 @@ function ezBSAlert (options) {
 				$('#ezAlerts-footer').html(btnhtml).on('click', 'button', function (e) {
 						if (e.target.id === 'ezok-btn') {
 							calbackParam = true;
-                                                        var arrid=getSelected();
+                                                        var arrid=getSelected(); //<----- da el inicio al array de seleccionar 
                                                          console.log(arrid);        
 							$('#ezAlerts').modal('hide');
 						} else if (e.target.id === 'ezclose-btn') {
@@ -144,8 +144,9 @@ $(document).ready(function(){
     }).done(function (e) {
       $("body").append('<div>Callback from alert</div>');
     });
-  }); 
+  });
   
+  //Es el inicio del clip en la validacion del array
   $("#btnsbt").on("click", function(){  	
     ezBSAlert({
       type: "confirm",
@@ -154,7 +155,9 @@ $(document).ready(function(){
     }).done(function (e) {
       $("body").append('<div>Callback from confirm ' + e + '</div>');
     });
-  });   
+  });
+  
+  //------------------------------------------------------
 
   $("#btnPrompt").on("click", function(){  	
     ezBSAlert({
