@@ -25,6 +25,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,6 +40,8 @@ import pe.edu.upeu.gth.dao.vacacionesDAO;
  * @author Alfa003
  */
 @Controller
+@Scope("request")
+@RequestMapping("vacaciones")
 public class VacacionesController {
     @Autowired
     private vacacionesDAO vaO;
@@ -71,8 +74,6 @@ public class VacacionesController {
     
     @RequestMapping(value = "/listar_vac")
      public ModelAndView lista(ModelAndView model){
-//         List<Map<String, Object>> lista= aO.listar_empleado();
-//         model.addObject("listar",lista);
          model.setViewName("vistas/vacaciones/Listar_vacaciones");
          return model;
     }
