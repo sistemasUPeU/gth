@@ -42,11 +42,12 @@ public class EmpleadoDAO {
     public boolean delete(Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public List<Map<String, Object>> listar_empleado(){
-        String sql_list_emp="select t.ID_TRABAJADOR as ID,co.ID_CONTRATO as IDC,UPPER(t.NO_TRABAJADOR) as NOM,UPPER(t.AP_PATERNO) as A_P,UPPER(t.AP_MATERNO) as A_M,ar.NO_AREA,se.NO_SECCION,pu.NO_PUESTO,TO_CHAR(co.FE_DESDE,'DD/MM/YYYY') as FE,TO_CHAR(co.FE_HASTA,'DD/MM/YYYY')as FE2\n" +
-"from RHTD_EMPLEADO e,RRHH.RHTM_TRABAJADOR t,RHTM_CONTRATO co,RHTR_PUESTO pu,RHTR_SECCION se,RHTD_AREA ar\n" +
-"WHERE e.ID_TRABAJADOR=t.ID_TRABAJADOR AND co.ID_TRABAJADOR=t.ID_TRABAJADOR and pu.ID_PUESTO=co.ID_PUESTO AND pu.ID_SECCION=se.ID_SECCION and ar.ID_AREA=se.ID_AREA AND co.FE_HASTA>=SYSDATE AND MONTHS_BETWEEN\n" +
-"(co.FE_HASTA,co.FE_DESDE)/12>=1 AND co.es_contrato='1'" ;
+
+    public List<Map<String, Object>> listar_empleado() {
+        String sql_list_emp = "select t.ID_TRABAJADOR as ID,co.ID_CONTRATO as IDC,UPPER(t.NO_TRABAJADOR) as NOM,UPPER(t.AP_PATERNO) as A_P,UPPER(t.AP_MATERNO) as A_M,ar.NO_AREA,se.NO_SECCION,pu.NO_PUESTO,TO_CHAR(co.FE_DESDE,'DD/MM/YYYY') as FE,TO_CHAR(co.FE_HASTA,'DD/MM/YYYY')as FE2 "
+                + "from RHTD_EMPLEADO e,RRHH.RHTM_TRABAJADOR t,RHTM_CONTRATO co,RHTR_PUESTO pu,RHTR_SECCION se,RHTD_AREA ar "
+                + "WHERE e.ID_TRABAJADOR=t.ID_TRABAJADOR AND co.ID_TRABAJADOR=t.ID_TRABAJADOR and pu.ID_PUESTO=co.ID_PUESTO AND pu.ID_SECCION=se.ID_SECCION and ar.ID_AREA=se.ID_AREA AND co.FE_HASTA>=SYSDATE AND MONTHS_BETWEEN "
+                + "(co.FE_HASTA,co.FE_DESDE)/12>=1 AND co.es_contrato='1'";
 
         return jt.queryForList(sql_list_emp);
     }
@@ -66,8 +67,8 @@ public class EmpleadoDAO {
     }
 
     /*CHECK USE OF THIS METHOD (DTO OBJECTS WERE REPLACED, 
-    WE USE MAP OBJECTS INSTEAD). ONCE EDITED, 
-    PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
+     WE USE MAP OBJECTS INSTEAD). ONCE EDITED, 
+     PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
     public Map<String, Object> getAllEmployees(Integer PageNumber, Integer PageSize, String direccion, String departamento, String area, String seccion) {
         String queryColumns = "SELECT c.id_contrato,DT.\"ID_TRABAJADOR\",DT.\"AP_PATERNO\",DT.\"AP_MATERNO\",DT.\"NO_TRABAJADOR\",DT.\"TI_DOC\",DT.\"NU_DOC\",DT.\"ES_CIVIL\",\n"
                 + "    DT.\"FE_NAC\",DT.\"NO_NACIONALIDAD\",DT.\"NO_DEPARTAMENTO\",DT.\"NO_PROVINCIA\",DT.\"NO_DISTRITO\",DT.\"TE_TRABAJADOR\",DT.\"CL_TRA\",DT.\"DI_CORREO_PERSONAL\",DT.\"DI_CORREO_INST\",\n"
@@ -101,18 +102,18 @@ public class EmpleadoDAO {
         query += (!area.equals("")) ? " and dpd.id_area='" + area + "' " : "";
         query += (!seccion.equals("")) ? " and dpd.id_seccion='" + seccion + "' " : "";
         /*end filters*/
-        List<Map<String, Object>> list=jt.queryForList(Sql.queryWithPagination(queryColumns + ", %s " + query + " %s", PageNumber, PageSize, "c.fe_creacion"));
-        Map<String,Object> mp=new HashMap<String,Object>();
-        int total=jt.queryForObject("select count(1) "+ query,Integer.class);
-        mp.put("RecordsTotal",total);
-        mp.put("RecordsFiltered",total);
-        mp.put("data",list);
+        List<Map<String, Object>> list = jt.queryForList(Sql.queryWithPagination(queryColumns + ", %s " + query + " %s", PageNumber, PageSize, "c.fe_creacion"));
+        Map<String, Object> mp = new HashMap<String, Object>();
+        int total = jt.queryForObject("select count(1) " + query, Integer.class);
+        mp.put("RecordsTotal", total);
+        mp.put("RecordsFiltered", total);
+        mp.put("data", list);
         return mp;
     }
 
     /*CHECK USE OF THIS METHOD (DTO OBJECTS WERE REPLACED, 
-    WE USE MAP OBJECTS INSTEAD). ONCE EDITED, 
-    PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
+     WE USE MAP OBJECTS INSTEAD). ONCE EDITED, 
+     PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
     public List<Map<String, Object>> Listar_Emp() {
         sql = "SELECT * FROM RHVD_LIST_EMPLEADO order by ap_paterno ";
         return jt.queryForList(sql);
@@ -135,8 +136,8 @@ public class EmpleadoDAO {
     }
 
     /*CHECK USE OF THIS METHOD (DTO OBJECTS WERE REPLACED, 
-    WE USE MAP OBJECTS INSTEAD). ONCE EDITED, 
-    PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
+     WE USE MAP OBJECTS INSTEAD). ONCE EDITED, 
+     PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
     public List<Map<String, Object>> Listar_Evaluacion_Emp(String id_emp) {
         sql = "SELECT * FROM RHTD_EVALUACION_EMP WHERE ID_EMPLEADO = ?";
         return jt.queryForList(sql, id_emp);
@@ -147,8 +148,8 @@ public class EmpleadoDAO {
     }
 
     /*CHECK USE OF THIS METHOD (DTO OBJECTS WERE REPLACED, 
-    WE USE MAP OBJECTS INSTEAD). ONCE EDITED, 
-    PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
+     WE USE MAP OBJECTS INSTEAD). ONCE EDITED, 
+     PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
     public List<Map<String, Object>> id_empleadox_ide(String ide) {
         sql = "SELECT * FROM RHTD_EMPLEADO WHERE "
                 + "ID_TRABAJADOR = ? and es_empleado='1'";
@@ -186,8 +187,8 @@ public class EmpleadoDAO {
     }
 
     /*CHECK USE OF THIS METHOD (CHANGE KEY VALUES OF MAP OBJECTS 
-    IN CONTROLLERS IF NECESSARY). ONCE EDITED, 
-    PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
+     IN CONTROLLERS IF NECESSARY). ONCE EDITED, 
+     PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
     public List<Map<String, Object>> List_co_huella(String idtr) {
         sql = "select id_empleado,id_trabajador,CO_HUELLA_DIGITAL from "
                 + "rhtd_empleado where id_trabajador=?";
@@ -195,8 +196,8 @@ public class EmpleadoDAO {
     }
 
     /*CHECK USE OF THIS METHOD (CHANGE KEY VALUES OF MAP OBJECTS 
-    IN CONTROLLERS IF NECESSARY). ONCE EDITED, 
-    PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
+     IN CONTROLLERS IF NECESSARY). ONCE EDITED, 
+     PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
     public List<Map<String, Object>> List_co_aps(String idtr) {
         sql = "select id_empleado,id_trabajador,co_aps from rhtd_empleado where "
                 + "id_trabajador=?";
@@ -204,8 +205,8 @@ public class EmpleadoDAO {
     }
 
     /*CHECK USE OF THIS METHOD (CHANGE KEY VALUES OF MAP OBJECTS 
-    IN CONTROLLERS IF NECESSARY). ONCE EDITED, 
-    PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
+     IN CONTROLLERS IF NECESSARY). ONCE EDITED, 
+     PLEASE DELETE THESE COMMENTS IF THEY  ARE ALREADY NOT NECESSARY*/
     public List<Map<String, Object>> getAllEmployeesWithOutUserAccount() {
         sql = "SELECT e.id_empleado,e.id_trabajador,e.ES_EMPLEADO,t.NO_TRABAJADOR"
                 + "||' '||t.AP_PATERNO||' '||t.AP_MATERNO as fullnameEmployee FROM "

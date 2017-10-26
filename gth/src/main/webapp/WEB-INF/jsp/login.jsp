@@ -8,14 +8,14 @@
         <title> .:RRHH:.</title>
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="<c:url value='resources/img/favicon/favicon.ico'/>" type="image/x-icon">
+        <link rel="icon" href="<c:url value='/resources/img/favicon/favicon.ico'/>" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <%@include file="../../jspf/general.jspf" %>
     </head>
     <body onload="nobackbutton()" class="animated fadeInDown">
         <header id="header" style="background: #424242;">
             <div id="logo-group" >
-                <span id="logo"> <img src="<c:url value='resources/img/logoRRHH.png'/>" style=" position: absolute;top: 6px; width:130px; height:36px " alt="GTH"> </span>
+                <span id="logo"> <img src="<c:url value='/resources/img/logoRRHH.png'/>" style=" position: absolute;top: 6px; width:130px; height:36px " alt="GTH"> </span>
             </div>
         </header>
         <div id="main" role="main" class="mainLogin">
@@ -75,20 +75,20 @@
             </div>
         </div>
         <%@include file="../../jspf/scripts.jspf" %>  
-        <script src="<c:url value='resources/js/app.config.js'/>"></script>
-        <script src="<c:url value='resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
-        <script src="<c:url value='resources/js/bootstrap/bootstrap.min.js'/>"></script>
-        <script src="<c:url value='resources/js/notification/SmartNotification.min.js'/>"></script>
-        <script src="<c:url value='resources/js/smartwidgets/jarvis.widget.min.js'/>"></script>
-        <script src="<c:url value='resources/js/plugin/sparkline/jquery.sparkline.min.js'/>"></script>
-        <script src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
-        <script src="<c:url value='resources/js/plugin/masked-input/jquery.maskedinput.min.js'/>"></script>
-        <script src="<c:url value='resources/js/plugin/bootstrap-slider/bootstrap-slider.min.js'/>"></script>
-        <script src="<c:url value='resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
-        <script src="<c:url value='resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
-        <script src="<c:url value='resources/js/app.min.js'/>"></script>
-        <script src="<c:url value='resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
-        <script src="<c:url value='resources/js/index.js?v=<%=globalProperties.VERSION_JS%>'/>" type="text/javascript"></script>
+        <script src="<c:url value='/resources/js/app.config.js'/>"></script>
+        <script src="<c:url value='/resources/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'/>"></script> 
+        <script src="<c:url value='/resources/js/bootstrap/bootstrap.min.js'/>"></script>
+        <script src="<c:url value='/resources/js/notification/SmartNotification.min.js'/>"></script>
+        <script src="<c:url value='/resources/js/smartwidgets/jarvis.widget.min.js'/>"></script>
+        <script src="<c:url value='/resources/js/plugin/sparkline/jquery.sparkline.min.js'/>"></script>
+        <script src="<c:url value='/resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
+        <script src="<c:url value='/resources/js/plugin/masked-input/jquery.maskedinput.min.js'/>"></script>
+        <script src="<c:url value='/resources/js/plugin/bootstrap-slider/bootstrap-slider.min.js'/>"></script>
+        <script src="<c:url value='/resources/js/plugin/msie-fix/jquery.mb.browser.min.js'/>"></script>
+        <script src="<c:url value='/resources/js/plugin/fastclick/fastclick.min.js'/>"></script>
+        <script src="<c:url value='/resources/js/app.min.js'/>"></script>
+        <script src="<c:url value='/resources/js/plugin/jquery-validate/jquery.validate.min.js'/>"></script>
+        <script src="<c:url value='/resources/js/index.js?v=<%=globalProperties.VERSION_JS%>'/>" type="text/javascript"></script>
         <script>
                                                                    function nobackbutton() {
                                                                        window.location.hash = "no-back-button";
