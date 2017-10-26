@@ -49,44 +49,20 @@
                         <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                             <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
-                                <!-- widget options:
-                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                                data-widget-colorbutton="false"
-                                data-widget-editbutton="false"
-                                data-widget-togglebutton="false"
-                                data-widget-deletebutton="false"
-                                data-widget-fullscreenbutton="false"
-                                data-widget-custombutton="false"
-                                data-widget-collapsed="true"
-                                data-widget-sortable="false"
-
-                                -->
                                 <header>
                                     <span class="widget-icon"> <i class="fa fa-table"></i> </span>
                                     <h2>Lista de Empleados </h2>
 
                                 </header>
 
-                                <!-- widget div-->
                                 <div>
-
-                                    <!-- widget edit box -->
                                     <div class="jarviswidget-editbox">
-                                        <!-- This area used as dropdown edit box -->
-
                                     </div>
-                                    <!-- end widget edit box -->
-
-                                    <!-- widget content -->
                                     <div class="widget-body no-padding" id="tablecont">
                                     </div>
-                                    <!-- end widget content -->
                                 </div>
-                                <!-- end widget div -->
                             </div>
                         </article>
-                        <!-- WIDGET END -->
                         <footer>
                             <center>
                                 <button type="submit" id='btnsbt' class="btn btn-primary">
@@ -95,20 +71,9 @@
                         </footer>
 
                     </div>
-                    <!-- end row -->
-
-                    <!-- end row -->
-
                 </section>
-                <!-- end widget grid -->
-
             </div>
-            <!-- END MAIN CONTENT -->
-
         </div>
-        <!-- END MAIN PANEL -->
-        <!-- END SHORTCUT AREA -->
-        <!--Modal content-->
         <div class="modalContent"></div>
     </div>
     <script type="text/javascript" src="<c:url value='/resources/js/libs/jquery-2.1.1.min.js'/>" ></script>        
@@ -228,39 +193,39 @@
         function creartable() {
             var s = '<table id="datatable_fixed_column"  class="table table-striped table-bordered" width="100%">';
             s += '<thead>';
-            s += '<tr>' +
-                    '<th class="hasinput" style="width:17%">' +
-                    '<input type="text" class="form-control" placeholder="Filtro Nombres" />' +
-                    '</th>' +
-                    '<th class="hasinput" style="width:18%">' +
-                    '<input class="form-control" placeholder="Filtro Area" type="text">' +
-                    '</th>' +
-                    '<th class="hasinput" style="width:16%">' +
-                    '<input type="text" class="form-control" placeholder="Filtro Seccion" />' +
-                    '</th>' +
-                    '<th class="hasinput" style="width:17%">' +
-                    '<input type="text" class="form-control" placeholder="Filtro Puesto" />' +
-                    '</th>' +
-                    '<th class="hasinput" style="width:17%">' +
-                    '<input type="text" class="form-control" placeholder="Filtro Fecha Inicio" />' +
-                    '</th>' +
-                    '<th class="hasinput" style="width:16%">' +
-                    '<input type="text" class="form-control" placeholder="Filtro Fecha Fin" />' +
-                    '</th>' +
-                    '</tr>';
             s += '<tr>';
-            s += '<th data-hide="expand">Nombre Y Apellidos</th>';
+            s += '<th class="hasinput" style="width:17%">';
+            s += '<input type="text" class="form-control" placeholder="Filtro Nombres" />';
+            s += '</th>';
+            s += '<th class="hasinput" style="width:18%">';
+            s += '<input class="form-control" placeholder="Filtro Area" type="text">';
+            s += '</th>';
+            s += '<th class="hasinput" style="width:16%">';
+            s += '<input type="text" class="form-control" placeholder="Filtro Seccion" />';
+            s += '</th>';
+            s += '<th class="hasinput" style="width:17%">';
+            s += '<input type="text" class="form-control" placeholder="Filtro Puesto" />';
+            s += '</th>';
+            s += '<th class="hasinput" style="width:17%">';
+            s += '<input type="text" class="form-control" placeholder="Filtro Fecha Inicio" />';
+            s += '</th>';
+            s += '<th class="hasinput" style="width:16%">';
+            s += '<input type="text" class="form-control" placeholder="Filtro Fecha Fin" />';
+            s += '</th>';
+            s += '</tr>';
+            s += '<tr>';
+            s += '<th data-hide="expand">Nombres y Apellidos</th>';
             s += '<th data-hide="phone">Area</th>';
             s += '<th data-hide="phone,tablet">Seccion</th>';
             s += '<th data-hide="phone,tablet">Puesto</th>';
-            s += ' <th data-hide="phone,tablet">Fecha Inicio</th>';
+            s += '<th data-hide="phone,tablet">Fecha Inicio</th>';
             s += '<th data-hide="phone,tablet">Fecha Fin</th>';
-            s += ' <th>Seleccionar<center><input type="checkbox" id="ckbCheckAll" /></center></th>';
-            s += ' </tr>';
-            s += ' </thead>';
-            s += ' <tbody id="data">';
-            s += ' </tbody>';
-            s += ' </table>  ';
+            s += '<th>Seleccionar<center><input type="checkbox" id="ckbCheckAll" /></center></th>';
+            s += '</tr>';
+            s += '</thead>';
+            s += '<tbody id="data">';
+            s += '</tbody>';
+            s += '</table>  ';
             return s;
 
 

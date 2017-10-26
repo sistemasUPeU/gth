@@ -72,7 +72,8 @@ public class VacacionesController {
 
     }
 
-    @RequestMapping(value = "/listar_vac")
+    //MÉTODO PARA REDIRIGIR A UNA VISTA
+    @RequestMapping(value = "/listar_vac", method = RequestMethod.GET)
     public ModelAndView lista(ModelAndView model) {
         model.setViewName("vistas/vacaciones/Listar_vacaciones");
         return model;
