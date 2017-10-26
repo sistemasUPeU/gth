@@ -43,52 +43,52 @@ import pe.edu.upeu.gth.dao.vacacionesDAO;
 @Scope("request")
 @RequestMapping("vacaciones")
 public class VacacionesController {
+
     @Autowired
     private vacacionesDAO vaO;
     @Autowired
     private EmpleadoDAO aO;
-    public String id_t="";
+    public String id_t = "";
     Map<String, Object> mp = new HashMap<>();
-    public List<String> archi= new ArrayList<>();
-    
-    @RequestMapping(value = "/asig",method = RequestMethod.GET)
-    public ModelAndView asignar(ModelAndView modelo, HttpServletRequest request)
-    {
-        id_t=request.getParameter("id");
+    public List<String> archi = new ArrayList<>();
+
+    @RequestMapping(value = "/asig", method = RequestMethod.GET)
+    public ModelAndView asignar(ModelAndView modelo, HttpServletRequest request) {
+        id_t = request.getParameter("id");
         modelo.setViewName("vistas/vacaciones/prog_vaca");
         return modelo;
     }
-    @RequestMapping(value ="/returnjson", method = RequestMethod.POST)
-    public void retorna(HttpServletRequest request, HttpServletResponse response) throws IOException
-    {
+
+    @RequestMapping(value = "/returnjson", method = RequestMethod.POST)
+    public void retorna(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-         List<Map<String, Object>> vacac= vaO.asignar_permiso(id_t);
-         Gson gson = new Gson();
-         
-        out.println (gson.toJson(vacac));
+        List<Map<String, Object>> vacac = vaO.asignar_permiso(id_t);
+        Gson gson = new Gson();
+
+        out.println(gson.toJson(vacac));
         out.flush();
         out.close();
-        
+
     }
-    
+
     @RequestMapping(value = "/listar_vac")
-     public ModelAndView lista(ModelAndView model){
-         model.setViewName("vistas/vacaciones/Listar_vacaciones");
-         return model;
+    public ModelAndView lista(ModelAndView model) {
+        model.setViewName("vistas/vacaciones/Listar_vacaciones");
+        return model;
     }
-     
-          /*EJEMPLO*/
-     @RequestMapping(value = "/listar_vac_ejemplo")
-     public ModelAndView ejemplo(ModelAndView model){
+
+    /*EJEMPLO*/
+    @RequestMapping(value = "/listar_vac_ejemplo")
+    public ModelAndView ejemplo(ModelAndView model) {
 //         List<Map<String, Object>> lista= aO.listar_empleado();
 //         model.addObject("listar",lista);
-         model.setViewName("vistas/vacaciones/prueba");
-         return model;
+        model.setViewName("vistas/vacaciones/prueba");
+        return model;
     }
-     /*FIN EJEMPLO*/
-     
-     @RequestMapping(value = "/vac_emple", method = RequestMethod.POST)
+    /*FIN EJEMPLO*/
+
+    @RequestMapping(value = "/vac_emple", method = RequestMethod.POST)
     public void List_empleados(HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
@@ -103,7 +103,7 @@ public class VacacionesController {
         out.flush();
         out.close();
     }
-    
+
     @RequestMapping(value = "/turnh", method = RequestMethod.POST)
     public void List_vac(HttpServletRequest resquest, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
@@ -123,61 +123,59 @@ public class VacacionesController {
 
     @Autowired
     ServletContext context;
+
     @RequestMapping(value = "/archivos", method = RequestMethod.POST)
-    public ModelAndView Upload(@RequestParam("files") List<MultipartFile> file,ModelAndView model,HttpServletResponse response) throws IOException
-    {
-            
+    public ModelAndView Upload(@RequestParam("files") List<MultipartFile> file, ModelAndView model, HttpServletResponse response) throws IOException {
+
         if (!file.isEmpty()) {
             try {
-                
-                for (MultipartFile fi: file) {
-                    String path=context.getRealPath("/WEB-INF/")+ File.separator + fi.getOriginalFilename();
-                    File destFile= new File(path);
+
+                for (MultipartFile fi : file) {
+                    String path = context.getRealPath("/WEB-INF/") + File.separator + fi.getOriginalFilename();
+                    File destFile = new File(path);
                     fi.transferTo(destFile);
                     archi.add(destFile.getName());
                     archi.add(destFile.getPath());
-                    FilenameUtils fich= new FilenameUtils();
+                    FilenameUtils fich = new FilenameUtils();
                     archi.add(FilenameUtils.getExtension(path));
                     archi.add(String.valueOf(destFile.length()));
-                    
-                    
+
                 }
-                
+
             } catch (IOException | IllegalStateException ec) {
                 ec.getMessage();
                 ec.printStackTrace();
             }
-                   
-        }     
+
+        }
         model.setViewName("vistas/vacaciones/Success");
         return model;
     }
-    @RequestMapping(value ="/jarchivos", method = RequestMethod.POST)
-    public void jarchiv(HttpServletRequest request, HttpServletResponse response) throws IOException
-    {
+
+    @RequestMapping(value = "/jarchivos", method = RequestMethod.POST)
+    public void jarchiv(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         try (PrintWriter out = response.getWriter()) {
-            Gson g= new Gson();
+            Gson g = new Gson();
             out.print(g.toJson(archi));
             out.flush();
         }
-        
+
     }
-     @RequestMapping(value = "/guardar_list", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/guardar_list", method = RequestMethod.POST)
     public void guardar_list(HttpServletResponse response) throws IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         Gson gson = new Gson();
         try {
-           out.println(gson.toJson("se guardo correctamente"));
-           out.flush();
-           out.close();
+            out.println(gson.toJson("se guardo correctamente"));
+            out.flush();
+            out.close();
 
         } catch (Exception e) {
             System.out.println("Error al listar empleados : " + e);
         }
-  
-    }
-        }
-  
 
+    }
+}

@@ -14,7 +14,7 @@ public class globalProperties {
     public static String VERSION_CSS = "2.1.0";
     public static String VERSION_JS = "2.7.0";
 
-    public static final String HOSTNAME = "192.168.21.9";
+    public static final String HOSTNAME = "localhost";
     public static final String USER = "gth";
     public static final String USER_PWD = "123";
     public static final String PORT = "1521";
